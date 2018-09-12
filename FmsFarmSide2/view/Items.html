@@ -1,0 +1,144 @@
+<div ng-controller="AddItemDetails" ng-init="load()">
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Item Details</legend>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Item's Code</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" placeholder="item code" ng-model="code" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Item</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" placeholder="item name" ng-model="name" class="form-control input-md">
+    
+  </div>
+</div>
+
+
+<!-- Button Drop Down -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Unit">Type</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <input id="Unit" name="Unit" class="form-control" placeholder="type" ng-model="Type" type="text">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Select
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          
+          <li><button ng-click="SetType('Fruit')">Fruits</a></li>
+          <li><button ng-click="SetType('Vegetable')">Vegetable</a></li>
+         
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button Drop Down -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Unit">Unit</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <input id="Unit" name="Unit" class="form-control" placeholder="unit" ng-model="unit" type="text">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Kg
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><button ng-click="SetUnit('kg')">kg</button></li>
+          <li><button ng-click="SetUnit('g')">g</a></li>
+          <li><button ng-click="SetUnit('mg')">mg</a></li>
+          <li><button ng-click="SetUnit('1 packet')">1 packet</a></li>
+          <li><button ng-click="SetUnit('l')">l</a></li>
+          <li><button ng-click="SetUnit('ml')">ml</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Amount</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="amount" placeholder="amount" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext">Price</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon">Rs</span>
+      <input id="prependedtext" name="prependedtext" class="form-control" ng-model="price" placeholder="price" type="text">
+    </div>
+    
+  </div>
+</div>
+
+<!-- Appended Input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="appendedtext">Discount</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <input id="appendedtext" name="appendedtext" ng-model="discount" class="form-control" placeholder="discount" type="text">
+      <span class="input-group-addon">%</span>
+    </div>
+    
+  </div>
+</div>
+<!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Add Image">Add Image</label>
+  <div class="col-md-4">
+    <input id="Add Image" name="Add Image" file-input="files" class="input-file" type="file">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="uploadFile()" >Submit</button>
+  </div>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="updateItemsData()" >Update</button>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+ <!--<div style="clear:both"></div>  -->
+ <div class ="row">
+               <div class="row">  
+                <div class="col-md-2" ng-repeat="image in images">  
+                     <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-info btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
+                </div>
+              </div>
+                <br>
+                
+                <div class ="row "><center>Fruit</center></div> 
+                <div class="col-md-2" ng-repeat="image in imagesFruit">  
+                     <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-info btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
+                </div>  
+
+
+  </div>

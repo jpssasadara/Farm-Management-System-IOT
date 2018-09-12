@@ -1,0 +1,153 @@
+<div ng-controller="RegisterCashierController" class="container" ng-init="displayData2()">
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+<label class="text-success" ng-show="successInsert">{{successInsert}}</label>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Id</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="id" placeholder="id" class="form-control input-md">
+  
+    
+  </div>
+  <span class="text-danger" ng-show="errorid">{{errorid}}</span>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">First Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="firstname" placeholder="firstname" class="form-control input-md">
+  
+    
+  </div>
+  <span class="text-danger" ng-show="errorfirstname">{{errorfirstname}}</span>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Last Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="lastname"placeholder="lastname" class="form-control input-md">
+    
+  </div>
+  <span class="text-danger" ng-show="errorlastname">{{errorlastname}}</span>
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Phone Number</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="phonenumber" placeholder="phonenumber" class="form-control input-md">
+ 
+    
+  </div>
+   <span class="text-danger" ng-show="errorphonenumber">{{errorphonenumber}}</span>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Email</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="email" placeholder="email" class="form-control input-md">
+  
+    
+  </div>
+  <span class="text-danger" ng-show="erroremail">{{erroremail}}</span>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Salary</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="salary" placeholder="salary" class="form-control input-md">
+  
+    
+  </div>
+  <span class="text-danger" ng-show="errorsalary">{{errorsalary}}</span>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Address</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" ng-model="address" name="textarea"></textarea>
+  </div>
+  <span class="text-danger" ng-show="erroraddress">{{erroraddress}}</span>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Username</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" placeholder="username" ng-model="username"class="form-control input-md">
+    
+  </div>
+  <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="passwordinput" type="password" placeholder="password" ng-model="password"class="form-control input-md">
+    <span class="help-block">At least 8 Characters</span>
+  </div>
+  <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" ng-click="Reg()" class="btn btn-primary">Register</button>
+    <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-primary">Update</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+<div class = "row">
+<!--<div class ="col-md-2"></div>-->
+<div  class = "col-md-12" class = style="width:500px;">  
+                
+                
+                     
+                     <br /><br />  
+                     <table class="table table-bordered">  
+                          <tr>  
+                               <th>Emp_Id</th>
+                               <th>First Name</th>  
+                               <th>Last Name</th>
+                               <th>Phone Number</th>
+                               <th>Email</th>
+                               <th>Salary</th>
+                               <th>Address</th> 
+                               <th>Username</th>
+                               <th>Password</th>
+                               <th>Update</th>
+                               <th>Delete</th>
+                          </tr>  
+                          <tr ng-repeat="x in names">
+                               <td>{{x.Id}}</td>
+                               <td>{{x.First_Name}}</td>  
+                               <td>{{x.Last_Name}}</td> 
+                               <td>{{x.Tele_Number}}</td>
+                               <td>{{x.Email}}</td>  
+                               <td>{{x.Salary}}</td>
+                               <td>{{x.Address}}</td>
+                               <td>{{x.Username}}</td>  
+                               <td>{{x.Password}}</td>
+                          
+                               <td><button ng-click="updateDataAdmin(x.Id,x.First_Name, x.Last_Name,x.Tele_Number,x.Email,x.Address,x.Salary,x.Username,x.Password)" class="btn btn-info btn-xs">Update</button></td> 
+                               <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
+                          </tr>  
+                     </table>  
+                </div>  
+           </div>  
+</div>
