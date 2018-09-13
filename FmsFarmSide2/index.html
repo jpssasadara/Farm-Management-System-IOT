@@ -8,6 +8,8 @@
   <script src="jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="angular.min.js"></script>
   <script src="angular-route.js"></script>
   <script src ="controller.js"></script> 
@@ -24,39 +26,64 @@
     }
     .abc-c {
         
-        text-shadow: 1px 1px green;
+        text-shadow: 1px 1px #ccc;
     }
+    .footer {
+  background: rgb(0,0,0);
+  padding: 10px 0;
+}
+.footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+}
     </style>
     <link rel="stylesheet" href="w3.css">
 </head>
 <body ng-app="mainapp">
   <div class="container">
 <div class="text-white">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">FMS Labuduwa</a>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/home">FMS Labuduwa</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href='#/'>Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Production <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href='#/vegetable'>Vegetables</a></li>
+            <li><a href='#/fruit'>Fruits</a></li>
+            <li><a href='#/others'>Others</a></li>
+          </ul>
+        </li>
+        <li><a href='#/courses'>Courses</a></li>
+        <li><a href='#/about'>About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='#/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href='#/logout'><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
+
   
-<div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana Galle</b></center></div></div>
   <div class="row"></div>
 
 <div class="row"></div>
   <center>
-<img src="img\logo.png" alt="Lights" class="img-thumbnail" style="width:15%">
+<img src="img\logo.png" alt="Lights" class="img-thumbnail" style="width:20%">
   </center><br/>
   <center>
-  <h1> 
-    <font color="#24b678">Farm</font> <font color="#0e406b">Management</font> <font color="#24b678">
-      System</font>
+      <div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana, Galle.</b></center></div></div>
   </h1>
   </center>
 </div>
@@ -64,8 +91,17 @@
 <div ng-view>
 
 </div>
-<div class="pull-middle">
 
+
+
+<div class="footer">
+  <div class="container text-center">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-google-plus"></i></a>
+    <a href="#"><i class="fa fa-skype"></i></a>
+  </div>
   
 <div class="abc-cc" style="width:100%">
   
