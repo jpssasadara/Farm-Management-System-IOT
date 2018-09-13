@@ -15,10 +15,12 @@
     .abc-cc {
         background-color: black;
         padding: 16px;
+        text-align: center;
     }
     .abc-ccc {
         background-color: #f0f0f0;
         padding: 1px;
+        text-align: center;
     }
     .abc-c {
         
@@ -29,7 +31,7 @@
 </head>
 <body ng-app="mainapp">
   <div class="container">
-<div class="p-3 mb-2 bg-success text-white">
+<div class="text-white">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -43,20 +45,36 @@
     </ul>
   </div>
 </nav>
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-2"><img src="\fmsinter\img\p7.jpg" alt="Lights" class="img-thumbnail" style="width:40%"></div>
-  <div class ="col-sm-9" class="font-weight-bold " > <h1><b >LABUDUWA GARVERNMENT FARM </b></h1></div>  
-</div>
   
-<div class="abc-ccc"><div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana Galle Labuduwa Farm Akmeemana GalleLabuduwa Farm Akmeemana Galle Labuduwa Farm Akmeemana Galle</b></center></div></div>
+<div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana Galle</b></center></div></div>
   <div class="row"></div>
+
+<div class="row"></div>
+  <center>
+<img src="img\logo.png" alt="Lights" class="img-thumbnail" style="width:15%">
+  </center><br/>
+  <center>
+  <h1> 
+    <font color="#24b678">Farm</font> <font color="#0e406b">Management</font> <font color="#24b678">
+      System</font>
+  </h1>
+  </center>
+</div>
 
 <div ng-view>
 
 </div>
-<div class="abc-cc">Panel Footer</div>
+<div class="pull-middle">
+
+  
+<div class="abc-cc" style="width:100%">
+  
+  &copy Farm Management<br/>
+Contact : 011 2 541 214<br/>
+farmmanagement@gmail.com
+</div>
 </div></div>
+
 </body>
 </html>
 

@@ -1,16 +1,23 @@
+ <head>
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <script src="jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+          
+            <script src="angular.min.js"></script>
+            <script src="angular-route.js"></script>
+            <script src ="controller.js"></script> 
+</head>>
  <div ng-controller="loginbuttonctrl">
 
-      <div class="row"></div>
-      <div class="row">
-      <div class="col-sm-1"></div><div class="col-sm-11"><h2>Login</h2></div>
-      </div>
+      <center>
+      <div class ="well"><div class="col-sm-4"></div><div class = "col-sm-4"><button type="button" class="btn btn-warning btn-lg btn-block" ng-click="admin()"><span class="glyphicon glyphicon-user"></span> Admin</button></div><div class = "col-sm-3"></div></div>
 
-      <div class ="well"><div class="col-sm-3"></div><div class = "col-sm-6"><button type="button" class="btn btn-primary btn-lg btn-block" ng-click="admin()">Admin</button></div><div class = "col-sm-3"></div></div>
-
-      <div class ="well"><div class="col-sm-3"></div><div class = "col-sm-6"><button type="button" class="btn btn-primary btn-lg btn-block"  ng-click="farmshop()">Farm Shop</button></div><div class = "col-sm-3"></div></div>
+      <div class ="well"><div class="col-sm-4"></div><div class = "col-sm-4"><button type="button" class="btn btn-primary btn-lg btn-block"  ng-click="farmshop()"><span class="glyphicon glyphicon-shopping-cart"></span> Farm Shop</button></div><div class = "col-sm-3"></div></div>
 
      
       <div class ="well"></div>
+      </center>
+      
 
 </div>
 
