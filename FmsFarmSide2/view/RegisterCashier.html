@@ -1,9 +1,10 @@
 <div ng-controller="RegisterCashierController" class="container" ng-init="displayData2()">
+    <div class="container container-fluid"><h2> Register Employee<span class="glyphicon glyphicon-pawn"> </h2>
 <form class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+
 <label class="text-success" ng-show="successInsert">{{successInsert}}</label>
 <!-- Text input-->
 <div class="form-group">
@@ -106,7 +107,7 @@
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
     <button id="singlebutton" name="singlebutton" ng-click="Reg()" class="btn btn-primary">Register</button>
-    <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-primary">Update</button>
+    <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Update</button>
   </div>
 </div>
 
@@ -144,7 +145,7 @@
                                <td>{{x.Username}}</td>  
                                <td>{{x.Password}}</td>
                           
-                               <td><button ng-click="updateDataAdmin(x.Id,x.First_Name, x.Last_Name,x.Tele_Number,x.Email,x.Address,x.Salary,x.Username,x.Password)" class="btn btn-info btn-xs">Update</button></td> 
+                               <td><button ng-click="updateDataAdmin(x.Id,x.First_Name, x.Last_Name,x.Tele_Number,x.Email,x.Address,x.Salary,x.Username,x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
                                <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
                           </tr>  
                      </table>  

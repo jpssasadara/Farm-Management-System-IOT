@@ -8,12 +8,41 @@
   <script src="jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 
+  <link href="css/jcarousel.css" rel="stylesheet" />
+	<link href="css/flexslider.css" rel="stylesheet" />
+
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="angular.min.js"></script>
   <script src="angular-route.js"></script>
   <script src ="controller.js"></script> 
     <style>
+
+      
+
+      
+
+
+      .blog .carousel-indicators {
+	left: 0;
+	top: auto;
+    bottom: -40px;
+
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.blog .carousel-indicators .active {
+background: #707070;
+}
+
+
     .abc-cc {
         background-color: black;
         padding: 16px;
@@ -67,7 +96,6 @@
           </ul>
         </li>
         <li><a href='#/courses'>Courses</a></li>
-        <li><a href='#/about'>About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href='#/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -79,13 +107,58 @@
   <div class="row"></div>
 
 <div class="row"></div>
-  <center>
-<img src="img\logo.png" alt="Lights" class="img-thumbnail" style="width:20%">
-  </center><br/>
-  <center>
+
+<!--
+<img src="img\logo.png" alt="Logo" class="img-thumbnail" style="width:20%">
+-->
+
+<div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>   
+    <!-- Carousel items -->
+    <div class="carousel-inner" role="listbox" style=" width:100%; height:250px !important;">
+        <div class="item active">
+            <img src="img/y.jpg" alt="First Slide" width="100%">
+            <div class="carousel-caption">
+                <h3>Vegetables and Fruits</h3>
+                <p>There are fresh vegetables and fruits</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/z.jpg" alt="Second Slide" width="100%" >
+            <div class="carousel-caption">
+                <h3>Clean Milk Products</h3>
+                <p>Fresh Milk Products with good condition</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/zz.jpg" alt="Third Slide" width="100%">
+            <div class="carousel-caption">
+                <h3>Farm House</h3>
+                <p>Vegetables , fruits & beans from farm house</p>
+            </div>
+        </div>
+    </div>
+
+  
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+
+
+
       <div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana, Galle.</b></center></div></div>
   </h1>
-  </center>
 </div>
 
 <div ng-view>
@@ -94,13 +167,16 @@
 
 
 
+
+
+
 <div class="footer">
   <div class="container text-center">
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-google-plus"></i></a>
-    <a href="#"><i class="fa fa-skype"></i></a>
+    <a href=""><i class="fa fa-facebook"></i></a>
+    <a href=""><i class="fa fa-twitter"></i></a>
+    <a href=""><i class="fa fa-linkedin"></i></a>
+    <a href=""><i class="fa fa-google-plus"></i></a>
+    <a href=""><i class="fa fa-skype"></i></a>
   </div>
   
 <div class="abc-cc" style="width:100%">
@@ -110,6 +186,8 @@ Contact : 011 2 541 214<br/>
 farmmanagement@gmail.com
 </div>
 </div></div>
+
+
 
 </body>
 </html>

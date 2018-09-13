@@ -11,6 +11,15 @@ app.config(function($routeProvider) {
     .when("/farmshopwelcome", {
         templateUrl : "view/farmshopwelcome.html"
     })
+/*
+    .when("/pos", {
+        templateUrl : "view/invoice.php"
+    })
+
+    .when("/posAdd", {
+        templateUrl : "view/invoice.php?add=1"
+    })*/
+
     
      .when("/admin",{
         resolve:{
@@ -102,12 +111,21 @@ app.controller("loginbuttonctrl",function($scope,$location){
      $scope.farmshop=function(){
         $location.path('/farmshopwelcome');
     };
-     
     
-    
+         
 
 });
 
+/*
+app.controller("posCtrl",function($scope,$location){
+    $scope.pos=function(){
+        $location.path('/pos');
+    }
+    $scope.posAdd=function(){
+        $location.path('/posAdd');
+    }
+});
+*/
 
 //Controller for Admin Login page
 app.controller('adminloginctrl',function($scope,$location,$rootScope,$http){
