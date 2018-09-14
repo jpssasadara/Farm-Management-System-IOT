@@ -245,7 +245,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li><a href='invoice.php'>POS</a></li>
-      <li class="active"><a href='/Farm-Management-System-IoT/FmsFarmSide2'>Home</a></li>
+      <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
