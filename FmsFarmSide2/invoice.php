@@ -163,6 +163,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
 
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -171,6 +173,39 @@
     <script src="js/dataTables.bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
     <style>
+      
+    .abc-cc {
+        background-color: black;
+        padding: 16px;
+        text-align: center;
+    }
+    .abc-ccc {
+        background-color: #f0f0f0;
+        padding: 1px;
+        text-align: center;
+    }
+    .abc-c {
+        
+        text-shadow: 1px 1px #ccc;
+    }
+
+.footer {
+  background: rgb(0,0,0);
+  padding: 10px 0;
+}
+      .footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+}
       /* Remove the navbar's default margin-bottom and rounded borders */ 
       .navbar {
       margin-bottom: 4px;
@@ -825,6 +860,27 @@
       ?>
     </div>
     <br>
+
+
+<div class="footer">
+  <div class="container text-center">
+    <a href=""><i class="fa fa-facebook"></i></a>
+    <a href=""><i class="fa fa-twitter"></i></a>
+    <a href=""><i class="fa fa-linkedin"></i></a>
+    <a href=""><i class="fa fa-google-plus"></i></a>
+    <a href=""><i class="fa fa-skype"></i></a>
+  </div>
+  
+<div class="abc-cc" style="width:100%">
+  
+  &copy Farm Management<br/>
+Contact : 011 2 541 214<br/>
+farmmanagement@gmail.com
+</div>
+</div></div>
+
+
+
   </body>
 </html>
 <script type="text/javascript">
