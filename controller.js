@@ -104,6 +104,17 @@ app.config(function($routeProvider) {
         templateUrl: "view/farmshop.html"
      })
 
+       .when("/get/tem/hum",{                    
+        resolve:{
+            "check":function($location,$rootScope){
+                if(!$rootScope.loggedIn){
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "https://sasadaramonker.000webhostapp.com/app/index.html"
+     })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -228,7 +239,9 @@ app.controller("Admincontroller",function($scope,$location){
     $scope.addItems=function(){
         $location.path('/admin/AddItem/details');
     };
-
+    $scope.temhum=function(){
+        $location.path('/get/tem/hum');
+    };
 
 });
 
