@@ -147,13 +147,25 @@ app.controller('adminloginctrl',function($scope,$location,$rootScope,$http){
                 {'username':$scope.username}  
            ).success(function(data){ 
 
-                alert(data.value);
+                
                 if($scope.password==data.value&&data.value!=null){
                      $rootScope.loggedIn=true;
                      $location.path('/admin');
+                     swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Welcome '+$scope.username,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                 }
                 else{
-                    alert("Wrong Stuff");
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Wrong Stuff !',
+                        footer: 'Please Enter Valid UserName & Password'
+                      });
                      } 
            }); 
 
@@ -170,13 +182,25 @@ app.controller('shop',function($scope,$location,$rootScope,$http){
                 {'username':$scope.username}  
            ).success(function(data){ 
 
-                alert(data.value);
+                
                 if($scope.password==data.value&&data.value!=null){
                      $rootScope.loggedIn=true;
                      $location.path('/forPOS');
+                     swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Welcome '+$scope.username,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                 }
                 else{
-                    alert("Wrong Stuff");
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Wrong Stuff !',
+                        footer: 'Please Enter Valid UserName & Password'
+                      });
                      } 
            }); 
 
@@ -268,7 +292,8 @@ app.controller("RegisterCashierController",function($scope,$http){
            });  
       }
 
-       $scope.updateData = function(){  
+       $scope.updateData = function(){
+             
            $http.post(  
                 "module/Employee/ViewEmployeeDetailsEdit.php",  
                 {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password}  
@@ -276,6 +301,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                  
                        if(data.error)
                        {
+                        
                         $scope.errorid = data.error.id;
                         $scope.errorfirstname = data.error.firstname;
                         $scope.errorlastname = data.error.lastname;
@@ -288,10 +314,16 @@ app.controller("RegisterCashierController",function($scope,$http){
                         
 
                         $scope.successInsert = null;
-                         alert(data.message);
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Wrong Stuff !',
+                            footer: 'Please Enter Details you want to Update'
+                          });
                        }
                        else
                        {
+                        
                         $scope.errorid = null;
                         $scope.errorfirstname = null;
                         $scope.errorlastname = null;
@@ -314,6 +346,9 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.salary=null;
                         $scope.username=null;
                         $scope.password=null;
+                        swal(
+                            'Update Success!'
+                        );
                        }
                       });
       }
@@ -331,21 +366,35 @@ app.controller("RegisterCashierController",function($scope,$http){
       };
 
       $scope.deleteDataAdmin = function(idd){  
-           if(confirm("Are you sure you want to delete this data?"))  
-           {  
-                $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
+                      
+           
+           swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
                 .success(function(data){  
                      //alert(data);  
                      $scope.displayData2();  
-                });  
-           }  
-           else  
+                });
+            }
+            else  
            {  
                 return false;  
-           }  
+           } 
+          });
       }
-
-
  }); 
 
 
@@ -550,19 +599,38 @@ app.controller("RegisterAdminController", function($scope, $http){
       }
 
        $scope.deleteItems = function(idd){  
-           if(confirm("Are you sure you want to delete this data?"))  
-           {  
+           swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+              )
+              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
+                .success(function(data){  
+                     //alert(data);  
+                     $scope.displayData2();  
+                });
                 $http.post("module/Items/DeleteItems.php", {'id':idd})  
                 .success(function(data){  
                      //alert(data);  
                       $scope.select();
                       $scope.selectFruit();  
-                });  
-           }  
-           else  
+                }); 
+            }
+            else  
            {  
                 return false;  
-           }  
+           } 
+          });   
       } 
 
       //for init 
