@@ -164,7 +164,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
 
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -245,12 +245,15 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li><a href='invoice.php'>POS</a></li>
-      <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
+      <li><a href='/Farm-Management-System-IoT'>
+      <span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="active"><a href='invoice.php'>
+      <span class="glyphicon glyphicon-shopping-cart"></span> POS</a></li>
+      
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href='/Farm-Management-System-IoT/FmsFarmSide2'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
@@ -898,14 +901,29 @@ farmmanagement@gmail.com
         });
     $(document).on('click', '.delete', function(){
       var id = $(this).attr("id");
-      if(confirm("Are you sure you want to remove this?"))
-      {
-        window.location.href="invoice.php?delete=1&id="+id;
-      }
-      else
-      {
-        return false;
-      }
+
+      swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              window.location.href="invoice.php?delete=1&id="+id;
+            }
+            else  
+           {  
+                return false;  
+           } 
+          });
     });
   });
 

@@ -156,7 +156,7 @@ app.controller('adminloginctrl',function($scope,$location,$rootScope,$http){
                         type: 'success',
                         title: 'Welcome '+$scope.username,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 5000
                       });
                 }
                 else{
@@ -191,7 +191,7 @@ app.controller('shop',function($scope,$location,$rootScope,$http){
                         type: 'success',
                         title: 'Welcome '+$scope.username,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 5000
                       });
                 }
                 else{
