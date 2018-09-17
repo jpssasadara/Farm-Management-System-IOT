@@ -338,9 +338,9 @@
                         var products = new Array(20) 
                         products["empty"] = ["Select a product"]; 
                         products["vegetables"] = ['Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol']; 
-                        products["fruits"] = ['banana','orange','cocoa','guava','pineapple','avacado','grapes']; 
-                        products["milkproduct"] = ['yougurt','milkCup','curd','juice']; 
-                        products["others"]= ['eggs','chicken','cashews','soy nuts','peanuts','almond']; 
+                        products["fruits"] = ['Banana','Orange','Cocoa','Guava','Pineapple','Avacado','Grapes']; 
+                        products["milkproduct"] = ['Yougurt','MilkCup','Curd','Juice']; 
+                        products["others"]= ['Eggs','Chicken','Cashews','Soy nuts','Peanuts','Almond']; 
                         /* SelectProduct() is called from the onchange event of a select element. 
                         * param selectObj - the select object which fired the on change event. 
                         */ 
@@ -383,10 +383,10 @@
                       <td>
                       <select class="form-control" id="type" name="type" onchange="SelectProduct(this,0);">
                         <option value="empty">Select a productType</option>
-                        <option value="vegetables">vegetables</option>
-                        <option value="fruits">fruits</option>
-                        <option value="milkproduct">milkproduct</option>
-                        <option value="others">others</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="milkproduct">Milkproduct</option>
+                        <option value="others">Others</option>
                         </select>
                       </td>
                       <td>
@@ -408,7 +408,7 @@
               </tr>
               <tr>
                 <td align="right"><b>Total</td>
-                <td align="right"><b><span id="final_total_amt"></span></b></td>
+                <td align="right"><b>Rs. <span id="final_total_amt"></span></b></td>
               </tr>
               <tr>
                 <td colspan="2"></td>
