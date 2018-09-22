@@ -426,7 +426,10 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorid = data.error.id;
                         $scope.errorusername = data.error.username;
                         $scope.errorpassword = data.error.password;
-                        alert(data.message);
+                    
+                        swal(
+                            data.message
+                          );
                        
                        }
                        else
@@ -435,7 +438,9 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
 
-                        alert(data.message);
+                        swal(
+                            data.message
+                        );
                          $scope.displayData();
                         $scope.username = null;  
                         $scope.password = null;
@@ -454,7 +459,9 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorid = data.error.id;
                         $scope.errorusername = data.error.username;
                         $scope.errorpassword = data.error.password;
-                        alert(data.message);
+                        swal(
+                            data.message
+                        );
                         
                        }
                        else
@@ -463,7 +470,9 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
 
-                        alert(data.message);
+                        swal(
+                            data.message
+                          );
                         $scope.displayData();
                         $scope.username = null;  
                         $scope.password = null;
@@ -566,7 +575,7 @@ app.controller("RegisterAdminController", function($scope, $http){
            $http.post('module/Items/uploadData.php',
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
             ).success(function(response){  
-                alert(response);  
+                swal(response);
                 $scope.select(); 
                 $scope.selectFruit();
                 $scope.code=null;
