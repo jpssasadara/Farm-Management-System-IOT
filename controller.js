@@ -513,7 +513,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                      var files = event.target.files;  
                      //console.log(files[0].name);  
                      $parse(attrs.fileInput).assign($scope, element[0].files);  
-                     $scope.$apply();  
+                     $scope.$apply();
                 });  
            }  
       }  
@@ -531,7 +531,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){  
-                alert(response);  
+                swal(response);  
                   
            });
            $scope.uploadFileData();  
@@ -605,7 +605,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.discount = null;
                         $scope.Type=null;
 
-                        alert("Updated....");
+                        swal("Updated!");
                         $scope.select();
                         $scope.selectFruit();
                       });

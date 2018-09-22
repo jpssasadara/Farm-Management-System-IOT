@@ -850,7 +850,7 @@
                 <td>'.$row["order_datetime"].'</td>
                 <td>'.$row["order_receiver_name"].'</td>
                 <td>Rs.'.$row["order_total_amount"].'</td>
-                <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">PDF</a></td>
+                <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">BILL</a></td>
                 <td><a href="invoice.php?update=1&id='.$row["order_id"].'"><span class="glyphicon glyphicon-edit"></span></a></td>
                 <td><a href="#" id="'.$row["order_id"].'" class="delete"><font color="#ff0000"><span class="glyphicon glyphicon-remove"></font></span></a></td>
               </tr>
