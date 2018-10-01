@@ -93,6 +93,17 @@ app.config(function($routeProvider) {
         templateUrl: "view/Items.html"
      })
 
+     .when("/admin/location",{                    
+        resolve:{
+            "check":function($location,$rootScope){
+                if(!$rootScope.loggedIn){
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "view/map.html"
+     })
+
       .when("/forPOS",{                    
         resolve:{
             "check":function($location,$rootScope){
@@ -238,6 +249,9 @@ app.controller("Admincontroller",function($scope,$location){
     };
     $scope.addItems=function(){
         $location.path('/admin/AddItem/details');
+    };
+    $scope.viewLocation=function(){
+        $location.path('/admin/location');
     };
     $scope.temhum=function(){
         $location.path('/get/tem/hum');

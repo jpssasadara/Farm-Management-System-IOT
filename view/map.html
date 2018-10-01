@@ -1,0 +1,88 @@
+
+<head>
+
+    <style>
+        #map-canvas {
+          height: 500px;
+        }
+
+    </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+
+
+<script>
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+    apiKey: "AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw",
+    authDomain: "vehicletrackinsystem.firebaseapp.com",
+    databaseURL: "https://vehicletrackinsystem.firebaseio.com",
+    projectId: "vehicletrackinsystem",
+    storageBucket: "vehicletrackinsystem.appspot.com",
+    messagingSenderId: "986184046405"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  
+  var leadsRef = database.ref('Location');
+    leadsRef.on('value', gotData,errData);
+
+  var loc;
+  var latitude;
+  var longitude;
+  function gotData(data){
+      loc=data.val();
+      locArr=loc.split(',');
+      latitude=locArr[0];
+      longitude=locArr[1];
+      var map;
+    function initialise(location){
+        
+        var currentLocation=new google.maps.LatLng(latitude,longitude);
+        var mapOptions={
+            center : currentLocation,
+            zoom:9,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+
+        };
+        
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var marker=new google.maps.Marker({
+            position : currentLocation,
+            map:map
+        });
+    }
+
+    $(document).ready(function(){
+        navigator.geolocation.getCurrentPosition(initialise);
+    });
+      
+  }
+
+  function errData(err){
+      console.log('Error!');
+      console.log(err);
+  }
+//key=AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw&
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw&sensor=false">
+</script>
+
+
+    
+
+</head>
+<body>
+<div class="container">
+    <div class="alert alert-success"><h2>Vehicle Location</h2></div>
+   <div id="map-canvas"></div> 
+</div>
+
+</body>
+</html>
