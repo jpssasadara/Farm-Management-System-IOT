@@ -22,6 +22,7 @@ app.config(function($routeProvider) {
 
     
      .when("/admin",{
+
         resolve:{
             "check":function($location,$rootScope){
                 if(!$rootScope.loggedIn){
@@ -29,7 +30,8 @@ app.config(function($routeProvider) {
                 }
             }
         },
-        templateUrl: "view/admin.html"
+        templateUrl: "view/admin.html",
+        
      })
       .when("/admin_register_Cashier",{
         resolve:{
