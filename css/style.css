@@ -218,7 +218,7 @@ img {
 
 /*end reset*/
 
-body {
+.body-img {
     background: url(../images/bg.jpg)no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
