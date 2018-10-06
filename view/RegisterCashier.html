@@ -5,101 +5,113 @@
 
 <!-- Form Name -->
 
-<label class="text-success" ng-show="successInsert">{{successInsert}}</label>
+<!--<label class="text-success" ng-show="successInsert">{{successInsert}}</label>-->
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Id</label>  
   <div class="col-md-4">
   <input id="textinput" name="textinput" type="text" ng-model="id" placeholder="id" class="form-control input-md">
-  
+  </div>
     
   </div>
-  <span class="text-danger" ng-show="errorid">{{errorid}}</span>
+   <!-- <span class="text-danger" ng-show="errorid">{{errorid}}</span>-->
 </div>
 
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">First Name</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="firstname" placeholder="firstname" class="form-control input-md">
+  <input id="textinput" required="" name="textinput" type="text" ng-model="firstname" placeholder="firstname" class="form-control input-md">
   
-    
+    </div>
   </div>
-  <span class="text-danger" ng-show="errorfirstname">{{errorfirstname}}</span>
+   <!-- <span class="text-danger" ng-show="errorfirstname">{{errorfirstname}}</span>-->
 </div>
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Last Name</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="lastname"placeholder="lastname" class="form-control input-md">
-    
+  <input id="textinput" required="" name="textinput" type="text" ng-model="lastname"placeholder="lastname" class="form-control input-md">
+    </div>
   </div>
-  <span class="text-danger" ng-show="errorlastname">{{errorlastname}}</span>
+   <!-- <span class="text-danger" ng-show="errorlastname">{{errorlastname}}</span>-->
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Phone Number</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="phonenumber" placeholder="phonenumber" class="form-control input-md">
+  <input id="textinput" required="" name="textinput" type="text" ng-model="phonenumber" placeholder="phonenumber" class="form-control input-md">
  
-    
+    </div>
   </div>
-   <span class="text-danger" ng-show="errorphonenumber">{{errorphonenumber}}</span>
+    <!-- <span class="text-danger" ng-show="errorphonenumber">{{errorphonenumber}}</span>-->
 </div>
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Email</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="email" placeholder="email" class="form-control input-md">
+  <input id="textinput" required="" name="textinput" type="email" ng-model="email" placeholder="email" class="form-control input-md">
   
-    
+    </div>
   </div>
-  <span class="text-danger" ng-show="erroremail">{{erroremail}}</span>
+   <!-- <span class="text-danger" ng-show="erroremail">{{erroremail}}</span>-->
 </div>
+
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Salary</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="salary" placeholder="salary" class="form-control input-md">
+  <input id="textinput" required="" name="textinput" type="text" ng-model="salary" placeholder="salary" class="form-control input-md">
   
-    
+    </div>
   </div>
-  <span class="text-danger" ng-show="errorsalary">{{errorsalary}}</span>
+   <!-- <span class="text-danger" ng-show="errorsalary">{{errorsalary}}</span>-->
 </div>
 
 <!-- Textarea -->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textarea">Address</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="textarea" ng-model="address" name="textarea"></textarea>
+    <textarea class="form-control" placeholder="Address" required="" id="textarea" ng-model="address" name="textarea"></textarea>
   </div>
-  <span class="text-danger" ng-show="erroraddress">{{erroraddress}}</span>
+  </div>
+   <!-- <span class="text-danger" ng-show="erroraddress">{{erroraddress}}</span>-->
 </div>
 
 <!-- Text input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="textinput">Username</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="username" ng-model="username"class="form-control input-md">
-    
+  <input id="textinput" required="" name="textinput" type="text" placeholder="username" ng-model="username"class="form-control input-md">
+    </div>
   </div>
-  <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>
+   <!-- <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>-->
 </div>
 
 <!-- Password input-->
 <div class="form-group">
+    <div class="form-style-agile">
   <label class="col-md-4 control-label" for="passwordinput">Password</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="password" ng-model="password"class="form-control input-md">
-    <span class="help-block">At least 8 Characters</span>
+    <input id="passwordinput" required="" name="passwordinput" type="password" placeholder="password" ng-model="password" class="form-control input-md">
+    <!--<span class="help-block">At least 8 Characters</span>-->
   </div>
-  <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>
+  </div>
+ <!-- <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>-->
 </div>
 
 <!-- Button -->

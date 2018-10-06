@@ -296,6 +296,13 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
                         $scope.successInsert = data.message;
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Register Success! '+$scope.username,
+                            showConfirmButton: false,
+                            timer: 5000
+                          });
 
                         $scope.displayData2();
 
