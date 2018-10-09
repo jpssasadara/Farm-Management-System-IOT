@@ -1,4 +1,19 @@
+id6815778_sasadaramonker   - un
+id6815778_sasadaramonker   - un
+sasadaramonker		   -pw
+localhost
 
+
+table - weather
+id
+temp
+hum
+
+table - led
+id
+status
+
+how to make mode mcu configeration --> https://www.youtube.com/watch?v=lQm3YKkXPNc
 
 
 
