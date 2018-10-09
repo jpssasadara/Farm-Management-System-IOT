@@ -152,17 +152,7 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`Code`, `Name`, `Price`, `Amount`, `Unit`, `Discount`, `Image`, `Type`) VALUES
 ('fru1', 'ffbbvbv', '70', 1, 'kg', '0', 68, 'Fruit'),
 ('fru2', 'ffbbvbv', '70', 1, 'kg', '0', 69, 'Fruit'),
-('fru3', 'ffbbvbv', '70', 1, 'kg', '0', 70, 'Fruit'),
-('fru4', 'ffbbvbv', '70', 1, 'kg', '0', 72, 'Fruit'),
-('fru5', 'ffbbvbv', '70', 1, 'kg', '0', 73, 'Fruit'),
-('veg1', 'ffbgn', '50', 1, 'kg', '0', 59, 'Vegetable'),
-('veg2', 'ffbbvbv', '70', 1, 'kg', '0', 60, 'Vegetable'),
-('veg3', 'ffbbvbv', '70', 1, 'kg', '0', 62, 'Vegetable'),
-('veg399', 'ffbbvbv', '70', 1, 'kg', '0', 76, 'Vegetable'),
-('veg4', 'ffbbvbv', '78', 1, 'kg', '0', 64, 'Vegetable'),
-('veg55', 'ffbgn', '50', 1, 'kg', '0', 75, 'Vegetable'),
-('veg6', 'ffbbvbv', '78', 1, 'kg', '0', 66, 'Vegetable');
-
+(
 -- --------------------------------------------------------
 
 --
