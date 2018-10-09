@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2018 at 02:47 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.0.31
+-- Generation Time: Sep 12, 2018 at 12:23 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -124,7 +122,6 @@ CREATE TABLE `farmshopemployee` (
 --
 
 INSERT INTO `farmshopemployee` (`Id`, `First_Name`, `Last_Name`, `Tele_Number`, `Email`, `Address`, `Salary`, `Username`, `Password`) VALUES
-('120', 'Sam', 'Livera', '0711491219', 'htag9320@gmail.com', 'Galle road,Colombo 06', '25000', 'sam123', '123'),
 ('fgfht', 'gkjgk', 'kdfkj', 'dfogj', 'okog@gmail.com', 'ogorg', 'jejee', 'rg', '85'),
 ('fhhg', 'yuhj', 'ugyyk', '5656', 'ghgj@gmail.com', 'gyuyiu', '45656', 'sssa', 'sssa'),
 ('gdh', 'fhg', 'hgjh', '4656', 'fgh@gmail.com', 'etrdh', '553', 'mnmn', 'ummma'),
@@ -161,9 +158,10 @@ INSERT INTO `items` (`Code`, `Name`, `Price`, `Amount`, `Unit`, `Discount`, `Ima
 ('veg1', 'ffbgn', '50', 1, 'kg', '0', 59, 'Vegetable'),
 ('veg2', 'ffbbvbv', '70', 1, 'kg', '0', 60, 'Vegetable'),
 ('veg3', 'ffbbvbv', '70', 1, 'kg', '0', 62, 'Vegetable'),
-('veg399', 'ffbbvbv', '65', 1, 'kg', '0', 76, 'Vegetable'),
+('veg399', 'ffbbvbv', '70', 1, 'kg', '0', 76, 'Vegetable'),
 ('veg4', 'ffbbvbv', '78', 1, 'kg', '0', 64, 'Vegetable'),
-('veg55', 'ffbgn', '50', 1, 'kg', '0', 75, 'Vegetable');
+('veg55', 'ffbgn', '50', 1, 'kg', '0', 75, 'Vegetable'),
+('veg6', 'ffbbvbv', '78', 1, 'kg', '0', 66, 'Vegetable');
 
 -- --------------------------------------------------------
 
@@ -212,47 +210,6 @@ CREATE TABLE `load_stores_items` (
   `Load_Num` char(20) NOT NULL,
   `Amount` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pricelist`
---
-
-CREATE TABLE `pricelist` (
-  `productName` varchar(30) NOT NULL,
-  `type` varchar(40) NOT NULL,
-  `quantity` varchar(10) NOT NULL,
-  `price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pricelist`
---
-
-INSERT INTO `pricelist` (`productName`, `type`, `quantity`, `price`) VALUES
-('avacado', 'fruits', '1', 25),
-('banana', 'fruits', '1', 6),
-('brinjol', 'vegetables', '1kg', 90),
-('Cabbage', 'vegetables', '1kg', 150),
-('Carrot', 'vegetables', '1kg', 200),
-('cashews', 'others', '1kg', 180),
-('chicken', 'others', '1kg', 325),
-('cocoa', 'fruits', '1', 30),
-('curd', 'milkproduct', '1', 50),
-('dhall', 'vegetables', '1kg', 120),
-('eggs', 'others', '1', 17),
-('grapes', 'fruits', '1', 3.5),
-('guava', 'fruits', '1', 50),
-('juice', 'milkproduct', '1', 80),
-('leaks', 'vegetables', '1kg', 140),
-('milkCup', 'milkproduct', '1', 60),
-('orange', 'fruits', '1', 30),
-('pineapple', 'fruits', '1', 100),
-('Radish', 'vegetables', '1kg', 120),
-('soy nuts', 'others', '1kg', 220),
-('Turnip', 'vegetables', '1kg', 140),
-('yougurt', 'milkproduct', '1', 35);
 
 -- --------------------------------------------------------
 
@@ -441,65 +398,6 @@ INSERT INTO `tbl_images` (`id`, `name`) VALUES
 (75, '533049552-612x612.jpg'),
 (76, 'imagcbes.jpg');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_order`
---
-
-CREATE TABLE `tbl_order` (
-  `order_id` int(11) NOT NULL,
-  `order_no` varchar(50) NOT NULL,
-  `order_date` date NOT NULL,
-  `order_receiver_name` varchar(250) NOT NULL,
-  `order_receiver_address` text NOT NULL,
-  `order_total_amount` float DEFAULT NULL,
-  `order_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_order`
---
-
-INSERT INTO `tbl_order` (`order_id`, `order_no`, `order_date`, `order_receiver_name`, `order_receiver_address`, `order_total_amount`, `order_datetime`) VALUES
-(19, '75', '0000-00-00', 'Hasee Amarathunga', 'Galle Road,Colombo 06.', 415, '2018-09-09 00:00:00'),
-(23, '120', '0000-00-00', 'Isuru', '', 3300, '2018-09-10 19:54:51'),
-(24, '113', '2018-09-10', 'JPS Sasadara', 'Galle road, Colombo 06.', 1500, '2018-09-11 06:01:20'),
-(26, '2145', '2018-09-13', 'Sam', 'hsda', 4200, '2018-09-14 01:26:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_order_item`
---
-
-CREATE TABLE `tbl_order_item` (
-  `order_item_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `item_name` varchar(250) NOT NULL,
-  `order_item_quantity` decimal(10,2) NOT NULL,
-  `order_item_price` decimal(10,2) NOT NULL,
-  `order_item_actual_amount` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_order_item`
---
-
-INSERT INTO `tbl_order_item` (`order_item_id`, `order_id`, `item_name`, `order_item_quantity`, `order_item_price`, `order_item_actual_amount`) VALUES
-(44, 19, 'banana', '20.00', '12.00', '240.00'),
-(45, 19, 'yougurt', '5.00', '35.00', '175.00'),
-(63, 23, 'milkCup', '12.00', '150.00', '1800.00'),
-(64, 23, 'banana', '50.00', '6.00', '300.00'),
-(65, 23, 'cocoa', '10.00', '20.00', '200.00'),
-(66, 23, 'Carrot', '10.00', '50.00', '500.00'),
-(67, 23, 'Cabbage', '5.00', '100.00', '500.00'),
-(83, 24, 'Carrot', '15.00', '75.00', '1125.00'),
-(84, 24, 'banana', '5.00', '5.00', '25.00'),
-(85, 24, 'yougurt', '10.00', '35.00', '350.00'),
-(90, 26, 'Cabbage', '20.00', '150.00', '3000.00'),
-(91, 26, 'orange', '10.00', '120.00', '1200.00');
-
 --
 -- Indexes for dumped tables
 --
@@ -576,12 +474,6 @@ ALTER TABLE `load_stores_items`
   ADD KEY `Load_Num` (`Load_Num`);
 
 --
--- Indexes for table `pricelist`
---
-ALTER TABLE `pricelist`
-  ADD PRIMARY KEY (`productName`);
-
---
 -- Indexes for table `regfarmerorder`
 --
 ALTER TABLE `regfarmerorder`
@@ -640,18 +532,6 @@ ALTER TABLE `tbl_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_order`
---
-ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Indexes for table `tbl_order_item`
---
-ALTER TABLE `tbl_order_item`
-  ADD PRIMARY KEY (`order_item_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -660,19 +540,6 @@ ALTER TABLE `tbl_order_item`
 --
 ALTER TABLE `tbl_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
-
---
--- AUTO_INCREMENT for table `tbl_order`
---
-ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `tbl_order_item`
---
-ALTER TABLE `tbl_order_item`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
-
 --
 -- Constraints for dumped tables
 --
@@ -742,7 +609,6 @@ ALTER TABLE `shoppingcartitems`
 --
 ALTER TABLE `stores`
   ADD CONSTRAINT `stores_ibfk_1` FOREIGN KEY (`Code`) REFERENCES `items` (`Code`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
