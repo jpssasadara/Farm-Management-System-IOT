@@ -380,7 +380,7 @@ session_start() ;
         $scope.submitRegister = function(){
             $http({
                 method:"POST",
-                url:"register.php",
+                url:"registerFa.php",
                 data:$scope.registerData
             }).success(function(data){
                 $scope.alertMsg = true;
@@ -401,7 +401,7 @@ session_start() ;
         $scope.submitLogin = function(){
             $http({
                 method:"POST",
-                url:"login.php",
+                url:"loginFa.php",
                 data:$scope.loginData
             }).success(function(data){
                 if(data.error != '')

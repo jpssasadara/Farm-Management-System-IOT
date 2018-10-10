@@ -1,6 +1,6 @@
 <?php
 
-//register.php
+//registerFa.php
 
 include('database_connection.php');
 

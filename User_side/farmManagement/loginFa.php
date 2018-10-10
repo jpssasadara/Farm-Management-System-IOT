@@ -1,6 +1,6 @@
 <?php
 
-//login.php
+//loginFa.php
 
 include('database_connection.php');
 
