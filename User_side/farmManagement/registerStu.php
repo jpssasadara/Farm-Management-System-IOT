@@ -25,13 +25,13 @@ else
 {
     $data[':mobile'] = $form_data->mobile;
 }
-if(empty($form_data->ownerId))
+if(empty($form_data->gender))
 {
     $error[] = 'Owner Id is Required';
 }
 else
 {
-    $data[':ownerId'] = $form_data->ownerId;
+    $data[':gender'] = $form_data->gender;
 }
 if(empty($form_data->address))
 {
@@ -41,7 +41,14 @@ else
 {
     $data[':address'] = $form_data->address;
 }
-
+if(empty($form_data->occupation))
+{
+    $error[] = 'Address is Required';
+}
+else
+{
+    $data[':occupation'] = $form_data->occupation;
+}
 if(empty($form_data->email))
 {
     $error[] = 'Email is Required';
@@ -70,7 +77,7 @@ else
 if(empty($error))
 {
     $query = "
- INSERT INTO registershops(name,Mobile,OwnerId,Address ,email, password) VALUES (:name,:mobile,:ownerId,:address ,:email, :password)
+ INSERT INTO registerstudent(name,Mobile,Gender,Address ,Occupation,email, password) VALUES (:name,:mobile,:gender,:address ,:occupation,:email, :password)
  ";
     $statement = $connect->prepare($query);
     if($statement->execute($data))
