@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2018 at 12:23 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Oct 10, 2018 at 12:58 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -230,41 +232,76 @@ CREATE TABLE `regfarmerorder` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registeredfarmer`
+-- Table structure for table `registerfarmer`
 --
 
-CREATE TABLE `registeredfarmer` (
-  `Id` char(20) NOT NULL,
-  `First_Name` char(20) NOT NULL,
-  `Last_Name` char(20) NOT NULL,
-  `Gender` char(10) NOT NULL,
-  `Tele_Number` char(20) NOT NULL,
-  `Email` char(20) DEFAULT NULL,
-  `Address` char(50) NOT NULL
+CREATE TABLE `registerfarmer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `Mobile` int(11) NOT NULL,
+  `Gender` varchar(200) NOT NULL,
+  `Address` varchar(200) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `registeredfarmer`
+-- Dumping data for table `registerfarmer`
 --
 
-INSERT INTO `registeredfarmer` (`Id`, `First_Name`, `Last_Name`, `Gender`, `Tele_Number`, `Email`, `Address`) VALUES
-('farmer1', 'dasun', 'kasun', 'male', '46456546', 'dggchg@emailcom', '23dgfdfdsgfg');
+INSERT INTO `registerfarmer` (`id`, `name`, `Mobile`, `Gender`, `Address`, `email`, `password`) VALUES
+(1, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 0, '', '', 'anjanarasadari21@gmail.com', '$2y$10$1HXMhWZkcbeiHFt/eYC5xOS26kIudjDp6uaDpN2se/h22KNzarGMe'),
+(2, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, 'female', 'No-:175/17,old galle road, walliwala, weligama', 'anjanarasadari@gmail.com', '$2y$10$22zkQ.r.SxLrcmbWtTByUOAp4h25GT2JgH.EY.zkZzu01LSCYu7JS'),
+(3, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, 'female', 'No-:175/17,old galle road, walliwala, weligama', 'anjana@gmail.com', '$2y$10$ojW45V8KkX69O6/SbIzf5et5KlKJyj7kyWvK5uQTOobVNx4aLzJHe'),
+(4, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, 'female', 'No-:175/17,old galle road, walliwala, weligama', 'anjanarasadari21@gmail.com', '$2y$10$fmgH9bQt/lfEtYGXuhDJ5uxxxrOhxUYwnPBCEJgDLdByC6QXMcWEq'),
+(5, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, 'female', 'No-:175/17,old galle road, walliwala, weligama', 'anjanara@gmail.com', '$2y$10$4xk15m8MaoimhwCCxn55gui/VAJUO7bdYq4nMlsE2edDFHPM4KGAm');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registeredshop`
+-- Table structure for table `registershops`
 --
 
-CREATE TABLE `registeredshop` (
-  `Id` char(20) NOT NULL,
-  `Address` char(70) DEFAULT NULL,
-  `Reg_Id` char(50) DEFAULT NULL,
-  `Owner_First_Name` char(20) DEFAULT NULL,
-  `Owner_Last_Name` char(20) DEFAULT NULL,
-  `Owner_Tele_Number` char(20) DEFAULT NULL,
-  `Owner_Nic` char(20) DEFAULT NULL
+CREATE TABLE `registershops` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `Mobile` int(11) NOT NULL,
+  `OwnerId` varchar(200) NOT NULL,
+  `Address` varchar(200) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registershops`
+--
+
+INSERT INTO `registershops` (`id`, `name`, `Mobile`, `OwnerId`, `Address`, `email`, `password`) VALUES
+(1, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, '956020778', 'No-:175/17,old galle road, walliwala, weligama', 'anju@gmail.com', '$2y$10$dPWOo2.QRdgDWbkYTdtR..rcRiUvmDmCAr7TztoGaGzDWkDOR0mDm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registerstudent`
+--
+
+CREATE TABLE `registerstudent` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `Mobile` int(11) NOT NULL,
+  `Gender` varchar(200) NOT NULL,
+  `Address` varchar(200) NOT NULL,
+  `Occupation` varchar(200) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registerstudent`
+--
+
+INSERT INTO `registerstudent` (`id`, `name`, `Mobile`, `Gender`, `Address`, `Occupation`, `email`, `password`) VALUES
+(1, 'Anjana Rasadari Isurundi Daluwatta Galappaththi', 716239954, 'female', 'No-:175/17,old galle road, walliwala, weligama', 'Enginner', 'anjanarasadari21@gmail.com', '$2y$10$s0wheycTq1D2nv/6vyL1nee.Ia4xE4cMZhH2.09uKt3K0TIRBmBm.');
 
 -- --------------------------------------------------------
 
@@ -482,16 +519,22 @@ ALTER TABLE `regfarmerorder`
   ADD KEY `Reg_Farmer_Id` (`Reg_Farmer_Id`);
 
 --
--- Indexes for table `registeredfarmer`
+-- Indexes for table `registerfarmer`
 --
-ALTER TABLE `registeredfarmer`
-  ADD PRIMARY KEY (`Id`);
+ALTER TABLE `registerfarmer`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `registeredshop`
+-- Indexes for table `registershops`
 --
-ALTER TABLE `registeredshop`
-  ADD PRIMARY KEY (`Id`);
+ALTER TABLE `registershops`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registerstudent`
+--
+ALTER TABLE `registerstudent`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `shop`
@@ -536,10 +579,29 @@ ALTER TABLE `tbl_images`
 --
 
 --
+-- AUTO_INCREMENT for table `registerfarmer`
+--
+ALTER TABLE `registerfarmer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `registershops`
+--
+ALTER TABLE `registershops`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `registerstudent`
+--
+ALTER TABLE `registerstudent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_images`
 --
 ALTER TABLE `tbl_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+
 --
 -- Constraints for dumped tables
 --
@@ -609,6 +671,7 @@ ALTER TABLE `shoppingcartitems`
 --
 ALTER TABLE `stores`
   ADD CONSTRAINT `stores_ibfk_1` FOREIGN KEY (`Code`) REFERENCES `items` (`Code`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
