@@ -232,8 +232,8 @@ session_start() ;
                             <input type="text" name="mobile" ng-model="registerData.mobile" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <label>Enter Your Gender</label>
-                            <input type="text" name="gender" ng-model="registerData.gender" class="form-control" />
+                            <label>Enter Owner Id</label>
+                            <input type="text" name="ownerId" ng-model="registerData.ownerId" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label>Enter Your Address</label>
@@ -379,7 +379,7 @@ session_start() ;
         $scope.submitRegister = function(){
             $http({
                 method:"POST",
-                url:"register.php",
+                url:"registerSh.php",
                 data:$scope.registerData
             }).success(function(data){
                 $scope.alertMsg = true;
@@ -400,7 +400,7 @@ session_start() ;
         $scope.submitLogin = function(){
             $http({
                 method:"POST",
-                url:"login.php",
+                url:"loginSh.php",
                 data:$scope.loginData
             }).success(function(data){
                 if(data.error != '')

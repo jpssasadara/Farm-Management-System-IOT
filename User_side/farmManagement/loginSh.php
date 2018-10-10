@@ -34,7 +34,7 @@ if(empty($form_data->password))
 if(empty($error))
 {
     $query = "
- SELECT * FROM registerfarmer
+ SELECT * FROM registershops
  WHERE email = :email
  ";
     $statement = $connect->prepare($query);

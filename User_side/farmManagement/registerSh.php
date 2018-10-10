@@ -25,13 +25,13 @@ else
 {
     $data[':mobile'] = $form_data->mobile;
 }
-if(empty($form_data->gender))
+if(empty($form_data->ownerId))
 {
-    $error[] = 'Gender is Required';
+    $error[] = 'Owner Id is Required';
 }
 else
 {
-    $data[':gender'] = $form_data->gender;
+    $data[':ownerId'] = $form_data->ownerId;
 }
 if(empty($form_data->address))
 {
@@ -70,7 +70,7 @@ else
 if(empty($error))
 {
     $query = "
- INSERT INTO registerfarmer (name,Mobile,Gender,Address ,email, password) VALUES (:name,:mobile,:gender,:address ,:email, :password)
+ INSERT INTO registershops(name,Mobile,OwnerId,Address ,email, password) VALUES (:name,:mobile,:ownerId,:address ,:email, :password)
  ";
     $statement = $connect->prepare($query);
     if($statement->execute($data))
