@@ -525,11 +525,11 @@ cite {
 }
 
 .text-primary {
-  color: #428bca;
+  color: #428bc;
 }
 
 .text-primary:hover {
-  color: #3071a9;
+  color: #3071a8;
 }
 
 .text-warning {
@@ -541,7 +541,7 @@ cite {
 }
 
 .text-danger {
-  color: #a94442;
+  color: #a94441;
 }
 
 .text-danger:hover {
@@ -747,9 +747,9 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
+  color: #c7254d;
   white-space: nowrap;
-  background-color: #f9f2f4;
+  background-color: #f9f2f5;
   border-radius: 4px;
 }
 
@@ -4348,7 +4348,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    border-radius: 5px;
   }
 }
 
