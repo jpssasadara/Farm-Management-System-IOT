@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+    <head>
+	  <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="Vikkey" content="Vivek Gupta & IoTMonk">
+	  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+	  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="angular.min.js"></script>
+  <script src="angular-route.js"></script>
+  <script src ="controller.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+     
+	
+       
+	 
+	  
+	 
+	 
+	
+	 <script type="text/javascript">
+		document.write([
+			"\<script src='",
+			("https:" == document.location.protocol) ? "https://" : "http://",
+			"ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js' type='text/javascript'>\<\/script>" 
+		].join(''));
+	  </script>
+	 
+      <title>Labuduwa Farm Management System</title>
+        <style>
+
+	.abc-cc {
+        background-color: black;
+        padding: 16px;
+        text-align: center;
+    }
+    .abc-ccc {
+        background-color: #f0f0f0;
+        padding: 1px;
+        text-align: center;
+    }
+    .abc-c {
+        
+        text-shadow: 1px 1px #ccc;
+    }
+    .footer {
+  background: rgb(0,0,0);
+  padding: 10px 0;
+}
+.footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+
+    .center { 
+		height: 400px;
+		width: 400px;
+		background: #c0c5ce;
+		position: fixed;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		top: 50%;
+		left: 50%;
+		margin-top: -180px;
+		margin-left: -200px;
+	}
+	
+	.form{
+		padding-top: 10px;
+		padding-right: 30px;
+		padding-bottom: 50px;
+		padding-left: 30px;
+	}
+    .ip{
+		background-color: #ffffff; /* Green */
+		border: none;
+		color: black;
+		padding: 16px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+    }
+        </style>
+    </head>
+        <body bgcolor="#ffffff">
+            
+            <div class="container">
+<div class="text-white">
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="http://localhost/Farm-Management-System-IOT">FMS Labuduwa</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href='http://localhost/Farm-Management-System-IOT'><span class="glyphicon glyphicon-home"></span> Home</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='#/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
+  <div class="row"></div>
+            
+            
+            
+            
+            
+    <center>
+        <h1 style="font-family: Helvetica;color: black;">Temperature and Humidity</h1>
+        <h3><font color="#ccc">Green House 1</font></h3>
+    </center>
+	<div class="center">
+	   <div align="center" class="form">
+           <br><br>
+            <p style = 'line-height: 60px;font-family: Helvetica;color: #000;font-size: 50px;' id="temperature">
+                <img src = 'temperature.png' height="60px" width="60px" style='vertical-align: middle' /> 00.00
+            </p>
+            <p style = 'line-height: 60px;font-family: Helvetica;color: #000;font-size: 50px;' id="humidity">
+                <img src = 'humidity.png' height="60px" width="60px" style='vertical-align: middle' /> 00.00
+            </p>
+        </div>
+	</div>
+	
+<p>
+</p>
+<p>
+    </p>
+
+<div class="footer">
+  <div class="container text-center">
+    <a href=""><i class="fa fa-facebook"></i></a>
+    <a href=""><i class="fa fa-twitter"></i></a>
+    <a href=""><i class="fa fa-linkedin"></i></a>
+    <a href=""><i class="fa fa-google-plus"></i></a>
+    <a href=""><i class="fa fa-skype"></i></a>
+  </div>
+  
+<div class="abc-cc" style="width:100%">
+  
+  &copy Farm Management<br/>
+Contact : 011 2 541 214<br/>
+farmmanagement@gmail.com
+</div>
+</div></div>
+
+    </body>
+    
+	<script>
+		window.onload = function() {
+            loaddata();
+        };
+		function loaddata(){
+				var url = "https://sasadaramonker.000webhostapp.com/api/weather/read_all.php";
+				$.getJSON(url, function(data) {
+                    var val= data;
+                  var humid=(data['weather'][(Object.keys(data['weather']).length)-1]['hum']);
+                   var temper=(data['weather'][(Object.keys(data['weather']).length)-1]['temp']);
+                   document.getElementById("temperature").innerHTML = "<img src = 'temperature.png' height=\"60px\" width=\"60px\" style='vertical-align: middle' />  " +temper;
+                   document.getElementById("humidity").innerHTML = "<img src = 'humidity.png' height=\"60px\" width=\"60px\" style='vertical-align: middle' />  "+humid;
+					console.log(data['weather'][(Object.keys(data['weather']).length)-1]['temp']);
+				});
+            
+        }
+        window.setInterval(function(){
+        loaddata();
+            }, 5000);
+	
+	</script>
+</html>
