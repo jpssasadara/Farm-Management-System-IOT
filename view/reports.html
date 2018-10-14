@@ -1,0 +1,31 @@
+<div ng-controller="FarmShopController" class="container" ng-init="displayReport()">
+
+<h2>FarmShop Report <span class="glyphicon glyphicon-shopping-cart"></span></h2>    
+<div class = "row">
+        <!--<div class ="col-md-2"></div>-->
+        <div  class = "col-md-12" class = style="width:500px;">  
+                        
+                        
+                             
+                             <br /><br />  
+                             <table class="table table-bordered">  
+                                  <tr> 
+                                       <th>Item Name</th>
+                                       <th>Quantity</th>  
+                                       <th>Price</th>
+                                       <th>Total Amount</th>
+                                    
+                                  </tr>  
+                                  <tr ng-repeat="x in items">
+                                       <td>{{x.item_name}}</td>
+                                       <td>{{x.quantity}}</td>  
+                                       <td>{{x.price}}</td> 
+                                       <td>{{x.total}}</td>
+                                       </tr>  
+                             </table>  
+                        </div>  
+                   </div>  
+
+
+
+</div>

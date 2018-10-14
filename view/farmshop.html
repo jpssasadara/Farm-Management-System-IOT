@@ -10,7 +10,7 @@
         
 </style>
         
-<div ng-controller="FarmShopcontroller">
+<div ng-controller="FarmShopController">
 <div class="container container-fluid"><h1>Hi Farm Shop <span class="glyphicon glyphicon-user"></h1>
 
 	<div>
@@ -20,8 +20,9 @@
 <br/>
 <div>
 <div class ="well">
-        <div class="col-lg-4"></div><div class = "col-lg-4"><a type="button" class="btn btn-warning btn-lg btn-block" href="reports.php" target="_blank"><span class="glyphicon glyphicon-file"></span> Month Reports</a></div><div class = "col-sm-4"></div></div>
-        
+        <div class="col-lg-4"></div><div class = "col-lg-4"><button type="button" class="btn btn-warning btn-lg btn-block" ng-click="viewReports()" target="_blank"><span class="glyphicon glyphicon-file"></span> Month Reports</a></div><div class = "col-sm-4"></div></div>    
 
+</div>
+</div>
 </div>
 <br/>

@@ -117,6 +117,17 @@ app.config(function($routeProvider) {
         templateUrl: "view/farmshop.html"
      })
 
+     .when("/forPOS/reports",{                    
+        resolve:{
+            "check":function($location,$rootScope){
+                if(!$rootScope.loggedIn){
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "view/reports.html"
+     })
+
        .when("/get/tem/hum",{                    
         resolve:{
             "check":function($location,$rootScope){
@@ -262,6 +273,23 @@ app.controller("Admincontroller",function($scope,$location){
 });
 
 
+//FamrSHop Controller
+app.controller("FarmShopController",function($scope,$http,$location){
+    $scope.displayReport = function(){  
+        $http.get("module/FarmShop/farmshop.php")  
+        .success(function(data){  
+             $scope.items = data;
+             
+            //alert(data);  
+        });  
+   }
+   $scope.viewReports=function(){
+    $location.path('/forPOS/reports');
+};
+
+});
+
+
 //EMPLOYEE Details Controller <<Add>> <<Update>> <<Delete>>
 app.controller("RegisterCashierController",function($scope,$http){
      $scope.Reg=function(){
@@ -331,6 +359,8 @@ app.controller("RegisterCashierController",function($scope,$http){
                //alert(data);  
            });  
       }
+
+      
 
        $scope.updateData = function(){
              
