@@ -22,10 +22,13 @@ $items=array('Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol',
 'Eggs','Chicken','Cashews','Soy nuts','Peanuts','Almond');
 $n=sizeof($items);
 $reportList=array();
+$total=0;
 for($x=0;$x<$n;$x++){
     array_push($reportList,getReport($items[$x]));
     $reportList[$x]['item_name']=$items[$x];
+    $total+=$reportList[$x]['total'];
 }
+$reportList[sizeof($reportList)]=array("price"=>"Total Outcome","total"=>$total);
 echo json_encode($reportList);
 ?>
 

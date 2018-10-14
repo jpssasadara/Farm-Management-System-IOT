@@ -279,8 +279,8 @@ app.controller("FarmShopController",function($scope,$http,$location){
         $http.get("module/FarmShop/farmshop.php")  
         .success(function(data){  
              $scope.items = data;
-             
-            //alert(data);  
+
+            //alert($scope.total);  
         });  
    }
    $scope.viewReports=function(){
