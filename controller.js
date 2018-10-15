@@ -160,7 +160,7 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewRegShopOrders.html"
            })
          //*********** not completed yet***************
-          .when("/get/regfarmer/order",{                    
+          .when("/admin/verified/orders",{                    
               resolve:{
                   "check":function($location,$rootScope){
                       if(!$rootScope.loggedIn){
@@ -168,7 +168,7 @@ app.config(function($routeProvider) {
                       }
                   }
               },
-              templateUrl: "view/viewRegShopOrders.html"
+              templateUrl: "view/viewRegShopOrderVerify.html"
            })
            .when("/get/regfarmer/order",{                    
               resolve:{
