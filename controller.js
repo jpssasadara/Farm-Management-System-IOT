@@ -148,6 +148,39 @@ app.config(function($routeProvider) {
               },
               templateUrl: "view/viewRegShopOrders.html"
            })
+       
+         .when("/admin/handel/orders",{                    
+              resolve:{
+                  "check":function($location,$rootScope){
+                      if(!$rootScope.loggedIn){
+                          $location.path('/');
+                      }
+                  }
+              },
+              templateUrl: "view/viewRegShopOrders.html"
+           })
+         //*********** not completed yet***************
+          .when("/get/regfarmer/order",{                    
+              resolve:{
+                  "check":function($location,$rootScope){
+                      if(!$rootScope.loggedIn){
+                          $location.path('/');
+                      }
+                  }
+              },
+              templateUrl: "view/viewRegShopOrders.html"
+           })
+           .when("/get/regfarmer/order",{                    
+              resolve:{
+                  "check":function($location,$rootScope){
+                      if(!$rootScope.loggedIn){
+                          $location.path('/');
+                      }
+                  }
+              },
+              templateUrl: "view/viewRegShopOrders.html"
+           })
+           //**************************************************
 
      .otherwise({
         redirectTo:'/'
