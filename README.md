@@ -3,4 +3,4 @@
 
 ##### Client - Government Farm Labuduwa
 
-![FMS](../master/images/readme.png)
+![FMS](../master/images/readme.PNG)
