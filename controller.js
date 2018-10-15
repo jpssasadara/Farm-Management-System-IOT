@@ -279,9 +279,17 @@ app.controller("FarmShopController",function($scope,$http,$location){
         $http.get("module/FarmShop/farmshop.php")  
         .success(function(data){  
              $scope.items = data;
-
             //alert($scope.total);  
         });  
+   }
+
+   $scope.getDate=function(){
+       $http.post('module/FarmShop/farmshop.php',
+       {'date':$scope.date}
+       ).success(function(data){
+            $scope.displayReport();
+            console.log($scope.date);
+       });
    }
    $scope.viewReports=function(){
     $location.path('/forPOS/reports');
