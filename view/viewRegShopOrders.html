@@ -1,57 +1,23 @@
-<div ng-controller="RegisterAdminController" ng-init="displayData()" >
-<form class="form-horizontal">
-<fieldset>
+<br /><br />  
+<div class="container" ng-controller="RegShopOrderController" ng-init="displayorder()" ><center>
 
-<!-- Form Name -->
-<legend>Form Name</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Employee Id</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="id" placeholder="employee id" class="form-control input-md">
-    <span class="text-danger" ng-show="errorid">{{errorid}}</span>
-  </div>
-
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Username</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="username" placeholder="username" class="form-control input-md">
-    <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Password</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="password" ng-model="password" placeholder="password" class="form-control input-md">
-    <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" ng-click=insertData() class="btn btn-primary">Submit</button>
-    <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Update</button>
-  </div>
-
-   
-</div>
-
-</fieldset>
-</form>
-
-<div class="container"  style="width:500px;">  
+<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Orders</button>
+<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Verified Orders</button>
+<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Delivered Orders</button>
+<div   style="width:500px;">  
                 
                 
                      
-                     <br /><br />  
+    <br /><br />  
+          <form class="navbar-form" role="search">
+                <div class="input-group add-on">
+                  <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </div>
+          </form>
+
                      <table class="table table-bordered">  
                           <tr>  
                                <th>Employee Id</th>
@@ -69,4 +35,5 @@
                           </tr>  
                      </table>  
                 </div>  
+              </center>
            </div>  
