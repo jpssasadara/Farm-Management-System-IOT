@@ -776,6 +776,26 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
  }); 
+
+
+
+//Controller Handeling admin part of registered farmer's orders
+app.controller("RegShopOrderController",function($scope,$location){
+    $scope.Orders=function(){
+        $location.path('/admin/handel/orders');
+    };
+     $scope.VerifiedOrders=function(){
+        $location.path('/admin/verified/orders');
+    };
+    $scope.DeliveredOrders=function(){
+        $location.path('/admin/delivered/orders');
+    };
+    
+         
+
+});
+
+
      
 //image.code, image.name, image.unit,image.amount,image.price,image.discount 
 

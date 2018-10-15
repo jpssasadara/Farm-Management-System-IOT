@@ -1,9 +1,9 @@
 <br /><br />  
 <div class="container" ng-controller="RegShopOrderController" ng-init="displayorder()" ><center>
 
-<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Orders</button>
-<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Verified Orders</button>
-<button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Delivered Orders</button>
+<button id="singlebutton" name="singlebutton" ng-click=Orders() class="btn btn-warning">Orders</button>
+<button id="singlebutton" name="singlebutton" ng-click=VerifiedOrders() class="btn btn-warning">Verified Orders</button>
+<button id="singlebutton" name="singlebutton" ng-click=DeliveredOrders() class="btn btn-warning">Delivered Orders</button>
 <div   style="width:500px;">  
                 
                 
@@ -18,13 +18,15 @@
                 </div>
           </form>
 
-                     <table class="table table-bordered">  
+                     <table class="table table-hover">  
                           <tr>  
-                               <th>Employee Id</th>
-                               <th>Username</th>  
-                               <th>Password</th>
-                               <th>Update</th>
-                               <th>Delete</th> 
+                               <th><b>Registerd Shop Id</b></th>
+                               <th><b>Item Code</b></th>  
+                               <th><b>Item Name</b></th>
+                               <th><b>Amount</b></th>
+                               <th><b>Accepting Date</b></th>
+                               <th><b>Verify</b></th> 
+                               <th><b>Delete</b></th>
                           </tr>  
                           <tr ng-repeat="x in names">
                                <td>{{x.Id}}</td>
