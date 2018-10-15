@@ -72,19 +72,21 @@ if(count($data)>0){
   $salary = mysqli_real_escape_string($connect,$data->salary);
   $username = mysqli_real_escape_string($connect,$data->username);
   $password = mysqli_real_escape_string($connect,$data->password);
+  $password2 = mysqli_real_escape_string($connect,$data->password);
 
-  $query = "UPDATE farmshopemployee SET First_Name='$firstname',Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' WHERE Id = '$id'";
+  if($password==$password2){
+    $query = "UPDATE farmshopemployee SET First_Name='$firstname',Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' WHERE Id = '$id'";
 
-  if(mysqli_query($connect,$query))
-  {
-    //echo "Data Inserted...........";
-     $dataa["message"] = "Data Updated...";
+    if(mysqli_query($connect,$query))
+    {
+      //echo "Data Inserted...........";
+      $dataa["message"] = "Data Updated...";
+    }
+    else{
+      //echo "Error.....";
+      $dataa["message"] = "Try Again....";
+    }
   }
-  else{
-    //echo "Error.....";
-    $dataa["message"] = "Try Again....";
-  }
-
 }
 }
 

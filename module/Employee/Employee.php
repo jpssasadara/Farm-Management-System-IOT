@@ -72,18 +72,21 @@ if(count($data)>0){
 	$salary = mysqli_real_escape_string($connect,$data->salary);
 	$username = mysqli_real_escape_string($connect,$data->username);
 	$password = mysqli_real_escape_string($connect,$data->password);
+	$password2 = mysqli_real_escape_string($connect,$data->password2);
 
-	$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
-	('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
+	if($password==$password2){
+		$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
+		('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
 
-	if(mysqli_query($connect,$query))
-	{
-		//echo "Data Inserted...........";
-		 $dataa["message"] = "Data Inserted...";
-	}
-	else{
-		//echo "Error.....";
-		$dataa["message"] = "Try Again....";
+		if(mysqli_query($connect,$query))
+		{
+			//echo "Data Inserted...........";
+			$dataa["message"] = "Data Inserted...";
+		}
+		else{
+			//echo "Error.....";
+			$dataa["message"] = "Try Again....";
+		}
 	}
 
 }

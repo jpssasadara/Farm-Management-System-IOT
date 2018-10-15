@@ -295,7 +295,8 @@ app.controller("RegisterCashierController",function($scope,$http){
      $scope.Reg=function(){
         $http.post(
             "module/Employee/Employee.php",
-            {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password}
+            {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password
+        ,'password2':$scope.password2}
             ).success(function(data){
                  if(data.error)
                        {
@@ -308,6 +309,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.errorsalary = data.error.salary;
                         $scope.errorusername = data.error.username;
                         $scope.errorpassword = data.error.password;
+
                         
 
                         $scope.successInsert = null;
@@ -323,29 +325,43 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.errorsalary = null;
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
+                        $scope.errorpassword2 = null;
                         $scope.successInsert = data.message;
                         
-                        if($scope.username!=null){
-                            swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: 'Register Success! '+$scope.username,
-                                showConfirmButton: false,
-                                timer: 5000
-                              });
+                        if($scope.id!=null && $scope.firstname!=null && $scope.lastname!=null
+                            && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
+                            && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
+                            $scope.password2!=null){
+                            if($scope.password==$scope.password2){
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: 'Register Success! '+$scope.username,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });
+                                }
+                            else{
+                                swal({
+                                    type: 'Wrong',
+                                    title: 'Oops...',
+                                    text: 'Passwords not match !',
+                                    footer: 'please match the passwords!'
+                                  });
+                            }
                         }
 
                         $scope.displayData2();
 
-                        $scope.id=null;
-                        $scope.firstname=null;
-                        $scope.lastname=null;
-                        $scope.phonenumber=null;
-                        $scope.email=null;
-                        $scope.address=null;
-                        $scope.salary=null;
-                        $scope.username=null;
-                        $scope.password=null;
+                        // $scope.id=null;
+                        // $scope.firstname=null;
+                        // $scope.lastname=null;
+                        // $scope.phonenumber=null;
+                        // $scope.email=null;
+                        // $scope.address=null;
+                        // $scope.salary=null;
+                        // $scope.username=null;
+                        // $scope.password=null;
                        }
                       });
 
@@ -366,7 +382,8 @@ app.controller("RegisterCashierController",function($scope,$http){
              
            $http.post(  
                 "module/Employee/ViewEmployeeDetailsEdit.php",  
-                {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password}  
+                {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password,
+                'password2':$scope.password2}  
            ).success(function(data){
                  
                        if(data.error)
@@ -384,42 +401,57 @@ app.controller("RegisterCashierController",function($scope,$http){
                         
 
                         $scope.successInsert = null;
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Wrong Stuff !',
-                            footer: 'Please Enter Details you want to Update'
-                          });
+                    //     swal({
+                    //         type: 'error',
+                    //         title: 'Oops...',
+                    //         text: 'Wrong Stuff !',
+                    //         footer: 'Please Enter Details you want to Update'
+                    //       });
                        }
                        else
                        {
-                        
-                        $scope.errorid = null;
-                        $scope.errorfirstname = null;
-                        $scope.errorlastname = null;
-                        $scope.errorphonenumber = null;
-                        $scope.erroremail = null;
-                        $scope.erroraddress = null;
-                        $scope.errorsalary = null;
-                        $scope.errorusername = null;
-                        $scope.errorpassword = null;
-                        $scope.successInsert = data.message;
+                        if($scope.id!=null && $scope.firstname!=null && $scope.lastname!=null
+                            && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
+                            && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
+                            $scope.password2!=null){
 
-                        $scope.displayData2();
+                            if($scope.password2==$scope.password){
+                                $scope.errorid = null;
+                                $scope.errorfirstname = null;
+                                $scope.errorlastname = null;
+                                $scope.errorphonenumber = null;
+                                $scope.erroremail = null;
+                                $scope.erroraddress = null;
+                                $scope.errorsalary = null;
+                                $scope.errorusername = null;
+                                $scope.errorpassword = null;
+                                $scope.successInsert = data.message;
 
-                        $scope.id=null;
-                        $scope.firstname=null;
-                        $scope.lastname=null;
-                        $scope.phonenumber=null;
-                        $scope.email=null;
-                        $scope.address=null;
-                        $scope.salary=null;
-                        $scope.username=null;
-                        $scope.password=null;
-                        swal(
-                            'Update Success!'
-                        );
-                       }
+                                $scope.displayData2();
+
+                                $scope.id=null;
+                                $scope.firstname=null;
+                                $scope.lastname=null;
+                                $scope.phonenumber=null;
+                                $scope.email=null;
+                                $scope.address=null;
+                                $scope.salary=null;
+                                $scope.username=null;
+                                $scope.password=null;
+                                $scope.password2=null;
+                                swal(
+                                    'Update Success!'
+                                );
+                            }else{
+                                swal({
+                                    type: 'Wrong',
+                                    title: 'Oops...',
+                                    text: 'Passwords not match !',
+                                    footer: 'please match the passwords!'
+                                });
+                            }
+                        }
+                        }
                       });
       }
       $scope.updateDataAdmin =function(i1,i2,i3,i4,i5,i6,i7,i8,i9){  
