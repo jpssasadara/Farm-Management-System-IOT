@@ -159,7 +159,7 @@ app.config(function($routeProvider) {
               },
               templateUrl: "view/viewRegShopOrders.html"
            })
-         //*********** not completed yet***************
+         
           .when("/admin/verified/orders",{                    
               resolve:{
                   "check":function($location,$rootScope){
@@ -170,7 +170,7 @@ app.config(function($routeProvider) {
               },
               templateUrl: "view/viewRegShopOrderVerify.html"
            })
-           .when("/get/regfarmer/order",{                    
+           .when("/admin/delivered/orders",{                    
               resolve:{
                   "check":function($location,$rootScope){
                       if(!$rootScope.loggedIn){
@@ -178,9 +178,9 @@ app.config(function($routeProvider) {
                       }
                   }
               },
-              templateUrl: "view/viewRegShopOrders.html"
+              templateUrl: "view/viewRegShopOrderDelivered.html"
            })
-           //**************************************************
+           
 
      .otherwise({
         redirectTo:'/'
@@ -812,7 +812,7 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 
-//Controller Handeling admin part of registered farmer's orders
+//Controller Handeling admin part of registered Shops' orders
 app.controller("RegShopOrderController",function($scope,$location){
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
