@@ -138,6 +138,16 @@ app.config(function($routeProvider) {
         },
         templateUrl: "https://sasadaramonker.000webhostapp.com/app/index.html"
      })
+       .when("/get/regfarmer/order",{                    
+              resolve:{
+                  "check":function($location,$rootScope){
+                      if(!$rootScope.loggedIn){
+                          $location.path('/');
+                      }
+                  }
+              },
+              templateUrl: "view/viewRegShopOrders.html"
+           })
 
      .otherwise({
         redirectTo:'/'
@@ -269,6 +279,11 @@ app.controller("Admincontroller",function($scope,$location){
     $scope.temhum=function(){
         $location.path('/get/tem/hum');
     };
+
+    $scope.ViewOrder=function(){
+        $location.path('/get/regfarmer/order');
+    };
+    
 
 });
 

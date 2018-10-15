@@ -1,0 +1,72 @@
+<div ng-controller="RegisterAdminController" ng-init="displayData()" >
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Employee Id</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="id" placeholder="employee id" class="form-control input-md">
+    <span class="text-danger" ng-show="errorid">{{errorid}}</span>
+  </div>
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Username</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="username" placeholder="username" class="form-control input-md">
+    <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Password</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="password" ng-model="password" placeholder="password" class="form-control input-md">
+    <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" ng-click=insertData() class="btn btn-primary">Submit</button>
+    <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning">Update</button>
+  </div>
+
+   
+</div>
+
+</fieldset>
+</form>
+
+<div class="container"  style="width:500px;">  
+                
+                
+                     
+                     <br /><br />  
+                     <table class="table table-bordered">  
+                          <tr>  
+                               <th>Employee Id</th>
+                               <th>Username</th>  
+                               <th>Password</th>
+                               <th>Update</th>
+                               <th>Delete</th> 
+                          </tr>  
+                          <tr ng-repeat="x in names">
+                               <td>{{x.Id}}</td>
+                               <td>{{x.User_Name}}</td>  
+                               <td>{{x.Password}}</td> 
+                               <td><button ng-click="updateDataAdmin(x.Id, x.User_Name, x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
+                               <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
+                          </tr>  
+                     </table>  
+                </div>  
+           </div>  
