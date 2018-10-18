@@ -41,9 +41,10 @@
                                <th><b>Delete</b></th>
                           </tr>  
                           <tr ng-repeat="x in namess">
-                             <td>{{x.OrderNumber}}</td>
+
+                             <td><a href="#"><font color="blue"><u>{{x.Reg_Shop_Id}}</u></font></a></td>
                                <td>{{x.OrderNumber}}</td>
-                               <td>{{x.Item_Code}}</td>  
+                               <td><a href="#"><font color="blue"><u>{{x.Code}}</u></font></a></td>  
                                <td>{{x.Name}}</td>
                                <td>{{x.Amount}}</td> 
                                <td>{{x.Date}}</td>
@@ -53,4 +54,5 @@
                      </table>  
                 </div>  
               </center>
+
            </div>  

@@ -844,7 +844,7 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
            $http.get("module/FarmShopOrder/viewOrder.php")  
            .success(function(data){  
                 $scope.namess = data;
-               //alert(data);  
+                 
            });  
       };
    
