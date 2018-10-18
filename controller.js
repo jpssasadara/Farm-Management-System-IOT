@@ -829,7 +829,7 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 //Controller Handeling admin part of registered Shops' orders
-/*app.controller("RegShopOrderController",function($scope,$location, $http){
+app.controller("RegShopOrderController",function($scope,$location, $http){
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };
