@@ -707,14 +707,14 @@ app.controller("RegisterAdminController", function($scope, $http){
            $scope.uploadFileData();  
       } 
       //get all data by joinning image table and items data table <<by equaling image id>> 
-      $scope.select = function(){  
-           $http.get("module/Items/select.php")  
+      $scope.select = function(){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<====SELECT VEGETABLES 
+           $http.get("module/Items/selectVeg.php")  
            .success(function(data){  
                 $scope.images = data;  
            });  
       }
 
-      $scope.selectFruit = function(){  
+      $scope.selectFruit = function(){  //<<<<<<<<<<<<<<<<<<<<<<<<<<======SELECT FRUITS
            $http.get("module/Items/selectFruit.php")  
            .success(function(data){  
                 $scope.imagesFruit = data;  
@@ -853,6 +853,16 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
 
 
      
+
+
+
+
+
+
+
+//#############################TESTING###########################################
+//################################################TESTING########################
+
 //image.code, image.name, image.unit,image.amount,image.price,image.discount 
 
 /*app.controller("AddItemDetails", function($scope, $http){  
