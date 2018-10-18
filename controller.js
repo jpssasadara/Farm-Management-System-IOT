@@ -829,7 +829,7 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 //Controller Handeling admin part of registered Shops' orders
-app.controller("RegShopOrderController",function($scope,$location){
+/*app.controller("RegShopOrderController",function($scope,$location, $http){
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };
@@ -840,7 +840,14 @@ app.controller("RegShopOrderController",function($scope,$location){
         $location.path('/admin/delivered/orders');
     };
     
-         
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/viewOrder.php")  
+           .success(function(data){  
+                $scope.namess = data;
+               //alert(data);  
+           });  
+      };
+   
 
 });
 
