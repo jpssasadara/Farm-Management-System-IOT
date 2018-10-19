@@ -8,7 +8,12 @@
  if($d1!== null AND   $d2!== null AND  $d3 !== null){
 
 		  
-		 $
+		 $query2 = "SELECT t1.OrderNumber,t1.Date,t2.Code,t1.Amount,t1.Reg_Shop_Id,t2.Name FROM regshoporder t1 INNER JOIN items t2 ON t1.Item_Code = t2.Code  WHERE t1.Verified=0 AND t1.Delivered=0  AND t1.Reg_Shop_Id= '$d1'  AND t2.Code= '$d3'   ";  
+		 $result2 = mysqli_query($connect, $query2);  
+		 while($row2 = mysqli_fetch_array($result2))  
+		 {  
+		      $output2[] = $row2;  
+		 }  
 		 	
  
 
