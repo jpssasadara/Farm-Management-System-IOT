@@ -847,7 +847,18 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
                  
            });  
       };
-   
+   //for Searching part of ViewOrdersDisplay
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchviewOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
+               
+                $scope.namess = data;
+                 
+           });  
+
+            //$scope.code=$scope.date;
+      };  
+
 
 });
 
