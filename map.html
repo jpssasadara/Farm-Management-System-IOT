@@ -126,8 +126,8 @@
         
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    
-
+        var home=new google.maps.LatLng(27.521,85.365);
+        var vehicle=new google.maps.LatLng(latitude,longitude);
 
         var marker=new google.maps.Marker({
             position : currentLocation,
@@ -135,10 +135,23 @@
             icon: 'img/t1.png',    
             title:"My Vehicle"
         });
+        
+        function calcRoute(){
+            var request={
+                origin:home,
+                destination:vehicle,
+                travelMode:'DRIVING'
+            };
+
+            directionsService.route(request,function(result,status){
+                console.log(result,status);
+            });
+        }
     }
 
     $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(initialise);
+       
     });
       
   }
