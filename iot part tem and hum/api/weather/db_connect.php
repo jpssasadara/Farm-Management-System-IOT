@@ -1,24 +1,30 @@
 <?php
 
+// DB connection class
+
 class DB_CONNECT {
  
-    
+    // construct function
+
     function __construct() {
         
         $this->connect();
     }
  
-    
+    // desstruct function
+
     function __destruct() {
         
         $this->close();
     }
  
-   
+   // db connect method
+
     function connect() {
 
         
         $filepath = realpath (dirname(__FILE__));
+        // select file path
 
         require_once($filepath."/dbconfig.php");
         
@@ -32,7 +38,8 @@ class DB_CONNECT {
         return $con;
     }
  
-	
+	// close db connection
+
     function close() {
        
         mysql_close();
