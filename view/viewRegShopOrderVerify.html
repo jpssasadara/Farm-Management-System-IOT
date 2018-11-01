@@ -1,5 +1,5 @@
 <br /><br />  
-<div class="container" ng-controller="RegShopOrderController"  ><center>
+<div class="container" ng-controller="RegShopVeriedOrderController" ng-init = ViewOrdersDisplay() ><center>
 
 <button id="singlebutton" name="singlebutton" ng-click=Orders() class="btn btn-warning">Orders</button>
 <button id="singlebutton" name="singlebutton" ng-click=VerifiedOrders() class="btn btn-warning">Verified Orders</button>
@@ -41,14 +41,20 @@
                         
                                <th><b>Delete</b></th>
                           </tr>  
-                          <tr ng-repeat="x in names">
-                               <td>{{x.Id}}</td>
-                     
-                               <td>{{x.User_Name}}</td>  
-                               <td>{{x.Password}}</td> 
-                               <td><button ng-click="updateDataAdmin(x.Id, x.User_Name, x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
-                               <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
+                          <tr ng-repeat="x in namess ">
+
+                             <td><a href="#"><font color="blue"><u>{{x.Reg_Shop_Id}}</u></font></a></td>
+                               <td>{{x.OrderNumber}}</td>
+                               <td><a href="#"><font color="blue"><u>{{x.Code}}</u></font></a></td>  
+                               <td>{{x.Name}}</td>
+                               <td>{{x.Amount}}</td> 
+                               <td>{{x.Date}}</td>
+                               <td><button ng-click="Verify(x.OrderNumber)" class="btn btn-warning btn-xs">Deliver</button></td> 
+                               <td><button ng-click="Delete(x.OrderNumber )" class="btn btn-danger btn-xs">Delete</button></td> 
                           </tr>  
+
+                          
+
                      </table>  
                 </div>  
               </center>

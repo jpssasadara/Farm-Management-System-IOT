@@ -878,6 +878,57 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
 });
 
 
+
+//Controller Handeling admin part of registered Shops' RegShopVerifyOrderController
+app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
+    $scope.Orders=function(){
+        $location.path('/admin/handel/orders');
+    };
+     $scope.VerifiedOrders=function(){
+        $location.path('/admin/verified/orders');
+    };
+    $scope.DeliveredOrders=function(){
+        $location.path('/admin/delivered/orders');
+    };
+    
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/viewverifyOrder.php")  
+           .success(function(data){ 
+                alert(data); 
+                $scope.namess = data;
+                 
+           });  
+      };
+   //for Searching part of ViewOrdersDisplay page
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchviewOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
+               $scope.namess = data;
+                 
+           });  
+
+            //$scope.code=$scope.date;
+      };  
+      //for verifying Order that shop owner has made
+       $scope.Verify=function(ordernumber){  
+           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
+              $scope.ViewOrdersDisplay();
+           });        
+      };
+
+      //for verifying Order that shop owner has made
+       $scope.Delete=function(ordernumber){  
+           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
+              $scope.ViewOrdersDisplay();
+           });        
+      };  
+
+});
+
      
 
 
