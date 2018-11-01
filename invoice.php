@@ -158,13 +158,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Point of Sale</title>
-    <link rel="icon" type="image/png" href="img/pos.png"/>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -245,15 +244,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li><a href='/Farm-Management-System-IoT'>
-      <span class="glyphicon glyphicon-home"></span> Home</a></li>
-      <li class="active"><a href='invoice.php'>
-      <span class="glyphicon glyphicon-shopping-cart"></span> POS</a></li>
-      
+      <li><a href='invoice.php'>POS</a></li>
+      <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href='/Farm-Management-System-IoT/FmsFarmSide2'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
@@ -338,9 +334,9 @@
                         var products = new Array(20) 
                         products["empty"] = ["Select a product"]; 
                         products["vegetables"] = ['Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol']; 
-                        products["fruits"] = ['Banana','Orange','Cocoa','Guava','Pineapple','Avacado','Grapes']; 
-                        products["milkproduct"] = ['Yougurt','MilkCup','Curd','Juice']; 
-                        products["others"]= ['Eggs','Chicken','Cashews','Soy nuts','Peanuts','Almond']; 
+                        products["fruits"] = ['banana','orange','cocoa','guava','pineapple','avacado','grapes']; 
+                        products["milkproduct"] = ['yougurt','milkCup','curd','juice']; 
+                        products["others"]= ['eggs','chicken','cashews','soy nuts','peanuts','almond']; 
                         /* SelectProduct() is called from the onchange event of a select element. 
                         * param selectObj - the select object which fired the on change event. 
                         */ 
@@ -383,10 +379,10 @@
                       <td>
                       <select class="form-control" id="type" name="type" onchange="SelectProduct(this,0);">
                         <option value="empty">Select a productType</option>
-                        <option value="vegetables">Vegetables</option>
-                        <option value="fruits">Fruits</option>
-                        <option value="milkproduct">Milkproduct</option>
-                        <option value="others">Others</option>
+                        <option value="vegetables">vegetables</option>
+                        <option value="fruits">fruits</option>
+                        <option value="milkproduct">milkproduct</option>
+                        <option value="others">others</option>
                         </select>
                       </td>
                       <td>
@@ -408,7 +404,7 @@
               </tr>
               <tr>
                 <td align="right"><b>Total</td>
-                <td align="right"><b>Rs. <span id="final_total_amt"></span></b></td>
+                <td align="right"><b><span id="final_total_amt"></span></b></td>
               </tr>
               <tr>
                 <td colspan="2"></td>
@@ -850,7 +846,7 @@
                 <td>'.$row["order_datetime"].'</td>
                 <td>'.$row["order_receiver_name"].'</td>
                 <td>Rs.'.$row["order_total_amount"].'</td>
-                <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">BILL</a></td>
+                <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">PDF</a></td>
                 <td><a href="invoice.php?update=1&id='.$row["order_id"].'"><span class="glyphicon glyphicon-edit"></span></a></td>
                 <td><a href="#" id="'.$row["order_id"].'" class="delete"><font color="#ff0000"><span class="glyphicon glyphicon-remove"></font></span></a></td>
               </tr>
@@ -901,29 +897,14 @@ farmmanagement@gmail.com
         });
     $(document).on('click', '.delete', function(){
       var id = $(this).attr("id");
-
-      swal({
-            title: 'Are you sure?',
-            text: "You want to delete this data?",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.value) {
-              swal(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-              window.location.href="invoice.php?delete=1&id="+id;
-            }
-            else  
-           {  
-                return false;  
-           } 
-          });
+      if(confirm("Are you sure you want to remove this?"))
+      {
+        window.location.href="invoice.php?delete=1&id="+id;
+      }
+      else
+      {
+        return false;
+      }
     });
   });
 
