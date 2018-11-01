@@ -857,9 +857,19 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
 
             //$scope.code=$scope.date;
       };  
+      //for verifying Order that shop owner has made
+       $scope.Verify=function(ordernumber){  
+           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+               //$scope.namess = data;
+              alert(data); 
+              $scope.ViewOrdersDisplay();
+           });  
+
+            
+      };  
 
 
-});
 
 
      
