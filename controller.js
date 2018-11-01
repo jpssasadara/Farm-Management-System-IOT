@@ -890,7 +890,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
     $scope.DeliveredOrders=function(){
         $location.path('/admin/delivered/orders');
     };
-    
+    //display verified orders
     $scope.ViewOrdersDisplay=function(){  
            $http.get("module/FarmShopOrder/viewverifyOrder.php")  
            .success(function(data){  
@@ -900,7 +900,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
       };
    //for Searching part of ViewOrdersDisplay page
     $scope.ViewOrdersDisplay2=function(){  
-           $http.post("module/FarmShopOrder/SearchviewOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           $http.post("module/FarmShopOrder/SearchverifyOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
            .success(function(data){  
                $scope.namess = data;
                  
