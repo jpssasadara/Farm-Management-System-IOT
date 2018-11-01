@@ -49,7 +49,7 @@
                                <td>{{x.Name}}</td>
                                <td>{{x.Amount}}</td> 
                                <td>{{x.Date}}</td>
-                               <td><button ng-click="Verify(x.OrderNumber)" class="btn btn-warning btn-xs">Deliver</button></td> 
+                               <td><button ng-click="Deliver(x.OrderNumber)" class="btn btn-warning btn-xs"><a   href="invoice.php?add=1" target="_blank" >Deliver</a></button></td> 
                                <td><button ng-click="Delete(x.OrderNumber )" class="btn btn-danger btn-xs">Delete</button></td> 
                           </tr>  
 
