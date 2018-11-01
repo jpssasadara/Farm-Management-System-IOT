@@ -869,7 +869,7 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
             
       };  
 
-
+});
 
 
      
