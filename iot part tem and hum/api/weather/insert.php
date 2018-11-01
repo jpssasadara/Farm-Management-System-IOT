@@ -46,5 +46,6 @@ if (isset($_GET['temp']) && isset($_GET['hum'])) {
  
     // Show JSON response
     echo json_encode($response);
+    // Show JSON response
 }
 ?>
