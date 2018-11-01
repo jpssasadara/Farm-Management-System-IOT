@@ -7,7 +7,11 @@
  $query = "UPDATE regshoporder SET Verified = 1 WHERE OrderNumber='{$ordernumber}'" ; 
 
  $result = mysqli_query($connect, $query);  
+ if ($result==true) {
+ 	echo json_encode("Oder Number =>'{$ordernumber}' is Verified......");
+ }
  
- echo json_encode($query);
-  
+ else{
+ 	echo json_encode("error......");
+  }
  ?>  
