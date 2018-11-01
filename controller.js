@@ -826,7 +826,7 @@ app.controller("RegisterAdminController", function($scope, $http){
 
  }); 
 
-
+//############################################################################################
 
 //Controller Handeling admin part of registered Shops' orders
 app.controller("RegShopOrderController",function($scope,$location, $http){
@@ -866,7 +866,7 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
            });        
       };
 
-      //for verifying Order that shop owner has made
+      //for Delete Order that shop owner has made
        $scope.Delete=function(ordernumber){  
            $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
@@ -878,7 +878,7 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
 });
 
 
-
+//#############################################################################################
 //Controller Handeling admin part of registered Shops' RegShopVerifyOrderController
 app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
     $scope.Orders=function(){
@@ -908,7 +908,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
 
             //$scope.code=$scope.date;
       };  
-      //for verifying Order that shop owner has made
+      //for Delivering Order that shop owner has made
        $scope.Deliver=function(ordernumber){  
            $http.post("module/FarmShopOrder/deliverOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
@@ -917,7 +917,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
            });        
       };
 
-      //for verifying Order that shop owner has made
+      //for Delete Order that shop owner has made
        $scope.Delete=function(ordernumber){  
            $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
@@ -928,8 +928,51 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
 
 });
 
+ //##############################################################################################    
+
+
+
+//Controller Handeling admin part of registered Shops' Delivered orders comtroller
+app.controller("RegShopDeliveredOrderController",function($scope,$location, $http){
+    $scope.Orders=function(){
+        $location.path('/admin/handel/orders');
+    };
+     $scope.VerifiedOrders=function(){
+        $location.path('/admin/verified/orders');
+    };
+    $scope.DeliveredOrders=function(){
+        $location.path('/admin/delivered/orders');
+    };
+    //display delivered orders
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/deliveredOrder.php")  
+           .success(function(data){  
+                $scope.namess = data;
+                 
+           });  
+      };
+   //for Searching part of ViewOrdersDisplay page
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchdeliveredOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
+               $scope.namess = data;
+                 
+           });  
+
+            //$scope.code=$scope.date;
+      };  
      
 
+      //for delete Order that shop owner has made
+       $scope.Delete=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
+              $scope.ViewOrdersDisplay();
+           });        
+      };  
+
+});
 
 
 
