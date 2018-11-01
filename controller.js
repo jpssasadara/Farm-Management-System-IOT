@@ -909,8 +909,8 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
             //$scope.code=$scope.date;
       };  
       //for verifying Order that shop owner has made
-       $scope.Verify=function(ordernumber){  
-           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
+       $scope.Deliver=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deliverOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
               //alert(data); 
               $scope.ViewOrdersDisplay();
