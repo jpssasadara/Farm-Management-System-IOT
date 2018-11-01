@@ -893,8 +893,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
     
     $scope.ViewOrdersDisplay=function(){  
            $http.get("module/FarmShopOrder/viewverifyOrder.php")  
-           .success(function(data){ 
-                alert(data); 
+           .success(function(data){  
                 $scope.namess = data;
                  
            });  
@@ -913,7 +912,7 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
        $scope.Verify=function(ordernumber){  
            $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
-              alert(data); 
+              //alert(data); 
               $scope.ViewOrdersDisplay();
            });        
       };
