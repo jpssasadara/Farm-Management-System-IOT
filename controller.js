@@ -24,10 +24,12 @@ app.config(function($routeProvider) {
      .when("/admin",{
 
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/admin.html",
@@ -35,50 +37,60 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register_Cashier",{
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/RegisterCashier.html"
      })
       .when("/admin_register",{
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/RegisterAdmin.html"
      })
       .when("/admin_register/view",{
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/ViewAdminDetails.html"
      })
       .when("/admin_register_Cashier/view",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/ViewEmployeeDetails.html"
      })
       .when("/admin_register/update",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/EditAdminDetails.html"
@@ -86,10 +98,12 @@ app.config(function($routeProvider) {
 
       .when("/admin/AddItem/details",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/Items.html"
@@ -97,10 +111,12 @@ app.config(function($routeProvider) {
 
      .when("/admin/location",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/map.html"
@@ -108,10 +124,12 @@ app.config(function($routeProvider) {
 
       .when("/forPOS",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie2')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/farmshop.html"
@@ -119,10 +137,12 @@ app.config(function($routeProvider) {
 
      .when("/forPOS/reports",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "view/reports.html"
@@ -130,20 +150,24 @@ app.config(function($routeProvider) {
 
        .when("/get/tem/hum",{                    
         resolve:{
-            "check":function($location,$cookies){
+            "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
+                $rootScope.adminname=$cookies.get('cookiename');
+                $rootScope.shopname=$cookies.get('cookie2name');
             }
         },
         templateUrl: "https://sasadaramonker.000webhostapp.com/app/index.html"
      })
        .when("/get/regfarmer/order",{                    
               resolve:{
-                  "check":function($location,$cookies){
+                  "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
+                      $rootScope.adminname=$cookies.get('cookiename');
+                      $rootScope.shopname=$cookies.get('cookie2name');
                   }
               },
               templateUrl: "view/viewRegShopOrders.html"
@@ -151,10 +175,12 @@ app.config(function($routeProvider) {
        
          .when("/admin/handel/orders",{                    
               resolve:{
-                  "check":function($location,$cookies){
+                  "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
+                      $rootScope.adminname=$cookies.get('cookiename');
+                      $rootScope.shopname=$cookies.get('cookie2name');
                   }
               },
               templateUrl: "view/viewRegShopOrders.html"
@@ -162,20 +188,24 @@ app.config(function($routeProvider) {
          
           .when("/admin/verified/orders",{                    
               resolve:{
-                  "check":function($location,$cookies){
+                  "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
+                      $rootScope.adminname=$cookies.get('cookiename');
+                      $rootScope.shopname=$cookies.get('cookie2name');
                   }
               },
               templateUrl: "view/viewRegShopOrderVerify.html"
            })
            .when("/admin/delivered/orders",{                    
               resolve:{
-                  "check":function($location,$cookies){
+                  "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
+                      $rootScope.adminname=$cookies.get('cookiename');
+                      $rootScope.shopname=$cookies.get('cookie2name');
                   }
               },
               templateUrl: "view/viewRegShopOrderDelivered.html"
@@ -183,10 +213,12 @@ app.config(function($routeProvider) {
            //**********************************developing yet*********************************************************
            .when("/admin/AddItem/load",{                    
               resolve:{
-                  "check":function($location,$cookies){
+                  "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
+                      $rootScope.adminname=$cookies.get('cookiename');
+                      $rootScope.shopname=$cookies.get('cookie2name');
                   }
               },
               templateUrl: "view/loadItemsToStores.html"
@@ -218,18 +250,20 @@ app.controller("loginbuttonctrl",function($scope,$location){
 });
 
 //Navigation bar logout
-app.controller("nav",function($scope,$location,$cookies){
+app.controller("nav",function($scope,$location,$cookies,$rootScope){
   $scope.setNameLogin = function(){
-    $scope.adminname=" LoginAdmin";
-    $scope.shopname=" LoginShop";
+    $rootScope.adminname=" LoginAdmin";
+    $rootScope.shopname=" LoginShop";
   };
 
 
-    
+  //logout for admin  
     $scope.logoutA=function(){
       if ($cookies.get('cookie')) {
         alert("You were loggedout...");
         $cookies.remove('cookie');
+        $cookies.remove('cookiename');
+        $rootScope.adminname=" LoginAdmin";
         $location.path('/adminwelcome');
       } else {
         $location.path('/adminwelcome');
@@ -237,11 +271,13 @@ app.controller("nav",function($scope,$location,$cookies){
       }
         
     };
-    
+//logout for shop    
      $scope.logoutS=function(){
       if ($cookies.get('cookie2')) {
          alert("You were loggedout...");
         $cookies.remove('cookie2');
+        $cookies.remove('cookie2name');
+        $rootScope.shopname=" LoginShop";
         $location.path('/farmshopwelcome');
       } else {
         $location.path('/farmshopwelcome');
@@ -276,10 +312,12 @@ app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$h
                 
                 if($scope.password==data.value&&data.value!=null){
                         $cookies.put('cookie',true);
+                        $cookies.put('cookiename'," Logout "+$scope.username);
+                        $rootScope.adminname=$cookies.get('cookiename');
                         //$cookies.get('cookie');
-                     //$rootScope.loggedIn=true;
+                        //$rootScope.loggedIn=true;
 
-                     $location.path('/admin');
+                        $location.path('/admin');
                      swal({
                         position: 'top-end',
                         type: 'success',
@@ -315,6 +353,8 @@ app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
                 if($scope.password==data.value&&data.value!=null){
                     // $rootScope.loggedIn=true;
                      $cookies.put('cookie2',true);
+                     $cookies.put('cookie2name'," Logout "+$scope.username);
+                     $rootScope.shopname=$cookies.get('cookie2name');
                      $location.path('/forPOS');
                      swal({
                         position: 'top-end',
