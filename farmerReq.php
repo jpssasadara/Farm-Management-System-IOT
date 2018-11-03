@@ -246,10 +246,10 @@
     <ul class="nav navbar-nav">
       <li><a href='invoice.php'>POS</a></li>
       <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
-z
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href='invoice.php'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
