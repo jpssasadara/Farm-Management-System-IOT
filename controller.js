@@ -109,7 +109,7 @@ app.config(function($routeProvider) {
       .when("/forPOS",{                    
         resolve:{
             "check":function($location,$cookies){
-                if(!$cookies.get('cookie')){
+                if(!$cookies.get('cookie2')){
                     $location.path('/');
                 }
             }
@@ -266,7 +266,7 @@ app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$h
     });
 
 //Controller for shop Login page
-app.controller('shop',function($scope,$location,$rootScope,$http){
+app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
     $scope.loginshop=function(){
 
         $http.post(  
@@ -276,7 +276,8 @@ app.controller('shop',function($scope,$location,$rootScope,$http){
 
                 
                 if($scope.password==data.value&&data.value!=null){
-                     $rootScope.loggedIn=true;
+                    // $rootScope.loggedIn=true;
+                     $cookies.put('cookie2',true);
                      $location.path('/forPOS');
                      swal({
                         position: 'top-end',
