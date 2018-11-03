@@ -1,4 +1,4 @@
-var app = angular.module("mainapp", ["ngRoute"]);
+var app = angular.module("mainapp", ["ngRoute",'ngCookies']);
 app.config(function($routeProvider) {
    $routeProvider
     .when("/", {
@@ -24,8 +24,8 @@ app.config(function($routeProvider) {
      .when("/admin",{
 
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -35,8 +35,8 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register_Cashier",{
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -45,8 +45,8 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register",{
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -55,8 +55,8 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register/view",{
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -65,8 +65,8 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register_Cashier/view",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -75,8 +75,8 @@ app.config(function($routeProvider) {
      })
       .when("/admin_register/update",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -86,8 +86,8 @@ app.config(function($routeProvider) {
 
       .when("/admin/AddItem/details",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -97,8 +97,8 @@ app.config(function($routeProvider) {
 
      .when("/admin/location",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -108,8 +108,8 @@ app.config(function($routeProvider) {
 
       .when("/forPOS",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -119,8 +119,8 @@ app.config(function($routeProvider) {
 
      .when("/forPOS/reports",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -130,8 +130,8 @@ app.config(function($routeProvider) {
 
        .when("/get/tem/hum",{                    
         resolve:{
-            "check":function($location,$rootScope){
-                if(!$rootScope.loggedIn){
+            "check":function($location,$cookies){
+                if(!$cookies.get('cookie')){
                     $location.path('/');
                 }
             }
@@ -140,8 +140,8 @@ app.config(function($routeProvider) {
      })
        .when("/get/regfarmer/order",{                    
               resolve:{
-                  "check":function($location,$rootScope){
-                      if(!$rootScope.loggedIn){
+                  "check":function($location,$cookies){
+                      if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
                   }
@@ -151,8 +151,8 @@ app.config(function($routeProvider) {
        
          .when("/admin/handel/orders",{                    
               resolve:{
-                  "check":function($location,$rootScope){
-                      if(!$rootScope.loggedIn){
+                  "check":function($location,$cookies){
+                      if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
                   }
@@ -162,8 +162,8 @@ app.config(function($routeProvider) {
          
           .when("/admin/verified/orders",{                    
               resolve:{
-                  "check":function($location,$rootScope){
-                      if(!$rootScope.loggedIn){
+                  "check":function($location,$cookies){
+                      if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
                   }
@@ -172,8 +172,8 @@ app.config(function($routeProvider) {
            })
            .when("/admin/delivered/orders",{                    
               resolve:{
-                  "check":function($location,$rootScope){
-                      if(!$rootScope.loggedIn){
+                  "check":function($location,$cookies){
+                      if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
                   }
@@ -183,8 +183,8 @@ app.config(function($routeProvider) {
            //**********************************developing yet*********************************************************
            .when("/admin/AddItem/load",{                    
               resolve:{
-                  "check":function($location,$rootScope){
-                      if(!$rootScope.loggedIn){
+                  "check":function($location,$cookies){
+                      if(!$cookies.get('cookie')){
                           $location.path('/');
                       }
                   }
@@ -229,7 +229,7 @@ app.controller("posCtrl",function($scope,$location){
 */
 
 //Controller for Admin Login page
-app.controller('adminloginctrl',function($scope,$location,$rootScope,$http){
+app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$http){
     $scope.submit=function(){
         $http.post(  
                 "module/getAdminUnPw.php",  
@@ -238,7 +238,10 @@ app.controller('adminloginctrl',function($scope,$location,$rootScope,$http){
 
                 
                 if($scope.password==data.value&&data.value!=null){
-                     $rootScope.loggedIn=true;
+                        $cookies.put('cookie',true);
+                        //$cookies.get('cookie');
+                     //$rootScope.loggedIn=true;
+
                      $location.path('/admin');
                      swal({
                         position: 'top-end',
