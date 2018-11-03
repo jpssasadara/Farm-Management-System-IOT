@@ -48,7 +48,7 @@
   <!--angularjs cookies.js lib --> 
  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js"></script>
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
     <style>
 
@@ -116,24 +116,31 @@ background: #707070;
   <div class="container">
 <div class="text-white">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#/home">FMS Labuduwa</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href='#/'><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li><a href='#/login'>
-          <span class="glyphicon glyphicon-file"></span> Courses</a></li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href='#/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </nav>
 
+<div ng-controller="nav">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#/home">FMS Labuduwa</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href='#/'><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a href='#/login'>
+              <span class="glyphicon glyphicon-file"></span> Courses</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click="logout()" ><span class="glyphicon glyphicon-log-in"></span> sasadara</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click="logout()" ><span class="glyphicon glyphicon-log-in"></span> sasadara</a></li>
+          </ul>
+        </div>
+      </nav>
+</div>
   
+
+
   <div class="row"></div>
 
 <div class="row"></div>

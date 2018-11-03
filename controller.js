@@ -216,6 +216,16 @@ app.controller("loginbuttonctrl",function($scope,$location){
          
 
 });
+app.controller("nav",function($scope,$location){
+    $scope.logout=function(){
+        alert("dfdg");
+        //$location.path('/adminwelcome');
+    };
+    
+    
+         
+
+});
 
 /*
 app.controller("posCtrl",function($scope,$location){
