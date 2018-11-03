@@ -216,12 +216,39 @@ app.controller("loginbuttonctrl",function($scope,$location){
          
 
 });
-app.controller("nav",function($scope,$location){
-    $scope.logout=function(){
-        alert("dfdg");
-        //$location.path('/adminwelcome');
+
+//Navigation bar logout
+app.controller("nav",function($scope,$location,$cookies){
+  $scope.setNameLogin = function(){
+    $scope.adminname=" LoginAdmin";
+    $scope.shopname=" LoginShop";
+  };
+
+
+    
+    $scope.logoutA=function(){
+      if ($cookies.get('cookie')) {
+        alert("You were loggedout...");
+        $cookies.remove('cookie');
+        $location.path('/adminwelcome');
+      } else {
+        $location.path('/adminwelcome');
+        
+      }
+        
     };
     
+     $scope.logoutS=function(){
+      if ($cookies.get('cookie2')) {
+         alert("You were loggedout...");
+        $cookies.remove('cookie2');
+        $location.path('/farmshopwelcome');
+      } else {
+        $location.path('/farmshopwelcome');
+        
+      }
+        
+    };
     
          
 

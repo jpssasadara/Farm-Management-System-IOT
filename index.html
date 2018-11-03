@@ -117,7 +117,7 @@ background: #707070;
 <div class="text-white">
 
 
-<div ng-controller="nav">
+<div ng-controller="nav"  ng-init = "setNameLogin()">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -130,11 +130,13 @@ background: #707070;
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-click="logout()" ><span class="glyphicon glyphicon-log-in"></span> sasadara</a></li>
+            <li><a ng-click="logoutA()" ><span class="glyphicon glyphicon-log-in"></span>{{adminname}}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-click="logout()" ><span class="glyphicon glyphicon-log-in"></span> sasadara</a></li>
+            <li><a ng-click="logoutS()" ><span class="glyphicon glyphicon-log-in"></span>{{shopname}}</a></li>
           </ul>
+
+          
         </div>
       </nav>
 </div>
