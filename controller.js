@@ -1052,8 +1052,9 @@ app.controller("RegisterAdminController", function($scope, $http){
        $scope.load = function(){  
           $scope.select();
           $scope.selectFruit(); 
-      } 
+      }
 
+      
 
 
  }); 
@@ -1206,9 +1207,26 @@ app.controller("RegShopDeliveredOrderController",function($scope,$location, $htt
 
 });
 
-
-
-
+//Loading items for store 
+/*app.controller('AdminListController', function($scope,$modal ) {
+    $scope.Confirm = function ( ) {
+      alertModalInstance = $modal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'confirmAlert.html',
+        scope: $scope
+      });
+$scope.cancelDelete = function () {
+      console.log("cancel");
+      alertModalInstance.dismiss('cancel');
+    };
+    $scope.ok = function () {
+      console.log("ok");
+      alertModalInstance.close(true);
+    };
+  }
+    };)*/
+    
+  
 
 
 //#############################TESTING###########################################
