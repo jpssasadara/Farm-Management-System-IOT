@@ -409,7 +409,11 @@ app.controller("nav",function($scope,$location,$cookies,$rootScope){
     $scope.logoutA=function(){
       //check whether there is a cookie 
       if ($cookies.get('cookie')) {
-        alert("You were loggedout...");
+        swal({
+            type: 'logout',
+            title: 'bye...',
+            text: 'You were logout !',
+          });
         //remove login cookies
         $cookies.remove('cookie');
         //remove name of admin cookies
@@ -425,7 +429,11 @@ app.controller("nav",function($scope,$location,$cookies,$rootScope){
 //logout for shop    
      $scope.logoutS=function(){
       if ($cookies.get('cookie2')) {
-         alert("You were loggedout...");
+        swal({
+            type: 'logout',
+            title: 'bye...',
+            text: 'You were logout !',
+        });
         $cookies.remove('cookie2');
         $cookies.remove('cookie2name');
         $rootScope.shopname=" LoginShop";
