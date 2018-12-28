@@ -84,7 +84,7 @@
 
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw&sensor=false">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8&sensor=false">
 </script>
 
 <script>
@@ -92,7 +92,7 @@
 
   // TODO: Replace with your project's customized code snippet
   var config = {
-    apiKey: "AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw",
+    apiKey: "AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8",
     authDomain: "vehicletrackinsystem.firebaseapp.com",
     databaseURL: "https://vehicletrackinsystem.firebaseio.com",
     projectId: "vehicletrackinsystem",
@@ -131,6 +131,13 @@
 
         var marker=new google.maps.Marker({
             position : currentLocation,
+            map:map,
+            icon: 'img/t1.png',    
+            title:"My Vehicle"
+        });
+
+        var marker2=new google.maps.Marker({
+            position : new google.maps.LatLng(27.521,85.365),
             map:map,
             icon: 'img/t1.png',    
             title:"My Vehicle"
