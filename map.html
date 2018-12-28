@@ -1,22 +1,17 @@
 
 <head>
 
-        <title>Tracking Vehicle</title>
-        <link rel="icon" type="image/png" href="img/title.png"/>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <script src="jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-      
-        <link href="css/jcarousel.css" rel="stylesheet" />
-          <link href="css/flexslider.css" rel="stylesheet" />
-      
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
-          
+    <title>Tracking Vehicle</title>
+    <link rel="icon" type="image/png" href="img/title.png"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+        
     <style>
         #map-canvas {
           height: 500px;
@@ -84,15 +79,18 @@
 
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8&sensor=false">
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A&sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&
+key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
+
+
 
 <script>
   // Initialize Firebase
 
-  // TODO: Replace with your project's customized code snippet
+  // TODO: Replace with your project's customized code snippet AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8
   var config = {
-    apiKey: "AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8",
+    apiKey: "AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A",
     authDomain: "vehicletrackinsystem.firebaseapp.com",
     databaseURL: "https://vehicletrackinsystem.firebaseio.com",
     projectId: "vehicletrackinsystem",
@@ -116,7 +114,12 @@
       var map;
     function initialise(location){
         
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+
         var currentLocation=new google.maps.LatLng(latitude,longitude);
+        var home=new google.maps.LatLng(6.850122, 79.879791);
+
         var mapOptions={
             center : currentLocation,
             zoom:15,
@@ -124,10 +127,9 @@
 
         };
         
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        
 
-        var home=new google.maps.LatLng(27.521,85.365);
-        var vehicle=new google.maps.LatLng(latitude,longitude);
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
         var marker=new google.maps.Marker({
             position : currentLocation,
@@ -136,29 +138,30 @@
             title:"My Vehicle"
         });
 
-        var marker2=new google.maps.Marker({
-            position : new google.maps.LatLng(27.521,85.365),
-            map:map,
-            icon: 'img/t1.png',    
-            title:"My Vehicle"
-        });
-        
-        function calcRoute(){
+        directionsDisplay.setMap(map);
+
+        function calculateRoute(){
             var request={
                 origin:home,
-                destination:vehicle,
+                destination:currentLocation,
                 travelMode:'DRIVING'
             };
 
             directionsService.route(request,function(result,status){
-                console.log(result,status);
+                //console.log(result,status);
+                if(status=="OK"){
+                    directionsDisplay.setDirections(result);
+                }
             });
         }
+        document.getElementById("get").onclick=function(){
+        calculateRoute();
     }
 
+    
+    }
     $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(initialise);
-       
     });
       
   }
@@ -167,7 +170,6 @@
       console.log('Error!');
       console.log(err);
   }
-//key=AIzaSyCSIl2sUDYCnfYDewDycEc7B0TI-DdL2Jw&
 </script>
 
 
@@ -180,113 +182,112 @@
 
 <body ng-app="mainapp">
         
-        <div class="container">
-                <div class="p-3 mb-2 bg-success text-white">
-                <nav class="navbar navbar-inverse">
-                  <div class="container-fluid">
-                    <ul class="nav navbar-nav">
-                      <li><a href='/Farm-Management-System-IoT'>
-                      <span class="glyphicon glyphicon-home"></span> Home</a></li>
-                      <li class="active"><a href='map.html'>
-                            <img src="img/t1.png" width="22" height="22"> Vehicle</a></li>
-                      
+<div class="container">
+        <div class="p-3 mb-2 bg-success text-white">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href='/Farm-Management-System-IoT'>
+                <span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="active"><a href='map.html'>
+                    <img src="img/t1.png" width="22" height="22"> Vehicle</a></li>
                 
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                  </div>
-                </nav>
-                </div>
         
-        <div class="row"></div>
-      
-      <div class="row"></div>
-      
-      <!--
-      <img src="img\logo.png" alt="Logo" class="img-thumbnail" style="width:20%">
-      -->
-      
-      <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
-          <!-- Carousel indicators -->
-          <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>   
-          <!-- Carousel items -->
-          <div class="carousel-inner" role="listbox" style=" width:100%; height:250px !important;">
-              <div class="item active">
-                  <img src="img/y.jpg" alt="First Slide" width="100%">
-                  <div class="carousel-caption">
-                      <h3>Vegetables and Fruits</h3>
-                      <p>There are fresh vegetables and fruits</p>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="img/z.jpg" alt="Second Slide" width="100%" >
-                  <div class="carousel-caption">
-                      <h3>Clean Milk Products</h3>
-                      <p>Fresh Milk Products with good condition</p>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="img/zz.jpg" alt="Third Slide" width="100%">
-                  <div class="carousel-caption">
-                      <h3>Farm House</h3>
-                      <p>Vegetables , fruits & beans from farm house</p>
-                  </div>
-              </div>
-          </div>
-      
-        
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-      </div>
-      
-      
-      
-      
-            <div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana, Galle.</b></center></div></div>
-        </h1>
-      </div>
-      
-      <div ng-view>
-      
-      </div>
-      
-      <div class="container">
-          
-            <h2>My Vehicle Location <img src="img/t1.png" width="40" height="40"></h2>
-           <div id="map-canvas"></div> 
-    </div>
-      
-      
-      <div class="footer">
-        <div class="container text-center">
-          <a href=""><i class="fa fa-facebook"></i></a>
-          <a href=""><i class="fa fa-twitter"></i></a>
-          <a href=""><i class="fa fa-linkedin"></i></a>
-          <a href=""><i class="fa fa-google-plus"></i></a>
-          <a href=""><i class="fa fa-skype"></i></a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+            </div>
+        </nav>
         </div>
-        
-      <div class="abc-cc" style="width:100%">
-        
-        &copy Farm Management<br/>
-      Contact : 011 2 541 214<br/>
-      farmmanagement@gmail.com
-      </div>
-      </div></div>
+
+<div class="row"></div>
+
+<div class="row"></div>
       
+ 
       
+<div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>   
+    <!-- Carousel items -->
+    <div class="carousel-inner" role="listbox" style=" width:100%; height:250px !important;">
+        <div class="item active">
+            <img src="img/y.jpg" alt="First Slide" width="100%">
+            <div class="carousel-caption">
+                <h3>Vegetables and Fruits</h3>
+                <p>There are fresh vegetables and fruits</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/z.jpg" alt="Second Slide" width="100%" >
+            <div class="carousel-caption">
+                <h3>Clean Milk Products</h3>
+                <p>Fresh Milk Products with good condition</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/zz.jpg" alt="Third Slide" width="100%">
+            <div class="carousel-caption">
+                <h3>Farm House</h3>
+                <p>Vegetables , fruits & beans from farm house</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+
+
+
+    <div class="w3-animate-fading"><center><b class="abc-c">Labuduwa Farm Akmeemana, Galle.</b></center></div></div>
+</h1>
+</div>
       
-      </body>
+<div ng-view>
+
+</div>
+
+<div class="container">
+    
+    <h2>My Vehicle Location <img src="img/t1.png" width="40" height="40"></h2>
+    <div id="map-canvas"></div> 
+</div>
+      
+<div class="col-sm-2"></div><button class="btn btn-primary" id="get">GetDirection</button>
+<hr>
+<div class="footer">
+<div class="container text-center">
+    <a href=""><i class="fa fa-facebook"></i></a>
+    <a href=""><i class="fa fa-twitter"></i></a>
+    <a href=""><i class="fa fa-linkedin"></i></a>
+    <a href=""><i class="fa fa-google-plus"></i></a>
+    <a href=""><i class="fa fa-skype"></i></a>
+</div>
+
+<div class="abc-cc" style="width:100%">
+
+&copy Farm Management<br/>
+Contact : 011 2 541 214<br/>
+farmmanagement@gmail.com
+</div>
+</div></div>
+
+
+
+</body>
 
 
 </html>
