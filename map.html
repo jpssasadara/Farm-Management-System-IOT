@@ -118,7 +118,7 @@ key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
         var directionsDisplay = new google.maps.DirectionsRenderer;
 
         var currentLocation=new google.maps.LatLng(latitude,longitude);
-        var home=new google.maps.LatLng(6.850122, 79.879791);
+        var home=new google.maps.LatLng(6.8989, 79.8538);
 
         var mapOptions={
             center : currentLocation,
@@ -154,14 +154,27 @@ key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
                 }
             });
         }
-        document.getElementById("get").onclick=function(){
+
+        function myVehicle(){
+            var request={
+            };
+
+            directionsService.route(request,function(result,status){
+                //console.log(result,status);
+                
+            });
+        }
+
         calculateRoute();
-    }
+        document.getElementById("get").onclick=function(){
+            calculateRoute();
+        }
 
     
     }
     $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(initialise);
+        
     });
       
   }
@@ -266,7 +279,7 @@ key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
     <div id="map-canvas"></div> 
 </div>
       
-<div class="col-sm-2"></div><button class="btn btn-primary" id="get">GetDirection</button>
+<div class="col-sm-2"></div><button class="btn btn-primary" id="get">Show Direction</button>
 <hr>
 <div class="footer">
 <div class="container text-center">
