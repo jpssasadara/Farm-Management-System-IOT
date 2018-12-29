@@ -1,11 +1,13 @@
 <?php
 require_once 'PHPMailer/PHPMailerAutoload.php';
 
-if(isset($_POST['send']))
-{
+
 // Fetching data that is entered by the user
-$email = $_POST['email'];
-$password = $_POST['password'];
+//$email = $_POST['email'];
+$email='fmsucscgroup5@gmail.com';
+//$password = $_POST['password'];
+$Password='fmsucscg5';
+
 $to_id = $_POST['toid'];
 $message = $_POST['message'];
 $subject = $_POST['subject'];
@@ -34,8 +36,5 @@ echo '<p>'.$error.'</p>';
 else {
 echo '<p>Message sent!</p>';
 }
-}
-else{
-echo '<p>Please enter valid data</p>';
-}
+
 ?>
