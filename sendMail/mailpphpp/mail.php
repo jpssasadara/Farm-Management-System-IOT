@@ -11,6 +11,9 @@ $password='fmsucscg5';
 //$to_id = $_POST['toid'];
 $nicc = $_POST['nic'];
 $to_id="";
+
+
+
 //to get shop's email address from nic 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 $connect = mysqli_connect("localhost", "root", "", "fmsmy");   
@@ -21,9 +24,45 @@ $result = mysqli_query($connect, $query);
     }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//massage body
+$ordernum = $_POST['ordernum'];
+$code = $_POST['code'];
+$name = $_POST['name'];
+$amount = $_POST['amount'];
+$date = $_POST['date'];
 
-
-$message = $_POST['message'];
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+$message = "<center><h2>#####Labuduwa Farm#####</h2></center><br><b>Dear Customer related to this order.....</b><br><center><table class='table'>
+ 
+  <tbody>
+    <tr>
+      <th scope='row'>1</th>
+      <td><b> ORDER NUMBER </b></td>
+      <td>'$ordernum'</td>
+    </tr>
+    <tr>
+      <th scope='row'>2</th>
+      <td><b>ITEM CODE</b></td>
+      <td>'$code'</td>
+    </tr>
+    <tr>
+      <th scope='row'>3</th>
+      <td><b>ITEM NAME</b></td>
+      <td>'$name'</td>
+    </tr>
+    <tr>
+      <th scope='row'>4</th>
+      <td><b>AMOUNT</b></td>
+      <td>'$amount'</td>
+    </tr>
+    <tr>
+      <th scope='row'>5</th>
+      <td><b>DATE</b></td>
+      <td>'$date'</td>
+    </tr>
+  </tbody>
+</table></center> <br> <p>".$_POST['message']."</p><br><b>Thanks.....<br> For More -: 0702808565 </b>";
 $subject = $_POST['subject'];
 
 // Configuring SMTP server settings

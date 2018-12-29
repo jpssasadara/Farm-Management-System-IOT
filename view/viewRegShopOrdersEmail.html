@@ -32,6 +32,12 @@
 
        <form action="sendMail\mailpphpp\mail.php" method="post">
         <input type="hidden" name="nic" value={{order_Mail_shopid}}>
+         <input type="hidden" name="ordernum" value={{order_Mail_ordernumber}}>
+          <input type="hidden" name="code" value={{order_Mail_code}}>
+           <input type="hidden" name="name" value={{order_Mail_name}}>
+            <input type="hidden" name="amount" value={{order_Mail_amount}}>
+             <input type="hidden" name="date" value={{order_Mail_date}}>
+
         <div class="form-group">
             <label for="name">
                 Title:</label>
