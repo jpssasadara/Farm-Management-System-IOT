@@ -167,7 +167,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
@@ -243,14 +243,16 @@
 <div class="p-3 mb-2 bg-success text-white">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li><a href='invoice.php'>POS</a></li>
-      <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
-z
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#/home"><img src="images/logo.png" width="80" height="38"></a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a href='/Farm-Management-System-IoT'>Home</a></li>
+    <li class="active"><a href='invoice.php'>POS</a></li>
+  </ul>
+  <!-- <ul class="nav navbar-nav navbar-right">
+    <li><a href='/Farm-Management-System-IoT'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  </ul> -->
   </div>
 </nav>
 </div>
@@ -459,13 +461,13 @@ z
     $('#create_invoice').click(function(){
       if($.trim($('#order_receiver_name').val()).length == 0)
       {
-        alert("Please Enter Reciever Name");
+        swal("Please Enter Reciever Name");
         return false;
       }
 
       if($.trim($('#order_no').val()).length == 0)
       {
-        alert("Please Enter Invoice Number");
+        swal("Please Enter Invoice Number");
         return false;
       }
 
@@ -480,21 +482,21 @@ z
       {
         /*if($.trim($('#item_name'+no).val()).length == 0)
         {
-          alert("Please Enter Item Name");
+          swal("Please Enter Item Name");
           $('#item_name'+no).focus();
           return false;
         }*/
 
         if($.trim($('#order_item_quantity'+no).val()).length == 0)
         {
-          alert("Please Enter Quantity");
+          swal("Please Enter Quantity");
           $('#order_item_quantity'+no).focus();
           return false;
         }
 
         if($.trim($('#order_item_price'+no).val()).length == 0)
         {
-          alert("Please Enter Price");
+          swal("Please Enter Price");
           $('#order_item_price'+no).focus();
           return false;
         }
@@ -718,19 +720,19 @@ $(document).ready(function(){
   $('#create_invoice').click(function(){
     if($.trim($('#order_receiver_name').val()).length == 0)
     {
-      alert("Please Enter Reciever Name");
+      swal("Please Enter Reciever Name");
       return false;
     }
 
     if($.trim($('#order_no').val()).length == 0)
     {
-      alert("Please Enter Invoice Number");
+      swal("Please Enter Invoice Number");
       return false;
     }
 
     if($.trim($('#order_date').val()).length == 0)
     {
-      alert("Please Select Invoice Date");
+      swal("Please Select Invoice Date");
       return false;
     }
 
@@ -745,14 +747,14 @@ $(document).ready(function(){
 
       if($.trim($('#order_item_quantity'+no).val()).length == 0)
       {
-        alert("Please Enter Quantity");
+        swal("Please Enter Quantity");
         $('#order_item_quantity'+no).focus();
         return false;
       }
 
       if($.trim($('#order_item_price'+no).val()).length == 0)
       {
-        alert("Please Enter Price");
+        swal("Please Enter Price");
         $('#order_item_price'+no).focus();
         return false;
       }
@@ -856,9 +858,22 @@ farmmanagement@gmail.com
         });
     $(document).on('click', '.delete', function(){
       var id = $(this).attr("id");
-      if(confirm("Are you sure you want to remove this?"))
-      {
-        window.location.href="invoice.php?delete=1&id="+id;
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this data?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value){
+          swal(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          window.location.href="invoice.php?delete=1&id="+id;
       }
       else
       {
@@ -866,6 +881,7 @@ farmmanagement@gmail.com
       }
     });
   });
+});
 
 </script>
 
