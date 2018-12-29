@@ -1125,12 +1125,21 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
             //$scope.code=$scope.date;
       };  
       //for verifying Order that shop owner has made
-       $scope.Verify=function(ordernumber){  
+       $scope.Verify=function(shopid,ordernumber,code,name,amount,date){ 
+          //update database 
            $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
               alert(data); 
               $scope.ViewOrdersDisplay();
-           });        
+           });  
+           //send mail
+           //C:\xampp\htdocs\FmsFarmSide6\Farm-Management-System-IOT\sendMail\mailpphpp\mailVerify.php
+             
+             $http.post("sendMail/mailpphpp/mailVerify.php",{'shop_id':shopid,'order_number':ordernumber,'code':code,'name':name,'amount':amount,'date':date})  
+           .success(function(data){  
+              alert(data); 
+              $scope.ViewOrdersDisplay();
+           });      
       };
 
       //for Delete Order that shop owner has made
