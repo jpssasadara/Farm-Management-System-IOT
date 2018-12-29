@@ -348,6 +348,32 @@ app.config(function($routeProvider) {
               },
               templateUrl: "view/viewRegShopOrderDelivered.html"
            })
+
+           //sending email from view orders
+            .when("/admin/handel/orders/email",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewRegShopOrdersEmail.html"
+           })
+
+
+
            //**********************************developing yet*********************************************************
            .when("/admin/AddItem/load",{                    
               resolve:{
@@ -1070,7 +1096,7 @@ app.controller("RegisterAdminController", function($scope, $http){
 //############################################################################################
 
 //Controller Handeling admin part of registered Shops' orders
-app.controller("RegShopOrderController",function($scope,$location, $http){
+app.controller("RegShopOrderController",function($scope,$location, $http,$rootScope){
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };
@@ -1115,8 +1141,27 @@ app.controller("RegShopOrderController",function($scope,$location, $http){
               $scope.ViewOrdersDisplay();
            });        
       };  
+      //msg(x.Reg_Shop_Id,x.OrderNumber,x.Code,x.Name,x.Amount,x.Date)
+      //sending massage  viewRegShopOrdersEmail.html
+      $scope.msg=function(shopid,ordernumber,code,name,amount,date){ 
+          $rootScope.order_Mail_shopid=shopid;
+          $rootScope.order_Mail_ordernumber=ordernumber;
+          $rootScope.order_Mail_code=code;
+          $rootScope.order_Mail_name=name;
+          $rootScope.order_Mail_amount=amount;
+          $rootScope.order_Mail_date=date;
+
+          $location.path('/admin/handel/orders/email');    
+      };  
 
 });
+
+//RegShopOrderMailController
+app.controller("RegShopOrderMailController",function($scope,$location, $http,$rootScope){
+  
+
+});
+
 
 
 //#############################################################################################

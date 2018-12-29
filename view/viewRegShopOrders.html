@@ -41,6 +41,7 @@
                                <th><b>Accepting Date</b></th>
                                <th><b>Verify</b></th> 
                                <th><b>Delete</b></th>
+                               <th><b>Massage</b></th>
                           </tr>  
                           <tr ng-repeat="x in namess ">
 
@@ -52,6 +53,7 @@
                                <td>{{x.Date}}</td>
                                <td><button ng-click="Verify(x.OrderNumber)" class="btn btn-success btn-xs">Verify</button></td> 
                                <td><button ng-click="Delete(x.OrderNumber )" class="btn btn-danger btn-xs">Delete</button></td> 
+                               <td><center><button ng-click="msg(x.Reg_Shop_Id,x.OrderNumber,x.Code,x.Name,x.Amount,x.Date)" class="btn btn-info btn-xs glyphicon glyphicon-send"></button></center></td> 
                           </tr>  
                      </table>  
                 </div>  

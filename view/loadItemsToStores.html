@@ -59,18 +59,17 @@
 
                       <div>
                             <!--pop up windows -->
-                            <div class="form-popup"  ng-show="showme" id="myForm">
+                            <div class="form-popup "  ng-show="showme" id="myForm" >
                             <form action="/action_page.php" class="form-container">
-                              <h1>developing yet </h1>
-
-                              <label for="email"><b>fghfghhjf</b></label>
-                              <input type="text" placeholder="Enter Email" name="email" required>
+                              <h1>Add Items.. </h1>
+                              <label for="" class="mr-sm-2"><b>Email address:</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Email" name="email" required>
 
                               <label for="psw"><b>dfbgfhfghf</b></label>
-                              <input type="password" placeholder="Enter Password" name="psw" required>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" name="psw" required>
 
-                              <button type="submit" class="btn">Login</button>
-                              <button type="button" class="btn cancel" ng-click="showme=false">Close</button>
+                              <button type="submit" class="btn btn-success btn-xs" >Add</button>
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false">Close</button>
                             </form>
                           </div>
                     </div>
