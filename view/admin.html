@@ -11,86 +11,103 @@
 </style>
 
 <div ng-controller="Admincontroller">
-<div class="container container-fluid"><h1>Hi admin <span class="glyphicon glyphicon-user"></h1>
 <div class="container">
-		<div class ="col-sm-10"></div>
-		<div class="col-sm-2">
-			<div class="btn-group">
-  			<button type="button" class="btn btn-danger glyphicon glyphicon-eye-open" ng-click="cashierReg()"> Register</button>
-  			<button type="button" class="btn btn-danger dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					
-    		<span class="caret"></span>
-    		<span class="sr-only">Toggle Dropdown</span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
-			    <li><a ng-click="adminReg()">Admin</a></li>
-			    <li class="divider"></li>
-			    <li><a ng-click="cashierReg()">Employee</a></li>
-			  </ul>
-			</div>
+	<h1><i class="fa fa-user fa-2x"></i> Hi admin</h1>
+	<div class ="col-sm-10"></div>
+	<div class="col-sm-2">
+		<div class="btn-group">
+		<button type="button" class="btn btn-warning btn-sq-lg glyphicon glyphicon-eye-open" ng-click="cashierReg()"> Register</button>
+		<button type="button" class="btn btn-warning btn-sq-lg dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				
+		<span class="caret"></span>
+		<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+			<li><a ng-click="adminReg()">Admin</a></li>
+			<li class="divider"></li>
+			<li><a ng-click="cashierReg()">Employee</a></li>
+			</ul>
 		</div>
+	</div>
 	</div>
 </div>
 <div class="container">
+	
 	<div class="row">
 	
 	<div class="col-lg-3"><div class="well"><span class="glyphicon glyphicon-shopping-cart"></span><b><i>Farm Shop</i></b></div></div>
 
-		<div class="col-lg-3"><button type="button" class="btn btn-primary btn-block btn-lg" >Loading Items</button></div>
-		<div class="col-lg-3"><button type="button" class="btn btn-primary btn-block btn-lg" >View Shop Details</button></div>
-		<div class="col-lg-3"><button type="button" class="btn btn-primary btn-block btn-lg" ng-click = "addItems()">Edit Items Details</button></div>
+		<div class="col-lg-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" >
+				<i class="fa fa-shopping-cart fa-4x"></i><br/>Loading Items</button></div>
+		<div class="col-lg-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" >
+				<i class="fa fa-eye fa-4x"></i><br/>View Shop Details</button></div>
+		<div class="col-lg-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" ng-click = "addItems()">
+				<i class="fa fa-edit fa-4x"></i><br/>Edit Items Details</button></div>
 	<br/>
 	</div>
 
 	<div class="row">
 	<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-barcode"></span><b><i> Farm Stores</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg" ng-click="load()" >Loading Farm product</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg" href='farmerReq.php' >Loading Registered </button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg">View Stores Details</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" ng-click="load()" >
+				<i class="fa fa-edit fa-4x"></i><br/>Loading Farm product</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" href='farmerReq.php' >
+				<i class="fa fa-registered fa-4x"></i><br/>Loading Registered </button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block">
+				<i class="fa fa-eye fa-4x"></i><br/>View Stores Details</button></div>
 	</div>
 
 	
 
 	<div class="row">
 	<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-pawn"></span><b><i> Registered Farmers</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-block btn-lg">Registation</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-block btn-lg">View Registered Farmers</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-block btn-lg">Purchasing</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+			<i class="fa fa-registered fa-4x"></i><br/>Registation</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+			<i class="fa fa-eye fa-4x"></i><br/>View Registered Farmers</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+			<i class="fa fa-shopping-cart fa-4x"></i><br/>Purchasing</button></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-gift"></span><b><i> Registered Shop</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg">Registation</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg">View Registered Shop</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg" ng-click ="ViewOrder()">Online Purchasing Details</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+				<i class="fa fa-registered fa-4x"></i><br/>Registation</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+				<i class="fa fa-eye fa-4x"></i><br/>View Registered Shop</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block" ng-click ="ViewOrder()">
+				<i class="fa fa-cart-arrow-down fa-4x"></i><br/>Online Purchasing Details</button></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-book"></span><b><i> Courses</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-block btn-lg">Add Courses</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-block btn-lg">Course Details</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-info btn-sq-lg btn-block">
+				<i class="fa fa-edit fa-4x"></i><br/>Add Courses</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-info btn-sq-lg btn-block">
+				<i class="fa fa-eye fa-4x"></i><br/>Course Details</button></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-6"><div class="well"><span class="glyphicon glyphicon-tent"></span><b><i> Temperature & Humidity of Greenhouses </i></b></div></div>
-		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-success btn-block btn-lg"><center> A</center></a></div>
-		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-success btn-block btn-lg"><center> B</center></a></div>
-		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-success btn-block btn-lg"><center> C</center></a></div>
-		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-success btn-block btn-lg"><center> D</center></a></div>
-		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-success btn-block btn-lg"><center> E</center></a></div>
+		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-warning btn-sq-lg btn-block"><center> A</center></a></div>
+		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-warning btn-sq-lg btn-block"><center> B</center></a></div>
+		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-warning btn-sq-lg btn-block"><center> C</center></a></div>
+		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-warning btn-sq-lg btn-block"><center> D</center></a></div>
+		<div class="col-sm-2"><a href = "https://sasadaramonker.000webhostapp.com/app/index.html"type="button" target="_blank"  class="btn btn-warning btn-sq-lg btn-block"><center> E</center></a></div>
 		
 	</div>
 
 
 	<div class="row">
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon glyphicon-bed"></span><b><i> Vehicle</i></b></div></div>
-		<div class="col-sm-3"><a href="map.html" target="_blank"><button type="button" class="btn btn-primary btn-block btn-lg">Location</button></a></div>
+		<div class="col-sm-3"><a href="map.html" target="_blank"><button type="button" class="btn btn-danger btn-sq-lg btn-block">
+				<i class="fa fa-map-marker fa-4x"></i><br/>Location</button></a></div>
 		
 	</div>
 
 	<div class="row">
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-folder-close"></span><b><i> Report</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-block btn-lg">Reports</button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-sq-lg btn-block">
+				<i class="fa fa-file fa-4x"></i><br/>Reports</button></div>
 		
 	</div>
 

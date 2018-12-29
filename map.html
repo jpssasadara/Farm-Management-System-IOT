@@ -79,18 +79,16 @@
 
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A&sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1tT3fd2z3VGIoyFbGgc0xpIKg-vp0wPs&sensor=false"></script>
 <script src="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&
-key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
-
-
+key=AIzaSyD1tT3fd2z3VGIoyFbGgc0xpIKg-vp0wPs"></script>
 
 <script>
   // Initialize Firebase
 
   // TODO: Replace with your project's customized code snippet AIzaSyCzBZbVu_wwU1d0denayDZ1_FbLHVxG1J8
   var config = {
-    apiKey: "AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A",
+    apiKey: "AIzaSyD1tT3fd2z3VGIoyFbGgc0xpIKg-vp0wPs",
     authDomain: "vehicletrackinsystem.firebaseapp.com",
     databaseURL: "https://vehicletrackinsystem.firebaseio.com",
     projectId: "vehicletrackinsystem",
@@ -101,12 +99,13 @@ key=AIzaSyBppu5W1l40gdMgo2f8DTOmHxiKXWBK-9A"></script>
   var database = firebase.database();
   
   var leadsRef = database.ref('Location');
-    leadsRef.on('value', gotData,errData);
+  leadsRef.on('value', gotData,errData);
 
   var loc;
   var latitude;
   var longitude;
   function gotData(data){
+      //console.log(data);
       loc=data.val();
       locArr=loc.split(',');
       latitude=locArr[0];
