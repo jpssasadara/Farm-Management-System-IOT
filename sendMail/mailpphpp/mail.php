@@ -6,9 +6,10 @@ require_once 'PHPMailer/PHPMailerAutoload.php';
 //$email = $_POST['email'];
 $email='fmsucscgroup5@gmail.com';
 //$password = $_POST['password'];
-$Password='fmsucscg5';
+$password='fmsucscg5';
 
-$to_id = $_POST['toid'];
+//$to_id = $_POST['toid'];
+$to_id="jpssasadara95@gmail.com";
 $message = $_POST['message'];
 $subject = $_POST['subject'];
 
