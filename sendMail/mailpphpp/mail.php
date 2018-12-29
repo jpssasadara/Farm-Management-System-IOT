@@ -9,7 +9,20 @@ $email='fmsucscgroup5@gmail.com';
 $password='fmsucscg5';
 
 //$to_id = $_POST['toid'];
-$to_id="jpssasadara95@gmail.com";
+$nicc = $_POST['nic'];
+$to_id="";
+//to get shop's email address from nic 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+$connect = mysqli_connect("localhost", "root", "", "fmsmy");   
+$query = "SELECT email FROM registeredshop WHERE nic ='$nicc'";  
+$result = mysqli_query($connect, $query); 
+  while($row = mysqli_fetch_assoc($result)) {
+      $to_id= $row['email'];  
+    }
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
 $message = $_POST['message'];
 $subject = $_POST['subject'];
 
@@ -22,7 +35,7 @@ $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 $mail->Username = $email;
 $mail->Password = $password;
-$mail->FromName = "SoftAOX - PHP Mailer";
+$mail->FromName = "Labuduwa Farm-Management-System-IOT";
 
 // Email Sending Details
 $mail->addAddress($to_id);
@@ -35,7 +48,14 @@ $error = "Mailer Error: " . $mail->ErrorInfo;
 echo '<p>'.$error.'</p>';
 }
 else {
-echo '<p>Message sent!</p>';
+
+
+//header('Location: http://localhost/FmsFarmSide6/Farm-Management-System-IOT/#/admin/handel/orders');
+echo "message successfully sent";
+echo '<script language="javascript">';
+echo 'alert("message successfully sent")';
+echo '</script>';
+
 }
 
 ?>
