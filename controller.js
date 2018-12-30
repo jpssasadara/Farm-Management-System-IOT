@@ -372,6 +372,28 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewRegShopOrdersEmail.html"
            })
 
+//Notification/app
+             .when("/Notification/app",{                    
+                          resolve:{
+                              "check":function($location,$cookies,$rootScope){
+                                  if(!$cookies.get('cookie')){
+                                      $location.path('/');
+                                  }
+                                  if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                                      $rootScope.adminname=$cookies.get('cookiename');
+                                      $rootScope.shopname=$cookies.get('cookie2name');
+                                  } else if ($cookies.get('cookiename')!=null){
+                                      $rootScope.adminname=$cookies.get('cookiename');
+                                      $rootScope.shopname=" LoginShop";
+                                  }else if($cookies.get('cookie2name')!=null){
+                                      $rootScope.shopname=$cookies.get('cookie2name');
+                                      $rootScope.adminname=" LoginAdmin";
+                
+                                  }
+                              }
+                          },
+                          templateUrl: "appnotification/push_notification.php"
+                       })
 
 
            //**********************************developing yet*********************************************************
@@ -598,7 +620,10 @@ app.controller("Admincontroller",function($scope,$location){
     $scope.ViewOrder=function(){
         $location.path('/get/regfarmer/order');
     };
-    
+
+    $scope.Notification=function(){
+        $location.path('/Notification/app');
+    };
 
 });
 

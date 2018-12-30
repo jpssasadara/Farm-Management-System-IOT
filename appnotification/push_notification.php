@@ -30,7 +30,7 @@
 	}
 	
 
-	$conn = mysqli_connect("localhost","root","","fcm");
+	$conn = mysqli_connect("localhost","root","","fmsmy");
 
 	$sql = " Select Token From users";
 
@@ -46,7 +46,7 @@
 
 	mysqli_close($conn);
 
-	$message = array("message" => " FCM PUSH NOTIFICATION TEST MESSAGE sasadara");
+	$message = array("message" => " <b>FCM PUSH NOTIFICATION TEST MESSAGE</b> sasadara");
 	$message_status = send_notification($tokens, $message);
 	echo $message_status;
 
