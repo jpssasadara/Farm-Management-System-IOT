@@ -1063,8 +1063,16 @@ app.controller("RegisterAdminController", function($scope, $http){
                 "module/Items/UpdateItems.php",  
                 {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
            ).success(function(data){
-                 
-                       
+                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        //send notification
+                                $scope.noti2 ="New "+$scope.name+" "+$scope.amount+""+$scope.unit+" is Rs: "+$scope.price+" /=";
+                               $http.post('appnotification/push_notification.php',
+                             {'msg':$scope.noti2}
+                             ).success(function(data){
+                                  alert("Now !! A Notification was sent to Mobile App... "); 
+                             });
+                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
                         $scope.code = null;
                         $scope.name = null;
                         $scope.price = null;
