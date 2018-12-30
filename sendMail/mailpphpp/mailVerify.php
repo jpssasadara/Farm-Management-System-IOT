@@ -63,7 +63,7 @@ $message = "<center><h2>#####Labuduwa Farm#####</h2></center><br><b>Dear Custome
       <td>'$date'</td>
     </tr>
   </tbody>
-</table></center> <br> <p>"."sasadara"."</p><br><b>Thanks.....<br> For More -: 0702808565 </b>";
+</table></center> <br> <p>"."We have accepted your above order. It may be purchased from farm shop on time . If transport facilities are required let us know before two days (Tel - 0702535687). "."</p><br><b>Thanks.....<br> For More -: 0702808565 </b>";
 $subject = "Verified Order";
 
 // Configuring SMTP server settings
