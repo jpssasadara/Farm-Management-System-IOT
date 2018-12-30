@@ -1,36 +1,39 @@
 <div ng-controller="FarmShopController" class="container" ng-init="displayReport()">
+<h2>FarmShop Report <span class="glyphicon glyphicon-shopping-cart"></span></h2>    
+
 <form class="form-horizontal" method="post">
-  <input type="text" id="date" ng-model="date">
-  <button id="singlebutton" name="singlebutton" ng-click="getDate()" class="btn btn-primary btn-lg">Search</button>
+<div class="col-sm-3"><input type="text" class="form-control" id="date" ng-model="date"></div>
+<button id="singlebutton" name="singlebutton" ng-click="getDate()" class="btn btn-default">Search</button>
 </form>
-  <h2>FarmShop Report <span class="glyphicon glyphicon-shopping-cart"></span></h2>    
 <div class = "row">
-        <!--<div class ="col-md-2"></div>-->
-        <div  class = "col-md-12" class = style="width:500px;">  
+<!--<div class ="col-md-2"></div>-->
+<div  class = "col-md-12" class = style="width:500px;">  
                         
                         
                              
-                             <br /><br />  
-                             <table class="table table-bordered table-striped"> 
-                                <thread class="thread-dark"> 
-                                  <tr> 
-                                       <th scope="col">Item Name</th>
-                                       <th scope="col">Quantity</th>  
-                                       <th scope="col">Price(Rs.)</th>
-                                       <th scope="col">Total Amount(Rs.)</th>
-                                </tr>  
-                                </thread>
-                                <tbody>
-                                  <tr ng-repeat="x in items">
-                                       <td>{{x.item_name}}</td>
-                                       <td>{{x.quantity}}</td>  
-                                       <td><b>{{x.price}}</b></td> 
-                                       <td><b>{{x.total}}</b></td>
-                                  </tr>
-                                </tbody>
-                             </table>  
-                        </div>  
-                   </div>  
+  <br /><br />  
+  <table class="table table-bordered table-striped"> 
+    <thread class="thread-dark"> 
+      <tr> 
+        <th scope="col">Item Name</th>
+        <th scope="col">Quantity</th>  
+        <th scope="col">Price(Rs.)</th>
+        <th scope="col">Total Amount(Rs.)</th>
+    </tr>  
+    </thread>
+    <tbody>
+      <tr ng-repeat="x in items">
+        <td>{{x.item_name}}</td>
+        <td>{{x.quantity}}</td>  
+        <td><b>{{x.price}}</b></td> 
+        <td><b>{{x.total}}</b></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-sm-9"></div><a href="reports.php" target="_blank"><button class="btn btn-primary btn-sq-lg">
+    <i class="fa fa-file fa-2x"></i><br/>Print Reports</button></a>
+</div>  
+</div>  
 
 
 
