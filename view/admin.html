@@ -101,6 +101,15 @@
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon glyphicon-bed"></span><b><i> Vehicle</i></b></div></div>
 		<div class="col-sm-3"><a href="map.html" target="_blank"><button type="button" class="btn btn-danger btn-sq-lg btn-block">
 				<i class="fa fa-map-marker fa-4x"></i><br/>Location</button></a></div>
+
+
+		
+
+		<div class="col-sm-6">		
+		 <textarea class="form-control" type="textarea" name="noti" ng-model = "noti"
+            id="message" placeholder="Your Notification For Mobile App Here.........."
+            maxlength="6000" rows="4"></textarea>
+        </div>
 		
 	</div>
 
@@ -108,12 +117,15 @@
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-folder-close"></span><b><i> Report</i></b></div></div>
 		<div class="col-sm-3"><button type="button" class="btn btn-warning btn-sq-lg btn-block">
 				<i class="fa fa-file fa-4x"></i><br/>Reports</button></div>
-		<div class="col-sm-3"><button type="button" ng-click="Notification()" class="btn btn-warning btn-sq-lg btn-block">
-				<i class="fa fa-file fa-4x"></i><br/>Send Notifications .</button></div>
 		
+		<div class="col-sm-1"> </div>
+		
+
+        <div class="col-sm-4"><button type="button" ng-click="Notification()" class="btn btn-warning btn-sq-lg btn-block glyphicon glyphicon-bell">
+				Send Notifications</button></div>
 	</div>
 
-
+glyphicon glyphicon-bell
 	
 </div>
 </div>

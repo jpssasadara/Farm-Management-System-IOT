@@ -589,7 +589,7 @@ app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
 
 
 //After login Admin Dashboard Controllers
-app.controller("Admincontroller",function($scope,$location){
+app.controller("Admincontroller",function($scope,$http,$location){
      $scope.cashierReg=function(){
         $location.path('/admin_register_Cashier');
     };
@@ -622,7 +622,14 @@ app.controller("Admincontroller",function($scope,$location){
     };
 
     $scope.Notification=function(){
-        $location.path('/Notification/app');
+        
+        //$location.path('/Notification/app');
+        //send notification
+         $http.post('appnotification/push_notification.php',
+       {'msg':$scope.noti}
+       ).success(function(data){
+            alert(data); 
+       });
     };
 
 });

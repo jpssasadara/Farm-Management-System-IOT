@@ -1,5 +1,7 @@
 <?php 
-
+	$connect = mysqli_connect("localhost", "root", "", "fmsmy");
+	$data1 = json_decode(file_get_contents("php://input")); 
+ 	$msg = mysqli_real_escape_string($connect, $data1->msg);
 	function send_notification ($tokens, $message)
 	{
 		$url = 'https://fcm.googleapis.com/fcm/send';
@@ -46,10 +48,10 @@
 
 	mysqli_close($conn);
 
-	$message = array("message" => " <b>FCM PUSH NOTIFICATION TEST MESSAGE</b> sasadara");
+	$message = array("message" =>$msg);
 	$message_status = send_notification($tokens, $message);
-	echo $message_status;
-
+	//echo $message_status;
+	echo json_encode( $message_status);
 
 
  ?>
