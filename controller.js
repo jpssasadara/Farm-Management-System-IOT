@@ -418,6 +418,30 @@ app.config(function($routeProvider) {
               },
               templateUrl: "view/loadItemsToStores.html"
            })
+
+           ///admin/AddItem/loadRegFarmers
+           // C:\xampp\htdocs\FmsFarmSide6\Farm-Management-System-IOT\view\loadItemsToStoresFromRegfarmers.html
+           .when("/admin/AddItem/loadRegFarmers",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/loadItemsToStoresFromRegfarmers.html"
+           })
           //************************************************************************************************************* 
 
      .otherwise({
@@ -605,10 +629,14 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.addItems=function(){
         $location.path('/admin/AddItem/details');
     };
+    //load farm product to stores 
     $scope.load=function(){
         $location.path('/admin/AddItem/load');
     };
-
+    //load reg farmers product to stores
+     $scope.loadRegFarmers=function(){
+        $location.path('/admin/AddItem/loadRegFarmers');
+    };
     
     $scope.viewLocation=function(){
         $location.path('/admin/location');
@@ -1065,7 +1093,7 @@ app.controller("RegisterAdminController", function($scope, $http){
            ).success(function(data){
                  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         //send notification
-                                $scope.noti2 ="New "+$scope.name+" "+$scope.amount+""+$scope.unit+" is Rs: "+$scope.price+" /=";
+                                $scope.noti2 ="New "+$scope.name+" "+$scope.amount+""+$scope.unit+" is Rs: "+$scope.price+"/=";
                                $http.post('appnotification/push_notification.php',
                              {'msg':$scope.noti2}
                              ).success(function(data){
