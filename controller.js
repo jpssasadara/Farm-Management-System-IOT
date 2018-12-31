@@ -1249,24 +1249,49 @@ app.controller("RegisterAdminController", function($scope, $http){
 
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
-        alert($scope.itemcode);
-         $http.post('module/Stores/LoadStores.php',
+       
+        if ($scope.farmernic!= null && $scope.itemcode && $scope.amount!=null && $scope.total!=null) {
+          if ($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V' ){
+             $http.post('module/Stores/LoadStores.php',
            {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
-            ).success(function(response){  
-                alert(response);
+            ).success(function(response){
+                  //alert(response);
+                  $scope.farmernic="";
+                  
+                  $scope.amount="";
+                  $scope.total="";
+                  swal(
+                  'OK!',
+                  'Your Data has been Added.',
+                  'success'
+              )
                 $scope.select(); 
                 $scope.selectFruit(); //farmernic itemcode amount total
                
-           });  
+           }); 
+          } else {
+            swal(
+                  'Error!',
+                  'Invalied NIC....'
+                  
+        )
+             $scope.farmernic="";
+          }
+           
+        } else {
+           swal(
+                  'Error!',
+                  'Check Your Inputs.'
+                  
+        )}
+        
       }
        
       //refreshpage()
       $scope.refreshpage = function(){
-        //$route.reload();
-        //$location.reload();
          $scope.select(); 
          $scope.selectFruit();
-       // $location.path('/admin/AddItem/loadRegFarmers');
+      
       }
  }); 
       
