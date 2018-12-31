@@ -22,20 +22,19 @@
                <div class="row"><center><b>Vegetables</b></center></div>
                 <div class="col-md-2" ng-repeat="image in images">  
                      <img  ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-warning btn-xs" ng-click="showme=true">Loading</button> </div>
-                     <div>
+                      <div>
                             <!--pop up windows -->
-                            <div class="form-popup"  ng-show="showme" id="myForm">
+                            <div class="form-popup "  ng-show="showme" id="myForm" >
                             <form action="/action_page.php" class="form-container">
-                              <h1>developing yet </h1>
-
-                              <label for="email"><b>fghfghhjf</b></label>
-                              <input type="text" placeholder="Enter Email" name="email" required>
+                              <h1>Add Items.. </h1>
+                              <label for="" class="mr-sm-2"><b>Email address:</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Email" name="email" required>
 
                               <label for="psw"><b>dfbgfhfghf</b></label>
-                              <input type="password" placeholder="Enter Password" name="psw" required>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" name="psw" required>
 
-                              <button type="submit" class="btn">Login</button>
-                              <button type="button" class="btn cancel" ng-click="showme=false">Close</button>
+                              <button type="submit" class="btn btn-success btn-xs" >Add</button>
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false">Close</button>
                             </form>
                           </div>
                     </div>

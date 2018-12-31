@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Framer Registration  form </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+
+	<style >
+		body{
+			background: white;
+		}
+			
+			.warp{
+				width: 720px;
+				margin-top: 50px;
+				background: #F2F3F4;
+				padding: 10px;
+				margin:auto;
+				
+			}
+			form{
+				padding: 15px;
+				font-family: arial;
+				border: 1px dotted white;
+
+			}
+			h2{
+				text-align: center ;
+				background: darkblue;
+				color: white;
+				padding: 12px;
+				width: 400px;
+
+				border-radius: 12px;
+			}
+			input{
+				padding-left: 100px;
+				padding: 10px;
+				margin:5px;
+				border-radius: 5px;
+				border:100px;
+
+			}
+
+			input[type=text], input[type=email],input[type=text],input[type=text],input[type=text],input[type=text]{
+				width:	77%;
+				padding:center;
+				border: 1px solid black;
+					}
+				input[type=submit]{
+					margin-top: 50px;
+					width:35%;
+					margin-left: 100px;
+					background: green;
+					cursor: pointer;
+					font-size: 18px;
+					font-weight: bold;
+					color: white;
+
+				}
+			select{padding-left: 100px;
+				padding: 10px;
+				margin:5px;
+				border-radius: 5px;
+				border:100px;
+				border: 1px solid black;
+			}
+
+		}
+	</style>
+</head>
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#">POS</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#">Home</a></li>
+        <li><a href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#">About</a></li>
+        <li><a href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#">Courses</a></li>
+        <li><a href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="tryit.asp-filename=trybs_temp_marketing2&stacked=h.html#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="warp">
+	<form>
+		<h2>Shop Registration  form </h2>
+		<label for="party">Shop Name: </label></br>
+		<input type="text" name="Name" placeholder="Enter Your Shop Name" required> </br>
+		<label for="party">Email:     </label></br>
+		<input type="email" name="Email" placeholder="Enter Your Office Email" required></br>
+		<label for="party">Address:   </label></br>
+		<input type="text" name="Address" placeholder="Enter Address" required></br>
+		
+		<label for="party">Office Tel Number :</label></br>
+		<input type="text" name="" placeholder="Enter Your Number" required></br>
+		<label for="party">Shop Owner :</label></br>
+		<input type="text" name="" placeholder="Enter Your Name" required></br>
+		<label for="party">Shop Owner's Nic :</label></br>
+		<input type="text" name="" placeholder="Enter Your Nic" required></br>
+		
+    	
+		<br>
+		<label for="party">Category:
+		<select name="Full Time" >
+			<option>Full Time</option>
+			<option>Part Time</option>
+			
+		</select>
+		
+		<br><br>
+		
+		<label for="party">Select Product type:</label>
+		<select name="Vegitable" mutiple size="=2">
+			<option>Vegitable</option>
+			<option>Beans</option>
+			<option>Animal Product</option>
+		</select></br>
+		
+		<label for="party">Note :</label></br>
+		<input type="text" name=""></br>
+	</br>
+		<input type="checkbox" required> I Agree to the Terms of Use
+		<input type="submit" value="Submit Now">
+	</form>
+
+</div>

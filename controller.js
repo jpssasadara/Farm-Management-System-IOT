@@ -175,6 +175,28 @@ app.config(function($routeProvider) {
         templateUrl: "view/Items.html"
      })
 
+     .when("/admin/farmerReg",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/farmerRegister.html"
+     })
+
      .when("/admin/location",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -633,10 +655,17 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.load=function(){
         $location.path('/admin/AddItem/load');
     };
+
     //load reg farmers product to stores
      $scope.loadRegFarmers=function(){
         $location.path('/admin/AddItem/loadRegFarmers');
     };
+
+    //(ISURU>>>>>)
+    $scope.getFarmerReg=function(){
+        $location.path('/admin/farmerReg');
+    };
+
     
     $scope.viewLocation=function(){
         $location.path('/admin/location');
