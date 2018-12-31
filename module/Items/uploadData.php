@@ -20,7 +20,7 @@ while($row = mysqli_fetch_array($result))
 }  
 
      $output = $output+1;  
-$insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";  
+$insertQuery = "INSERT INTO items(Load_No,Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES (null,'$code','$name','$price','$amount','$unit','$discount','$output','$Type')";  
 if(mysqli_query($connect, $insertQuery))  
 {  
      echo 'File Uploaded';  

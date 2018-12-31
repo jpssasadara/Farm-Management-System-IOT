@@ -9,25 +9,25 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
            $total = mysqli_real_escape_string($connect, $data->total);       
          
               
-           $insertQuery = "INSERT INTO load_stores_items(Item_Code,Amount) VALUES ($itemcode,$amount)";  
+           $insertQuery = "INSERT INTO load_stores_items(Item_Code,Load_Num,Amount) VALUES ('$itemcode',null,'$amount')";  
            if(mysqli_query($connect, $insertQuery))  
            {  
-                echo 'File Uploaded';  
+                echo 'Ok ..  ';  
            }  
            else  
            {  
-                echo 'File Uploaded But not Saved'; 
+                echo  $insertQuery; 
                 //echo  $insertQuery; 
            }  
-           $getdatee=date("Y/m/d");
-           $insertQuery = "INSERT INTO loading_stores_invoice(Dateorder,Income,Reg_Farmer_Or_Farm_Id) VALUES ($getdatee,$total,$farmernic)";  
+          $getdatee=date("Y/m/d");
+           $insertQuery = "INSERT INTO loading_stores_invoice(Load_No,Dateorder,Income,Reg_Farmer_Or_Farm_Id) VALUES (null,'$getdatee','$total','$farmernic')";  
            if(mysqli_query($connect, $insertQuery))  
            {  
-                echo 'File Uploaded';  
+                echo 'Added order..';  
            }  
            else  
            {  
-                echo 'File Uploaded But not Saved'; 
+                echo  $insertQuery; 
                 //echo  $insertQuery;
            }  
      

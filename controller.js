@@ -683,7 +683,6 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.load=function(){
         $location.path('/admin/AddItem/load');
     };
-
     //load reg farmers product to stores
      $scope.loadRegFarmers=function(){
         $location.path('/admin/AddItem/loadRegFarmers');
@@ -1100,7 +1099,7 @@ app.controller("RegisterAdminController", function($scope, $http){
         )}; 
  });
 
- app.controller("AddItemDetails", function($scope, $http){  
+ app.controller("AddItemDetails", function($scope, $http,$location){  
   //upload image in to file and add location of image and image id in to image table
       $scope.uploadFile = function(){  
            var form_data = new FormData();  
@@ -1243,25 +1242,32 @@ app.controller("RegisterAdminController", function($scope, $http){
       }
 
       //set data when pop up window for loading items
-       $scope.setDataPopUpWind = function(code){  
+       $scope.setDataPopUpWind = function(code){ 
+          //$scope.farmernic="";
           $scope.itemcode=code;
       }
 
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
-        alert("fgdfgd");
+        alert($scope.itemcode);
          $http.post('module/Stores/LoadStores.php',
            {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
             ).success(function(response){  
-                swal(response);
+                alert(response);
                 $scope.select(); 
                 $scope.selectFruit(); //farmernic itemcode amount total
                
            });  
       }
        
-
-
+      //refreshpage()
+      $scope.refreshpage = function(){
+        //$route.reload();
+        //$location.reload();
+         $scope.select(); 
+         $scope.selectFruit();
+       // $location.path('/admin/AddItem/loadRegFarmers');
+      }
  }); 
       
 
