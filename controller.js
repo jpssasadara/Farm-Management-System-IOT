@@ -1241,17 +1241,22 @@ app.controller("RegisterAdminController", function($scope, $http){
           $scope.selectFruit(); 
       }
 
-      //set data when pop up window for loading items
+      //set data when pop up window for loading items form reg Farmers
        $scope.setDataPopUpWind = function(code){ 
-          //$scope.farmernic="";
           $scope.itemcode=code;
+      }
+
+       //set data when pop up window for loading items form Farm
+       $scope.setDataPopUpWindFarm = function(code){ 
+          $scope.itemcode=code;
+          $scope.farmernic="LabuduwaFarm";
       }
 
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
        
         if ($scope.farmernic!= null && $scope.itemcode && $scope.amount!=null && $scope.total!=null) {
-          if ($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V' ){
+          if (($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V')|| $scope.farmernic=="LabuduwaFarm" ){
              $http.post('module/Stores/LoadStores.php',
            {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
             ).success(function(response){
