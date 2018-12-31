@@ -1,0 +1,471 @@
+
+<?php
+  //farmerReq.php  
+  include('database_connection.php');
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <style>
+      
+    .abc-cc {
+        background-color: black;
+        padding: 16px;
+        text-align: center;
+    }
+    .abc-ccc {
+        background-color: #f0f0f0;
+        padding: 1px;
+        text-align: center;
+    }
+    .abc-c {
+        
+        text-shadow: 1px 1px #ccc;
+    }
+
+.footer {
+  background: rgb(0,0,0);
+  padding: 10px 0;
+}
+      .footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+}
+      /* Remove the navbar's default margin-bottom and rounded borders */ 
+      .navbar {
+      margin-bottom: 4px;
+      border-radius: 0;
+      }
+      /* Add a gray background color and some padding to the footer */
+      footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+      }
+      .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+      }
+      .navbar-brand
+      {
+      padding:5px 40px;
+      }
+      .navbar-brand:hover
+      {
+      background-color:#ffffff;
+      }
+      /* Hide the carousel text when the screen is less than 600 pixels wide */
+      @media (max-width: 600px) {
+      .carousel-caption {
+      display: none; 
+      }
+      }
+    </style>
+  </head>
+  <body>
+  
+  <div class="container">
+<div class="p-3 mb-2 bg-success text-white">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href='invoice.php'>POS</a></li>
+      <li class="active"><a href='/Farm-Management-System-IoT'>Home</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href='invoice.php'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+
+
+    <style>
+      .box
+      {
+      width: 100%;
+      max-width: 1390px;
+      border-radius: 5px;
+      border:1px solid #ccc;
+      padding: 15px;
+      margin: 0 auto;                
+      margin-top:50px;
+      box-sizing:border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="css/datepicker.css">
+    <script src="js/bootstrap-datepicker1.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+    <script>
+      $(document).ready(function(){
+        $('#order_date').datepicker({
+          format: "yyyy-mm-dd",
+          autoclose: true,
+          uiLibrary: 'bootstrap'
+        });
+      });
+    </script>
+    <div class="container-fluid">
+      <?php
+      if(isset($_GET["add"]))
+      {
+      ?>
+      
+      <form method="post" id="invoice_form">
+      
+        <div class="table-responsive">
+          <table class="table table-bordered">
+          
+            <tr>
+            
+              <td colspan="2" align="center"><h2 style="margin-top:10.5px"><span class="glyphicon glyphicon-folder-open"> Make New Order</h2></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                  <div class="row">
+                    <div class="col-md-8">
+                      To,<br />
+                        <b>Your Details</b><br />
+                        <input type="text" name="order_receiver_name" id="order_receiver_name" class="form-control input-sm" placeholder="Enter Farmer Name" />
+                        <textarea name="order_receiver_address" id="order_receiver_address" class="form-control" placeholder="Enter Address"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                      Reverse Charge<br />
+                      <input type="text" name="order_no" id="order_no" class="form-control input-sm" placeholder="Enter Invoice No." />
+                      <input type="text" name="order_date" id="order_date" class="form-control input-sm" readonly placeholder="Select Date" />
+                    </div>
+                  </div>
+                  <br />
+                  <table id="invoice-item-table" class="table table-bordered">
+                    <tr>
+                      <th width="7%">Sr No.</th>
+                      <th width="12.5%">Item Type</th>
+                      <th width="12.5%">Item Name</th>
+                      <th width="5%">Quantity</th>
+                      <th width="10%">Price</th>
+                      <th width="10%">Actual Amt.</th>
+                      <th width="3%"></th>
+                    </tr>
+            
+                    <script type="text/javascript">
+                  
+                        var products = new Array(20) 
+                        products["empty"] = ["Select a product"]; 
+                        products["vegetables"] = ['Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol']; 
+                        products["fruits"] = ['banana','orange','cocoa','guava','pineapple','avacado','grapes']; 
+                        products["milkproduct"] = ['yougurt','milkCup','curd','juice']; 
+                        products["others"]= ['eggs','chicken','cashews','soy nuts','peanuts','almond']; 
+                        /* SelectProduct() is called from the onchange event of a select element. 
+                        * param selectObj - the select object which fired the on change event. 
+                        */ 
+                        function SelectProduct(selectObj,count) { 
+                        // get the index of the selected option 
+                        var idx = selectObj.selectedIndex; 
+                        // get the value of the selected option 
+                        var which = selectObj.options[idx].value; 
+                        // use the selected option value to retrieve the list of items from the products array 
+                        cList = products[which]; 
+                        // get the product select element via its known id 
+                        var cSelect = document.getElementById("item_name"+count); 
+                        // remove the current options from the product select 
+                        var len=cSelect.options.length; 
+                        while (cSelect.options.length > 0) { 
+                        cSelect.remove(0); 
+                        } 
+                        var newOption; 
+                        // create new options 
+                        for (var i=0; i<cList.length; i++) { 
+                        newOption = document.createElement("option"); 
+                        newOption.value = cList[i];  // assumes option string and value are the same 
+                        newOption.text=cList[i]; 
+                        // add the new option 
+                        try { 
+                        cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE 
+                        } 
+                        catch (e) { 
+                        cSelect.appendChild(newOption); 
+                        } 
+                        } 
+                        } 
+                        //]]>
+                        </script>
+
+
+                  <tr>
+                      <td><span id="sr_no">1</span></td>
+                      <!--<td><input type="text" name="item_name[]" id="item_name1" class="form-control input-sm" /></td>-->
+                      <td>
+                      <select class="form-control" id="type" name="type" onchange="SelectProduct(this,0);">
+                        <option value="empty">Select a productType</option>
+                        <option value="vegetables">vegetables</option>
+                        <option value="fruits">fruits</option>
+                        <option value="milkproduct">milkproduct</option>
+                        <option value="others">others</option>
+                        </select>
+                      </td>
+                      <td>
+                      <select class="form-control" id="item_name0" name="item_name[]">
+                            <option value="0">Select a product</option>
+                        </select>
+
+                      </td>
+                      <td><input type="text" name="order_item_quantity[]" id="order_item_quantity1" data-srno="1" class="form-control input-sm order_item_quantity" /></td>
+                      <td><input type="text" name="order_item_price[]" id="order_item_price1" data-srno="1" class="form-control input-sm number_only order_item_price" /></td>
+                      <td><input type="text" name="order_item_actual_amount[]" id="order_item_actual_amount1" data-srno="1" class="form-control input-sm order_item_actual_amount" readonly /></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <div align="right">
+                    <button type="button" name="add_row" id="add_row" class="btn btn-success btn-xs">+</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="right"><b>Total</td>
+                <td align="right"><b><span id="final_total_amt"></span></b></td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  <input type="hidden" name="total_item" id="total_item" value="1" />
+                  <input type="submit" name="create_invoice" id="create_invoice" class="btn btn-warning" value="Request" />
+                </td>
+              </tr>
+          </table>
+        </div>
+      </form>
+      <script>
+      $(document).ready(function(){
+        var final_total_amt = $('#final_total_amt').text();
+        var count = 1;
+        
+        $(document).on('click', '#add_row', function(){
+          count++;
+          $('#total_item').val(count);
+          var html_code = '';
+          html_code += '<tr id="row_id_'+count+'">';
+          html_code += '<td><span id="sr_no">'+count+'</span></td>';
+          
+          //html_code += '<td><input type="text" name="item_name[]" id="item_name'+count+'" class="form-control input-sm" /></td>';
+
+        html_code += '<td>'+
+                      '<select class="form-control" id="type'+count+'" name="type" onchange="SelectProduct(this,'+count+');">'+
+                        '<option value="empty">Select a productType</option>'+
+                        '<option value="vegetables">vegetables</option>'+
+                        '<option value="fruits">fruits</option>'+
+                        '<option value="milkproduct">milkproduct</option>'+
+                        '<option value="others">others</option>'+
+                        '</select>'+
+                      '</td>';
+                      
+          html_code +='<td>'+
+                      '<select class="form-control" id="item_name'+count+'" name="item_name[]">'+
+                            '<option value="0">Select a product</option>'+
+                        '</select></td>';
+
+          
+          html_code += '<td><input type="text" name="order_item_quantity[]" id="order_item_quantity'+count+'" data-srno="'+count+'" class="form-control input-sm number_only order_item_quantity" /></td>';
+          html_code += '<td><input type="text" name="order_item_price[]" id="order_item_price'+count+'" data-srno="'+count+'" class="form-control input-sm number_only order_item_price" /></td>';
+          html_code += '<td><input type="text" name="order_item_actual_amount[]" id="order_item_actual_amount'+count+'" data-srno="'+count+'" class="form-control input-sm order_item_actual_amount" readonly /></td>';
+          
+          html_code += '<td><button type="button" name="remove_row" id="'+count+'" class="btn btn-danger btn-xs remove_row">X</button></td>';
+          html_code += '</tr>';
+          $('#invoice-item-table').append(html_code);
+        });
+        
+        $(document).on('click', '.remove_row', function(){
+          var row_id = $(this).attr("id");
+          var total_item_amount = $('#order_item_final_amount'+row_id).val();
+          var final_amount = $('#final_total_amt').text();
+          var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+          $('#final_total_amt').text(result_amount);
+          $('#row_id_'+row_id).remove();
+          count--;
+          $('#total_item').val(count);
+        });
+
+        function cal_final_total(count)
+        {
+          var final_item_total = 0;
+          for(j=1; j<=count; j++)
+          {
+            var quantity = 0;
+            var price = 0;
+            var actual_amount = 0;
+            var item_total = 0;
+            quantity = $('#order_item_quantity'+j).val();
+            if(quantity > 0)
+            {
+              price = $('#order_item_price'+j).val();
+              if(price > 0)
+              {
+                actual_amount = parseFloat(quantity) * parseFloat(price);
+                $('#order_item_actual_amount'+j).val(actual_amount);
+                
+                item_total = parseFloat(actual_amount) ;
+                final_item_total = parseFloat(final_item_total) + parseFloat(item_total);
+                $('#order_item_final_amount'+j).val(item_total);
+              }
+            }
+          }
+          $('#final_total_amt').text(final_item_total);
+        }
+
+        $(document).on('blur', '.order_item_price', function(){
+          cal_final_total(count);
+        });
+
+
+
+        $('#create_invoice').click(function(){
+          if($.trim($('#order_receiver_name').val()).length == 0)
+          {
+            alert("Please Enter Reciever Name");
+            return false;
+          }
+
+          if($.trim($('#order_no').val()).length == 0)
+          {
+            alert("Please Enter Invoice Number");
+            return false;
+          }
+
+          /*
+          if($.trim($('#order_date').val()).length == 0)
+          {
+            alert("Please Select Invoice Date");
+            return false;
+          }*/
+
+          for(var no=1; no<=count; no++)
+          {
+            /*if($.trim($('#item_name'+no).val()).length == 0)
+            {
+              alert("Please Enter Item Name");
+              $('#item_name'+no).focus();
+              return false;
+            }*/
+
+            if($.trim($('#order_item_quantity'+no).val()).length == 0)
+            {
+              alert("Please Enter Quantity");
+              $('#order_item_quantity'+no).focus();
+              return false;
+            }
+
+            if($.trim($('#order_item_price'+no).val()).length == 0)
+            {
+              alert("Please Enter Price");
+              $('#order_item_price'+no).focus();
+              return false;
+            }
+
+          }
+
+          $('#invoice_form').submit();
+
+        });
+
+      });
+      </script>
+      
+     
+
+<div class="footer">
+  <div class="container text-center">
+    <a href=""><i class="fa fa-facebook"></i></a>
+    <a href=""><i class="fa fa-twitter"></i></a>
+    <a href=""><i class="fa fa-linkedin"></i></a>
+    <a href=""><i class="fa fa-google-plus"></i></a>
+    <a href=""><i class="fa fa-skype"></i></a>
+  </div>
+  
+<div class="abc-cc" style="width:100%">
+  
+  &copy Farm Management<br/>
+Contact : 011 2 541 214<br/>
+farmmanagement@gmail.com
+</div>
+</div></div>
+
+
+
+  </body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var table = $('#data-table').DataTable({
+          "order":[],
+          "columnDefs":[
+          {
+            "targets":[4, 5, 6],
+            "orderable":false,
+          },
+        ],
+        "pageLength": 25
+        });
+    $(document).on('click', '.delete', function(){
+      var id = $(this).attr("id");
+      if(confirm("Are you sure you want to remove this?"))
+      {
+        window.location.href="invoice.php?delete=1&id="+id;
+      }
+      else
+      {
+        return false;
+      }
+    });
+  });
+
+</script>
+
+<script>
+$(document).ready(function(){
+$('.number_only').keypress(function(e){
+return isNumbers(e, this);      
+});
+function isNumbers(evt, element) 
+{
+var charCode = (evt.which) ? evt.which : event.keyCode;
+if (
+(charCode != 46 || $(element).val().indexOf('.') != -1) &&  
+(charCode < 48 || charCode > 57))
+return false;
+return true;
+}
+});
+</script>
+
+
