@@ -174,7 +174,7 @@ app.config(function($routeProvider) {
         },
         templateUrl: "view/Items.html"
      })
-
+// (ISURU)
      .when("/admin/farmerReg",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -1185,10 +1185,28 @@ app.controller("RegisterAdminController", function($scope, $http){
           $scope.selectFruit(); 
       }
 
-      
+      //set data when pop up window for loading items
+       $scope.setDataPopUpWind = function(code){  
+          $scope.itemcode=code;
+      }
+
+      //for loading registered shop's & Farm producted items to database
+      $scope.takeLoad = function(){
+        alert("fgdfgd");
+         $http.post('module/Stores/LoadStores.php',
+           {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
+            ).success(function(response){  
+                swal(response);
+                $scope.select(); 
+                $scope.selectFruit(); //farmernic itemcode amount total
+               
+           });  
+      }
+       
 
 
  }); 
+      
 
 //############################################################################################
 
