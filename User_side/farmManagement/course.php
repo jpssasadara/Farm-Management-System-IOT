@@ -15,10 +15,11 @@ if ($result = $mysqli->query($query)) {
     /* fetch associative array */
     //echo "<ul class="list-group">";
     echo "<ul>";
-    while ($row = $result->fetch_assoc()) {
 
+    while ($row = $result->fetch_array()) {
 
-        echo "
+        $a="<img src='data:image/jpg;base64,'".base64_encode($row["Course_Image"]).'/>';
+        echo "<li><img src='".$row['Course_Image']."'></li>
               <li><h1>$row[Course_Name]</h1></li>
               <li><p>$row[Course_description]</p></li>
               <li><h4>$row[Course_duration]</h4></li>
