@@ -1,5 +1,5 @@
 
-<div class="container container-fluid"><h2> Load Items To The Stores <span class="glyphicon glyphicon-shopping-cart"> </h2>
+<div class="container container-fluid"><h2> Load Items To The Stores. <span class="glyphicon glyphicon-shopping-cart"> </h2>
 </div>
 <div ng-controller="AddItemDetails" ng-init="load()">
 <form class="form-horizontal">
@@ -26,14 +26,22 @@
                             <!--pop up windows -->
                             <div class="form-popup "  ng-show="showme" id="myForm" >
                             <form action="/action_page.php" class="form-container">
-                              <h1>Add Items.. </h1>
-                              <label for="" class="mr-sm-2"><b>Email address:</b></label>
-                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Email" name="email" required>
+                              <h2>Add Items.. </h2>
 
-                              <label for="psw"><b>dfbgfhfghf</b></label>
-                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" name="psw" required>
+                              <label for="" class="mr-sm-2"><b>Farm :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2"  name="email" value="farmlabuduwa" required>
 
-                              <button type="submit" class="btn btn-success btn-xs" >Add</button>
+                               <label for="" class="mr-sm-2"><b>Item code :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Item code " name="email" required>
+
+                              <label for="psw"><b>Amount :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Amount " name="psw" required>
+
+                               <label for="" class="mr-sm-2"><b>Total :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Total" name="email" required>
+
+                              <button type="submit" class="btn btn-success btn-xs" >Add & Print Invoice</button>
+                              
                               <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false">Close</button>
                             </form>
                           </div>
@@ -57,17 +65,25 @@
                      </div>
 
                       <div>
-                            <!--pop up windows -->
+                             <!--pop up windows -->
                             <div class="form-popup "  ng-show="showme" id="myForm" >
                             <form action="/action_page.php" class="form-container">
-                              <h1>Add Items.. </h1>
-                              <label for="" class="mr-sm-2"><b>Email address:</b></label>
-                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Email" name="email" required>
+                              <h2>Add Items.. </h2>
 
-                              <label for="psw"><b>dfbgfhfghf</b></label>
-                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" name="psw" required>
+                              <label for="" class="mr-sm-2"><b>Farm :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2"  name="email" value="farmlabuduwa" required>
 
-                              <button type="submit" class="btn btn-success btn-xs" >Add</button>
+                               <label for="" class="mr-sm-2"><b>Item code :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Item code " name="email" required>
+
+                              <label for="psw"><b>Amount :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Amount " name="psw" required>
+
+                               <label for="" class="mr-sm-2"><b>Total :</b></label>
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Total" name="email" required>
+
+                              <button type="submit" class="btn btn-success btn-xs" >Add & Print Invoice</button>
+                              
                               <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false">Close</button>
                             </form>
                           </div>
