@@ -18,8 +18,9 @@ if ($result = $mysqli->query($query)) {
 
     while ($row = $result->fetch_array()) {
 
-        $a="<img src='data:image/jpg;base64,'".base64_encode($row["Course_Image"]).'/>';
-        echo "<li><img src='".$row['Course_Image']."'></li>
+        $a="<img src='images/course/$row[Course_Image]'";
+        echo $a;
+        echo "
               <li><h1>$row[Course_Name]</h1></li>
               <li><p>$row[Course_description]</p></li>
               <li><h4>$row[Course_duration]</h4></li>
