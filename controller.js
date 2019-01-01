@@ -197,6 +197,30 @@ app.config(function($routeProvider) {
         },
         templateUrl: "view/farmerRegister.html"
      })
+     //isuru
+
+     .when("/admin/ShopRegister",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/shopRegister.html"
+     })
+     //isuru
 
      .when("/admin/addcources",{                    
         resolve:{
@@ -707,24 +731,27 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.load=function(){
         $location.path('/admin/AddItem/load');
     };
+
     //load reg farmers product to stores
      $scope.loadRegFarmers=function(){
         $location.path('/admin/AddItem/loadRegFarmers');
     };
 
-    //(ISURU>>>>>)
-    $scope.getFarmerReg=function(){
+
+    $scope.getFarmerReg=function(){  //isuru
         $location.path('/admin/farmerReg');
     };
-
-    $scope.getAddCoursePage=function(){
-        $location.path('/admin/addcources');
+    $scope.getShopReg=function(){  //isuru
+        $location.path('/admin/ShopRegister');
     };
+
+   
 
     $scope.viewCoursePage=function(){
         $location.path('/admin/viewcources');
     };
 
+    
     
     $scope.viewLocation=function(){
         $location.path('/admin/location');

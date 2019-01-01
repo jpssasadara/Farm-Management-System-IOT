@@ -1,4 +1,7 @@
-<ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container container-fluid">
 <?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
@@ -13,26 +16,28 @@ $query = "SELECT * FROM Course ";
 if ($result = $mysqli->query($query)) {
 
     /* fetch associative array */
-    //echo "<ul class="list-group">";
-    echo "<ul>";
 
     while ($row = $result->fetch_array()) {
+        echo "<div class='well'>";
+        $a=" <img src='images/course/$row[Course_Image]'>";
+        echo "<ul class='list-unstyled'>";
 
-<<<<<<< HEAD
-        $a="<img src='images/course/$row[Course_Image]'";
-        echo $a;
-        echo "
-=======
-        $a="<img height=\"300\" width=\"300\" src='images/course/$row[Course_Image]'";
-        echo "<li>$a</li>
->>>>>>> 2a68ce467a542ecaca1c1645998be0826c532aef
+        echo " 
+              
+              <div class='row'><div class='col-sm-4'>
+              $a</div><div class='col-sm-8'>
+              <form action='courseRegistration.php' method='get'>
               <li><h1>$row[Course_Name]</h1></li>
+              </div>
               <li><p>$row[Course_description]</p></li>
               <li><h4>$row[Course_duration]</h4></li>
               <li><h4>$row[Course_type]</h4></li>
               <li><h4>$row[Course_fees]</h4></li>
-              <li><h4>$row[Location]</li></h4><br/>";
+              <li><h4>$row[Location]</h4</li>><br/>
+              </form>
+               <a href='courseRegistration.php?cname=$row[Course_Name]'>Register here!</a></div>";
 
+        echo("</div>");
     }
     "</ul>";
     /* free result set */
@@ -42,4 +47,4 @@ if ($result = $mysqli->query($query)) {
 /* close connection */
 $mysqli->close();
 ?>
-</ul>
+</div>
