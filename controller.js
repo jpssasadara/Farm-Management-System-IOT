@@ -311,24 +311,6 @@ app.config(function($routeProvider) {
      })
 
      .when("/forPOS/reports",{                    
-        resolve:{
-            "check":function($location,$cookies,$rootScope){
-                if(!$cookies.get('cookie')){
-                    $location.path('/');
-                }
-                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                } else if ($cookies.get('cookiename')!=null){
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=" LoginShop";
-                }else if($cookies.get('cookie2name')!=null){
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                    $rootScope.adminname=" LoginAdmin";
-    
-                }
-            }
-        },
         templateUrl: "view/reports.html"
      })
 
@@ -751,6 +733,10 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/viewcources');
     };
 
+    $scope.getAddCoursePage=function(){
+        $location.path('/admin/addcources');
+    };
+
     
     
     $scope.viewLocation=function(){
@@ -798,8 +784,7 @@ app.controller("FarmShopController",function($scope,$http,$location){
    }
    $scope.viewReports=function(){
     $location.path('/forPOS/reports');
-};
-
+   }
 });
 
 
@@ -1134,7 +1119,7 @@ app.controller("RegisterAdminController", function($scope, $http){
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
         .success(function(data){  
-            console.log(data); 
+            //console.log(data); 
             $scope.items = data;
              
         });  
