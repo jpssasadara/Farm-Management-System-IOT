@@ -25,5 +25,5 @@ if($result)
 }
 else
 {
-    echo "Unknown Error!";
+    echo $query;
 }
