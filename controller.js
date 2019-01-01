@@ -786,6 +786,10 @@ app.controller("FarmShopController",function($scope,$http,$location){
    $scope.viewReports=function(){
     $location.path('/forPOS/reports');
    }
+
+   $scope.viewFOS=function(){
+    $location.path('/forPOS');
+   }
 });
 
 
