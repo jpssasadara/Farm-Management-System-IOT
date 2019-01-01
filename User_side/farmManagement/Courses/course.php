@@ -19,7 +19,7 @@ if ($result = $mysqli->query($query)) {
 
     while ($row = $result->fetch_array()) {
         echo "<div class='well'>";
-        $a=" <img src='images/course/$row[Course_Image]'>";
+        $a=" <img src='images/$row[Course_Image]'>";
         echo "<ul class='list-unstyled'>";
 
         echo " 

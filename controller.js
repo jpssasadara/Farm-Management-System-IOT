@@ -761,6 +761,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
        });
     };
 
+
 });
 
 
