@@ -64,7 +64,7 @@ $output.='
         </tr>
         ';
     }
-    $output.= "<hr><tr>
+    $output.= "<tr>
             <td></td>
             <td></td>
             <td><b>Total</b></td>

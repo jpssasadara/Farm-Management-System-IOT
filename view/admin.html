@@ -50,8 +50,8 @@
 	<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-barcode"></span><b><i> Farm Stores</i></b></div></div>
 		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" ng-click="load()" >
 				<i class="fa fa-edit fa-4x"></i><br/>Loading Farm product</button></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" href='farmerReq.php' >
-				<i class="fa fa-registered fa-4x"></i><br/>Loading Registered </button></div>
+		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block" ng-click="loadRegFarmers()" >
+				<i class="fa fa-registered fa-4x"></i><br/>Loading From Registered shop </button></div>
 		<div class="col-sm-3"><button type="button" class="btn btn-success btn-sq-lg btn-block">
 				<i class="fa fa-eye fa-4x"></i><br/>View Stores Details</button></div>
 	</div>
@@ -60,7 +60,7 @@
 
 	<div class="row">
 	<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-pawn"></span><b><i> Registered Farmers</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
+		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block" ng-click="getFarmerReg()">
 			<i class="fa fa-registered fa-4x"></i><br/>Registation</button></div>
 		<div class="col-sm-3"><button type="button" class="btn btn-primary btn-sq-lg btn-block">
 			<i class="fa fa-eye fa-4x"></i><br/>View Registered Farmers</button></div>
@@ -80,7 +80,7 @@
 
 	<div class="row">
 		<div class="col-sm-3"><div class="well"><span class="glyphicon glyphicon-book"></span><b><i> Courses</i></b></div></div>
-		<div class="col-sm-3"><button type="button" class="btn btn-info btn-sq-lg btn-block">
+		<div class="col-sm-3"><button type="button" class="btn btn-info btn-sq-lg btn-block" ng-click="getAddCoursePage()">
 				<i class="fa fa-edit fa-4x"></i><br/>Add Courses</button></div>
 		<div class="col-sm-3"><button type="button" class="btn btn-info btn-sq-lg btn-block">
 				<i class="fa fa-eye fa-4x"></i><br/>Course Details</button></div>
@@ -121,11 +121,11 @@
 		<div class="col-sm-1"> </div>
 		
 
-        <div class="col-sm-4"><button type="button" ng-click="Notification()" class="btn btn-warning btn-sq-lg btn-block glyphicon glyphicon-bell">
-				Send Notifications</button></div>
+        <div class="col-sm-4"><button type="button" ng-click="Notification()" class="btn btn-primary btn-sq-lg">
+			<i class="fa fa-bell fa-4x"></i><br/>Send Notifications</button></div>
 	</div>
 
-glyphicon glyphicon-bell
+
 	
 </div>
 </div>

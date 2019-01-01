@@ -13,9 +13,9 @@
            else  
            {  
                 echo 'File Uploaded But not Saved';  
-           }  
-      }  
- }  
+           } 
+      }
+ }
  else  
  {  
       echo 'Some Error';  

@@ -17,8 +17,6 @@ if ($result = $mysqli->query($query)) {
 
     /* fetch associative array */
 
-
-
     while ($row = $result->fetch_array()) {
         echo "<div class='well'>";
         $a=" <img src='images/course/$row[Course_Image]'>";
@@ -29,7 +27,6 @@ if ($result = $mysqli->query($query)) {
               <div class='row'><div class='col-sm-4'>
               $a</div><div class='col-sm-8'>
               <form action='courseRegistration.php' method='get'>
-             
               <li><h1>$row[Course_Name]</h1></li>
               </div>
               <li><p>$row[Course_description]</p></li>
@@ -37,8 +34,9 @@ if ($result = $mysqli->query($query)) {
               <li><h4>$row[Course_type]</h4></li>
               <li><h4>$row[Course_fees]</h4></li>
               <li><h4>$row[Location]</h4</li>><br/>
-              <input type=\"text\" class=\"form-control\" name='cname'  value='$row[Course_Name]'></form>
-              <input type=button onClick=\"location.href='courseRegistration.php'\" value='Register here!'></div>";
+              </form>
+               <a href='courseRegistration.php?cname=$row[Course_Name]'>Register here!</a></div>";
+
         echo("</div>");
     }
     "</ul>";

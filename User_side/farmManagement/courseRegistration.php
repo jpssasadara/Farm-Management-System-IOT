@@ -28,10 +28,7 @@
         <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name">
-                <!--?php
-                echo $_GET['cname'];
-                ?-->
+                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
             </div>
         </div>
     </div>
