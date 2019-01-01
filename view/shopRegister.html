@@ -1,43 +1,120 @@
-<div class="container container-fluid">
-	<form>
-		<h2>Shop Registration  form </h2>
-		<label for="party">Shop Name: </label></br>
-		<input type="text" name="Name" placeholder="Enter Your Shop Name" required> </br>
-		<label for="party">Email:     </label></br>
-		<input type="email" name="Email" placeholder="Enter Your Office Email" required></br>
-		<label for="party">Address:   </label></br>
-		<input type="text" name="Address" placeholder="Enter Address" required></br>
-		
-		<label for="party">Office Tel Number :</label></br>
-		<input type="text" name="" placeholder="Enter Your Number" required></br>
-		<label for="party">Shop Owner :</label></br>
-		<input type="text" name="" placeholder="Enter Your Name" required></br>
-		<label for="party">Shop Owner's Nic :</label></br>
-		<input type="text" name="" placeholder="Enter Your Nic" required></br>
-		
-    	
-		<br>
-		<label for="party">Category:
-		<select name="Full Time" >
-			<option>Full Time</option>
-			<option>Part Time</option>
-			
-		</select>
-		
-		<br><br>
-		
-		<label for="party">Select Product type:</label>
-		<select name="Vegitable" mutiple size="=2">
-			<option>Vegitable</option>
-			<option>Beans</option>
-			<option>Animal Product</option>
-		</select></br>
-		
-		<label for="party">Note :</label></br>
-		<input type="text" name=""></br>
-	</br>
-		<input type="checkbox" required> I Agree to the Terms of Use
-		<input type="submit" value="Submit Now">
-	</form>
+<div ng-controller="AddCourseDetails">
+	<div class="container container-fluid">
+	  <div class="well">
+	  <div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4 col-lg-8"> 
+		<div ng-controller="Admincontroller"> 
+		<button class="btn btn-default" ng-click="showAdmin()">Back</button></div>
+		<h1>New Shop Registration</h1>
+		<hr>  
+	
+		<form method="POST"> 
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Shop ID</label>
+			</div>
+			<div class="col-xs-6">
+			<!-- <label>First Name</label> -->
+				<p class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="text" class="form-control"  id="textinput" required name="textinput" 
+					ng-model="Course_Id" placeholder="Shop Id">             
+				</p>
+			</div>
+		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Full Name</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+				<input type="text" class="form-control" id="textinput" required name="textinput" 
+				ng-model="Course_Name" placeholder="Full Name">             
+			</p>
+			</div>
+		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Email</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+				<input type="email" class="form-control" id="textinput" required name="textinput" 
+				ng-model="Course_Name" placeholder="Email">             
+			</p>
+			</div>
+		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Address</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+				<input type="text" class="form-control" id="textinput" required name="textinput" 
+				ng-model="Course_Name" placeholder="Address">             
+			</p>
+			</div>
+		</div>
+	
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Description</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+					<input type="textarea" class="form-control" id="textinput" required name="textinput" 
+					ng-model="Course_description" placeholder="description" required="required">             
+				</p>
+			</div> 
+		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Contact </label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+					<input type="text" class="form-control" id="textinput" required name="textinput" 
+					ng-model="Course_fees" placeholder="Tel Number" required="required">             
+				</p>
+			</div> 
+		</div>
+	
+		<div class="form-group row flex-v-center">
+				<div class="col-xs-2 col-sm-4">
+					<label for="from">Admin</label>
+				</div>
+				<div class="col-xs-6">
+				<p class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input type="text" class="form-control" id="textinput" required name="textinput" 
+						ng-model="location" placeholder="Admin" required="required">             
+					</p>
+				</div> 
+			</div>
 
-</div>
+		
+
+		<div class="form-group">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+			<button type="submit" name="registration" class="btn btn-warning login-btn btn-block" 
+			ng-click="addCourse()">Create Shop 
+			<span class="glyphicon glyphicon-send"></span></button>
+			</div><div class="col-sm-4"><input type="reset" class="btn btn-danger" value="clear"></div>
+		</div>
+		</div> 
+		</form>
+	</div>
+	</div>
+	</div>

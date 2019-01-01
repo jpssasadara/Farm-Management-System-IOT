@@ -18,8 +18,14 @@ if ($result = $mysqli->query($query)) {
 
     while ($row = $result->fetch_array()) {
 
+<<<<<<< HEAD
+        $a="<img src='images/course/$row[Course_Image]'";
+        echo $a;
+        echo "
+=======
         $a="<img height=\"300\" width=\"300\" src='images/course/$row[Course_Image]'";
         echo "<li>$a</li>
+>>>>>>> 2a68ce467a542ecaca1c1645998be0826c532aef
               <li><h1>$row[Course_Name]</h1></li>
               <li><p>$row[Course_description]</p></li>
               <li><h4>$row[Course_duration]</h4></li>
