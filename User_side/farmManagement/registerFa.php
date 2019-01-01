@@ -70,7 +70,7 @@ else
 if(empty($error))
 {
     $query = "
- INSERT INTO registerfarmer (name,Mobile,Gender,Address ,email, password) VALUES (:name,:mobile,:gender,:address ,:email, :password)
+ INSERT INTO registeredfarmer (name,Mobile,Gender,Address ,email, password) VALUES (:name,:mobile,:gender,:address ,:email, :password)
  ";
     $statement = $connect->prepare($query);
     if($statement->execute($data))

@@ -1,0 +1,35 @@
+<div ng-controller="AddCourseDetails" class="container" 
+ng-init="displayCourse()">
+<hr>
+<div ng-controller="Admincontroller"> 
+<button class="btn btn-default" ng-click="showAdmin()">Back</button>
+</div>
+      
+<h2><span class="glyphicon glyphicon-file"></span> Course Details</h2>
+<table class="table table-bordered table-striped"> 
+    <thread class="thread-dark"> 
+    <tr>
+        <th><b>Course ID</b></th>
+        <th><b>Course Name</b></th>
+        <th><b>Course Description</b></th>
+        <th><b>Course Duration</b></th>
+        <th><b>Course Type</b></th>
+        <th><b>Course Fees</b></th>
+        <th><b>Course Locations</b></th>
+    </tr>
+    </thread>
+    <tbody>
+    <tr ng-repeat="x in items">
+        <td>{{x.Course_Id}}</td>
+        <td>{{x.Course_Name}}</td>  
+        <td>{{x.Course_description}}</td> 
+        <td>{{x.Course_duration}}</td>
+        <td>{{x.Course_type}}</td>
+        <td>{{x.Course_fees}}</td>
+        <td>{{x.Location}}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+</div>

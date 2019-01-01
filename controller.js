@@ -705,7 +705,9 @@ app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
 
 //After login Admin Dashboard Controllers
 app.controller("Admincontroller",function($scope,$http,$location){
-     $scope.cashierReg=function(){
+
+
+    $scope.cashierReg=function(){
         $location.path('/admin_register_Cashier');
     };
     $scope.adminReg=function(){
@@ -1129,7 +1131,16 @@ app.controller("RegisterAdminController", function($scope, $http){
       }  
  });
  
- app.controller("AddCourseDetails", function($scope, $http){  
+ app.controller("AddCourseDetails", function($scope, $http){ 
+    $scope.displayCourse = function(){ 
+        $http.get("module/course/viewData.php")  
+        .success(function(data){  
+            console.log(data); 
+            $scope.items = data;
+             
+        });  
+   }
+
     $scope.addCourse = function(){  
         $http.post(  
              "module/course/addData.php",  
