@@ -220,6 +220,28 @@ app.config(function($routeProvider) {
         templateUrl: "view/addcources.html"
      })
 
+     .when("/admin/viewcources",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/viewcources.html"
+     })
+
      .when("/admin/location",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -695,6 +717,10 @@ app.controller("Admincontroller",function($scope,$http,$location){
 
     $scope.getAddCoursePage=function(){
         $location.path('/admin/addcources');
+    };
+
+    $scope.viewCoursePage=function(){
+        $location.path('/admin/viewcources');
     };
 
     
@@ -1241,32 +1267,62 @@ app.controller("RegisterAdminController", function($scope, $http){
           $scope.selectFruit(); 
       }
 
-      //set data when pop up window for loading items
+      //set data when pop up window for loading items form reg Farmers
        $scope.setDataPopUpWind = function(code){ 
-          //$scope.farmernic="";
           $scope.itemcode=code;
+      }
+
+       //set data when pop up window for loading items form Farm
+       $scope.setDataPopUpWindFarm = function(code){ 
+          $scope.itemcode=code;
+          $scope.farmernic="LabuduwaFarm";
       }
 
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
-        alert($scope.itemcode);
-         $http.post('module/Stores/LoadStores.php',
+       
+        if ($scope.farmernic!= null && $scope.itemcode && $scope.amount!=null && $scope.total!=null) {
+          if (($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V')|| $scope.farmernic=="LabuduwaFarm" ){
+             $http.post('module/Stores/LoadStores.php',
            {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
-            ).success(function(response){  
-                alert(response);
+            ).success(function(response){
+                  //alert(response);
+                  $scope.farmernic="";
+                  
+                  $scope.amount="";
+                  $scope.total="";
+                  swal(
+                  'OK!',
+                  'Your Data has been Added.',
+                  'success'
+              )
                 $scope.select(); 
                 $scope.selectFruit(); //farmernic itemcode amount total
                
-           });  
+           }); 
+          } else {
+            swal(
+                  'Error!',
+                  'Invalied NIC....'
+                  
+        )
+             $scope.farmernic="";
+          }
+           
+        } else {
+           swal(
+                  'Error!',
+                  'Check Your Inputs.'
+                  
+        )}
+        
       }
        
       //refreshpage()
       $scope.refreshpage = function(){
-        //$route.reload();
-        //$location.reload();
          $scope.select(); 
          $scope.selectFruit();
-       // $location.path('/admin/AddItem/loadRegFarmers');
+      
       }
  }); 
       
