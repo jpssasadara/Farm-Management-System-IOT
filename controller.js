@@ -332,24 +332,6 @@ app.config(function($routeProvider) {
      })
 
      .when("/forPOS/reports",{                    
-        resolve:{
-            "check":function($location,$cookies,$rootScope){
-                if(!$cookies.get('cookie')){
-                    $location.path('/');
-                }
-                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                } else if ($cookies.get('cookiename')!=null){
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=" LoginShop";
-                }else if($cookies.get('cookie2name')!=null){
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                    $rootScope.adminname=" LoginAdmin";
-    
-                }
-            }
-        },
         templateUrl: "view/reports.html"
      })
 
@@ -726,7 +708,9 @@ app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
 
 //After login Admin Dashboard Controllers
 app.controller("Admincontroller",function($scope,$http,$location){
-     $scope.cashierReg=function(){
+
+
+    $scope.cashierReg=function(){
         $location.path('/admin_register_Cashier');
     };
     $scope.adminReg=function(){
@@ -772,6 +756,10 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/viewcources');
     };
 
+    $scope.getAddCoursePage=function(){
+        $location.path('/admin/addcources');
+    };
+
     
     
     $scope.viewLocation=function(){
@@ -796,6 +784,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
        });
     };
 
+
 });
 
 
@@ -819,8 +808,11 @@ app.controller("FarmShopController",function($scope,$http,$location){
    }
    $scope.viewReports=function(){
     $location.path('/forPOS/reports');
-};
+   }
 
+   $scope.viewFOS=function(){
+    $location.path('/forPOS');
+   }
 });
 
 
@@ -1151,6 +1143,7 @@ app.controller("RegisterAdminController", function($scope, $http){
       }  
  });
  
+<<<<<<< HEAD
 // addshopdetails not define
  app.controller("AddshopDetails", function($scope, $http){  
     $scope.addshop = function(){ 
@@ -1177,6 +1170,18 @@ app.controller("RegisterAdminController", function($scope, $http){
  });
 
  app.controller("AddCourseDetails", function($scope, $http){  
+=======
+ app.controller("AddCourseDetails", function($scope, $http){ 
+    $scope.displayCourse = function(){ 
+        $http.get("module/course/viewData.php")  
+        .success(function(data){  
+            //console.log(data); 
+            $scope.items = data;
+             
+        });  
+   }
+
+>>>>>>> 33f6f42b544701eb6691a8d6b7d07cbdcdcb8177
     $scope.addCourse = function(){  
         $http.post(  
              "module/course/addData.php",  
