@@ -221,27 +221,6 @@ app.config(function($routeProvider) {
         templateUrl: "view/shopRegister.html"
      })
      //isuru
-     .when("/admin/ShopView",{                    
-        resolve:{
-            "check":function($location,$cookies,$rootScope){
-                if(!$cookies.get('cookie')){
-                    $location.path('/');
-                }
-                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                } else if ($cookies.get('cookiename')!=null){
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=" LoginShop";
-                }else if($cookies.get('cookie2name')!=null){
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                    $rootScope.adminname=" LoginAdmin";
-    
-                }
-            }
-        },
-        templateUrl: "view/viewRegshop.html"
-     })
 
      .when("/admin/addcources",{                    
         resolve:{
@@ -748,9 +727,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/ShopRegister');
     };
 
-    $scope.getShopview=function(){  //isuru
-        $location.path('/admin/ShopView');
-    };
+   
 
     $scope.viewCoursePage=function(){
         $location.path('/admin/viewcources');
@@ -1143,34 +1120,6 @@ app.controller("RegisterAdminController", function($scope, $http){
       }  
  });
  
-<<<<<<< HEAD
-// addshopdetails not define
- app.controller("AddshopDetails", function($scope, $http){  
-    $scope.addshop = function(){ 
-        $http.post(  
-             "module/FarmShop/addshop.php",  
-             {'nic':$scope.nic,'fn':$scope.fn, 'ln':
-             $scope.ln,'pn':$scope.pn,
-             'address':$scope.address,'email':$scope.email,
-             'un':$scope.un,'pw':$scope.pw}  
-            
-        ).success(function(data){
-            console.log($scope.pw);
-            if($scope.nic!=null && $scope.fn!=null && $scope.ln!=null
-                && $scope.pn!=null && $scope.address!=null && $scope.email!=null && $scope.un!=null && $scope.pw!=null){
-                $scope.successInsert = data.message;
-                swal({
-                    type: 'success',
-                    title: $scope.un +' Shop Added Successfull!',
-                    timer: 5000
-                    });
-                }
-            }
-        )}; 
- });
-
- app.controller("AddCourseDetails", function($scope, $http){  
-=======
  app.controller("AddCourseDetails", function($scope, $http){ 
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
@@ -1181,7 +1130,7 @@ app.controller("RegisterAdminController", function($scope, $http){
         }); 
     }
     
-    $scope.deleteCourse = function(){ 
+    $scope.deleteCourse = function(idd){ 
         swal({
             title: 'Are you sure?',
             text: "You want to delete this data?",
@@ -1197,9 +1146,10 @@ app.controller("RegisterAdminController", function($scope, $http){
             'Your Data has been deleted.',
             'success'
             )
-            $http.post("module/course/deleteData.php", {'Course_Id':idd})  
+            $http.post("module/course/deleteData.php", {'id':idd})  
             .success(function(data){  
-                console.log(idd);  
+                console.log(data); 
+
                 $scope.displayCourse();  
             });
         }
@@ -1207,10 +1157,9 @@ app.controller("RegisterAdminController", function($scope, $http){
         {  
             return false;  
         } 
-          });  
+    });  
    }
 
->>>>>>> 33f6f42b544701eb6691a8d6b7d07cbdcdcb8177
     $scope.addCourse = function(){  
         $http.post(  
              "module/course/addData.php",  
