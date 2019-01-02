@@ -7,12 +7,15 @@
     ORDER BY order_id DESC
   ");
 
+  //run the select query
   $statement->execute();
 
+  //get the all row of tbl_order
   $all_result = $statement->fetchAll();
 
   $total_rows = $statement->rowCount();
 
+  
   if(isset($_POST["create_invoice"]))
   { 
     $order_total_amount = 0;
@@ -32,107 +35,107 @@
       )
     );
 
-      $statement = $connect->query("SELECT LAST_INSERT_ID()");
-      $order_id = $statement->fetchColumn();
+    $statement = $connect->query("SELECT LAST_INSERT_ID()");
+    $order_id = $statement->fetchColumn();
 
-      for($count=0; $count<$_POST["total_item"]; $count++)
-      {
-        $order_total_amount = $order_total_amount + floatval(trim($_POST["order_item_actual_amount"][$count]));
+    for($count=0; $count<$_POST["total_item"]; $count++)
+    {
+      $order_total_amount = $order_total_amount + floatval(trim($_POST["order_item_actual_amount"][$count]));
 
-
-        $statement = $connect->prepare("
-          INSERT INTO tbl_order_item 
-          (order_id, item_name, order_item_quantity, order_item_price, order_item_actual_amount)
-          VALUES (:order_id, :item_name, :order_item_quantity, :order_item_price, :order_item_actual_amount)
-        ");
-
-        $statement->execute(
-          array(
-            ':order_id'               =>  $order_id,
-            ':item_name'              =>  trim($_POST["item_name"][$count]),
-            ':order_item_quantity'          =>  trim($_POST["order_item_quantity"][$count]),
-            ':order_item_price'           =>  trim($_POST["order_item_price"][$count]),
-            ':order_item_actual_amount'       =>  trim($_POST["order_item_actual_amount"][$count])
-          )
-        );
-      }
 
       $statement = $connect->prepare("
-        UPDATE tbl_order 
-        SET order_total_amount = :order_total_amount
-        WHERE order_id = :order_id 
+        INSERT INTO tbl_order_item 
+        (order_id, item_name, order_item_quantity, order_item_price, order_item_actual_amount)
+        VALUES (:order_id, :item_name, :order_item_quantity, :order_item_price, :order_item_actual_amount)
       ");
+
       $statement->execute(
         array(
-          ':order_total_amount'     =>  $order_total_amount,
-          ':order_id'             =>  $order_id
+          ':order_id'               =>  $order_id,
+          ':item_name'              =>  trim($_POST["item_name"][$count]),
+          ':order_item_quantity'          =>  trim($_POST["order_item_quantity"][$count]),
+          ':order_item_price'           =>  trim($_POST["order_item_price"][$count]),
+          ':order_item_actual_amount'       =>  trim($_POST["order_item_actual_amount"][$count])
         )
       );
-      header("location:invoice.php");
+    }
+
+    $statement = $connect->prepare("
+      UPDATE tbl_order 
+      SET order_total_amount = :order_total_amount
+      WHERE order_id = :order_id 
+    ");
+    $statement->execute(
+      array(
+        ':order_total_amount'     =>  $order_total_amount,
+        ':order_id'             =>  $order_id
+      )
+    );
+    header("location:invoice.php");
   }
 
   if(isset($_POST["update_invoice"]))
   {
     $order_total_amount = 0;
       
-      $order_id = $_POST["order_id"];
+    $order_id = $_POST["order_id"];
+    
+    
+    
+    $statement = $connect->prepare("
+      DELETE FROM tbl_order_item WHERE order_id = :order_id
+    ");
+    $statement->execute(
+      array(
+        ':order_id'       =>      $order_id
+      )
+    );
       
-      
-      
-      $statement = $connect->prepare("
-                DELETE FROM tbl_order_item WHERE order_id = :order_id
-            ");
-            $statement->execute(
-                array(
-                    ':order_id'       =>      $order_id
-                )
-            );
-      
-      for($count=0; $count<$_POST["total_item"]; $count++)
-      {
-        $order_total_amount = $order_total_amount + floatval(trim($_POST["order_item_actual_amount"][$count]));
-       
-        $statement = $connect->prepare("
-          INSERT INTO tbl_order_item 
-          (order_id, item_name, order_item_quantity, order_item_price, order_item_actual_amount) 
-          VALUES (:order_id, :item_name, :order_item_quantity, :order_item_price, :order_item_actual_amount)
-        ");
-        $statement->execute(
-          array(
-            ':order_id'                 =>  $order_id,
-            ':item_name'                =>  trim($_POST["item_name"][$count]),
-            ':order_item_quantity'          =>  trim($_POST["order_item_quantity"][$count]),
-            ':order_item_price'            =>  trim($_POST["order_item_price"][$count]),
-            ':order_item_actual_amount'     =>  trim($_POST["order_item_actual_amount"][$count])
-          )
-        );
-        $result = $statement->fetchAll();
-      }
+    for($count=0; $count<$_POST["total_item"]; $count++)
+    {
+      $order_total_amount = $order_total_amount + floatval(trim($_POST["order_item_actual_amount"][$count]));
       
       $statement = $connect->prepare("
-        UPDATE tbl_order 
-        SET order_no = :order_no, 
-        order_date = :order_date, 
-        order_receiver_name = :order_receiver_name, 
-        order_receiver_address = :order_receiver_address, 
-        order_total_amount = :order_total_amount
-        WHERE order_id = :order_id 
+        INSERT INTO tbl_order_item 
+        (order_id, item_name, order_item_quantity, order_item_price, order_item_actual_amount) 
+        VALUES (:order_id, :item_name, :order_item_quantity, :order_item_price, :order_item_actual_amount)
       ");
-      
       $statement->execute(
         array(
-          ':order_no'               =>  trim($_POST["order_no"]),
-          ':order_date'             =>  trim($_POST["order_date"]),
-          ':order_receiver_name'        =>  trim($_POST["order_receiver_name"]),
-          ':order_receiver_address'     =>  trim($_POST["order_receiver_address"]),
-          ':order_total_amount'     =>  $order_total_amount,
-          ':order_id'               =>  $order_id
+          ':order_id'                 =>  $order_id,
+          ':item_name'                =>  trim($_POST["item_name"][$count]),
+          ':order_item_quantity'          =>  trim($_POST["order_item_quantity"][$count]),
+          ':order_item_price'            =>  trim($_POST["order_item_price"][$count]),
+          ':order_item_actual_amount'     =>  trim($_POST["order_item_actual_amount"][$count])
         )
       );
-      
       $result = $statement->fetchAll();
-            
-      header("location:invoice.php");
+    }
+      
+    $statement = $connect->prepare("
+      UPDATE tbl_order 
+      SET order_no = :order_no, 
+      order_date = :order_date, 
+      order_receiver_name = :order_receiver_name, 
+      order_receiver_address = :order_receiver_address, 
+      order_total_amount = :order_total_amount
+      WHERE order_id = :order_id 
+    ");
+      
+    $statement->execute(
+      array(
+        ':order_no'               =>  trim($_POST["order_no"]),
+        ':order_date'             =>  trim($_POST["order_date"]),
+        ':order_receiver_name'        =>  trim($_POST["order_receiver_name"]),
+        ':order_receiver_address'     =>  trim($_POST["order_receiver_address"]),
+        ':order_total_amount'     =>  $order_total_amount,
+        ':order_id'               =>  $order_id
+      )
+    );
+      
+    $result = $statement->fetchAll();
+          
+    header("location:invoice.php");
   }
 
   if(isset($_GET["delete"]) && isset($_GET["id"]))
@@ -738,13 +741,6 @@ $(document).ready(function(){
 
     for(var no=1; no<=count; no++)
     {
-      /*if($.trim($('#item_name'+no).val()).length == 0)
-      {
-        alert("Please Enter Item Name");
-        $('#item_name'+no).focus();
-        return false;
-      }*/
-
       if($.trim($('#order_item_quantity'+no).val()).length == 0)
       {
         swal("Please Enter Quantity");
@@ -807,7 +803,7 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
         <td>'.$row["order_datetime"].'</td>
         <td>'.$row["order_receiver_name"].'</td>
         <td>Rs.'.$row["order_total_amount"].'</td>
-        <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">PDF</a></td>
+        <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'" target="_blank">PDF</a></td>
         <td><a href="invoice.php?update=1&id='.$row["order_id"].'"><span class="glyphicon glyphicon-edit"></span></a></td>
         <td><a href="#" id="'.$row["order_id"].'" class="delete"><font color="#ff0000"><span class="glyphicon glyphicon-remove"></font></span></a></td>
       </tr>
@@ -842,9 +838,12 @@ farmmanagement@gmail.com
 
 
 
-  </body>
+</body>
 </html>
+
+
 <script type="text/javascript">
+
   $(document).ready(function(){
     var table = $('#data-table').DataTable({
           "order":[],
@@ -856,6 +855,7 @@ farmmanagement@gmail.com
         ],
         "pageLength": 25
         });
+    //delete field from invoices
     $(document).on('click', '.delete', function(){
       var id = $(this).attr("id");
       swal({
@@ -873,6 +873,7 @@ farmmanagement@gmail.com
             'Your file has been deleted.',
             'success'
           )
+          //after confrim delete it delete the field of that id
           window.location.href="invoice.php?delete=1&id="+id;
       }
       else
@@ -901,6 +902,7 @@ farmmanagement@gmail.com
   }
   });
 </script>
+
 
 <script type="text/javascript">
         

@@ -16,6 +16,8 @@ ng-init="displayCourse()">
         <th><b>Course Type</b></th>
         <th><b>Course Fees</b></th>
         <th><b>Course Locations</b></th>
+        <th></th>
+        <th></th>
     </tr>
     </thread>
     <tbody>
@@ -27,6 +29,10 @@ ng-init="displayCourse()">
         <td>{{x.Course_type}}</td>
         <td>{{x.Course_fees}}</td>
         <td>{{x.Location}}</td>
+        <td><button class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+            </button></td>
+        <td><button class="btn btn-danger" ng-click="deleteCourse(x.Course_Id)"><span class="glyphicon glyphicon-trash"></span>
+            </button></td>
     </tr>
     </tbody>
 
