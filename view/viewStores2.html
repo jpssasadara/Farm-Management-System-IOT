@@ -1,4 +1,9 @@
-<h1>View stores</h1>
+<h1>View stores ( Vegetable )</h1>
+
+<div ng-controller="Admincontroller"> 
+  <button class="btn btn-default" ng-click="showAdmin()">Back</button>
+</div>
+
 
 <div class="container"  ng-controller="AddItemDetails" ng-init="load()">
   <div class ="alert alert-light"><button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click=vegetable()>Vegetables</button><button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click=fruit()>Fruits</button></div>
@@ -7,7 +12,7 @@
     <div class="col-sm-6 bg-info text-white">
       <h2><center>Farm Products</center></h2>
        <div class="col-md-12" ng-repeat="image in images">  
-                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresFP(image.Code)">View</button>
+                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresFP(image.Code)">View .<span class="glyphicon glyphicon-eye-open"></span></button>
                      </div>
                     <div>
                             <!--pop up windows -->
@@ -37,7 +42,7 @@
 
 
                               </div>  
-                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()"><span class="glyphicon glyphicon-remove"></span></button>
                             
                         </div>
                         
@@ -46,7 +51,7 @@
     </div>
     <div class="col-sm-6 bg-success text-white"><h2><center>Reg Farmer's Products</center></h2>
        <div class="col-md-12" ng-repeat="image in images">  
-                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresRegFP(image.Code)">Views</button>
+                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresRegFP(image.Code)">View .<span class="glyphicon glyphicon-eye-open"></span></button>
                      </div>
                      <div>
                             <!--pop up windows -->
@@ -55,28 +60,35 @@
                                    {{itemcode}}
 
 
+                             <div class="well"><center><b>{{itemcode}} <span class="glyphicon glyphicon-hand-right"></span><t>  {{image.Name}}</b></center></div>
+
                               <table class="table table-hover">  
-                                <tr>  
-                                     <th><b>Load Number</b></th>
-                                     <th><b>Load Date</b></th>  
-                                     <th><b>Amount</b></th> 
-                                </tr>  
-                                
-
-                                 <tr ng-repeat="x in items ">
-
+                                    <tr>  
+                                         <th><b>Load Number</b></th>
+                                         <th><b>Load Date</b></th>  
+                                         <th><b>Amount</b></th>
+                                         <th><b>Bill</b></th> 
+                                    </tr>  
                                     
-                                     <td>{{x.Load_Num}}</td>
-                                     <td>{{x.Load_Date}}</td> 
-                                     <td>{{x.Amount}}</td>
-                 
-                                      
-                                </tr>  
+
+                                     <tr ng-repeat="x in items ">
+
+                                        
+                                         <td>{{x.Load_Num}}</td>
+                                         <td>{{x.Load_Date}}</td> 
+                                         <td>{{x.Amount}}</td>
+                                 <!--<td>{{x.Total}}</td> -->
+                                       <td><button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-download-alt"></span> Download
+                                          </button>
+                                        </td>
+                                          
+                                    </tr>  
                               </table>  
 
 
                               </div>  
-                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()"><span class="glyphicon glyphicon-remove"></span></button>
                             
                         </div>
                         
