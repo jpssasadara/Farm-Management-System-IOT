@@ -24,10 +24,103 @@
         height: 100%;
         margin-bottom: 10px;
     }
+    .navbar {
+        margin-bottom: 0;
+        background-color: #000000;
+        z-index: 9999;
+        border: 0;
+        font-size: 12px !important;
+        line-height: 1.42857143 !important;
+        letter-spacing: 4px;
+        border-radius: 0;
+    }
+    .navbar li a, .navbar .navbar-brand {
+        color: #fff !important;
+    }
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #000000 !important;
+        background-color: #fff !important;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: transparent;
+        color: #fff !important;
+    }
+    .dropbtn {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #000000;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #534d53;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    .dropdown:hover .dropbtn {background-color: #8a848a;}
+
 </style>
 <body>
 <div class="container-fluid">
-    <div class="text-center">
+        <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="home.html">LABUDUWA FARM</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">ABOUT</a></li>
+                            <li><a href="#services">SERVICES</a></li>
+                            <li><a href="View_Course.html">COURSES</a></li>
+                            <li><a href="pricing.html">PRICING</a></li>
+                            <li><a href="contact.html">CONTACT</a></li>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                                <li><div class="dropdown">
+                                    <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Login</button></a>
+                                    <div class="dropdown-content">
+                                        <div ng-controller="loginbuttonctrl">
+                                            <a ng-click="farmshop()"    href="FarmShopLoginForm.html" >Registered Shop</a>
+                                            <a href="FarmShopLoginForm.html">Registered Farmer</a>
+                                            <a ng-click="farmshop1()"    href="FarmShopLoginForm.html" >Student</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </li>
+                                <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+        
+            </nav>
+    <div class="text-center"><br><br>
         <h2>Pricing</h2>
         <h4>Varieties of fruits</h4>
     </div>
