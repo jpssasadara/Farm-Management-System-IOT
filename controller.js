@@ -538,8 +538,8 @@ app.config(function($routeProvider) {
            })
           //************************************************************************************************************* 
 
-          //view stores
-          ///store/view
+          //view stores  & specially for fruits
+          ///store/view 
           .when("/store/view",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
@@ -560,6 +560,30 @@ app.config(function($routeProvider) {
                   }
               },
               templateUrl: "view/viewStores.html"
+           })
+
+           //view stores  & specially for Vegetables
+          ///store/view 
+          .when("/store/view/veg",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewStores2.html"
            })
 
      .otherwise({
@@ -1464,6 +1488,17 @@ app.controller("RegisterAdminController", function($scope, $http){
       }
 
       ///////////////////////View Stores Details/////////////////////////////////////////
+
+      //Vegetable button ViewStores() /store/view/veg
+      $scope.vegetable=function(){
+         $location.path('/store/view/veg');
+      }
+
+      //fruit button ViewStores() /store/view
+      $scope.fruit=function(){
+         $location.path('/store/view');
+      }
+
       //setDataPopUpViewStoresFP
        $scope.setDataPopUpViewStoresFP = function(code){ 
           $scope.itemcode=code;
