@@ -144,8 +144,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="#services">SERVICES</a></li>
-                <li><a href="View_Course.html">COURSES</a></li>
-                <li><a href="pricing.html">PRICING</a></li>
+                <li><a href="Courses/course.php">COURSES</a></li>
+                <li><a href="shopping_cart/Order_foods.php">PRICING</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <ul class="nav navbar-nav navbar-right">
                     <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
@@ -153,9 +153,9 @@
                         <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
                         <div class="dropdown-content">
                             <div ng-controller="loginbuttonctrl">
-                            <a ng-click="farmshop()"    href="registerShops.php" >Registered Shop</a>
-                            <a href="registerFarmer.php">Registered Farmer</a>
-                            <a ng-click="farmshop1()"    href="registerStudents.php" >Student</a>
+                            <a  href="Login_Registration/LoginShop.html" >Registered Shop</a>
+                            <a href="Login_Registration/LoginFarmer.html">Registered Farmer</a>
+                            <a href="Login_Registration/LoginStudent.html" >Student</a>
                             </div>
                         </div>
                     </div>
@@ -167,10 +167,11 @@
     </div>
 
 </nav>
+//ng-click="farmshop()"
+    //ng-click="farmshop1()"
 
 
-
-<div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -322,12 +323,12 @@
     </div>
 </footer>
 
-<script>
+<!--script>
     $(document).ready(function(){
         // Initialize Tooltip
         $('[data-toggle="tooltip"]').tooltip();
     })
-</script>
+</script-->
 </div>
 </body>
 </html>
