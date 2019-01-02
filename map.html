@@ -83,6 +83,8 @@
 <script src="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&
 key=AIzaSyD1tT3fd2z3VGIoyFbGgc0xpIKg-vp0wPs"></script>
 
+
+</script>
 <script>
   // Initialize Firebase
 
@@ -105,7 +107,6 @@ key=AIzaSyD1tT3fd2z3VGIoyFbGgc0xpIKg-vp0wPs"></script>
   var latitude;
   var longitude;
   function gotData(data){
-      //console.log(data);
       loc=data.val();
       locArr=loc.split(',');
       latitude=locArr[0];
