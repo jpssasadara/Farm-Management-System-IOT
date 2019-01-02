@@ -1485,6 +1485,16 @@ app.controller("RegisterAdminController", function($scope, $http){
                 //alert(data);  
            }); 
       }
+
+      //setDataPopUpViewStoresRegFP(image.Code)
+      $scope.setDataPopUpViewStoresRegFP = function(code){ 
+          $scope.itemcode=code;
+           $http.post("module/Stores/viewStoresRegFP.php",{'itemcode':$scope.itemcode})  
+           .success(function(data){  
+                $scope.items = data;
+                //alert(data);  
+           }); 
+      }
  }); 
       
 

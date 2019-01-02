@@ -40,13 +40,13 @@
                               <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
                             
                         </div>
-                        9999999
+                        
                     </div>
                 </div> 
 		</div>
 		<div class="col-sm-6 bg-success text-white"><h2><center>Reg Farmer's Products</center></h2>
 			 <div class="col-md-12" ng-repeat="image in imagesFruit">  
-                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresFP(image.Code)">View</button>
+                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresRegFP(image.Code)">Views</button>
                      </div>
                      <div>
                             <!--pop up windows -->
@@ -79,7 +79,7 @@
                               <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
                             
                         </div>
-                        9999999
+                        
                     </div>
                 </div> 
 		</div></div>
