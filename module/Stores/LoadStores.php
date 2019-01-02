@@ -42,10 +42,10 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
          }
               
           */
-$link = "<script>window.open('http://localhost/FmsFarmSide6/Farm-Management-System-IOT/module/Stores/printpdf.php',"_blank")</script>";
+//$link = "<script>window.open('http://localhost/FmsFarmSide6/Farm-Management-System-IOT/module/Stores/printpdf.php',"_blank")</script>";
 //C:\xampp\htdocs\FmsFarmSide6\Farm-Management-System-IOT\module\Stores\printpdf.php
 //http://localhost/FmsFarmSide6/Farm-Management-System-IOT/#/admin/AddItem/loadRegFarmers
-echo $link;
+//echo $link;
 
  ?>
 

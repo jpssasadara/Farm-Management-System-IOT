@@ -517,6 +517,30 @@ app.config(function($routeProvider) {
            })
           //************************************************************************************************************* 
 
+          //view stores
+          ///store/view
+          .when("/store/view",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewStores.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -749,6 +773,11 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.ViewOrder=function(){
         $location.path('/get/regfarmer/order');
     };
+
+    //storesView() view of stores
+    $scope.storesView = function(){
+      $location.path('/store/view');
+    }
 
     $scope.Notification=function(){
         
@@ -1120,6 +1149,34 @@ app.controller("RegisterAdminController", function($scope, $http){
       }  
  });
  
+
+// addshopdetails not define
+ app.controller("AddshopDetails", function($scope, $http){  
+    $scope.addshop = function(){ 
+        $http.post(  
+             "module/FarmShop/addshop.php",  
+             {'nic':$scope.nic,'fn':$scope.fn, 'ln':
+             $scope.ln,'pn':$scope.pn,
+             'address':$scope.address,'email':$scope.email,
+             'un':$scope.un,'pw':$scope.pw}  
+            
+        ).success(function(data){
+            console.log($scope.pw);
+            if($scope.nic!=null && $scope.fn!=null && $scope.ln!=null
+                && $scope.pn!=null && $scope.address!=null && $scope.email!=null && $scope.un!=null && $scope.pw!=null){
+                $scope.successInsert = data.message;
+                swal({
+                    type: 'success',
+                    title: $scope.un +' Shop Added Successfull!',
+                    timer: 5000
+                    });
+                }
+            }
+        )}; 
+ });
+
+ 
+
  app.controller("AddCourseDetails", function($scope, $http){ 
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
@@ -1381,6 +1438,17 @@ app.controller("RegisterAdminController", function($scope, $http){
          $scope.select(); 
          $scope.selectFruit();
       
+      }
+
+      ///////////////////////View Stores Details/////////////////////////////////////////
+      //setDataPopUpViewStoresFP
+       $scope.setDataPopUpViewStoresFP = function(code){ 
+          $scope.itemcode=code;
+           $http.post("module/Stores/viewStoresFP.php",{'itemcode':$scope.itemcode})  
+           .success(function(data){  
+                $scope.items = data;
+                //alert(data);  
+           }); 
       }
  }); 
       
