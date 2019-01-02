@@ -77,7 +77,7 @@ else
 if(empty($error))
 {
     $query = "
- INSERT INTO registerstudent(name,Mobile,Gender,Address ,Occupation,email, password) VALUES (:name,:mobile,:gender,:address ,:occupation,:email, :password)
+ INSERT INTO registerstudent(name,Mobile,Gender,Address ,Occupation,email ,password) VALUES (:name,:mobile,:gender,:address ,:occupation,:email, :password)
  ";
     $statement = $connect->prepare($query);
     if($statement->execute($data))

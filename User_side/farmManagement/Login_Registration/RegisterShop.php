@@ -14,9 +14,8 @@ if ($mysqli->connect_errno) {
 }
 
 
+$query = "INSERT INTO registeredshop (nic,fn,ln,pn,address,email,un,pw) VALUES ('$_POST[nic]','$_POST[fname]','$_POST[lname]','$_POST[mobile]','$_POST[address]','$_POST[email]','$_POST[username]','$_POST[password]')";
 
-
-$query = "INSERT INTO registeredfarmer (Id,First_Name,Tele_Number,Gender,Email,Address,variety,kind_of_variety,username,password) VALUES ('$_POST[nic]','$_POST[name]','$_POST[mobile]','$_POST[gender]','$_POST[email]','$_POST[address]','$_POST[q1]','$_POST[q2]','$_POST[username]','$_POST[password]')";
 $result = mysqli_query($mysqli, $query);
 
 

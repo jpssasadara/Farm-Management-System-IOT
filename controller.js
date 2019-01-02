@@ -1531,7 +1531,7 @@ app.controller("RegisterAdminController", function($scope, $http){
            $http.post("module/Stores/viewStoresRegFP.php",{'itemcode':$scope.itemcode})  
            .success(function(data){  
                 $scope.items = data;
-                alert(data);  
+                //alert(data);  
            }); 
       }
  }); 

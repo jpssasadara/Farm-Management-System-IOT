@@ -19,7 +19,7 @@ if ($result = $mysqli->query($query)) {
     /* fetch associative array */
 
     while ($row = $result->fetch_array()) {
-        echo $row['name'];
+        //echo $row['name'];
         echo "<div class='well'>";
         $a="<img src='../../../module/Items/upload/$row[name]'/>";
         echo "<ul class='list-unstyled'>";
