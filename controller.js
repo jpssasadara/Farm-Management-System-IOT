@@ -1172,7 +1172,7 @@ app.controller("RegisterAdminController", function($scope, $http){
       }  
  });
  
-<<<<<<< HEAD
+
 // addshopdetails not define
  app.controller("AddshopDetails", function($scope, $http){  
     $scope.addshop = function(){ 
@@ -1198,8 +1198,8 @@ app.controller("RegisterAdminController", function($scope, $http){
         )}; 
  });
 
- app.controller("AddCourseDetails", function($scope, $http){  
-=======
+ 
+
  app.controller("AddCourseDetails", function($scope, $http){ 
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
@@ -1239,7 +1239,7 @@ app.controller("RegisterAdminController", function($scope, $http){
           });  
    }
 
->>>>>>> 33f6f42b544701eb6691a8d6b7d07cbdcdcb8177
+
     $scope.addCourse = function(){  
         $http.post(  
              "module/course/addData.php",  
