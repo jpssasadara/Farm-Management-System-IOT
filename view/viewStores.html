@@ -1,0 +1,75 @@
+<h1>View stores</h1>
+<div class="container"  ng-controller="AddItemDetails" ng-init="load()">
+	<div class ="row">
+		<div class="col-sm-6 bg-info text-white">
+			<h2><center>Farm Products</center></h2>
+			 <div class="col-md-12" ng-repeat="image in imagesFruit">  
+                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresFP(image.Code)">View</button>
+                     </div>
+                    <div>
+                            <!--pop up windows -->
+                        <div ng-show="showme">
+                            <div class="form-popup "   id="myForm" >
+                                   {{itemcode}}
+
+
+			                        <table class="table table-hover">  
+			                          <tr>  
+			                               <th><b>Load Number</b></th>
+			                               <th><b>Load Date</b></th>  
+			                               <th><b>Amount</b></th> 
+			                          </tr>  
+			                          
+
+			                           <tr ng-repeat="x in items ">
+
+			                              
+			                               <td>{{x.Load_Num}}</td>
+			                               <td>{{x.Load_Date}}</td> 
+			                               <td>{{x.Amount}}</td>
+			           
+			                                
+			                          </tr>  
+			                        </table>  
+
+
+                              </div>  
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
+                            
+                        </div>
+                    </div>
+                </div> 
+		</div>
+		<div class="col-sm-6 bg-success text-white"><h2><center>Reg Farmer's Products</center></h2>
+			 <div class="col-md-12" ng-repeat="image in imagesFruit">  
+                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpWind(image.Code)">View</button>
+                     </div>
+                     <div>
+                            <!--pop up windows -->
+                        <div ng-show="showme">
+                            <div class="form-popup "   id="myForm" >
+                                    <form  class="form-container" name="myForm" ng-controller="AddItemDetails" >
+                                      <h2>Add Items.. </h2>
+
+                                      <label for="" class="mr-sm-2"><b>Farmer's nic :</b></label>
+                                      <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Farmer's nic " name="" ng-model="farmernic" required>
+
+                                       <label for="" class="mr-sm-2"><b>Item code :</b></label>
+                                      <input type="text" class="form-control mb-2 mr-sm-2"  name=""  ng-model= "itemcode" required>
+
+                                      <label for="psw"><b>Amount :</b></label>
+                                      <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Amount " name="" ng-model="amount" required>
+
+                                       <label for="" class="mr-sm-2"><b>Total :</b></label>
+                                      <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Total" name="email" ng-model = "total" required>
+
+                                      <button type="submit" class="btn btn-success btn-xs" ng-click = takeLoad() >Add</button>
+                                  </form>
+                              </div>  
+                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
+                            
+                        </div>
+                    </div>
+                </div> 
+		</div></div>
+	</div>

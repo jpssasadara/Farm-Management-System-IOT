@@ -535,6 +535,30 @@ app.config(function($routeProvider) {
            })
           //************************************************************************************************************* 
 
+          //view stores
+          ///store/view
+          .when("/store/view",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewStores.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -763,6 +787,11 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.ViewOrder=function(){
         $location.path('/get/regfarmer/order');
     };
+
+    //storesView() view of stores
+    $scope.storesView = function(){
+      $location.path('/store/view');
+    }
 
     $scope.Notification=function(){
         
@@ -1362,6 +1391,17 @@ app.controller("RegisterAdminController", function($scope, $http){
          $scope.select(); 
          $scope.selectFruit();
       
+      }
+
+      ///////////////////////View Stores Details/////////////////////////////////////////
+      //setDataPopUpViewStoresFP
+       $scope.setDataPopUpViewStoresFP = function(code){ 
+          $scope.itemcode=code;
+           $http.post("module/Stores/viewStoresFP.php",{'itemcode':$scope.itemcode})  
+           .success(function(data){  
+                $scope.items = data;
+                //alert(data);  
+           }); 
       }
  }); 
       
