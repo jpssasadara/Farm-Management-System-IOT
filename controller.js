@@ -221,27 +221,6 @@ app.config(function($routeProvider) {
         templateUrl: "view/shopRegister.html"
      })
      //isuru
-     .when("/admin/ShopView",{                    
-        resolve:{
-            "check":function($location,$cookies,$rootScope){
-                if(!$cookies.get('cookie')){
-                    $location.path('/');
-                }
-                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                } else if ($cookies.get('cookiename')!=null){
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=" LoginShop";
-                }else if($cookies.get('cookie2name')!=null){
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                    $rootScope.adminname=" LoginAdmin";
-    
-                }
-            }
-        },
-        templateUrl: "view/viewRegshop.html"
-     })
 
      .when("/admin/addcources",{                    
         resolve:{
@@ -796,9 +775,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/ShopRegister');
     };
 
-    $scope.getShopview=function(){  //isuru
-        $location.path('/admin/ShopView');
-    };
+   
 
     $scope.viewCoursePage=function(){
         $location.path('/admin/viewcources');
@@ -1234,7 +1211,7 @@ app.controller("RegisterAdminController", function($scope, $http){
         }); 
     }
     
-    $scope.deleteCourse = function(){ 
+    $scope.deleteCourse = function(idd){ 
         swal({
             title: 'Are you sure?',
             text: "You want to delete this data?",
@@ -1250,9 +1227,10 @@ app.controller("RegisterAdminController", function($scope, $http){
             'Your Data has been deleted.',
             'success'
             )
-            $http.post("module/course/deleteData.php", {'Course_Id':idd})  
+            $http.post("module/course/deleteData.php", {'id':idd})  
             .success(function(data){  
-                console.log(idd);  
+                console.log(data); 
+
                 $scope.displayCourse();  
             });
         }
@@ -1260,9 +1238,8 @@ app.controller("RegisterAdminController", function($scope, $http){
         {  
             return false;  
         } 
-          });  
+    });  
    }
-
 
     $scope.addCourse = function(){  
         $http.post(  
