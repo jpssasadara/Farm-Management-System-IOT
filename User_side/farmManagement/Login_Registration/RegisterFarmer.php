@@ -14,16 +14,6 @@ if ($mysqli->connect_errno) {
 }
 
 
-//$Name=$_POST['name'];
-//$MobileNumber=$_POST['mobile'];
-//$gender=$_POST['gender'];
-//$Email=$_POST['email'];
-//$Address=$_POST['address'];
-//$Varieties=$_POST['q1'];
-//$userName = $_POST['username'];
-//$password =  $_POST['password'];
-
-
 
 
 $query = "INSERT INTO registeredfarmer (Id,First_Name,Tele_Number,Gender,Email,Address,variety,username,password) VALUES ('$_POST[nic]','$_POST[name]','$_POST[mobile]','$_POST[gender]','$_POST[email]','$_POST[address]','$_POST[q1]','$_POST[username]','$_POST[password]')";
