@@ -1127,7 +1127,36 @@ app.controller("RegisterAdminController", function($scope, $http){
             //console.log(data); 
             $scope.items = data;
              
-        });  
+        }); 
+    }
+    
+    $scope.deleteCourse = function(){ 
+        swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.value) {
+            swal(
+            'Deleted!',
+            'Your Data has been deleted.',
+            'success'
+            )
+            $http.post("module/course/deleteData.php", {'Course_Id':idd})  
+            .success(function(data){  
+                console.log(idd);  
+                $scope.displayCourse();  
+            });
+        }
+        else  
+        {  
+            return false;  
+        } 
+          });  
    }
 
     $scope.addCourse = function(){  
