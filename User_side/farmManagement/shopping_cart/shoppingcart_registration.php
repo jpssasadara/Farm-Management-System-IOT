@@ -58,10 +58,11 @@
     <!-- Grid row -->
     <div class="form-group row">
         <!-- Material input -->
-        <label for="email" class="col-sm-2 col-form-label">Date(Wanted)</label>
+        <label for="email" class="col-sm-2 col-form-label">Date you want</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="date" placeholder="Date">
+                <input type="date" class="form-control" name="date" placeholder="Date">
+
             </div>
         </div>
     </div>
