@@ -1213,8 +1213,8 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
     $scope.editDetails = function(x){ 
-        $scope.detail=x;
-        console.log($scope.detail);
+        $scope.details=x;
+        //console.log($scope.details);
     }
 
     $scope.deleteCourse = function(idd){ 
@@ -1247,6 +1247,38 @@ app.controller("RegisterAdminController", function($scope, $http){
     });  
    }
 
+   $scope.editCourse=function(){
+ 
+        $http.post(  
+            "module/course/editData.php",  
+            {'details.Course_Id':$scope.details.Course_Id,'details.Course_Name':$scope.details.Course_Name, 
+            'details.Course_description':$scope.details.Course_description,'details.Course_duration'
+            :$scope.details.Course_duration,'details.Course_type':$scope.details.Course_type,
+            'details.Course_fees':$scope.details.Course_fees,'details.Location':$scope.details.Location
+        }  
+        
+    ).success(function(data){
+
+        //console.log(data);
+        if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
+            && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
+            $scope.successInsert = data.message;
+            swal({
+                type: 'success',
+                title: $scope.details.Course_Name +' Course Updated Successfull!',
+                timer: 5000
+                });
+        }else{
+            swal(
+                'Error!',
+                'All the fields cannot be empty.',
+                'Error'
+            );
+        }
+        }
+    )}; 
+
+
     $scope.addCourse = function(){  
         $http.post(  
              "module/course/addData.php",  
@@ -1268,6 +1300,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                 }
             }
         )}; 
+    
  });
 
  app.controller("AddItemDetails", function($scope, $http,$location){  
