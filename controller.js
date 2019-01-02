@@ -1186,7 +1186,13 @@ app.controller("RegisterAdminController", function($scope, $http){
              
         }); 
     }
-    
+
+
+    $scope.editDetails = function(x){ 
+        $scope.detail=x;
+        console.log($scope.detail);
+    }
+
     $scope.deleteCourse = function(idd){ 
         swal({
             title: 'Are you sure?',
