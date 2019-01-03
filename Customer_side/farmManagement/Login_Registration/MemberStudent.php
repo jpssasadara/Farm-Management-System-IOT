@@ -7,3 +7,4 @@ echo "Please log in first to see this page.";
 }
 ?>
 
+<p><a href="logout.php">Logout</a></p>
