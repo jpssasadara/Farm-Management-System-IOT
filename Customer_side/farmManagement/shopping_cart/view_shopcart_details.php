@@ -1,38 +1,40 @@
-<?php
-// Create connection
-/* fetch associative array */
-
-$mysqli = new mysqli("localhost", "root", '', "fmsmy");
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-
-$query = "SELECT * FROM regshoporder INNER JOIN items ON regshoporder.Item_Code=items.Code";
-/* fetch associative array */
-
-if ($result = $mysqli->query($query)) {
-
-    while ($row = $result->fetch_array()) {
-        //echo $row['name'];
-        echo "<div class='well'>";
-
-        echo "<ul class='list-unstyled'>";
-
-        echo " <tr>
-                   <td>{$row['OrderNumber']}</td>
-                   <td>{$row['Name']}</td>
-                   <td>{$row['Date']}</td>
-                   <td>{$row['Code']}</td>
-                   </tr>\n";
-
-        echo("</div>");
+<!Doctype html>
+<html>
+<style>
+    .btn-group button {
+        background-color: #4CAF50; /* Green background */
+        border: 1px solid green; /* Green border */
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 10%; /* Set a width if needed */
+        display: block; /* Make the buttons appear below each other */
     }
-    "</ul>";
-    /* free result set */
-    $result->free();
-}
 
-/* close connection */
-$mysqli->close();
-?>
+    .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+<body>
+
+<h1></h1>
+
+<div class="btn-group">
+    <a href="verify_view.php" target="_blank">
+    <button >Verifed</button>
+    </a>
+    <a href="deliver_view.php" target="_blank">
+    <button>Deliverd</button>
+    </a>
+    <a href="pending_view.php" target="_blank">
+    <button>Pending</button>
+    </a>
+</div>
+
+</body>
+</html>
