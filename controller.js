@@ -1230,6 +1230,71 @@ app.controller("RegisterAdminController", function($scope, $http){
                  
             }); 
         } 
+        $scope.editshop = function(x){ 
+            $scope.details=x;
+            //console.log($scope.details);
+        }
+        $scope.deleteshop = function(idd){ 
+            swal({
+                title: 'Are you sure?',
+                text: "You want to delete this data?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+                )
+                $http.post("module/Farmshop/deleteshop.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayshop();  
+                });
+            }
+            else  
+            {  
+                return false;  
+            } 
+        });  
+       }
+       $scope.editshops=function(){
+ 
+        $http.post(  
+            "module/FarmShop/editshop.php",  
+            {'details.nic':$scope.details.nic,'details.fn':$scope.details.fn, 
+            'details.ln':$scope.details.ln,'details.pn'
+            :$scope.details.pn,'details.address':$scope.details.address,
+            'details.email':$scope.details.email,'details.un':$scope.details.un,
+        }  
+        
+    ).success(function(data){
+
+        //console.log(data);
+        if($scope.details.nic!=null && $scope.details.fn!=null && $scope.details.ln!=null
+            && $scope.details.pn!=null && $scope.details.address!=null && $scope.details.email!=null  && $scope.details.un!=null){
+            $scope.successInsert = data.message;
+            swal({
+                type: 'success',
+                title: $scope.details.fn +' Shop Updated Successfull!',
+                timer: 5000
+                });
+        }else{
+            swal(
+                'Error!',
+                'All the fields cannot be empty.',
+                'Error'
+            );
+        }
+        }
+    )}; 
+
+
  });
 //isuru
  
