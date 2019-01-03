@@ -30,6 +30,6 @@ if($count==1){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    header("Location: Member.php");
+    header("Location: MemberFamer.php");
     exit();
 }
