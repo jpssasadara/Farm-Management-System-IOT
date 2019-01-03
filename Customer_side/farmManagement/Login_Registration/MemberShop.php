@@ -31,7 +31,6 @@ echo "Please log in first to see this page.";
 <body>
 
 <h1></h1>
-<p><a href="logout.php">Logout</a></p>
 
 <div class="btn-group">
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
