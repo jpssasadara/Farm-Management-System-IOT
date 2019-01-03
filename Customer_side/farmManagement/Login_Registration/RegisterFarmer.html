@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Sign-Up</title>
+
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body id="body-color">
+<div id="Sign-Up">
+    <fieldset style="width:30%"><legend>Registration Form</legend>
+        <table border="0">
+            <form method="POST" action="RegisterFarmer.php">
+                <tr>
+                    <td>NIC</td><td><input type="text" name="nic" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Name</td><td><input type="text" name="name" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>MobileNumber</td><td><input type="text" name="mobile"  class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td> Email</td><td><input type="text" name="email"  class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td> Gender</td><td><input type="text" name="gender"  class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Address</td><td><input type="text" name="address" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td> Varieties </td><td> <input type="radio" name="q1" value="Vegetables" data-toggle="modal" data-target="#myModal"/>
+                    Vegetables
+                    <input type="radio" name="q1" value="Fruits" data-toggle="modal" data-target="#myModal"/>
+                    Fruits
+                    <input type="radio" name="q1" value="Animal products" data-toggle="modal" data-target="#myModal"/>
+                    Animal products
+                    <input type="radio" name="q1" value="Milk based products" data-toggle="modal" data-target="#myModal"/>
+                    Milk based products
+                    </td>
+                </tr>
+                <tr>
+                    <td> UserName</td><td> <input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td> Password</td><td> <input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td><input id="button" type="submit" name="submit" value="Sign-Up"></td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="LoginFarmer.html">Sign-In</a></td>
+                </tr>
+            </form>
+        </table>
+    </fieldset>
+
+    <!-- Modal -->
+    <!--div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <!--div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select what are the varieties you make</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="RegisterFarmer.php" method="post">
+                    <table>
+                        <tr>
+                            <th>Vegetables</th>
+                            <th>Fruits</th>
+                            <th>Animal products</th>
+                            <th>Milk based products</th>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="q2" value="Pumpkin">Pumpkin</td>
+                            <td><input type="radio" name="q2" value="Orange">Orange</td>
+                            <td><input type="radio" name="q2" value="Eggs">Eggs</td>
+                            <td><input type="radio" name="q2" value="Milk">Milk</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="q2" value="Carrot">Carrot</td>
+                            <td><input type="radio" name="q2" value="Banana">Banana</td>
+                            <td><input type="radio" name="q2" value="Chiken">Chiken</td>
+                            <td><input type="radio" name="q2" value="Curd">Curd</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input id="button1" type="submit" name="submit" value="Okey"></td>
+                        </tr>
+                    </table>
+                    </form>
+                </div-->
+                <!--div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div-->
+
+</div>
+</body>
+</html>
