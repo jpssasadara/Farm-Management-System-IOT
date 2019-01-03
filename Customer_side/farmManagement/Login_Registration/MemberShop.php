@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
-    echo "Please log in first to see this page.";
+echo "Please log in first to see this page.";
 }
 ?>
 <!Doctype html>
@@ -34,15 +34,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 <div class="btn-group">
     <a href="verify_view.php" target="_blank">
-    <button >Verifed</button>
+        <button >Verifed</button>
     </a>
     <a href="deliver_view.php" target="_blank">
-    <button>Deliverd</button>
+        <button>Deliverd</button>
     </a>
     <a href="pending_view.php" target="_blank">
-    <button>Pending</button>
+        <button>Pending</button>
     </a>
 </div>
 
 </body>
 </html>
+
