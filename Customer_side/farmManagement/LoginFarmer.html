@@ -119,6 +119,69 @@
         color: #777;
         text-decoration: none;
     }
+    .login-form {
+        width: 385px;
+        margin: 30px auto;
+    }
+    .login-form form {        
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .login-btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .input-group-addon .fa {
+        font-size: 18px;
+    }
+    .login-btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .social-btn .btn {
+        border: none;
+        margin: 10px 3px 0;
+        opacity: 1;
+    }
+    .social-btn .btn:hover {
+        opacity: 0.9;
+    }
+    .social-btn .btn-primary {
+        background: #507cc0;
+    }
+    .social-btn .btn-info {
+        background: #64ccf1;
+    }
+    .social-btn .btn-danger {
+        background: #df4930;
+    }
+    .or-seperator {
+        margin-top: 20px;
+        text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .or-seperator i {
+        padding: 0 10px;
+        background: #f7f7f7;
+        position: relative;
+        top: -11px;
+        z-index: 1;
+    }   
+
+    .abc-cccc {
+            
+            padding: 8px;
+        }
+        .well {
+            
+            padding: 40px;
+    }
+
 </style>
 
 <body >
@@ -202,106 +265,107 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
-<div class="container-fluid bg-grey">
-    <div class="row">
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-globe logo"></span>
-        </div>
-        <div class="col-sm-8">
-            <h2>Our Values</h2><br>
-            <h4><strong>MISSION:</strong> Acting as a pioneer government institute in provision of agricultural training courses to provide quality agricultural products at a concessionary price,
-                which combined with the traditional and modern techniques of agriculture in the agricultural sector</h4></br>
-            <h4><strong>VISION:</strong> Farming development as an eco-friendly,humanitarian,sustainable agricultural environment</h4>
-        </div>
-    </div>
-    <!-- Container (Portfolio Section) -->
-    <div class="container-fluid text-center bg-grey">
-        <h2>Portfolio</h2><br>
-        <h4>What we have made</h4>
-        <div class="row text-center">
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="frjuice.jpg" alt="Paris" width="400" height="300">
-                    <p><strong>Fruit Juices</strong></p>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="yo.jpg" alt="New York" width="400" height="300">
-                    <p><strong>Youghert</strong></p>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="bu.jpg" alt="San Francisco" width="400" height="300">
-                    <p><strong>Buns</strong></p>
-                    <p></p>
-                </div>
+
+
+
+<div class="container">
+    <div class="login-form">
+    <form method="post" action="LoginFarmer.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Registered Farmers Login</h2>  
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">             
+            </div>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-success login-btn btn-block" >Sign in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            
+        </div>
+        <div class="or-seperator"><i>or</i></div>
+        
+        
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="RegisterFarmer.html">Sign up here!</a></p>
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
 <footer class="text-center">
-    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br><br>
-
-    <!-- Footer Elements -->
-    <div class="container">
-
-        <!-- Grid row-->
-        <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-12 py-5">
-                <div class="mb-5 flex-center">
-
-                    <!-- Facebook -->
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="fb-ic">
-                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                    </a>
-                    </div>
-                    <!-- Twitter -->
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="tw-ic">
-                        <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    </div>
-                    <!-- Google +-->
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="gplus-ic">
-                        <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    </div>
-                    <!--Linkedin -->
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="li-ic">
-                        <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    </div>
-                    <!--Instagram-->
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="ins-ic">
-                        <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    </div>
-                    <div class="col-md-2 mb-md-1 mb-1">
-                    <a class="pin-ic">
-                        <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
-                    </a>
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
+    
+        <!-- Footer Elements -->
+        <div class="container">
+    
+            <!-- Grid row-->
+            <div class="row">
+    
+                <!-- Grid column -->
+                <div class="col-md-12 py-5">
+                    <div class="mb-5 flex-center">
+    
+                        <!-- Facebook -->
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                        </div>
+                        <!-- Twitter -->
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        </div>
+                        <!-- Google +-->
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        </div>
+                        <!--Linkedin -->
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        </div>
+                        <!--Instagram-->
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        </div>
+                        <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="pin-ic">
+                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    
     </div>
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-
+    </footer>
     </div>
-</footer>
-</div>
-</body>
-</html>
+    </body>
+    </html>

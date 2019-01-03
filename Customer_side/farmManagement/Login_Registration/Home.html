@@ -88,6 +88,13 @@
         color: #51bf28;
         font-size: 200px;
     }
+    h2 {
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #1b1818;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
     h4 {
         font-size: 19px;
         line-height: 1.375em;
@@ -137,8 +144,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="#services">SERVICES</a></li>
-                <li><a href="course.php">COURSES</a></li>
-                <li><a href="Order_foods.php">PRICING</a></li>
+                <li><a href="Courses/course.php">COURSES</a></li>
+                <li><a href="shopping_cart/Order_foods.php">PRICING</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <ul class="nav navbar-nav navbar-right">
                     <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
@@ -146,9 +153,9 @@
                         <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
                         <div class="dropdown-content">
                             <div ng-controller="loginbuttonctrl">
-                            <a  href="LoginShop.html" >Registered Shop</a>
-                            <a href="LoginFarmer.html">Registered Farmer</a>
-                            <a href="LoginStudent.html" >Student</a>
+                            <a  href="Login_Registration/LoginShop.html" >Registered Shop</a>
+                            <a href="Login_Registration/LoginFarmer.html">Registered Farmer</a>
+                            <a href="Login_Registration/LoginStudent.html" >Student</a>
                             </div>
                         </div>
                     </div>
@@ -289,6 +296,7 @@
                         <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                     </a>
                     </div>
+                    <!--Pinterest-->
                     <div class="col-md-2 mb-md-1 mb-1">
                     <a class="pin-ic">
                         <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
@@ -296,12 +304,28 @@
                     </div>
                 </div>
             </div>
+            <!-- Grid column -->
+
         </div>
-    </div>
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <!-- Grid row-->
 
     </div>
+    <!-- Footer Elements -->
+
+
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <!---<a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>>
+    </div>
+    <!-- Copyright -->
+    </div>
 </footer>
+
+<!--script>
+    $(document).ready(function(){
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script-->
 </div>
 </body>
 </html>
