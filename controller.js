@@ -220,6 +220,28 @@ app.config(function($routeProvider) {
         },
         templateUrl: "view/shopRegister.html"
      })
+     .when("/admin/ShopView",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/viewRegshop.html"
+     })
+
      //isuru
 
      .when("/admin/addcources",{                    
@@ -774,6 +796,9 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.getShopReg=function(){  //isuru
         $location.path('/admin/ShopRegister');
     };
+    $scope.getShopview=function(){  //isuru
+        $location.path('/admin/ShopView');
+    };
 
    
 
@@ -1196,9 +1221,17 @@ app.controller("RegisterAdminController", function($scope, $http){
                     });
                 }
             }
-        )}; 
+        )};
+        $scope.displayshop = function(){ 
+            $http.get("module/FarmShop/viewshop.php")  
+            .success(function(data){  
+                //console.log(data); 
+                $scope.items = data;
+                 
+            }); 
+        } 
  });
-
+//isuru
  
 
  app.controller("AddCourseDetails", function($scope, $http){ 

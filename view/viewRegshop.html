@@ -1,86 +1,237 @@
-<h1>View Shops</h1>
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+    
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
-<div class="container"  ng-controller="AddItemDetails" ng-init="load()">
-	<div class ="alert alert-light"><button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click=vegetable()>Vegetables</button><button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click=fruit()>Fruits</button></div>
-	
-	<div class ="row">
-		<div class="col-sm-6 bg-info text-white">
-			<h2><center>Farm Products</center></h2>
-			 <div class="col-md-12" ng-repeat="image in imagesFruit">  
-                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresFP(image.Code)">View</button>
-                     </div>
-                    <div>
-                            <!--pop up windows -->
-                        <div ng-show="showme">
-                            <div class="form-popup "   id="myForm" >
-                                   {{itemcode}}
 
-
-			                        <table class="table table-hover">  
-			                          <tr>  
-			                               <th><b>Load Number</b></th>
-			                               <th><b>Load Date</b></th>  
-			                               <th><b>Amount</b></th> 
-			                          </tr>  
-			                          
-
-			                           <tr ng-repeat="x in items ">
-
-			                              
-			                               <td>{{x.Load_Num}}</td>
-			                               <td>{{x.Load_Date}}</td> 
-			                               <td>{{x.Amount}}</td>
-			           
-			                                
-			                          </tr>  
-			                        </table>  
-
-
-                              </div>  
-                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
-                            
+<div ng-controller="AddshopDetails" class="container" 
+ng-init="displayshop()">
+<hr>
+<div ng-controller="Admincontroller"> 
+<button class="btn btn-default" ng-click="showAdmin()">Back</button>
+</div>
+      
+<h2><span class="glyphicon glyphicon-file"></span> Shop Details</h2>
+<table class="table table-bordered table-striped"> 
+    <thread class="thread-dark"> 
+    <tr>
+        <th><b>Nic Number</b></th>
+        <th><b>First Name</b></th>
+        <th><b>Last Name</b></th>
+        <th><b>Phone Number</b></th>
+        <th><b>Address</b></th>
+        <th><b>Office Email</b></th>
+        <th><b>User(shop) Name</b></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thread>
+    <tbody>
+    <tr ng-repeat="x in items">
+        <td>{{x.nic}}</td>
+        <td>{{x.fn}}</td>  
+        <td>{{x.ln}}</td> 
+        <td>{{x.pn}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.un}}</td>
+        <td><button onclick="showEdit()" ng-click="editDetails(x)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+            </button></td>
+        <td><button class="btn btn-danger" ng-click="deleteCourse(x.Course_Id)"><span class="glyphicon glyphicon-trash"></span>
+            </button></td>  
+           
+        <div id="myModal" class="modal" ng-init="editDetails()">
+        <!-- Modal content -->
+        <div class="modal-content" ng-init="details">
+            <span class="close">&times;</span>
+            <form method="POST"> 
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Course ID </label>
                         </div>
+                        <div class="col-xs-6">
+                        <!-- <label>First Name</label> -->
+                            <p class="input-group">  
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control"  id="textinput" required name="textinput" 
+                                readonly ng-model="details.Course_Id" ng-init='details.Course_Id=details.Course_Id' placeholder="Course Id">             
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Course Name</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                            <input type="text" class="form-control" id="textinput" required name="textinput" 
+                            ng-model="details.Course_Name" ng-init="details.Course_Name=details.Course_Name" placeholder="Course Name">             
+                        </p>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Course Type</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                                <select class="form-control" name="textinput" ng-model="details.Course_type"
+                                ng-init="details.Course_type=details.Course_type">
+                                    <option value="parttime">Part Time</option>   
+                                    <option value="fulltime">Full Time</option> 
+                         
+                                </select>
+                        </p>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Course Duration</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                                <select class="form-control" name="textinput" ng-model="details.Course_duration"
+                                ng-init="details.Course_duration=details.Course_duration">
+                                    <option value="6 month">6 Month</option>   
+                                    <option value="1 year">1 Year</option> 
+                                    <option value="2 year">2 Year</option> 
+                         
+                                </select>
+                        </p>
+                        </div>
+                    </div>
+                
+                
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Description</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                                <input type="textarea" class="form-control" id="textinput" required name="textinput" 
+                                ng-model="details.Course_description" ng-init="details.Course_description=details.Course_description"
+                                placeholder="description" required="required">             
+                            </p>
+                        </div> 
+                    </div>
+                
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">Course Fees</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <input type="text" class="form-control" id="textinput" required name="textinput" 
+                                ng-model="details.Course_fees" ng-init="details.Course_fees=details.Course_fees"
+                                placeholder="Course Fees" required="required">             
+                            </p>
+                        </div> 
+                    </div>
+                
+                    <div class="form-group row flex-v-center">
+                            <div class="col-xs-2 col-sm-4">
+                                <label for="from">Course Locations</label>
+                            </div>
+                            <div class="col-xs-6">
+                            <p class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                    <input type="text" class="form-control" id="textinput" required name="textinput" 
+                                    ng-model="details.Location" ng-init="details.Location=details.Location"
+                                     placeholder="Course Locations(ex:Galle,Colombo,Matara)" required="required">             
+                                </p>
+                            </div> 
+                        </div>
+                
+                    <div class="form-group">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                        <button type="submit" name="registration" class="btn btn-warning login-btn btn-block" 
+                        ng-click="editCourse()">Edit Details 
+                        <span class="glyphicon glyphicon-send"></span></button>
                         
                     </div>
                 </div> 
-		</div>
-		<div class="col-sm-6 bg-success text-white"><h2><center>Reg Farmer's Products</center></h2>
-			 <div class="col-md-12" ng-repeat="image in imagesFruit">  
-                     <div class="col-md-6"><img ng-hide="showme" ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /></div><div ng-hide="showme" class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br><button class="btn btn-warning btn-xl" ng-click="showme=true ; setDataPopUpViewStoresRegFP(image.Code)">Views</button>
-                     </div>
-                     <div>
-                            <!--pop up windows -->
-                        <div ng-show="showme">
-                            <div class="form-popup "   id="myForm" >
-                                   {{itemcode}}
+            </form>
 
 
-			                        <table class="table table-hover">  
-			                          <tr>  
-			                               <th><b>Load Number</b></th>
-			                               <th><b>Load Date</b></th>  
-			                               <th><b>Amount</b></th> 
-			                          </tr>  
-			                          
-
-			                           <tr ng-repeat="x in items ">
-
-			                              
-			                               <td>{{x.Load_Num}}</td>
-			                               <td>{{x.Load_Date}}</td> 
-			                               <td>{{x.Amount}}</td>
-			           
-			                                
-			                          </tr>  
-			                        </table>  
 
 
-                              </div>  
-                              <button type="button" class="btn btn-warning btn-xs"  ng-click="showme=false ; refreshpage()">Close</button>
-                            
-                        </div>
-                        
-                    </div>
-                </div> 
-		</div></div>
-	</div>
+        </div>
+        
+        </div>
+
+    </tr>
+    </tbody>
+
+    </table>
+
+</div>
+      
+<script>
+function showEdit(){
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the button that opens the modal
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal 
+    modal.style.display = "block";
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        }
+    }
+}
+</script>
+      
