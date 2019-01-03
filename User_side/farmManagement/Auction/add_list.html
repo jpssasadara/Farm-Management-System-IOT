@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Sign-Up</title>
+</head>
+<body id="body-color">
+<div id="Sign-Up">
+    <fieldset style="width:30%"><legend>Auction</legend>
+        <table border="0">
+            <form method="POST" action="add_list.php">
+                <h3>Create Auction</h3>
+
+                <tr>
+                    <select name="item_type">
+                        <option value="">Select Item Type</option>
+                        <option value="volvo">Vegetables</option>
+                        <option value="saab">Fruits</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td> National Id</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="id" placeholder="9574124456v"></td>
+                </tr>
+                <tr>
+                    <td> Listing Title</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="name" placeholder="Item name"></td>
+                </tr>
+                <tr>
+                    <td>Maximum Price</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="price" placeholder="500"></td>
+                </tr>
+                <tr>
+                    <td>Expiration Date</td>
+                </tr>
+                <tr>
+                    <td> <input type="date" name="date" placeholder="select expiration date"></td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="location" placeholder="location"></td>
+                </tr>
+
+                <tr>
+                    <td>Auction Description</td>
+                </tr>
+                <tr>
+                    <td> <textarea  name="description"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><input id="button" type="submit" name="submit" value="Submit Auction"></td>
+                </tr>
+
+            </form>
+        </table>
+    </fieldset>
+
+</div>
+</body>
+</html>
+</html>
