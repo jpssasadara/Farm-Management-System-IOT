@@ -13,14 +13,31 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
                    $insertQuery = "INSERT INTO load_shop_items(Item_Code,Load_Num,Amount,Date1) VALUES ('$itemcode',null,'$amount','$getdatee')";  
                  if(mysqli_query($connect, $insertQuery))  
                  {  
-                      echo 'Ok ..  ';  
+                      //echo 'Ok ..  ';  
                  }  
                  else  
                  {  
-                      echo  "error..."; 
+                      //echo  "error..."; 
                       //echo  $insertQuery; 
                  }  
                
-        
+          // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+          $sql = "SELECT Amount FROM stores WHERE Code ='$itemcode' limit 1";
+          $result = mysqli_query($connect,$sql);
+          $row=mysqli_fetch_array($result);
+          $value = $row[0];
+          $Oldvalue = (int)$value;
+          //After removing kg
+
+          $TrueValue = substr($amount,0,-2); 
+          $Addedvalue = (int)$TrueValue;
+          $updatedNewvalue = $Oldvalue+$Addedvalue; 
+
+          $updateQueryNet = "UPDATE stores SET Amount='$updatedNewvalue' WHERE Code ='$itemcode'";
+          echo  $sql;
+          mysqli_query($connect, $updateQueryNet);
+       //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
  ?>
 

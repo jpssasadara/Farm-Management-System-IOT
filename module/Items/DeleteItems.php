@@ -13,6 +13,11 @@
       else  
       {  
            echo 'Error';  
-      }  
+      }
+
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $deleteQueryNet= "DELETE FROM  stores WHERE Code='$id'";
+        mysqli_query($connect, $deleteQueryNet);
+       //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    
  }  
  ?>  

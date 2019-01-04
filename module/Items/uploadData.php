@@ -19,6 +19,7 @@ while($row = mysqli_fetch_array($result))
      $output = $row[0];  
 }  
 
+<<<<<<< HEAD
 $output = $output+1;  
 $insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";  
 
@@ -49,6 +50,25 @@ else{
 } 
 
 echo json_encode($dataa);
+=======
+     $output = $output+1;  
+ $insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";
+
+ 
+if(mysqli_query($connect, $insertQuery))  
+{  
+     echo 'File Uploaded';  
+}  
+else  
+{  
+     echo 'File Uploaded But not Saved'; 
+     //echo  $insertQuery;
+}  
+// <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  $insertQueryNet = "INSERT INTO stores(Code,Amount) VALUES ('$code',0)";
+  mysqli_query($connect, $insertQueryNet)
+ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+>>>>>>> 520442bdfbc1f1f667c3bcd137f5f05eee191174
 
  ?>
 
