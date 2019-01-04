@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,6 +93,7 @@
         color: #51bf28;
         font-size: 200px;
     }
+
     h4 {
         font-size: 19px;
         line-height: 1.375em;
@@ -271,10 +274,11 @@
 
 <br/>
 <a href="home.html"><button class="btn btn-default">Back</button></a>
+
 <div class="container">
     <div class="login-form">
-    <form method="post" action="LoginStudent.php">
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Students Login</h2>  
+    <form method="post" action="LoginShop.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Registered Shop Login</h2>  
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -288,7 +292,7 @@
             </div>
         </div>        
         <div class="form-group">
-            <button type="submit" class="btn btn-warning login-btn btn-block" >Sign in</button>
+            <button type="submit" class="btn btn-primary login-btn btn-block" >Sign in</button>
         </div>
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
@@ -298,7 +302,7 @@
         
         
     </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="RegisterStudent.html">Sign up here!</a></p>
+    <p class="text-center text-muted small">Don't have an account? <a href="RegisterShop.html">Sign up here!</a></p>
 </div>
 </div>
 </div>
@@ -372,3 +376,14 @@
 </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+var a='<?php echo $_SESSION['error'];?>';
+swal({
+    type: 'error',
+    title: 'Oops...',
+    text: 'Wrong Login details !',
+    footer: a
+});
+</script>

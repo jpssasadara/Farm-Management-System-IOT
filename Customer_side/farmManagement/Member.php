@@ -12,6 +12,9 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 </head>
 <style>
     body {
@@ -276,12 +279,22 @@ session_start();
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
+?>
+<script type="text/javascript">
+    var a='<?php echo $_SESSION['username'];?>';
+    swal({
+        text: 'Welcome '+a+'!',
+    });
+</script>
+<?php 
 } 
 else {
     header('Location: LoginFarmer1.php');
 }
 
 ?>
+
+
 
 
 </div>
