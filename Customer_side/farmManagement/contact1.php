@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,48 +269,39 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
-
 <br/>
 <a href="home.html"><button class="btn btn-default">Back</button></a>
-<div class="container">
-    <div class="login-form">
-    <form method="post" action="LoginStudent.php">
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Students Login</h2>  
+<div class="container-fluid bg" >
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <form class="text-center border border-light p-5" action="contact.php" method="POST">
+
+        <h2>Contact us</h2>
+            <!-- Name -->
+            <input type="text" name="name" id="defaultContactFormName" 
+            class="form-control mb-4" placeholder="Name" required>
+            <!-- Email -->
+        <input type="email" name="email" id="defaultContactFormEmail" class="form-control mb-4" 
+        placeholder="E-mail" required>
+
+        <!-- Message -->
         <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
-            </div>
+        <textarea name="message" class="form-control rounded-0" id="exampleFormControlTextarea2" 
+        rows="3" placeholder="Message" required></textarea>
         </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">             
-            </div>
-        </div>        
-        <div class="form-group">
-            <button type="submit" class="btn btn-warning login-btn btn-block" >Sign in</button>
-        </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            
-        </div>
-        <div class="or-seperator"><i>or</i></div>
-        
-        
+
+        <!-- Send button -->
+        <button type="submit" class="btn btn-info btn-sq-lg btn-block" type="submit">
+           <i class="fa fa-envelope fa-3x"></i><br/> Send</button>
+
     </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="RegisterStudent.html">Sign up here!</a></p>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    </div>
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
 
 <footer class="text-center">
 <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -372,3 +364,11 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+var a='<?php echo $_SESSION['message'];?>';
+swal({
+    text: 'Messaged Success !',
+    footer: a
+});
+</script>

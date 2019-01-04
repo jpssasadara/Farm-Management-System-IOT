@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <style>
     body {
@@ -276,11 +278,6 @@
     <form method="post" action="LoginFarmer.php">
             <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Registered Farmers Login</h2>  
         <div class="form-group">
-        <?php
-            if (isset($_SESSION['error'])) {
-                echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
-            }
-            ?>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
@@ -307,8 +304,6 @@
 </div>
 </div>
 </div>
-
-
 
 
 
@@ -377,3 +372,13 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    var a='<?php echo $_SESSION['error'];?>';
+    swal({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Wrong Login details !',
+        footer: a
+    });
+</script>
