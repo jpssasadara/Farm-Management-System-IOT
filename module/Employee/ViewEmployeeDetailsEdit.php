@@ -58,8 +58,6 @@ if(!empty($error))
 {
  $dataa["error"] = $error;
 }
-else
-{
 
 
 if(count($data)>0){
@@ -75,22 +73,31 @@ if(count($data)>0){
   $password2 = mysqli_real_escape_string($connect,$data->password);
 
   if($password==$password2){
-    $query = "UPDATE farmshopemployee SET First_Name='$firstname',Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' WHERE Id = '$id'";
+    $mvalid=preg_match('/^[0-9]{10}+$/', $phonenumber);
+		$dataa["mvalid"]=$mvalid;
 
-    if(mysqli_query($connect,$query))
-    {
-      //echo "Data Inserted...........";
-      $dataa["message"] = "Data Updated...";
-    }
-    else{
-      //echo "Error.....";
-      $dataa["message"] = "Try Again....";
+		if($mvalid){
+      $query = "UPDATE farmshopemployee SET First_Name='$firstname',
+      Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',
+      Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' 
+      WHERE Id = '$id'";
+
+      mysqli_query($connect,$query);
+      $q="SELECT * FROM farmshopemployee WHERE Id='$id'";
+      $a=mysqli_query($connect,$q);
+
+      if(mysqli_num_rows($a)>0) {
+        $dataa["success"]="success";
+      }
+      else{
+        $dataa["cannot"] ="You cannot change EmpId";
+      }
     }
   }
 }
-}
 
-  echo json_encode($dataa);
+
+echo json_encode($dataa);
 
 
 
