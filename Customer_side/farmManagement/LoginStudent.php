@@ -30,7 +30,7 @@ if($count>0){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    header("Location: StudentMenu.php");
+    header("Location: MemberStudent.php");
     exit();
 }
 else{
