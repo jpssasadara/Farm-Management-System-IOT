@@ -199,28 +199,6 @@ app.config(function($routeProvider) {
      })
      //isuru
 
-     .when("/admin/farmerView",{                    
-        resolve:{
-            "check":function($location,$cookies,$rootScope){
-                if(!$cookies.get('cookie')){
-                    $location.path('/');
-                }
-                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                } else if ($cookies.get('cookiename')!=null){
-                    $rootScope.adminname=$cookies.get('cookiename');
-                    $rootScope.shopname=" LoginShop";
-                }else if($cookies.get('cookie2name')!=null){
-                    $rootScope.shopname=$cookies.get('cookie2name');
-                    $rootScope.adminname=" LoginAdmin";
-    
-                }
-            }
-        },
-        templateUrl: "view/viewfarmers.html"
-     })
-
      .when("/admin/ShopRegister",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -862,9 +840,6 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.getFarmerReg=function(){  //isuru
         $location.path('/admin/farmerReg');
     };
-    $scope.getFarmerview=function(){  //isuru
-        $location.path('/admin/farmerView');
-    };
     $scope.getShopReg=function(){  //isuru
         $location.path('/admin/ShopRegister');
     };
@@ -1409,15 +1384,6 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 app.controller("AddfarmerDetails", function($scope, $http){  
-    $scope.displayfarmers = function(){ 
-        $http.get("module/farmer/viewfarmers.php")  
-        .success(function(data){  
-            //console.log(data); 
-            $scope.items = data;
-             
-        }); 
-    }
-
     $scope.addfarmer = function(){ 
         console.log($scope.username,$scope.Id,$scope.First_Name,
         $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
@@ -1441,6 +1407,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 }
             }
         )};
+<<<<<<< HEAD
+=======
 
     
     
@@ -1521,6 +1489,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
             }
     )};
         
+>>>>>>> f61fe4a90de1910bf8521b634a688153604e3f00
         
 
 
@@ -1590,21 +1559,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
         if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
             && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
             $scope.successInsert = data.message;
-            if(data.invalidFees){
-                console.log(data);
-                swal({
-                    type: 'warning',
-                    title: 'Oops...',
-                    text: 'Invalid Course Fees!',
-                    footer: 'please enter valid Fees!'
+            swal({
+                type: 'success',
+                title: $scope.details.Course_Name +' Course Updated Successfull!',
+                timer: 5000
                 });
-            }else{
-                swal({
-                    type: 'success',
-                    title: $scope.details.Course_Name +' Course Updated Successfull!',
-                    timer: 5000
-                    });
-            }
         }else{
             swal(
                 'Error!',
@@ -1625,33 +1584,15 @@ app.controller("AddfarmerDetails", function($scope, $http){
              'location':$scope.location}  
             
         ).success(function(data){
-            console.log(data.errorId);
+            console.log(data);
             if($scope.Course_Id!=null && $scope.Course_Name!=null && $scope.Course_duration!=null
                 && $scope.Course_type!=null && $scope.Course_fees!=null && $scope.location!=null){
                 $scope.successInsert = data.message;
-                if(data.errorId){
-                    swal({
-                        type: 'warning',
-                        title: 'Oops...',
-                        text: 'CourseId is Taken!',
-                        footer: 'please enter another courseId!'
+                swal({
+                    type: 'success',
+                    title: $scope.Course_Name +' Course Added Successfull!',
+                    timer: 5000
                     });
-                }
-                else if(data.invalidFees){
-                    swal({
-                        type: 'warning',
-                        title: 'Oops...',
-                        text: 'Invalid Course Fees!',
-                        footer: 'please enter valid Fees!'
-                    });
-                }
-                else{
-                    swal({
-                        type: 'success',
-                        title: $scope.Course_Name +' Course Added Successfull!',
-                        timer: 5000
-                        });
-                    }
                 }
             }
         )}; 
@@ -1840,7 +1781,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                                    swal(
                                     'Error!',
                                     'Amount should be " Kg ".'
-                                    
+          
                                     )
                             }
 
@@ -1915,13 +1856,13 @@ app.controller("AddfarmerDetails", function($scope, $http){
                  $http.post('module/FarmShop/LoadItemsShop.php',
                {'itemcode':$scope.itemcode,'amount':$scope.amount}  
                 ).success(function(response){
-                      //alert(response);
-                      $scope.amount="";
-                      swal(
-                      'OK!',
-                      'Your Data has been Added.',
-                      'success'
-                  )
+                      alert(response);
+                     // $scope.amount="";
+                      //swal(
+                      //'OK!',
+                      //'Your Data has been Added.',
+                      //'success'
+                 // )
                     $scope.select(); 
                     $scope.selectFruit(); //farmernic itemcode amount total
                    
