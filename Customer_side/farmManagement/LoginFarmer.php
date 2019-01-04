@@ -33,3 +33,10 @@ if($count==1){
     header("Location: Member.php");
     exit();
 }
+else{
+    session_start();
+    $_SESSION['error']="Invalid Login Details";
+    header('Location: LoginFarmer1.php');
+    exit();
+    
+}
