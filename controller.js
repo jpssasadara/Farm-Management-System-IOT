@@ -1435,7 +1435,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 $scope.successInsert = data.message;
                 swal({
                     type: 'success',
-                    title: $scope.un +' Shop Added Successfull!',
+                    title: $scope.First_Name +' Farmer Added Successfull!',
                     timer: 5000
                     });
                 }
