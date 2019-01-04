@@ -587,6 +587,53 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewStores2.html"
            })
 
+          //loading farmshop
+
+          .when("/load/farmshop",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/loadingFarmShop.html"
+           })
+
+          //view farmshop
+          .when("/view/shoploading",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewFarmshop.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -839,7 +886,15 @@ app.controller("Admincontroller",function($scope,$http,$location){
        });
     };
 
+    //loading items to farm Shop
+    $scope.laodingShop=function(){
+      $location.path('/load/farmshop');
+    }
 
+    //view farm shop
+    $scope.viewShop=function(){
+      $location.path('/view/shoploading');
+    }
 });
 
 
