@@ -75,12 +75,12 @@ ng-init="displayfarmers()">
         <td>{{x.Address}}</td>
         <td>{{x.variety}}</td>
         <td>{{x.username}}</td>
-        <td><button onclick="showEdit()" ng-click="editfarmers(x)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+        <td><button onclick="showEdit()" ng-click="editDetails(x)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
             </button></td>
         <td><button class="btn btn-danger" ng-click="deletefarmers(x.Id)"><span class="glyphicon glyphicon-trash"></span>
             </button></td>  
            
-        <div id="myModal" class="modal" ng-init="editfarmers()">
+        <div id="myModal" class="modal" ng-init="editDetails()">
         <!-- Modal content -->
         <div class="modal-content" ng-init="details">
             <span class="close">&times;</span>
@@ -101,7 +101,7 @@ ng-init="displayfarmers()">
                 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">First Name</label>
+                            <label for="from">Name</label>
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
@@ -114,26 +114,31 @@ ng-init="displayfarmers()">
                 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">Last Name</label>
+                            <label for="from">Contact</label>
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                                 <input type="text" class="form-control" id="textinput" required name="textinput" 
-                            ng-model="details.Tele_Number" ng-init="details.Tele_Number=details.Tele_Number" placeholder="Last Name"> 
+                            ng-model="details.Tele_Number" ng-init="details.Tele_Number=details.Tele_Number" placeholder="Contact"> 
                         </p>
                         </div>
                     </div>
                 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">Phone Number</label>
+                            <label for="from">Gender</label>
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
-                                <input type="text" class="form-control" id="textinput" required name="textinput" 
-                            ng-model="details.Gender" ng-init="details.Gender=details.Gender" placeholder="Phone Number">
+                                <select class="form-control" name="textinput" ng-model="details.Gender"
+                                ng-init="details.Gender=details.Gender">
+                                    <option value="male">Male</option>   
+                                    <option value="female">Female</option> 
+                                     
+                         
+                                </select>
                         </p>
                         </div>
                     </div>
@@ -160,7 +165,7 @@ ng-init="displayfarmers()">
                         <div class="col-xs-6">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
-                                <input type="email" class="form-control" id="textinput" required name="textinput" 
+                                <input type="text" class="form-control" id="textinput" required name="textinput" 
                                 ng-model="details.Address" ng-init="details.Address=details.Address"
                                 placeholder="Address" required="required">             
                             </p>
@@ -169,14 +174,19 @@ ng-init="displayfarmers()">
                 
                     <div class="form-group row flex-v-center">
                             <div class="col-xs-2 col-sm-4">
-                                <label for="from">variety</label>
+                                <label for="from">Variety</label>
                             </div>
                             <div class="col-xs-6">
                             <p class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
-                                    <input type="text" class="form-control" id="textinput" required name="textinput" 
-                                    ng-model="details.variety" ng-init="details.variety=details.variety"
-                                     placeholder="User Name" required="required">             
+                                    <select class="form-control" name="textinput" ng-model="details.variety"
+                                    ng-init="details.variety=details.variety">
+                                        <option value="Vegetables">Vegetables </option>   
+                                        <option value="Fruits">Fruits</option> 
+                                        <option value="Animal">Animal products </option>   
+                                        <option value="Milk">Milk based products</option> 
+                             
+                                    </select>             
                                 </p>
                             </div> 
                         </div>
@@ -201,7 +211,7 @@ ng-init="displayfarmers()">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                         <button type="submit" name="registration" class="btn btn-warning login-btn btn-block" 
-                        ng-click="editshops()">Edit Details 
+                        ng-click="editfarmer()">Edit Details 
                         <span class="glyphicon glyphicon-send"></span></button>
                         
                     </div>

@@ -1442,10 +1442,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
             }
         )};
 
-        $scope.editDetails = function(x){ 
-            $scope.details=x;
-            //console.log($scope.details);
-        }
+    
     
         $scope.deletefarmers = function(idd){ 
             swal({
@@ -1476,28 +1473,44 @@ app.controller("AddfarmerDetails", function($scope, $http){
             } 
         });  
        }
+
+       $scope.editDetails = function(x){ 
+        $scope.details=x;
+        console.log($scope.details);
+    }
     
-       $scope.editfarmers=function(){
-     
-            $http.post(  
-                "module/course/editData.php",  
-                {'details.Course_Id':$scope.details.Course_Id,'details.Course_Name':$scope.details.Course_Name, 
-                'details.Course_description':$scope.details.Course_description,'details.Course_duration'
-                :$scope.details.Course_duration,'details.Course_type':$scope.details.Course_type,
-                'details.Course_fees':$scope.details.Course_fees,'details.Location':$scope.details.Location
-            }  
+       $scope.editfarmer=function(){
+       
+        $http.post(  
             
+            "module/farmer/editfarmer.php",  
+            {'details.Id':$scope.details.Id,'details.First_Name':$scope.details.First_Name, 
+            'details.Tele_Number':$scope.details.Tele_Number,'details.Gender'
+            :$scope.details.Gender,'details.Email':$scope.details.Email,
+            'details.Address':$scope.details.Address,'details.variety':$scope.details.variety,'details.username':$scope.details.username
+        }  
+        
         ).success(function(data){
-    
+
             //console.log(data);
-            if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
-                && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
+            if($scope.details.Id!=null && $scope.details.First_Name!=null && $scope.details.Gender!=null
+                && $scope.details.Email!=null && $scope.details.Address!=null && $scope.details.variety!=null){
                 $scope.successInsert = data.message;
-                swal({
-                    type: 'success',
-                    title: $scope.details.Course_Name +' Farmer Updated Successfull!',
-                    timer: 5000
+                if(data.invalidFees){
+                    console.log(data);
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Fees!',
+                        footer: 'please enter valid Fees!'
                     });
+                }else{
+                    swal({
+                        type: 'success',
+                        title: $scope.details.First_Name +' Farmer Updated Successfull!',
+                        timer: 5000
+                        });
+                }
             }else{
                 swal(
                     'Error!',
@@ -1506,7 +1519,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 );
             }
             }
-        )}; 
+    )};
         
         
 
