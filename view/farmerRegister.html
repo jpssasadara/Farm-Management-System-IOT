@@ -1,4 +1,4 @@
-<div ng-controller="AddCourseDetails">
+<div ng-controller="AddfarmerDetails">
 	<div class="container container-fluid">
 	  <div class="well">
 	  <div class="row">
@@ -19,77 +19,37 @@
 				<p class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 					<input type="text" class="form-control"  id="textinput" required name="textinput" 
-					ng-model="Course_Id" placeholder=" Id">             
+					ng-model="Id" placeholder=" Id">             
 				</p>
 			</div>
 		</div>
 	
 		<div class="form-group row flex-v-center">
 			<div class="col-xs-2 col-sm-4">
-				<label for="from">Shop Name</label>
+				<label for="from">Name</label>
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
 				<input type="text" class="form-control" id="textinput" required name="textinput" 
-				ng-model="Course_Name" placeholder="Shop Name">             
+				ng-model="First_Name" placeholder="Name">             
 			</p>
 			</div>
 		</div>
 	
 		<div class="form-group row flex-v-center">
 			<div class="col-xs-2 col-sm-4">
-				<label for="from">Office Email</label>
+				<label for="from">Contact</label>
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				<input type="email" class="form-control" id="textinput" required name="textinput" 
-				ng-model="Course_Name" placeholder="Office Email">             
-			</p>
-			</div>
-		</div>
-	
-		<div class="form-group row flex-v-center">
-			<div class="col-xs-2 col-sm-4">
-				<label for="from">Address</label>
-			</div>
-			<div class="col-xs-6">
-			<p class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
 				<input type="text" class="form-control" id="textinput" required name="textinput" 
-				ng-model="Course_Name" placeholder="Address">             
+				ng-model="Tele_Number" placeholder="Mobile/Tel">             
 			</p>
 			</div>
 		</div>
-	
-	
-		<div class="form-group row flex-v-center">
-			<div class="col-xs-2 col-sm-4">
-				<label for="from">Description</label>
-			</div>
-			<div class="col-xs-6">
-			<p class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-					<input type="textarea" class="form-control" id="textinput" required name="textinput" 
-					ng-model="Course_description" placeholder="description" required="required">             
-				</p>
-			</div> 
-		</div>
-	
-		<div class="form-group row flex-v-center">
-			<div class="col-xs-2 col-sm-4">
-				<label for="from">Contact </label>
-			</div>
-			<div class="col-xs-6">
-			<p class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-					<input type="text" class="form-control" id="textinput" required name="textinput" 
-					ng-model="Course_fees" placeholder="Tel Number" required="required">             
-				</p>
-			</div> 
-		</div>
-	
+
 		<div class="form-group row flex-v-center">
 			<div class="col-xs-2 col-sm-4">
 				<label for="from">Male/Female</label>
@@ -97,37 +57,84 @@
 			<div class="col-xs-3">
 			<p class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
-					<select class="form-control" name="textinput" ng-model="Course_type">
-						<option value="parttime">Male</option>   
-						<option value="fulltime">Female</option> 
+					<select class="form-control" name="textinput" ng-model="Gender">
+						<option value="male">Male</option>   
+						<option value="female">Female</option> 
 			 
 					</select>
 			</p>
 			</div>
 		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Email</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+				<span class="inEmailput-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+				<input type="email" class="form-control" id="textinput" required name="textinput" 
+				ng-model="Email" placeholder="Email">             
+			</p>
+			</div>
+		</div>
+	
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">Address</label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+					<input type="text" class="form-control" id="textinput" required name="textinput" 
+					ng-model="Address" placeholder="Address" required="required">             
+				</p>
+			</div> 
+		</div>
+	
+		<div class="form-group row flex-v-center">
+			<div class="col-xs-2 col-sm-4">
+				<label for="from">variety </label>
+			</div>
+			<div class="col-xs-6">
+			<p class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+					<select class="form-control" name="textinput" ng-model="variety">
+						<option value="Vegetables">Vegetables </option>   
+						<option value="Fruits">Fruits</option> 
+						<option value="Animal">Animal products </option>   
+						<option value="Milk">Milk based products</option> 
+			 
+					</select>             
+				</p>
+			</div> 
+		</div>
+	
+		
 
 		<div class="form-group row flex-v-center">
 			<div class="col-xs-2 col-sm-4">
-				<label for="from">Password</label>
+				<label for="from">username</label>
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input type="password" class="form-control" id="textinput" required name="textinput" 
-					ng-model="location" placeholder="Password" required="required">             
+					<input type="text" class="form-control" id="textinput" required name="textinput" 
+					ng-model="username" placeholder="username" required="required">             
 				</p>
 			</div> 
 		</div>
 		
 		<div class="form-group row flex-v-center">
 			<div class="col-xs-2 col-sm-4">
-				<label for="from">Conform</label>
+				<label for="from">password</label>
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 					<input type="password" class="form-control" id="textinput" required name="textinput" 
-					ng-model="location" placeholder="ReEnter Password" required="required">             
+					ng-model="password" placeholder="password" required="required">             
 				</p>
 			</div> 
 		</div>	
@@ -136,7 +143,7 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 			<button type="submit" name="registration" class="btn btn-warning login-btn btn-block" 
-			ng-click="addCourse()">Add Farmer 
+			ng-click="addfarmer()">Add Farmer 
 			<span class="glyphicon glyphicon-send"></span></button>
 			</div><div class="col-sm-4"><input type="reset" class="btn btn-danger" value="clear"></div>
 		</div>

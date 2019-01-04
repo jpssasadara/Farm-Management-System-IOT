@@ -1297,6 +1297,37 @@ app.controller("RegisterAdminController", function($scope, $http){
 
  });
 //isuru
+
+
+app.controller("AddfarmerDetails", function($scope, $http){  
+    $scope.addfarmer = function(){ 
+        console.log($scope.username,$scope.Id,$scope.First_Name,
+        $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
+        $http.post(  
+             "module/farmer/addData.php",  
+             {'Id':$scope.Id,'First_Name':$scope.First_Name, 'Tele_Number':
+             $scope.Tele_Number,'Gender':$scope.Gender,
+             'Email':$scope.Email,
+             'Address':$scope.Address,'variety':$scope.variety, 'username':$scope.username, 'password':$scope.password}  
+            
+        ).success(function(data){
+            console.log($scope.username);
+            if($scope.Id!=null && $scope.First_Name!=null && $scope.Tele_Number!=null && $scope.password!=null
+                && $scope.Gender!=null && $scope.Email!=null && $scope.Address!=null && $scope.username!=null){
+                $scope.successInsert = data.message;
+                swal({
+                    type: 'success',
+                    title: $scope.un +' Shop Added Successfull!',
+                    timer: 5000
+                    });
+                }
+            }
+        )};
+        
+
+
+ });
+//isuru
  
 
  app.controller("AddCourseDetails", function($scope, $http){ 
