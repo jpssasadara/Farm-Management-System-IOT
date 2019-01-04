@@ -10,9 +10,9 @@ $response = array();
 while($row = mysqli_fetch_array($result))
 {
     array_push($response,array("nic"=>$row[0],
-    "fn"=>$row[2],"ln"=>$row[3],
-    "pn"=>$row[4],"address"=>$row[5],
-    "email"=>$row[6],"un"=>$row[7]));
+    "fn"=>$row[1],"ln"=>$row[2],
+    "pn"=>$row[3],"address"=>$row[4],
+    "email"=>$row[5],"un"=>$row[6]));
 }
 //echo json_encode(array("server_response"=>$response));
 
