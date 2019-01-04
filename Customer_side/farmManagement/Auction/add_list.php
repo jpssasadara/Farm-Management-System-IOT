@@ -6,19 +6,18 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-if($_POST[item_type]==Vegetables) {
-    $query = "INSERT INTO vegetables_Auction (Id,Name,Price,Date,Location,Description) VALUES ('$_POST[id]','$_POST[name]','$_POST[price]','$_POST[location]','$_POST[description]')";
+
+    $query = "INSERT INTO auction (Item_type,Id,Item_name,Price,Date,Location,Description) VALUES ('$_POST[item_type]','$_POST[id]','$_POST[name]','$_POST[price]','$_POST[date]','$_POST[location]','$_POST[description]')";
     $result = mysqli_query($mysqli, $query);
-}
-else{
+        if($result)
+        {
+            echo "YOUR REGISTRATION IS COMPLETED...";
+        }
+        else
+        {
+            echo $query;
+        }
 
-}
 
-if($result)
-{
-    echo "YOUR REGISTRATION IS COMPLETED...";
-}
-else
-{
-    echo $query;
-}
+
+
