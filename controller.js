@@ -1643,7 +1643,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
        
-        if ($scope.farmernic!= null && $scope.itemcode && $scope.amount!=null && $scope.total!=null) {
+        if ($scope.farmernic!= null && $scope.itemcode!=null&& $scope.amount!=null && $scope.total!=null) {
           if (($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V')|| $scope.farmernic=="LabuduwaFarm" ){
              $http.post('module/Stores/LoadStores.php',
            {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
@@ -1718,6 +1718,41 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 //alert(data);  
            }); 
       }
+
+      //////////////////////////Loading Farm Shop\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+       $scope.setDataPopUpWindFarmShop = function(code){ 
+          $scope.itemcode=code;
+          $scope.shopname="LabuduwaFarmShop";
+      }
+
+      $scope.takeLoadToFarmShop = function(){
+        if ($scope.shopname!= null && $scope.itemcode!=null && $scope.amount!=null) {
+       
+             $http.post('module/FarmShop/LoadItemsShop.php',
+           {'itemcode':$scope.itemcode,'amount':$scope.amount}  
+            ).success(function(response){
+                  //alert(response);
+                  $scope.amount="";
+                  swal(
+                  'OK!',
+                  'Your Data has been Added.',
+                  'success'
+              )
+                $scope.select(); 
+                $scope.selectFruit(); //farmernic itemcode amount total
+               
+           }); 
+       
+           
+        } else {
+           swal(
+                  'Error!',
+                  'Check Your Inputs.'
+                  
+        )}
+      }
+
  }); 
       
 
