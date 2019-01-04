@@ -267,94 +267,119 @@
 </div>
 <br/>
 <a href="home.html"><button class="btn btn-default">Back</button></a>
-<div class="container-fluid bg" >
-<div class="row">
-    <div class="col-md-4 col-sm-4 col-xs-12"></div>
 
-    <div class="col-md-4 col-sm-4 col-xs-12">
-        <form class="text-center border border-light p-5">
+<hr>
 
-        <h2>Contact us</h2>
-            <!-- Name -->
-            <input type="text" name="name" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
-            <!-- Email -->
-        <input type="email" name="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
-        <!-- Message -->
-        <div class="form-group">
-        <textarea name="message" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-        </div>
+/* check connection */
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
 
-        <!-- Send button -->
-        <button type="submit" class="btn btn-info btn-sq-lg btn-block" type="submit">
-           <i class="fa fa-envelope fa-3x"></i><br/> Send</button>
+$query = "SELECT * FROM Course ";
 
-    </form>
-        <div class="col-md-4 col-sm-4 col-xs-12"></div>
-    </div>
+if ($result = $mysqli->query($query)) {
+
+    /* fetch associative array */
+
+    while ($row = $result->fetch_array()) {
+        echo "<div class='well'>";
+        $a=" <img src='images/$row[Course_Image]'>";
+        echo "<ul class='list-unstyled'>";
+
+        echo " 
+              
+              <div class='row'><div class='col-sm-4'>
+              $a</div><div class='col-sm-8'>
+              <form action='courseRegistration.php' method='get'>
+              <li><h1>$row[Course_Name]</h1></li>
+              </div>
+              <li><p>$row[Course_description]</p></li>
+              <li><h4>$row[Course_duration]</h4></li>
+              <li><h4>$row[Course_type]</h4></li>
+              <li><h4>$row[Course_fees]</h4></li>
+              <li><h4>$row[Location]</h4</li>><br/>
+              </form>
+               <a href='courseRegistration.php?cname=$row[Course_Name]'>Register here!</a></div>";
+
+        echo("</div>");
+    }
+    "</ul>";
+    /* free result set */
+    $result->free();
+}
+
+/* close connection */
+$mysqli->close();
+?>
+
+
+
 </div>
 </div>
 </div>
 
 <footer class="text-center">
-        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a><br><br>
-    
-        <!-- Footer Elements -->
-        <div class="container">
-    
-            <!-- Grid row-->
-            <div class="row">
-    
-                <!-- Grid column -->
-                <div class="col-md-12 py-5">
-                    <div class="mb-5 flex-center">
-    
-                        <!-- Facebook -->
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="fb-ic">
-                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                        </a>
-                        </div>
-                        <!-- Twitter -->
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="tw-ic">
-                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        </div>
-                        <!-- Google +-->
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="gplus-ic">
-                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        </div>
-                        <!--Linkedin -->
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="li-ic">
-                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        </div>
-                        <!--Instagram-->
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="ins-ic">
-                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        </div>
-                        <div class="col-md-2 mb-md-1 mb-1">
-                        <a class="pin-ic">
-                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
-                        </a>
-                        </div>
-                    </div>
+<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+</a><br><br>
+
+<!-- Footer Elements -->
+<div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-12 py-5">
+            <div class="mb-5 flex-center">
+
+                <!-- Facebook -->
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="fb-ic">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                </a>
+                </div>
+                <!-- Twitter -->
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="tw-ic">
+                    <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                </div>
+                <!-- Google +-->
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="gplus-ic">
+                    <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                </div>
+                <!--Linkedin -->
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="li-ic">
+                    <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                </div>
+                <!--Instagram-->
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="ins-ic">
+                    <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                </div>
+                <div class="col-md-2 mb-md-1 mb-1">
+                <a class="pin-ic">
+                    <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                </a>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    
     </div>
-    </footer>
-    </div>
-    </body>
-    </html>
-    
+</div>
+<div class="footer-copyright text-center py-3">© 2018 Copyright:
+
+</div>
+</footer>
+</div>
+</body>
+</html>
