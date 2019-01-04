@@ -1476,11 +1476,21 @@ app.controller("AddfarmerDetails", function($scope, $http){
         if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
             && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
             $scope.successInsert = data.message;
-            swal({
-                type: 'success',
-                title: $scope.details.Course_Name +' Course Updated Successfull!',
-                timer: 5000
+            if(data.invalidFees){
+                console.log(data);
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Invalid Course Fees!',
+                    footer: 'please enter valid Fees!'
                 });
+            }else{
+                swal({
+                    type: 'success',
+                    title: $scope.details.Course_Name +' Course Updated Successfull!',
+                    timer: 5000
+                    });
+            }
         }else{
             swal(
                 'Error!',
@@ -1501,15 +1511,33 @@ app.controller("AddfarmerDetails", function($scope, $http){
              'location':$scope.location}  
             
         ).success(function(data){
-            console.log(data);
+            console.log(data.errorId);
             if($scope.Course_Id!=null && $scope.Course_Name!=null && $scope.Course_duration!=null
                 && $scope.Course_type!=null && $scope.Course_fees!=null && $scope.location!=null){
                 $scope.successInsert = data.message;
-                swal({
-                    type: 'success',
-                    title: $scope.Course_Name +' Course Added Successfull!',
-                    timer: 5000
+                if(data.errorId){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'CourseId is Taken!',
+                        footer: 'please enter another courseId!'
                     });
+                }
+                else if(data.invalidFees){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Course Fees!',
+                        footer: 'please enter valid Fees!'
+                    });
+                }
+                else{
+                    swal({
+                        type: 'success',
+                        title: $scope.Course_Name +' Course Added Successfull!',
+                        timer: 5000
+                        });
+                    }
                 }
             }
         )}; 
