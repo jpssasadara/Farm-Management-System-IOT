@@ -934,21 +934,22 @@ app.controller("RegisterCashierController",function($scope,$http){
             {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password
         ,'password2':$scope.password2}
             ).success(function(data){
+                console.log(data);
                  if(data.error)
-                {
-                $scope.errorid = data.error.id;
-                $scope.errorfirstname = data.error.firstname;
-                $scope.errorlastname = data.error.lastname;
-                $scope.errorphonenumber = data.error.phonenumber;
-                $scope.erroremail = data.error.email;
-                $scope.erroraddress = data.error.address;
-                $scope.errorsalary = data.error.salary;
-                $scope.errorusername = data.error.username;
-                $scope.errorpassword = data.error.password;
+                    {
+                    $scope.errorid = data.error.id;
+                    $scope.errorfirstname = data.error.firstname;
+                    $scope.errorlastname = data.error.lastname;
+                    $scope.errorphonenumber = data.error.phonenumber;
+                    $scope.erroremail = data.error.email;
+                    $scope.erroraddress = data.error.address;
+                    $scope.errorsalary = data.error.salary;
+                    $scope.errorusername = data.error.username;
+                    $scope.errorpassword = data.error.password;
 
-                
+                    
 
-                $scope.successInsert = null;
+                    $scope.successInsert = null;
                 }
                 else
                 {
@@ -968,18 +969,36 @@ app.controller("RegisterCashierController",function($scope,$http){
                     && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
                     && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
                     $scope.password2!=null){
-                    if($scope.password==$scope.password2){
+                    
+                    if(data.exit){
                         swal({
-                            position: 'top-end',
-                            type: 'success',
-                            title: 'Register Success! '+$scope.username,
-                            showConfirmButton: false,
-                            timer: 5000
+                            type: 'warning',
+                            title: 'Oops...',
+                            text: 'EmpId already taken!',
+                            footer: 'please enter another!'
                         });
+                    }
+                    else if($scope.password==$scope.password2){
+                        if(data.mvalid){
+                            swal({
+                                position: 'top-end',
+                                type: 'success',
+                                title: 'Register Success! '+$scope.username,
+                                showConfirmButton: false,
+                                timer: 5000
+                            });
+                        }else{
+                            swal({
+                                type: 'warning',
+                                title: 'Oops...',
+                                text: 'Invalid Mobile No!',
+                                footer: 'please enter 10 digit mobile number!'
+                            });
                         }
+                    }
                     else{
                         swal({
-                            type: 'Wrong',
+                            type: 'error',
                             title: 'Oops...',
                             text: 'Passwords not match !',
                             footer: 'please match the passwords!'
@@ -1037,12 +1056,6 @@ app.controller("RegisterCashierController",function($scope,$http){
                         
 
                         $scope.successInsert = null;
-                    //     swal({
-                    //         type: 'error',
-                    //         title: 'Oops...',
-                    //         text: 'Wrong Stuff !',
-                    //         footer: 'Please Enter Details you want to Update'
-                    //       });
                        }
                        else
                        {
@@ -1050,8 +1063,16 @@ app.controller("RegisterCashierController",function($scope,$http){
                             && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
                             && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
                             $scope.password2!=null){
-
-                            if($scope.password2==$scope.password){
+                            console.log(data);
+                            if (data.cannot){
+                                swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'You cannot change EmpId !',
+                                    footer: 'please dont change that!'
+                                });
+                            }
+                            else if($scope.password2==$scope.password){
                                 $scope.errorid = null;
                                 $scope.errorfirstname = null;
                                 $scope.errorlastname = null;
@@ -1064,23 +1085,31 @@ app.controller("RegisterCashierController",function($scope,$http){
                                 $scope.successInsert = data.message;
 
                                 $scope.displayData2();
-
-                                $scope.id=null;
-                                $scope.firstname=null;
-                                $scope.lastname=null;
-                                $scope.phonenumber=null;
-                                $scope.email=null;
-                                $scope.address=null;
-                                $scope.salary=null;
-                                $scope.username=null;
-                                $scope.password=null;
-                                $scope.password2=null;
-                                swal(
-                                    'Update Success!'
-                                );
+                                if(data.mvalid){
+                                    swal({
+                                        title: $scope.id+' Update Success! '
+                                    });
+                                    $scope.id=null;
+                                    $scope.firstname=null;
+                                    $scope.lastname=null;
+                                    $scope.phonenumber=null;
+                                    $scope.email=null;
+                                    $scope.address=null;
+                                    $scope.salary=null;
+                                    $scope.username=null;
+                                    $scope.password=null;
+                                    $scope.password2=null;
+                                }else{
+                                    swal({
+                                        type: 'warning',
+                                        title: 'Oops...',
+                                        text: 'Invalid Mobile No!',
+                                        footer: 'please enter 10 digit mobile number!'
+                                    });
+                                }
                             }else{
                                 swal({
-                                    type: 'Wrong',
+                                    type: 'warning',
                                     title: 'Oops...',
                                     text: 'Passwords not match !',
                                     footer: 'please match the passwords!'

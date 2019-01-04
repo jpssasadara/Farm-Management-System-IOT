@@ -74,18 +74,31 @@ if(count($data)>0){
 	$password = mysqli_real_escape_string($connect,$data->password);
 	$password2 = mysqli_real_escape_string($connect,$data->password2);
 
-	if($password==$password2){
-		$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
-		('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
+	$q="SELECT * FROm farmshopemployee WHERE Id='$id'";
+	$row=mysqli_query($connect,$q);
+	if(mysqli_num_rows($row)>0)
+	{
+		$dataa["exit"]="This User Id has already taken";
+	}
+	else{
+		if($password==$password2){
+			$mvalid=preg_match('/^[0-9]{10}+$/', $phonenumber);
+			$dataa["mvalid"]=$mvalid;
 
-		if(mysqli_query($connect,$query))
-		{
-			//echo "Data Inserted...........";
-			$dataa["message"] = "Data Inserted...";
-		}
-		else{
-			//echo "Error.....";
-			$dataa["message"] = "Try Again....";
+			if($mvalid){
+				$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
+				('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
+
+				if(mysqli_query($connect,$query))
+				{
+					//echo "Data Inserted...........";
+					$dataa["message"] = "Data Inserted...";
+				}
+				else{
+					//echo "Error.....";
+					$dataa["message"] = "Try Again....";
+				}
+			}
 		}
 	}
 
