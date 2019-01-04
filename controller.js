@@ -1099,6 +1099,8 @@ app.controller("RegisterCashierController",function($scope,$http){
                                     $scope.username=null;
                                     $scope.password=null;
                                     $scope.password2=null;
+                                    $scope.all=false;
+
                                 }else{
                                     swal({
                                         type: 'warning',
@@ -1129,6 +1131,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.salary=i7;
                         $scope.username=i8;
                         $scope.password=i9;
+                        $scope.all=true;
             
       };
 
@@ -1223,6 +1226,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorid = null;
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
+                        $scope.all=false;
 
                         swal(
                             data.message
@@ -1247,7 +1251,7 @@ app.controller("RegisterAdminController", function($scope, $http){
             $scope.id = id;  
             $scope.username = first_name;  
             $scope.password = last_name; 
-            
+            $scope.all=true;
       }
 
      $scope.deleteDataAdmin = function(idd){  
@@ -1492,8 +1496,6 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
         
 
-=======
->>>>>>> 98d189f1c37a8916da82e45845b48d656edebe66
 
  });
 //isuru
@@ -1735,6 +1737,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
             $scope.price=i5;
             $scope.discount=i6;
             $scope.Type=i7;
+            //ng-disabled="all"
+            $scope.all=true;
                 
         };
       $scope.updateItemsData = function(){  
@@ -1807,6 +1811,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     $scope.unit = null;
                     $scope.discount = null;
                     $scope.Type=null;
+                    $scope.all=false;
+
                 }else{
                     swal({
                         type: 'warning',
@@ -2012,7 +2018,7 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
 
     //link for view shop
     $scope.viewShop=function(){
-      $locaton.path('/view/shoploading');
+      $location.path('/view/shoploading');
     }
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');

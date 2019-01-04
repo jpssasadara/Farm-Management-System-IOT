@@ -11,7 +11,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Employee Id</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="id" placeholder="employee id" class="form-control input-md">
+  <input id="textinput" name="textinput" type="text" ng-disabled="all" ng-model="id" placeholder="employee id" class="form-control input-md">
     <span class="text-danger" ng-show="errorid">{{errorid}}</span>
   </div>
 
@@ -34,7 +34,7 @@
     <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>
   </div>
 </div>
-
+<input type="checkbox" ng-model="all">
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
