@@ -199,6 +199,28 @@ app.config(function($routeProvider) {
      })
      //isuru
 
+     .when("/admin/farmerView",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/viewfarmers.html"
+     })
+
      .when("/admin/ShopRegister",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -793,6 +815,9 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.getFarmerReg=function(){  //isuru
         $location.path('/admin/farmerReg');
     };
+    $scope.getFarmerview=function(){  //isuru
+        $location.path('/admin/farmerView');
+    };
     $scope.getShopReg=function(){  //isuru
         $location.path('/admin/ShopRegister');
     };
@@ -1300,6 +1325,15 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 app.controller("AddfarmerDetails", function($scope, $http){  
+    $scope.displayfarmers = function(){ 
+        $http.get("module/farmer/viewfarmers.php")  
+        .success(function(data){  
+            //console.log(data); 
+            $scope.items = data;
+             
+        }); 
+    }
+
     $scope.addfarmer = function(){ 
         console.log($scope.username,$scope.Id,$scope.First_Name,
         $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
@@ -1323,6 +1357,73 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 }
             }
         )};
+
+        $scope.editDetails = function(x){ 
+            $scope.details=x;
+            //console.log($scope.details);
+        }
+    
+        $scope.deletefarmers = function(idd){ 
+            swal({
+                title: 'Are you sure?',
+                text: "You want to delete this data?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+                )
+                $http.post("module/farmer/deletefarmer.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayfarmers();  
+                });
+            }
+            else  
+            {  
+                return false;  
+            } 
+        });  
+       }
+    
+       $scope.editfarmers=function(){
+     
+            $http.post(  
+                "module/course/editData.php",  
+                {'details.Course_Id':$scope.details.Course_Id,'details.Course_Name':$scope.details.Course_Name, 
+                'details.Course_description':$scope.details.Course_description,'details.Course_duration'
+                :$scope.details.Course_duration,'details.Course_type':$scope.details.Course_type,
+                'details.Course_fees':$scope.details.Course_fees,'details.Location':$scope.details.Location
+            }  
+            
+        ).success(function(data){
+    
+            //console.log(data);
+            if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
+                && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
+                $scope.successInsert = data.message;
+                swal({
+                    type: 'success',
+                    title: $scope.details.Course_Name +' Farmer Updated Successfull!',
+                    timer: 5000
+                    });
+            }else{
+                swal(
+                    'Error!',
+                    'All the fields cannot be empty.',
+                    'Error'
+                );
+            }
+            }
+        )}; 
+        
         
 
 

@@ -42,58 +42,59 @@
 </style>
 
 
-<div ng-controller="AddshopDetails" class="container" 
-ng-init="displayshop()">
+<div ng-controller="AddfarmerDetails" class="container" 
+ng-init="displayfarmers()">
 <hr>
 <div ng-controller="Admincontroller"> 
 <button class="btn btn-default" ng-click="showAdmin()">Back</button>
 </div>
       
-<h2><span class="glyphicon glyphicon-file"></span> Shop Details</h2>
+<h2><span class="glyphicon glyphicon-file"></span> Farmer's Details</h2>
 <table class="table table-bordered table-striped"> 
     <thread class="thread-dark"> 
     <tr>
-        <th><b>Nic Number</b></th>
-        <th><b>First Name</b></th>
-        <th><b>Last Name</b></th>
-        <th><b>Phone Number</b></th>
-        <th><b>Address</b></th>
-		<th><b>Office Email</b></th>
-        <th><b>User(shop) Name</b></th>
+        <th><b>Registration ID</b></th>
+        <th><b>Name</b></th>
+        <th><b>Contact</b></th>
+        <th><b>Male/Female</b></th>
+        <th><b>Email</b></th>
+		<th><b>Address</b></th>
+        <th><b>variety</b></th>
+        <th><b>username</b></th>
         <th><b>Edit</b></th>
         <th><b>Delete</b></th>
-
     </tr>
     </thread>
     <tbody>
     <tr ng-repeat="x in items">
-        <td>{{x.nic}}</td>
-        <td>{{x.fn}}</td>  
-        <td>{{x.ln}}</td> 
-        <td>{{x.pn}}</td>
-        <td>{{x.address}}</td>
-        <td>{{x.email}}</td>
-        <td>{{x.un}}</td>
-        <td><button onclick="showEdit()" ng-click="editshop(x)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+        <td>{{x.Id}}</td>
+        <td>{{x.First_Name}}</td>  
+        <td>{{x.Tele_Number}}</td> 
+        <td>{{x.Gender}}</td>
+        <td>{{x.Email}}</td>
+        <td>{{x.Address}}</td>
+        <td>{{x.variety}}</td>
+        <td>{{x.username}}</td>
+        <td><button onclick="showEdit()" ng-click="editfarmers(x)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
             </button></td>
-        <td><button class="btn btn-danger" ng-click="deleteshop(x.nic)"><span class="glyphicon glyphicon-trash"></span>
+        <td><button class="btn btn-danger" ng-click="deletefarmers(x.Id)"><span class="glyphicon glyphicon-trash"></span>
             </button></td>  
            
-        <div id="myModal" class="modal" ng-init="editshop()">
+        <div id="myModal" class="modal" ng-init="editfarmers()">
         <!-- Modal content -->
         <div class="modal-content" ng-init="details">
             <span class="close">&times;</span>
             <form method="POST"> 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">Nic Number </label>
+                            <label for="from">Id Number </label>
                         </div>
                         <div class="col-xs-6">
                         <!-- <label>First Name</label> -->
                             <p class="input-group">  
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 <input type="text" class="form-control"  id="textinput" required name="textinput" 
-                                readonly ng-model="details.nic" ng-init='details.nic=details.nic' placeholder="Nic Number">             
+                                readonly ng-model="details.Id" ng-init='details.Id=details.Id' placeholder="Id Number">             
                             </p>
                         </div>
                     </div>
@@ -106,7 +107,7 @@ ng-init="displayshop()">
                         <p class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
                             <input type="text" class="form-control" id="textinput" required name="textinput" 
-                            ng-model="details.fn" ng-init="details.fn=details.fn" placeholder="First Name">             
+                            ng-model="details.First_Name" ng-init="details.First_Name=details.First_Name" placeholder="First Name">             
                         </p>
                         </div>
                     </div>
@@ -119,7 +120,7 @@ ng-init="displayshop()">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                                 <input type="text" class="form-control" id="textinput" required name="textinput" 
-                            ng-model="details.ln" ng-init="details.ln=details.ln" placeholder="Last Name"> 
+                            ng-model="details.Tele_Number" ng-init="details.Tele_Number=details.Tele_Number" placeholder="Last Name"> 
                         </p>
                         </div>
                     </div>
@@ -132,7 +133,7 @@ ng-init="displayshop()">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                                 <input type="text" class="form-control" id="textinput" required name="textinput" 
-                            ng-model="details.pn" ng-init="details.pn=details.pn" placeholder="Phone Number">
+                            ng-model="details.Gender" ng-init="details.Gender=details.Gender" placeholder="Phone Number">
                         </p>
                         </div>
                     </div>
@@ -140,45 +141,59 @@ ng-init="displayshop()">
                 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">Address</label>
+                            <label for="from">Email</label>
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                                <input type="textarea" class="form-control" id="textinput" required name="textinput" 
-                                ng-model="details.address" ng-init="details.address=details.address"
-                                placeholder="Address" required="required">             
+                                <input type="email" class="form-control" id="textinput" required name="textinput" 
+                                ng-model="details.Email" ng-init="details.Email=details.Email"
+                                placeholder="Email" required="required">             
                             </p>
                         </div> 
                     </div>
                 
                     <div class="form-group row flex-v-center">
                         <div class="col-xs-2 col-sm-4">
-                            <label for="from">Office Email</label>
+                            <label for="from"> Address</label>
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
                                 <input type="email" class="form-control" id="textinput" required name="textinput" 
-                                ng-model="details.email" ng-init="details.email=details.email"
-                                placeholder="Office Email" required="required">             
+                                ng-model="details.Address" ng-init="details.Address=details.Address"
+                                placeholder="Address" required="required">             
                             </p>
                         </div> 
                     </div>
                 
                     <div class="form-group row flex-v-center">
                             <div class="col-xs-2 col-sm-4">
-                                <label for="from">shop Name</label>
+                                <label for="from">variety</label>
                             </div>
                             <div class="col-xs-6">
                             <p class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
                                     <input type="text" class="form-control" id="textinput" required name="textinput" 
-                                    ng-model="details.un" ng-init="details.un=details.un"
-                                     placeholder="User(shop) Name" required="required">             
+                                    ng-model="details.variety" ng-init="details.variety=details.variety"
+                                     placeholder="User Name" required="required">             
                                 </p>
                             </div> 
-						</div>
+                        </div>
+                        
+                    <div class="form-group row flex-v-center">
+                        <div class="col-xs-2 col-sm-4">
+                            <label for="from">User Name</label>
+                        </div>
+                        <div class="col-xs-6">
+                        <p class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <input type="text" class="form-control" id="textinput" required name="textinput" 
+                                ng-model="details.username" ng-init="details.username=details.username"
+                                    placeholder="User Name" required="required">             
+                            </p>
+                        </div> 
+                    </div>
 					
 
                 
