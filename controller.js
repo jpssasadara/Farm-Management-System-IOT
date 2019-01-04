@@ -1407,8 +1407,6 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 }
             }
         )};
-        
-
 
  });
 //isuru
