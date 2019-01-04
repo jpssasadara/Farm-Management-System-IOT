@@ -3,12 +3,11 @@
 <div ng-controller="Admincontroller"> 
 <button class="btn btn-default" ng-click="showAdmin()">Back</button>
 </div>
-<h2>Add Item Details <span class="glyphicon glyphicon-shopping-cart"> </h2>
+<h2><b>Add Item Details</b> <span class="glyphicon glyphicon-shopping-cart"> </h2>
 <div ng-controller="AddItemDetails" ng-init="load()">
 <form class="form-horizontal">
-<div class="well">
-<fieldset>
 
+<hr>
 <!-- Form Name -->
 
 
@@ -17,7 +16,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Item's Code</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="item code" ng-model="code" class="form-control input-md">
+  <input id="textinput" required name="textinput" type="text" placeholder="item code" ng-model="code" class="form-control input-md">
     
   </div>
 </div>
@@ -26,7 +25,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Item</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="item name" ng-model="name" class="form-control input-md">
+  <input id="textinput" required name="textinput" type="text" placeholder="item name" ng-model="name" class="form-control input-md">
     
   </div>
 </div>
@@ -83,7 +82,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Amount</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="amount" placeholder="amount" class="form-control input-md">
+  <input id="textinput" required name="textinput" type="text" ng-model="amount" placeholder="amount" class="form-control input-md">
     
   </div>
 </div>
@@ -94,7 +93,7 @@
   <div class="col-md-4">
     <div class="input-group">
       <span class="input-group-addon">Rs</span>
-      <input id="prependedtext" name="prependedtext" class="form-control" ng-model="price" placeholder="price" type="text">
+      <input id="prependedtext" required name="prependedtext" class="form-control" ng-model="price" placeholder="price" type="text">
     </div>
     
   </div>
@@ -105,7 +104,7 @@
   <label class="col-md-4 control-label" for="appendedtext">Discount</label>
   <div class="col-md-4">
     <div class="input-group">
-      <input id="appendedtext" name="appendedtext" ng-model="discount" class="form-control" placeholder="discount" type="text">
+      <input id="appendedtext" required name="appendedtext" ng-model="discount" class="form-control" placeholder="discount" type="text">
       <span class="input-group-addon">%</span>
     </div>
     
@@ -123,34 +122,36 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="uploadFile()" >Submit</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-sq-lg" ng-click="uploadFile()" >
+        <i class="fa fa-leaf fa-2x"></i><br/>Submit</button>
   </div>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-warning" ng-click="updateItemsData()" >Update</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-warning" ng-click="updateItemsData()" >
+        <i class="fa fa-shopping-cart fa-2x"></i><br/>Update</button>
   </div>
 </div>
 
 
-</fieldset>
-</div>
+
 </form>
- <!--<div style="clear:both"></div>  -->
+<hr>
+
 
  <div class ="container container-fluid">
 
 
-               <div class="row"><center><b>Vegetables</b></center></div>
-                <div class="col-md-2" ng-repeat="image in images">  
-                     <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-warning btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
-                </div>
-              
-                <br />
-              </div>
-              <div class="container container-fluid">
-                <div class ="row ">
-                  <center><b>Fruits</b></center></div> 
-                <div class="col-md-2" ng-repeat="image in imagesFruit">  
-                     <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-warning btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
-                </div>  
-              </div> 
+<div class="row"><center><h2><b>Vegetables</b></h2></center></div>
+<div class="col-md-2" ng-repeat="image in images">  
+  <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-warning btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
+</div>
+
+<br />
+</div>
+<div class="container container-fluid">
+<div class ="row ">
+  <center><h2><b>Fruits</b></h2></center></div> 
+<div class="col-md-2" ng-repeat="image in imagesFruit">  
+  <img ng-src="module/Items/upload/{{image.name}}" width="150" height="150" style="padding:5px; border:1px solid #f1f1f1; margin:16px;" /><div class ="row well" > Code :{{image.Code}}<br> Name :{{image.Name}}<br>Amount :{{image.Amount}}{{image.Unit}} <br> Price : Rs {{image.Price}}<br><button class="btn btn-warning btn-xs" ng-click="updateItems(image.Code, image.Name, image.Unit,image.Amount,image.Price,image.Discount,image.Type)">Update</button><button class="btn btn-danger btn-xs" ng-click="deleteItems(image.Code )">Delete</button></div>
+</div>  
+</div> 
 

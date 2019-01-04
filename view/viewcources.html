@@ -49,7 +49,7 @@ ng-init="displayCourse()">
 <button class="btn btn-default" ng-click="showAdmin()">Back</button>
 </div>
       
-<h2><span class="glyphicon glyphicon-file"></span> Course Details</h2>
+<h2><span class="glyphicon glyphicon-hourglass"></span><b> Course Details</b></h2>
 <table class="table table-bordered table-striped"> 
     <thread class="thread-dark"> 
     <tr>
@@ -90,7 +90,7 @@ ng-init="displayCourse()">
                         <div class="col-xs-6">
                         <!-- <label>First Name</label> -->
                             <p class="input-group">  
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
                                 <input type="text" class="form-control"  id="textinput" required name="textinput" 
                                 readonly ng-model="details.Course_Id" ng-init='details.Course_Id=details.Course_Id' placeholder="Course Id">             
                             </p>
@@ -103,7 +103,7 @@ ng-init="displayCourse()">
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
                             <input type="text" class="form-control" id="textinput" required name="textinput" 
                             ng-model="details.Course_Name" ng-init="details.Course_Name=details.Course_Name" placeholder="Course Name">             
                         </p>
@@ -133,7 +133,7 @@ ng-init="displayCourse()">
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 <select class="form-control" name="textinput" ng-model="details.Course_duration"
                                 ng-init="details.Course_duration=details.Course_duration">
                                     <option value="6 month">6 Month</option>   
@@ -152,7 +152,7 @@ ng-init="displayCourse()">
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
                                 <input type="textarea" class="form-control" id="textinput" required name="textinput" 
                                 ng-model="details.Course_description" ng-init="details.Course_description=details.Course_description"
                                 placeholder="description" required="required">             
@@ -166,7 +166,7 @@ ng-init="displayCourse()">
                         </div>
                         <div class="col-xs-6">
                         <p class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
                                 <input type="text" class="form-control" id="textinput" required name="textinput" 
                                 ng-model="details.Course_fees" ng-init="details.Course_fees=details.Course_fees"
                                 placeholder="Course Fees" required="required">             
@@ -180,7 +180,7 @@ ng-init="displayCourse()">
                             </div>
                             <div class="col-xs-6">
                             <p class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
                                     <input type="text" class="form-control" id="textinput" required name="textinput" 
                                     ng-model="details.Location" ng-init="details.Location=details.Location"
                                      placeholder="Course Locations(ex:Galle,Colombo,Matara)" required="required">             
