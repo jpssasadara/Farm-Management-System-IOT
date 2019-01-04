@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,25 +266,55 @@ session_start();
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
+
 <br/>
-<a href="LoginFarmer.html"><button class="btn btn-default">Back</button></a>
-<hr>
 
-<?php
+<a href="home.html"><button class="btn btn-default">Back</button></a>
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-} 
-else {
-    header('Location: LoginFarmer1.php');
-}
-
-?>
-
-
+<div class="container">
+    <div class="login-form">
+    <form method="post" action="LoginFarmer.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Registered Farmers Login</h2>  
+        <div class="form-group">
+        <?php
+            if (isset($_SESSION['error'])) {
+                echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
+            }
+            ?>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">             
+            </div>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-success login-btn btn-block" >Sign in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            
+        </div>
+        <div class="or-seperator"><i>or</i></div>
+        
+        
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="RegisterFarmer.html">Sign up here!</a></p>
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
 
 <footer class="text-center">
 <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -349,4 +377,3 @@ else {
 </div>
 </body>
 </html>
-    
