@@ -587,6 +587,53 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewStores2.html"
            })
 
+          //loading farmshop
+
+          .when("/load/farmshop",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/loadingFarmShop.html"
+           })
+
+          //view farmshop
+          .when("/view/shoploading",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewFarmshop.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -839,7 +886,15 @@ app.controller("Admincontroller",function($scope,$http,$location){
        });
     };
 
+    //loading items to farm Shop
+    $scope.laodingShop=function(){
+      $location.path('/load/farmshop');
+    }
 
+    //view farm shop
+    $scope.viewShop=function(){
+      $location.path('/view/shoploading');
+    }
 });
 
 
@@ -1322,6 +1377,37 @@ app.controller("RegisterAdminController", function($scope, $http){
         }
         }
     )}; 
+
+
+ });
+//isuru
+
+
+app.controller("AddfarmerDetails", function($scope, $http){  
+    $scope.addfarmer = function(){ 
+        console.log($scope.username,$scope.Id,$scope.First_Name,
+        $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
+        $http.post(  
+             "module/farmer/addData.php",  
+             {'Id':$scope.Id,'First_Name':$scope.First_Name, 'Tele_Number':
+             $scope.Tele_Number,'Gender':$scope.Gender,
+             'Email':$scope.Email,
+             'Address':$scope.Address,'variety':$scope.variety, 'username':$scope.username, 'password':$scope.password}  
+            
+        ).success(function(data){
+            console.log($scope.username);
+            if($scope.Id!=null && $scope.First_Name!=null && $scope.Tele_Number!=null && $scope.password!=null
+                && $scope.Gender!=null && $scope.Email!=null && $scope.Address!=null && $scope.username!=null){
+                $scope.successInsert = data.message;
+                swal({
+                    type: 'success',
+                    title: $scope.un +' Shop Added Successfull!',
+                    timer: 5000
+                    });
+                }
+            }
+        )};
+        
 
 
  });

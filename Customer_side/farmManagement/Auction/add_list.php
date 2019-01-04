@@ -18,6 +18,14 @@ if ($mysqli->connect_errno) {
             echo $query;
         }
 
-
+if(isset($_POST["insert"]))
+{
+    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    $query = "INSERT INTO upload(id,name) VALUES ('$_POST[id]','$file')";
+    if(mysqli_query($mysqli, $query))
+    {
+        echo '<script>alert("Image Inserted into Database")</script>';
+    }
+}
 
 
