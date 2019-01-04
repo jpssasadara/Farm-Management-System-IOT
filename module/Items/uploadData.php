@@ -20,7 +20,9 @@ while($row = mysqli_fetch_array($result))
 }  
 
      $output = $output+1;  
- $insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";  
+ $insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";
+
+ 
 if(mysqli_query($connect, $insertQuery))  
 {  
      echo 'File Uploaded';  
@@ -30,7 +32,10 @@ else
      echo 'File Uploaded But not Saved'; 
      //echo  $insertQuery;
 }  
-
+// <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  $insertQueryNet = "INSERT INTO stores(Code,Amount) VALUES ('$code',0)";
+  mysqli_query($connect, $insertQueryNet)
+ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
 
  ?>
 

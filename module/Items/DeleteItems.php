@@ -13,6 +13,12 @@
       else  
       {  
            echo 'Error';  
-      }  
+      }
+
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        $insertQueryNet = "INSERT INTO stores(Code,Amount) VALUES ('$code',0)";
+        mysqli_query($connect, $insertQueryNet)
+       //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    
  }  
  ?>  
