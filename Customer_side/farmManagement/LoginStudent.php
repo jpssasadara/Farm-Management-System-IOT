@@ -26,10 +26,18 @@ $result = mysqli_query($mysqli, $sql);
 $count=mysqli_num_rows($result);
 
 // If result matched $username and $password, table row must be 1 row
-if($count==1){
+if($count>0){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    header("Location: Member.php");
+    header("Location: StudentMenu.php");
     exit();
 }
+else{
+    session_start();
+    $_SESSION['error']="Invalid Login Details";
+    header('Location: LoginStudent1.php');
+    exit();  
+}
+
+?>

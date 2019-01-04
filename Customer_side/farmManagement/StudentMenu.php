@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,48 +271,35 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
-
 <br/>
-<a href="home.html"><button class="btn btn-default">Back</button></a>
-<div class="container">
-    <div class="login-form">
-    <form method="post" action="LoginStudent.php">
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Students Login</h2>  
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">             
-            </div>
-        </div>        
-        <div class="form-group">
-            <button type="submit" class="btn btn-warning login-btn btn-block" >Sign in</button>
-        </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            
-        </div>
-        <div class="or-seperator"><i>or</i></div>
-        
-        
-    </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="RegisterStudent.html">Sign up here!</a></p>
+<a href="LoginStudent.html"><button class="btn btn-default">Back</button></a>
+<hr>
+
+<?php
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
+?>
+<script type="text/javascript">
+    var a='<?php echo $_SESSION['username'];?>';
+    swal({
+        text: 'Welcome '+a+'!',
+    });
+</script>
+<?php 
+} 
+else {
+    header('Location: LoginFarmer1.php');
+}
+
+?>
+
+
+
+
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
 
 <footer class="text-center">
 <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -372,3 +362,4 @@
 </div>
 </body>
 </html>
+    

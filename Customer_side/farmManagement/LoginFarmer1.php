@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-
 </head>
 <style>
     body {
@@ -270,11 +270,13 @@
 </div>
 
 <br/>
+
 <a href="home.html"><button class="btn btn-default">Back</button></a>
+
 <div class="container">
     <div class="login-form">
-    <form method="post" action="LoginStudent.php">
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Students Login</h2>  
+    <form method="post" action="LoginFarmer.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Registered Farmers Login</h2>  
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -288,7 +290,7 @@
             </div>
         </div>        
         <div class="form-group">
-            <button type="submit" class="btn btn-warning login-btn btn-block" >Sign in</button>
+            <button type="submit" class="btn btn-success login-btn btn-block" >Sign in</button>
         </div>
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
@@ -298,12 +300,10 @@
         
         
     </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="RegisterStudent.html">Sign up here!</a></p>
+    <p class="text-center text-muted small">Don't have an account? <a href="RegisterFarmer.html">Sign up here!</a></p>
 </div>
 </div>
 </div>
-
-
 
 
 
@@ -372,3 +372,13 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    var a='<?php echo $_SESSION['error'];?>';
+    swal({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Wrong Login details !',
+        footer: a
+    });
+</script>

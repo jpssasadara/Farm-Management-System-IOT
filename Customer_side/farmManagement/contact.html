@@ -272,17 +272,20 @@
     <div class="col-md-4 col-sm-4 col-xs-12"></div>
 
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <form class="text-center border border-light p-5">
+        <form class="text-center border border-light p-5" action="contact.php" method="POST">
 
         <h2>Contact us</h2>
             <!-- Name -->
-            <input type="text" name="name" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+            <input type="text" name="name" id="defaultContactFormName" 
+            class="form-control mb-4" placeholder="Name" required>
             <!-- Email -->
-        <input type="email" name="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <input type="email" name="email" id="defaultContactFormEmail" class="form-control mb-4" 
+        placeholder="E-mail" required>
 
         <!-- Message -->
         <div class="form-group">
-        <textarea name="message" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+        <textarea name="message" class="form-control rounded-0" id="exampleFormControlTextarea2" 
+        rows="3" placeholder="Message" required></textarea>
         </div>
 
         <!-- Send button -->

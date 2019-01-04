@@ -47,8 +47,6 @@
     <li><a class="active" href="#home">QUICK BID</a></li>
     <li><a href="vegetables.php">VEGETABLES</a></li>
     <li><a href="fruits.php">FRUITS</a></li>
-    <li><a href="animal.php">ANIMAL PRODUCTS</a></li>
-    <li><a href="milk.php">MILK BASED PRODUCTS</a></li>
     <li><a href="add_list.html">ADD LISTING</a></li>
     <li><a href="#ghg">MY ACCOUNT</a></li>
 </ul>
