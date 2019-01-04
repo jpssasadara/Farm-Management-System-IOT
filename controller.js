@@ -1407,8 +1407,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 }
             }
         )};
-<<<<<<< HEAD
-=======
+
 
     
     
@@ -1489,7 +1488,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
             }
     )};
         
->>>>>>> f61fe4a90de1910bf8521b634a688153604e3f00
+
         
 
 
@@ -1891,6 +1890,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
 //Controller Handeling admin part of registered Shops' orders
 app.controller("RegShopOrderController",function($scope,$location, $http,$rootScope){
+
+    //link for view shop
+    $scope.viewShop=function(){
+      $locaton.path('/view/shoploading');
+    }
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };

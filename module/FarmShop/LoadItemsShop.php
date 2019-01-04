@@ -24,7 +24,7 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
           // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-          $sql = "SELECT Amount FROM stores WHERE Code ='$itemcode' limit 1";
+          $sql = "SELECT NetAmount FROM stores WHERE Code ='$itemcode' limit 1";
           $result = mysqli_query($connect,$sql);
           $row=mysqli_fetch_array($result);
           $value = $row[0];
@@ -35,7 +35,7 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
           $Addedvalue = (int)$TrueValue;
           $updatedNewvalue = $Oldvalue+$Addedvalue; 
 
-          $updateQueryNet = "UPDATE stores SET Amount='$updatedNewvalue' WHERE Code ='$itemcode'";
+          $updateQueryNet = "UPDATE stores SET NetAmount='$updatedNewvalue' WHERE Code ='$itemcode'";
           echo  $sql;
           mysqli_query($connect, $updateQueryNet);
        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   

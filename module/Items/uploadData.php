@@ -33,7 +33,7 @@ else
      //echo  $insertQuery;
 }  
 // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  $insertQueryNet = "INSERT INTO stores(Code,Amount) VALUES ('$code',0)";
+  $insertQueryNet = "INSERT INTO stores(Code,NetAmount) VALUES ('$code',0)";
   mysqli_query($connect, $insertQueryNet)
  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
 
