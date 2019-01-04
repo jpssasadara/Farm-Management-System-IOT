@@ -220,6 +220,28 @@ app.config(function($routeProvider) {
         },
         templateUrl: "view/shopRegister.html"
      })
+     .when("/admin/ShopView",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/viewRegshop.html"
+     })
+
      //isuru
 
      .when("/admin/addcources",{                    
@@ -774,6 +796,9 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.getShopReg=function(){  //isuru
         $location.path('/admin/ShopRegister');
     };
+    $scope.getShopview=function(){  //isuru
+        $location.path('/admin/ShopView');
+    };
 
    
 
@@ -1196,9 +1221,82 @@ app.controller("RegisterAdminController", function($scope, $http){
                     });
                 }
             }
-        )}; 
- });
+        )};
+        $scope.displayshop = function(){ 
+            $http.get("module/FarmShop/viewshop.php")  
+            .success(function(data){  
+                //console.log(data); 
+                $scope.items = data;
+                 
+            }); 
+        } 
+        $scope.editshop = function(x){ 
+            $scope.details=x;
+            //console.log($scope.details);
+        }
+        $scope.deleteshop = function(idd){ 
+            swal({
+                title: 'Are you sure?',
+                text: "You want to delete this data?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+                )
+                $http.post("module/Farmshop/deleteshop.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayshop();  
+                });
+            }
+            else  
+            {  
+                return false;  
+            } 
+        });  
+       }
+       $scope.editshops=function(){
+ 
+        $http.post(  
+            "module/FarmShop/editshop.php",  
+            {'details.nic':$scope.details.nic,'details.fn':$scope.details.fn, 
+            'details.ln':$scope.details.ln,'details.pn'
+            :$scope.details.pn,'details.address':$scope.details.address,
+            'details.email':$scope.details.email,'details.un':$scope.details.un,
+        }  
+        
+    ).success(function(data){
 
+        //console.log(data);
+        if($scope.details.nic!=null && $scope.details.fn!=null && $scope.details.ln!=null
+            && $scope.details.pn!=null && $scope.details.address!=null && $scope.details.email!=null  && $scope.details.un!=null){
+            $scope.successInsert = data.message;
+            swal({
+                type: 'success',
+                title: $scope.details.fn +' Shop Updated Successfull!',
+                timer: 5000
+                });
+        }else{
+            swal(
+                'Error!',
+                'All the fields cannot be empty.',
+                'Error'
+            );
+        }
+        }
+    )}; 
+
+
+ });
+//isuru
  
 
  app.controller("AddCourseDetails", function($scope, $http){ 

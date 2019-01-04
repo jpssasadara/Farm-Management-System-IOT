@@ -33,13 +33,13 @@ echo "Please log in first to see this page.";
 <h1></h1>
 
 <div class="btn-group">
-    <a href="verify_view.php" target="_blank">
+    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
         <button >Verifed</button>
     </a>
-    <a href="deliver_view.php" target="_blank">
+    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/deliver_view.php" target="_blank">
         <button>Deliverd</button>
     </a>
-    <a href="pending_view.php" target="_blank">
+    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/pending_view.php" target="_blank">
         <button>Pending</button>
     </a>
 </div>

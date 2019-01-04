@@ -29,7 +29,7 @@ if ($mysqli->connect_errno) {
 else if(!isset($_SESSION['loggedin']) || (isset($_SESION['loggedin']) && $_SESSION['loggedin'] == 0)){
         //session is not set
         echo "Register here";
-        header("Location:Login_Registration/RegisterFarmer.html");
+        //header("Location:Login_Registration/RegisterFarmer.html");
         exit();
 
     }
