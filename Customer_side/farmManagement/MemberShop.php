@@ -306,23 +306,28 @@ session_start();
 
     ?>
 
-</div>
 
-    <h1></h1>
+>>>>>>> 7a25e40e1f686f1f92777379829a761b47519892
 
-<div class="btn-group">
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+?>
+
+
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
-        <button >Verifed</button>
+        <button class="btn btn-primary" >Verifed</button>
     </a>
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/deliver_view.php" target="_blank">
-        <button>Deliverd</button>
+        <button class="btn btn-primary">Deliverd</button>
     </a>
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/pending_view.php" target="_blank">
-        <button>Pending</button>
+        <button class="btn btn-primary">Pending</button>
     </a>
-</div>
 
-</body>
 <p><a href="Auction/AuctionHomeShop.php">Auction</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>

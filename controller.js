@@ -1628,6 +1628,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){
+               console.log(response);
                 if(response.error){
                     swal({
                         type: 'error',

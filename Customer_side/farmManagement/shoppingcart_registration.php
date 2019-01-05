@@ -284,7 +284,7 @@
         <label for="cname" class="col-sm-2 col-form-label">Item Name</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="Iname"  value="<?php echo $_GET['Iname'];?>" >
+                <input type="text" required class="form-control" name="Iname"  value="<?php echo $_GET['Iname'];?>" >
             </div>
         </div>
     </div>
@@ -296,7 +296,7 @@
         <label for="name" class="col-sm-2 col-form-label">Item code</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="Icode" value="<?php echo $_GET['Icode'];?>">
+                <input type="text" required class="form-control" name="Icode" value="<?php echo $_GET['Icode'];?>">
             </div>
         </div>
     </div>
@@ -307,7 +307,7 @@
         <label for="email" class="col-sm-2 col-form-label">Owner Id</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="id" placeholder="ID">
+                <input type="text" required class="form-control" name="id" placeholder="ID">
             </div>
         </div>
     </div>
@@ -318,7 +318,7 @@
         <label for="email" class="col-sm-2 col-form-label">Date you want</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="date" class="form-control" name="date" placeholder="Date">
+                <input type="date" required class="form-control" name="date" placeholder="Date">
 
             </div>
         </div>
@@ -330,7 +330,7 @@
         <label for="email" class="col-sm-2 col-form-label">Quantity</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="quentity" placeholder="Quantity">
+                <input type="text" required class="form-control" name="quentity" placeholder="Quantity">
             </div>
         </div>
     </div>
