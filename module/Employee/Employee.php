@@ -82,22 +82,26 @@ if(count($data)>0){
 	}
 	else{
 		if($password==$password2){
-			$mvalid=preg_match('/^[0-9]{10}+$/', $phonenumber);
-			$dataa["mvalid"]=$mvalid;
+			if(count($password)>=5){
+				$mvalid=preg_match('/^[0-9]{10}+$/', $phonenumber);
+				$dataa["mvalid"]=$mvalid;
 
-			if($mvalid){
-				$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
-				('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
+				if($mvalid){
+					$query = "INSERT INTO farmshopemployee(Id,First_Name,Last_Name,Tele_Number,Email,Address,Salary,Username,Password) VALUES
+					('$id','$firstname','$lastname','$phonenumber','$email','$address','$salary','$username','$password')";
 
-				if(mysqli_query($connect,$query))
-				{
-					//echo "Data Inserted...........";
-					$dataa["message"] = "Data Inserted...";
+					if(mysqli_query($connect,$query))
+					{
+						//echo "Data Inserted...........";
+						$dataa["message"] = "Data Inserted...";
+					}
+					else{
+						//echo "Error.....";
+						$dataa["message"] = "Try Again....";
+					}
 				}
-				else{
-					//echo "Error.....";
-					$dataa["message"] = "Try Again....";
-				}
+			}else{
+				$dataa["passwordL"] = "password invalid...";
 			}
 		}
 	}

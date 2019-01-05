@@ -979,14 +979,26 @@ app.controller("RegisterCashierController",function($scope,$http){
                         });
                     }
                     else if($scope.password==$scope.password2){
-                        if(data.mvalid){
+                        if(data.passwordL){
                             swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: 'Register Success! '+$scope.username,
-                                showConfirmButton: false,
-                                timer: 5000
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Weak Password!',
+                                footer: 'please enter password more than 5 digit!'
                             });
+                            
+                        }
+
+                        else if(data.mvalid){
+                           
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: 'Register Success! '+$scope.username,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });    
+                            
                         }else{
                             swal({
                                 type: 'warning',
