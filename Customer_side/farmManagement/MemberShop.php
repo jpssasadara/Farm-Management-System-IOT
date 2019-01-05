@@ -306,47 +306,26 @@ session_start();
 
     ?>
 
-</div>
-<table class="table table-bordered">
-    <tr>
-        <th>Image</th>
-    </tr>
-    <?php
-    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
-    if ($mysqli->connect_errno) {
-        printf("Connect failed: %s\n", $mysqli->connect_error);
-        exit();
-    }
-    $query = "SELECT name FROM upload_shop inner join registeredshop on upload_shop.id=registeredshop.nic";
-    $result = mysqli_query($query);
-    while($row = mysqli_fetch_array($result))
-    {
-        echo '  
-                          <tr>  
-                               <td>  
-                                    <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="200" width="200" class="img-thumnail" />  
-                               </td>  
-                          </tr>  
-                     ';
-    }
-    ?>
-</table>
 
-    <h1></h1>
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+?>
 
-<div class="btn-group">
+
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
-        <button >Verifed</button>
+        <button class="btn btn-primary" >Verifed</button>
     </a>
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/deliver_view.php" target="_blank">
-        <button>Deliverd</button>
+        <button class="btn btn-primary">Deliverd</button>
     </a>
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/pending_view.php" target="_blank">
-        <button>Pending</button>
+        <button class="btn btn-primary">Pending</button>
     </a>
-</div>
 
-</body>
 <p><a href="Auction/AuctionHomeShop.php">Auction</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
