@@ -20,13 +20,17 @@ if($Course_Id!=null && $Course_Name!=null && $Course_duration!=null && $Course_d
           Course_type='$Course_type', Course_fees='$Course_fees', Location='$location'
           WHERE Course_Id='$Course_Id'";
 
-          if(mysqli_query($connect, $query))  
-          {  
-               $dataa["message"] = "success";
-          }  
-          else  
-          {  
-               $dataa["message"] = "Course Added Fail!"; 
+          if($Course_fees>0){
+               if(mysqli_query($connect, $query))  
+               {  
+                    $dataa["message"] = "success";
+               }  
+               else  
+               {  
+                    $dataa["message"] = "Course Added Fail!"; 
+               }
+          }else{
+               $dataa["invalidFees"]="Invalid fees";
           }
 }
 echo json_encode($dataa);

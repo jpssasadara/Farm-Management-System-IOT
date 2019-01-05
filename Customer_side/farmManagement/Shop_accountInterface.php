@@ -1,5 +1,5 @@
 <table>
-    <?php
+<?php
 
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
     // Check connection

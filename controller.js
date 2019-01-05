@@ -1084,6 +1084,15 @@ app.controller("RegisterCashierController",function($scope,$http){
                                     footer: 'please dont change that!'
                                 });
                             }
+                            else if(data.passwordL){
+                                swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'Weak Password!',
+                                    footer: 'please enter password more than 5 digit!'
+                                });
+                                
+                            }
                             else if($scope.password2==$scope.password){
                                 $scope.errorid = null;
                                 $scope.errorfirstname = null;
@@ -1575,11 +1584,21 @@ app.controller("AddfarmerDetails", function($scope, $http){
         if($scope.details.Course_Id!=null && $scope.details.Course_Name!=null && $scope.details.Course_duration!=null
             && $scope.details.Course_type!=null && $scope.details.Course_fees!=null && $scope.details.Location!=null){
             $scope.successInsert = data.message;
+            if(data.invalidFees){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Invalid Fees!',
+                    footer: 'Please enter valid amount!'
+                });
+            }
+            else{
             swal({
                 type: 'success',
                 title: $scope.details.Course_Name +' Course Updated Successfull!',
                 timer: 5000
                 });
+            }
         }else{
             swal(
                 'Error!',
@@ -1604,13 +1623,31 @@ app.controller("AddfarmerDetails", function($scope, $http){
             if($scope.Course_Id!=null && $scope.Course_Name!=null && $scope.Course_duration!=null
                 && $scope.Course_type!=null && $scope.Course_fees!=null && $scope.location!=null){
                 $scope.successInsert = data.message;
-                swal({
+                if(data.errorId){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Course Id is taken!',
+                        footer: 'please enter another courseId!'
+                    });
+                }
+                else if(data.invalidFees){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Fees!',
+                        footer: 'Please enter valid amount!'
+                    });
+                }
+                else{
+                    swal({
                     type: 'success',
                     title: $scope.Course_Name +' Course Added Successfull!',
                     timer: 5000
                     });
                 }
             }
+        }
         )}; 
     
  });
