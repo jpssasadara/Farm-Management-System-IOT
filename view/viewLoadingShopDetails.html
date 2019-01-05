@@ -1,1 +1,33 @@
-sasadaeSA
+<div ng-controller="Admincontroller">
+  <button class="btn btn-default" ng-click="showAdmin()">Back</button>
+</div>
+<br /><br />
+<div class="container" ng-controller="AddItemDetails" ng-init = viewOrder() ><center>
+
+
+                     <table class="table table-hover">
+                          <tr>
+                               <th><b>Item Code</b></th>
+                               <th><b>Load Number</b></th>
+                               <th><b>Amount</b></th>
+                               <th><b>Date</b></th>
+
+                          </tr>
+
+
+                           <tr ng-repeat="x in loadorders ">
+
+                               <td>{{x.Item_Code}}</td>
+                               <td>{{x.Load_Num}}</td>
+                               <td>{{x.Amount}}</td>
+                               <td>{{x.Date1}}</td>
+
+                               <td><button ng-click="Delete(x.OrderNumber )" class="btn btn-danger btn-xs">Delete</button></td>
+                          </tr>
+
+                     </table>
+                    </center>
+                </div>
+
+
+              
