@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -273,8 +272,9 @@
 <div class="container">
     <div class="login-form">
 
-        <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
-        <form method="POST"  action="RegisterFarmer.php" enctype="multipart/form-data" >
+
+        <form method="POST"  action="RegisterFarmer.php"  >
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
         <tr>
             <td>NIC</td><td><input type="text" name="nic" class="form-control" required/></td>
         </tr>
@@ -313,11 +313,7 @@
         <tr>
             <td> Password</td><td> <input type="password" class="form-control"  name="password" required></td>
         </tr>
-            <tr>
-                <td> <input type="file" name="image" id="image" />
-                    <br /><!--input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" /--></td>
-            </tr>
-            <!--td><!--input id="button" type="submit" class="btn btn-primary" name="submit" value="Sign-Up"--><!--/td-->
+
             <tr>
                 <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
             </tr>
@@ -393,25 +389,3 @@
     </div>
     </body>
     </html>
-<script>
-    $(document).ready(function(){
-        $('#insert').click(function(){
-            var image_name = $('#image').val();
-            if(image_name == '')
-            {
-                alert("Please Select Image");
-                return false;
-            }
-            else
-            {
-                var extension = $('#image').val().split('.').pop().toLowerCase();
-                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-                {
-                    alert('Invalid Image File');
-                    $('#image').val('');
-                    return false;
-                }
-            }
-        });
-    });
-</script>

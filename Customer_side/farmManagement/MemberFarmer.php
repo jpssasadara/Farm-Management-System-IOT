@@ -297,30 +297,7 @@ session_start();
 </div>
 </div>
 </div>
-<table class="table table-bordered">
-    <tr>
-        <th>Image</th>
-    </tr>
-    <?php
-    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
-    if ($mysqli->connect_errno) {
-        printf("Connect failed: %s\n", $mysqli->connect_error);
-        exit();
-    }
-    $query = "SELECT name FROM upload_farmer inner join registeredfarmer on upload_farmer.id=registeredfarmer.Id";
-    $result = mysqli_query($query);
-    while($row = mysqli_fetch_array($result))
-    {
-        echo '  
-                          <tr>  
-                               <td>  
-                                    <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="200" width="200" class="img-thumnail" />  
-                               </td>  
-                          </tr>  
-                     ';
-    }
-    ?>
-</table>
+
 <p><a href="Auction/AuctionHomeFarmer.php">Auction</a></p>
 <p><a href="Farmer_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +9,6 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-
 </head>
 <style>
     body {
@@ -200,7 +194,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">LABUDUWA FARM</a>
+                <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -271,35 +265,69 @@ session_start();
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
+
     <br/>
-    <a href="LoginStudent.html"><button class="btn btn-default">Back</button></a>
-    <hr>
+    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
 
-    <?php
+    <div class="container">
+        <div class="login-form">
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
-            swal({
-                text: 'Welcome '+a+'!',
-            });
-        </script>
-        <?php
-    }
-    else {
-        header('Location: LoginSt.php');
-    }
 
-    ?>
+            <form method="POST"  action="RegisterFarmer.php"  >
+                <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
+                <tr>
+                    <td>NIC</td><td><input type="text" name="nic" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td>Name</td><td><input type="text" name="name" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td>MobileNumber</td><td><input type="text" name="mobile"  class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td> Email</td><td><input type="text" name="email"  class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td> Gender</td><td><input type="text" name="gender"  class="form-control" required /></td>
+                </tr>
+                <tr>
+                    <td>Address</td><td><input type="text" name="address" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <hr>
+                    <td><u> Varieties</u></td><br/>
+                    Vegetables
+                    <td> <input type="radio" name="q1" value="Vegetables" data-toggle="modal" data-target="#myModal"/>
+                        <br>Fruits
+                        <input type="radio"  name="q1" value="Fruits" data-toggle="modal" data-target="#myModal"/>
+                        <br>Animal products
+                        <input type="radio" name="q1" value="Animal products" data-toggle="modal" data-target="#myModal"/>
+                        <br>Milk based products
+                        <input type="radio" name="q1" value="Milk based products" data-toggle="modal" data-target="#myModal"/>
+                        <br/><hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td> UserName</td><td> <input type="text"class="form-control"  name="username" required></td>
+                </tr>
+                <tr>
+                    <td> Password</td><td> <input type="password" class="form-control"  name="password" required></td>
+                </tr>
+
+                <tr>
+                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
+                </tr>
+                <tr>
+                    <div class="col-sm-4"></div><td><div class="col-sm-4">
+                            <a class="btn" href="LoginFarmer.html">Sign-In</a></div></td>
+                </tr>
+            </form>
+        </div>
+    </div>
+
+
 
 </div>
-</div>
-</div>
-
-<p><a href="Student_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
