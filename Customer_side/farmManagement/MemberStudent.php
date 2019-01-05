@@ -294,12 +294,34 @@ session_start();
 
     ?>
 
-
-
-
 </div>
 </div>
 </div>
+<table class="table table-bordered">
+    <tr>
+        <th>Image</th>
+    </tr>
+    <?php
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+    if ($mysqli->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+    $query = "SELECT name FROM upload_student inner join registeredstudent on upload_student.id=registeredstudent.nic";
+    $result = mysqli_query($query);
+    while($row = mysqli_fetch_array($result))
+    {
+        echo '  
+                          <tr>  
+                               <td>  
+                                    <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="200" width="200" class="img-thumnail" />  
+                               </td>  
+                          </tr>  
+                     ';
+    }
+    ?>
+</table>
+<p><a href="Student_account.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
