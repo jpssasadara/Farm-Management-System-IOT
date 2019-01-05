@@ -1527,7 +1527,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){
-                if(!response.error){
+                if(response.error){
                     swal({
                         type: 'error',
                         title: 'Oops...',
@@ -1573,7 +1573,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
            'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
             ).success(function(response){
-                console.log(response); 
+            //console.log(response); 
             if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
             $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
             $scope.Type!=null){ 
