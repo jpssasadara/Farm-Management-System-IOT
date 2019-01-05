@@ -16,7 +16,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Item's Code</label>  
   <div class="col-md-4">
-  <input id="textinput" required name="textinput" type="text" placeholder="item code" ng-model="code" class="form-control input-md">
+  <input id="textinput" required name="textinput" type="text" ng-disabled="all" placeholder="item code" ng-model="code" class="form-control input-md">
     
   </div>
 </div>
@@ -107,7 +107,7 @@
       <input id="appendedtext" required name="appendedtext" ng-model="discount" class="form-control" placeholder="discount" type="text">
       <span class="input-group-addon">%</span>
     </div>
-    
+    <input type="checkbox" ng-model="all">
   </div>
 </div>
 <!-- File Button --> 

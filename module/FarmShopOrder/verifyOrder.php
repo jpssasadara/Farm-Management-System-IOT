@@ -14,4 +14,36 @@
  else{
  	echo json_encode("error......");
   }
+
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+          //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  		  $sql = "SELECT Amount,Item_Code FROM regshoporder WHERE OrderNumber='{$ordernumber}'";
+          $result = mysqli_query($connect,$sql);
+          $row=mysqli_fetch_array($result);
+          $itemcode=$row[1];
+          $value_Amount = $row[0];
+          //After removing kg
+          $TrueValue_Amount = substr($value_Amount,0,-2); 
+          $Removedvalue = (int)$TrueValue_Amount;
+
+
+           $sql = "SELECT NetAmount FROM stores WHERE Code ='$itemcode' limit 1";
+          $result = mysqli_query($connect,$sql);
+          $row=mysqli_fetch_array($result);
+          $value = $row[0];
+          $Oldvalue = (int)$value;
+          //After removing kg
+
+
+
+          $updatedNewvalue = $Oldvalue-$Removedvalue; 
+
+          $updateQueryNet = "UPDATE stores SET NetAmount='$updatedNewvalue' WHERE Code ='$itemcode'";
+          echo  $sql;
+          mysqli_query($connect, $updateQueryNet);
+       //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
  ?>  

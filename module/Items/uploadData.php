@@ -48,6 +48,11 @@ else{
      }
 } 
 echo json_encode($dataa);
+ 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+$insertQueryNet = "INSERT INTO stores(Code,NetAmount) VALUES ('$code',0)";
+mysqli_query($connect, $insertQueryNet)
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
 
  ?>
 

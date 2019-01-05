@@ -1099,6 +1099,8 @@ app.controller("RegisterCashierController",function($scope,$http){
                                     $scope.username=null;
                                     $scope.password=null;
                                     $scope.password2=null;
+                                    $scope.all=false;
+
                                 }else{
                                     swal({
                                         type: 'warning',
@@ -1129,6 +1131,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.salary=i7;
                         $scope.username=i8;
                         $scope.password=i9;
+                        $scope.all=true;
             
       };
 
@@ -1223,6 +1226,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorid = null;
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
+                        $scope.all=false;
 
                         swal(
                             data.message
@@ -1247,7 +1251,7 @@ app.controller("RegisterAdminController", function($scope, $http){
             $scope.id = id;  
             $scope.username = first_name;  
             $scope.password = last_name; 
-            
+            $scope.all=true;
       }
 
      $scope.deleteDataAdmin = function(idd){  
@@ -1407,6 +1411,91 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 }
             }
         )};
+
+
+
+    
+    
+        $scope.deletefarmers = function(idd){ 
+            swal({
+                title: 'Are you sure?',
+                text: "You want to delete this data?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+                )
+                $http.post("module/farmer/deletefarmer.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayfarmers();  
+                });
+            }
+            else  
+            {  
+                return false;  
+            } 
+        });  
+       }
+
+       $scope.editDetails = function(x){ 
+        $scope.details=x;
+        console.log($scope.details);
+    }
+    
+       $scope.editfarmer=function(){
+       
+        $http.post(  
+            
+            "module/farmer/editfarmer.php",  
+            {'details.Id':$scope.details.Id,'details.First_Name':$scope.details.First_Name, 
+            'details.Tele_Number':$scope.details.Tele_Number,'details.Gender'
+            :$scope.details.Gender,'details.Email':$scope.details.Email,
+            'details.Address':$scope.details.Address,'details.variety':$scope.details.variety,'details.username':$scope.details.username
+        }  
+        
+        ).success(function(data){
+
+            //console.log(data);
+            if($scope.details.Id!=null && $scope.details.First_Name!=null && $scope.details.Gender!=null
+                && $scope.details.Email!=null && $scope.details.Address!=null && $scope.details.variety!=null){
+                $scope.successInsert = data.message;
+                if(data.invalidFees){
+                    console.log(data);
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Fees!',
+                        footer: 'please enter valid Fees!'
+                    });
+                }else{
+                    swal({
+                        type: 'success',
+                        title: $scope.details.First_Name +' Farmer Updated Successfull!',
+                        timer: 5000
+                        });
+                }
+            }else{
+                swal(
+                    'Error!',
+                    'All the fields cannot be empty.',
+                    'Error'
+                );
+            }
+            }
+    )};
+        
+
+        
+
 
  });
 //isuru
@@ -1648,6 +1737,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
             $scope.price=i5;
             $scope.discount=i6;
             $scope.Type=i7;
+            //ng-disabled="all"
+            $scope.all=true;
                 
         };
       $scope.updateItemsData = function(){  
@@ -1720,6 +1811,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     $scope.unit = null;
                     $scope.discount = null;
                     $scope.Type=null;
+                    $scope.all=false;
+
                 }else{
                     swal({
                         type: 'warning',
@@ -1922,6 +2015,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
 //Controller Handeling admin part of registered Shops' orders
 app.controller("RegShopOrderController",function($scope,$location, $http,$rootScope){
+
+    //link for view shop
+    $scope.viewShop=function(){
+      $location.path('/view/shoploading');
+    }
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };
