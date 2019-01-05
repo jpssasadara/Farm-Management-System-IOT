@@ -19,7 +19,7 @@ while($row = mysqli_fetch_array($result))
      $output = $row[0];  
 }  
 
-$output = $output+1;  
+$output = $output;  
 $insertQuery = "INSERT INTO items(Code,Name,Price,Amount,Unit,Discount,Image,Type) VALUES ('$code','$name','$price','$amount','$unit','$discount','$output','$Type')";  
 
 $q="SELECT * FROM Items WHERE Code='$code'";
@@ -47,12 +47,11 @@ else{
      $dataa["errorType"]="Error Type";
      }
 } 
-echo json_encode($dataa);
  
 // <<<<<<<<<<<<<<<<<<<<<<<<<<for net Amount >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 $insertQueryNet = "INSERT INTO stores(Code,NetAmount) VALUES ('$code',0)";
-mysqli_query($connect, $insertQueryNet)
+mysqli_query($connect, $insertQueryNet);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
-
+echo json_encode($dataa);
  ?>
 
