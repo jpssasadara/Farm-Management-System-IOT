@@ -88,6 +88,7 @@
         color: #51bf28;
         font-size: 200px;
     }
+
     h4 {
         font-size: 19px;
         line-height: 1.375em;
@@ -194,7 +195,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
+                <a class="navbar-brand" href="#">LABUDUWA FARM</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -206,15 +207,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
                         <li><div class="dropdown">
-                            <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
-                            <div class="dropdown-content">
-                                <div ng-controller="loginbuttonctrl">
-                                    <a  href="LoginShop.html" >Registered Shop</a>
-                                    <a href="LoginFarmer.html">Registered Farmer</a>
-                                    <a href="LoginStudent.html" >Student</a>
+                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
+                                <div class="dropdown-content">
+                                    <div ng-controller="loginbuttonctrl">
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </li>
                         <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
                     </ul>
@@ -267,56 +268,48 @@
     </div>
 
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="home.html"><button class="btn btn-default">Back</button></a>
 
     <div class="container">
         <div class="login-form">
+            <form method="post" action="LoginShop.php">
+                <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Registered Shop Login</h2>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary login-btn btn-block" >Sign in</button>
+                </div>
+                <div class="clearfix">
+                    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
 
-        <form method="POST" action="RegisterStudent.php" >
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
-                <tr>
-                    <td> National ID</td><td> <input type="text" name="nic" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>First Name</td><td> <input type="text" name="fname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Last Name</td><td> <input type="text" name="lname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Occupation</td><td> <input type="text" name="occupation" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Mobile Number</td><td> <input type="text" name="mobile" class="form-control"></td>
-                </tr>
+                </div>
+                <div class="or-seperator"><i>or</i></div>
 
-                <tr>
-                    <td>Address</td><td> <input type="text" name="address" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Email</td><td> <input type="text" name="email" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Gender</td><td> <input type="text" name="gender" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>UserName</td><td> <input type="text" name="username" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Password</td><td> <input type="password" name="password" class="form-control"></td>
-                </tr>
 
-                <tr>
-                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
-
-                </tr>
-                <tr>
-                    <td><a class="btn" href="LoginFarmer.html">Sign-In</a></td>
-                </tr>
             </form>
+            <p class="text-center text-muted small">Don't have an account? <a href="RegisterSh.php">Sign up here!</a></p>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -378,4 +371,3 @@
 </div>
 </body>
 </html>
-

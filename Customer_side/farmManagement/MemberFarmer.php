@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 </head>
 <style>
     body {
@@ -194,7 +200,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
+                <a class="navbar-brand" href="#">LABUDUWA FARM</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -206,15 +212,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
                         <li><div class="dropdown">
-                            <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
-                            <div class="dropdown-content">
-                                <div ng-controller="loginbuttonctrl">
-                                    <a  href="LoginShop.html" >Registered Shop</a>
-                                    <a href="LoginFarmer.html">Registered Farmer</a>
-                                    <a href="LoginStudent.html" >Student</a>
+                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
+                                <div class="dropdown-content">
+                                    <div ng-controller="loginbuttonctrl">
+                                        <a  href="LoginShop.html" >Registered Shop</a>
+                                        <a href="LoginFarmer.html">Registered Farmer</a>
+                                        <a href="LoginStudent.html" >Student</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </li>
                         <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
                     </ul>
@@ -265,58 +271,36 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="LoginStudent.html"><button class="btn btn-default">Back</button></a>
+    <hr>
 
-    <div class="container">
-        <div class="login-form">
+    <?php
 
-        <form method="POST" action="RegisterStudent.php" >
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
-                <tr>
-                    <td> National ID</td><td> <input type="text" name="nic" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>First Name</td><td> <input type="text" name="fname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Last Name</td><td> <input type="text" name="lname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Occupation</td><td> <input type="text" name="occupation" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Mobile Number</td><td> <input type="text" name="mobile" class="form-control"></td>
-                </tr>
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
+        ?>
+        <script type="text/javascript">
+            var a='<?php echo $_SESSION['username'];?>';
+            swal({
+                text: 'Welcome '+a+'!',
+            });
+        </script>
+        <?php
+    }
+    else {
+        header('Location: LoginSt.php');
+    }
 
-                <tr>
-                    <td>Address</td><td> <input type="text" name="address" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Email</td><td> <input type="text" name="email" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Gender</td><td> <input type="text" name="gender" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>UserName</td><td> <input type="text" name="username" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Password</td><td> <input type="password" name="password" class="form-control"></td>
-                </tr>
+    ?>
 
-                <tr>
-                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
-
-                </tr>
-                <tr>
-                    <td><a class="btn" href="LoginFarmer.html">Sign-In</a></td>
-                </tr>
-            </form>
-        </div>
-    </div>
 </div>
+</div>
+</div>
+
+<p><a href="Auction/AuctionHomeFarmer.php">Auction</a></p>
+<p><a href="Farmer_accountInterface.php">MyAccount</a></p>
+<p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -378,4 +362,7 @@
 </div>
 </body>
 </html>
+
+
+
 

@@ -31,7 +31,7 @@ if($count>0){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    header("Location: ShopMenu.php");
+    header("Location: MemberShop.php");
     exit();
 }
 else{

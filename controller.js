@@ -1002,14 +1002,26 @@ app.controller("RegisterCashierController",function($scope,$http){
                         });
                     }
                     else if($scope.password==$scope.password2){
-                        if(data.mvalid){
+                        if(data.passwordL){
                             swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: 'Register Success! '+$scope.username,
-                                showConfirmButton: false,
-                                timer: 5000
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Weak Password!',
+                                footer: 'please enter password more than 5 digit!'
                             });
+                            
+                        }
+
+                        else if(data.mvalid){
+                           
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: 'Register Success! '+$scope.username,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });    
+                            
                         }else{
                             swal({
                                 type: 'warning',
@@ -1639,6 +1651,10 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined,'Process-Data': false}
            }).success(function(response){
+<<<<<<< HEAD
+=======
+               console.log(response);
+>>>>>>> 8860fb950b096ebf74d37cf91a755baceea068b3
                 if(response.error){
                     swal({
                         type: 'error',
@@ -1685,7 +1701,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
            'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}
             ).success(function(response){
+<<<<<<< HEAD
                 console.log(response);
+=======
+            //console.log(response); 
+>>>>>>> 8860fb950b096ebf74d37cf91a755baceea068b3
             if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
             $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
             $scope.Type!=null){

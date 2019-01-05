@@ -206,15 +206,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
                         <li><div class="dropdown">
-                            <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
-                            <div class="dropdown-content">
-                                <div ng-controller="loginbuttonctrl">
-                                    <a  href="LoginShop.html" >Registered Shop</a>
-                                    <a href="LoginFarmer.html">Registered Farmer</a>
-                                    <a href="LoginStudent.html" >Student</a>
+                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
+                                <div class="dropdown-content">
+                                    <div ng-controller="loginbuttonctrl">
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </li>
                         <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
                     </ul>
@@ -272,8 +272,8 @@
     <div class="container">
         <div class="login-form">
 
-        <form method="POST" action="RegisterStudent.php" >
-            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
+            <form method="POST" action="RegisterStudent.php" >
+                <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
                 <tr>
                     <td> National ID</td><td> <input type="text" name="nic" class="form-control"></td>
                 </tr>

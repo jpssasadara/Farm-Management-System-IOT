@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,13 +267,14 @@
 </div>
 
 <br/>
-<a href="LoginFarmer.html"><button class="btn btn-default">Back</button></a>
+<a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
 
 <div class="container">
     <div class="login-form">
-        <form method="POST" action="RegisterFarmer.php">
-        <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>  
-     
+
+
+        <form method="POST"  action="RegisterFarmer.php"  >
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
         <tr>
             <td>NIC</td><td><input type="text" name="nic" class="form-control" required/></td>
         </tr>
@@ -313,14 +313,15 @@
         <tr>
             <td> Password</td><td> <input type="password" class="form-control"  name="password" required></td>
         </tr>
-        <tr>
-            <td><input id="button" type="submit" class="btn btn-primary" name="submit" value="Sign-Up"></td>
-        </tr>
+
+            <tr>
+                <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
+            </tr>
         <tr>
             <div class="col-sm-4"></div><td><div class="col-sm-4">
                 <a class="btn" href="LoginFarmer.html">Sign-In</a></div></td>
         </tr>
-    </form>
+        </form>
 </div>
 </div>
 
