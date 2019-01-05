@@ -634,6 +634,29 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewFarmshop.html"
            })
 
+        // loading Table for load shop
+          .when("/sasadara",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewLOadingShopDetails.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -986,19 +1009,19 @@ app.controller("RegisterCashierController",function($scope,$http){
                                 text: 'Weak Password!',
                                 footer: 'please enter password more than 5 digit!'
                             });
-                            
+
                         }
 
                         else if(data.mvalid){
-                           
+
                                 swal({
                                     position: 'top-end',
                                     type: 'success',
                                     title: 'Register Success! '+$scope.username,
                                     showConfirmButton: false,
                                     timer: 5000
-                                });    
-                            
+                                });
+
                         }else{
                             swal({
                                 type: 'warning',
@@ -1665,7 +1688,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){
-               console.log(response);
+
                 if(response.error){
                     swal({
                         type: 'error',
@@ -1712,7 +1735,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
            'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
             ).success(function(response){
-            //console.log(response); 
+
             if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
             $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
             $scope.Type!=null){ 
@@ -2056,6 +2079,18 @@ app.controller("AddfarmerDetails", function($scope, $http){
                   'Check Your Inputs.'
                   
         )}
+
+      };
+      //view farm shop loading data
+      $scope.sasadara=function(){
+          $location.path('/sasadara');
+      };
+
+      $scope.viewOrder= function(){
+        $http.get("module/FarmShop/viewloadShop.php")
+        .success(function(data){
+             $scope.loadorders = data;
+        });
       }
 
  }); 

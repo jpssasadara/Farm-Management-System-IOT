@@ -307,6 +307,8 @@ session_start();
     ?>
 
 
+>>>>>>> 7a25e40e1f686f1f92777379829a761b47519892
+
 <?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 if ($mysqli->connect_errno) {
