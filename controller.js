@@ -634,6 +634,29 @@ app.config(function($routeProvider) {
               templateUrl: "view/viewFarmshop.html"
            })
 
+        // loading Table for load shop
+          .when("/sasadara",{                    
+              resolve:{
+                  "check":function($location,$cookies,$rootScope){
+                      if(!$cookies.get('cookie')){
+                          $location.path('/');
+                      }
+                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                      } else if ($cookies.get('cookiename')!=null){
+                          $rootScope.adminname=$cookies.get('cookiename');
+                          $rootScope.shopname=" LoginShop";
+                      }else if($cookies.get('cookie2name')!=null){
+                          $rootScope.shopname=$cookies.get('cookie2name');
+                          $rootScope.adminname=" LoginAdmin";
+    
+                      }
+                  }
+              },
+              templateUrl: "view/viewLOadingShopDetails.html"
+           })
+
      .otherwise({
         redirectTo:'/'
      })
@@ -1628,14 +1651,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){
-<<<<<<< HEAD
 
-
-               console.log(response);
-
-=======
-               console.log(response);
->>>>>>> 278f84b4ac49e493aca34e02ad6cbcc831b2a3f2
                 if(response.error){
                     swal({
                         type: 'error',
@@ -1682,15 +1698,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
            'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
             ).success(function(response){
-<<<<<<< HEAD
 
-                console.log(response);
-
-            //console.log(response);
-
-=======
-            //console.log(response); 
->>>>>>> 278f84b4ac49e493aca34e02ad6cbcc831b2a3f2
             if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
             $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
             $scope.Type!=null){ 
