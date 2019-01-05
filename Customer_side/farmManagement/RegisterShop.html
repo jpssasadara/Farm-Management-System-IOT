@@ -9,7 +9,7 @@
 <div id="Sign-Up">
     <fieldset style="width:30%"><legend>Registration Form</legend>
         <table border="0">
-            <form method="POST" action="RegisterShop.php">
+            <form method="POST" action="RegisterShop.php" enctype="multipart/form-data">
                 <tr>
                     <td> National ID</td><td> <input type="text" name="nic"></td>
                 </tr>
@@ -21,6 +21,9 @@
                 </tr>
                 <tr>
                     <td>Mobile Number</td><td> <input type="text" name="mobile"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td><td> <input type="text" name="gender"></td>
                 </tr>
 
                 <tr>
@@ -37,7 +40,12 @@
                     <td>Password</td><td> <input type="password" name="password"></td>
                 </tr>
                 <tr>
-                    <td><input id="button" type="submit" name="submit" value="Sign-Up"></td>
+                    <td> <input type="file" name="image" id="image" /></td>
+
+                </tr>
+                <tr>
+                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
+                    <td><!--input id="button" type="submit" name="submit" value="Sign-Up"--></td>
                 </tr>
                 <tr>
                     <td><a class="btn" href="LoginShop.html">Sign-In</a></td>
@@ -49,3 +57,25 @@
 </div>
 </body>
 </html>
+<script>
+    $(document).ready(function(){
+        $('#insert').click(function(){
+            var image_name = $('#image').val();
+            if(image_name == '')
+            {
+                alert("Please Select Image");
+                return false;
+            }
+            else
+            {
+                var extension = $('#image').val().split('.').pop().toLowerCase();
+                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
+                {
+                    alert('Invalid Image File');
+                    $('#image').val('');
+                    return false;
+                }
+            }
+        });
+    });
+</script>

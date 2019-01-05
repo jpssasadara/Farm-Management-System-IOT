@@ -14,8 +14,6 @@ if ($mysqli->connect_errno) {
 }
 
 
-
-
 $query = "INSERT INTO registeredfarmer (Id,First_Name,Tele_Number,Gender,Email,Address,variety,username,password) VALUES ('$_POST[nic]','$_POST[name]','$_POST[mobile]','$_POST[gender]','$_POST[email]','$_POST[address]','$_POST[q1]','$_POST[username]','$_POST[password]')";
 $result = mysqli_query($mysqli, $query);
 
@@ -27,4 +25,13 @@ if($result)
 else
 {
     echo $query;
+}
+if(isset($_POST["insert"]))
+{
+    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    $query = "INSERT INTO upload_farmer(id,name) VALUES ('$_POST[nic]','$file')";
+    if(mysqli_query($mysqli, $query))
+    {
+        echo '<script>alert("Image Inserted into Database")</script>';
+    }
 }
