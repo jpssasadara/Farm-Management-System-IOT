@@ -268,62 +268,137 @@
 
     <br/>
     <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
 
-<form action="courseDatabase.php" method="post">
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
+$query = "select count(1) FROM bid_history";
+$result= mysqli_query($mysqli, $query);
+$row = mysqli_fetch_array($result);
+
+$total = $row[0];
+echo "Total bids: " . $total;
+
+mysqli_close($mysqli);
+?>
+
+<table border="2">
+    <thead>
+    <tr>
+        <th>Bidder</th>
+        <th>Amount</th>
+        <th>Time</th>
+        <th>Confirm</th>
+        <th>Reject</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    // Create connection
+    /* fetch associative array */
+
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+    // Check connection
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
+    }
+
+    $query = "SELECT * FROM bid_history inner join auction on bid_history.Item_code=auction.Item_code
+       where Item_code='956020777v'";
+    /* fetch associative array */
+
+    if ($result = $mysqli->query($query)) {
+
+        while ($row = $result->fetch_array()) {
+            //echo $row['name'];
+            echo "<div class='well'>";
+
+            echo "<ul class='list-unstyled'>";
+
+            echo " <tr>
+                   <td>{$row['Bidder']}</td>
+                   <td>{$row['Amount']}</td>
+                   <td>{$row['Date']}</td>
+                   <td><a>Confirm</a></td>
+                   <td><a>Reject</a></td>
+                   </tr>\n";
+
+            echo("</div>");
+        }
+        "</ul>";
+        /* free result set */
+        $result->free();
+    }
+
+    /* close connection */
+    $mysqli->close();
+    ?>
+    </tbody>
+</table>
+</div>
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!-- Google +-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Linkedin -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Instagram-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="pin-ic">
+                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
 
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div>
-        </div>
     </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-        </div>
-    </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input type="submit">
-        </div>
-    </div>
-</form>
-</body
-</html>
+</footer>
+</div>
+</body>
 </html>
 
