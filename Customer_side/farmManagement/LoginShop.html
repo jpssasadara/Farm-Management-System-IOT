@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +88,7 @@
         color: #51bf28;
         font-size: 200px;
     }
+
     h4 {
         font-size: 19px;
         line-height: 1.375em;
@@ -268,70 +268,48 @@
 </div>
 
 <br/>
-<a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+<a href="home.html"><button class="btn btn-default">Back</button></a>
 
 <div class="container">
     <div class="login-form">
-
-        <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
-        <form method="POST"  action="RegisterFarmer.php" enctype="multipart/form-data" >
-        <tr>
-            <td>NIC</td><td><input type="text" name="nic" class="form-control" required/></td>
-        </tr>
-        <tr>
-            <td>Name</td><td><input type="text" name="name" class="form-control" required/></td>
-        </tr>
-        <tr>
-            <td>MobileNumber</td><td><input type="text" name="mobile"  class="form-control" required/></td>
-        </tr>
-        <tr>
-            <td> Email</td><td><input type="text" name="email"  class="form-control" required/></td>
-        </tr>
-        <tr>
-            <td> Gender</td><td><input type="text" name="gender"  class="form-control" required /></td>
-        </tr>
-        <tr>
-            <td>Address</td><td><input type="text" name="address" class="form-control" required/></td>
-        </tr>
-        <tr>
-            <hr>
-            <td><u> Varieties</u></td><br/>
-            Vegetables
-            <td> <input type="radio" name="q1" value="Vegetables" data-toggle="modal" data-target="#myModal"/>
-            <br>Fruits
-            <input type="radio"  name="q1" value="Fruits" data-toggle="modal" data-target="#myModal"/>
-            <br>Animal products
-            <input type="radio" name="q1" value="Animal products" data-toggle="modal" data-target="#myModal"/>
-            <br>Milk based products
-            <input type="radio" name="q1" value="Milk based products" data-toggle="modal" data-target="#myModal"/>
-           <br/><hr>
-            </td>
-        </tr>
-        <tr>
-            <td> UserName</td><td> <input type="text"class="form-control"  name="username" required></td>
-        </tr>
-        <tr>
-            <td> Password</td><td> <input type="password" class="form-control"  name="password" required></td>
-        </tr>
-            <tr>
-                <td> <input type="file" name="image" id="image" />
-                    <br /><!--input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" /--></td>
-            </tr>
-            <!--td><!--input id="button" type="submit" class="btn btn-primary" name="submit" value="Sign-Up"--><!--/td-->
-            <tr>
-                <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
-            </tr>
-        <tr>
-            <div class="col-sm-4"></div><td><div class="col-sm-4">
-                <a class="btn" href="LoginFarmer.html">Sign-In</a></div></td>
-        </tr>
-        </form>
+    <form method="post" action="LoginShop.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span>Registered Shop Login</h2>  
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">             
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">             
+            </div>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary login-btn btn-block" >Sign in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            
+        </div>
+        <div class="or-seperator"><i>or</i></div>
+        
+        
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="RegisterShop.html">Sign up here!</a></p>
+</div>
 </div>
 </div>
 
 
 
-</div>
+
+
+
+
+
+
 <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
@@ -393,25 +371,3 @@
     </div>
     </body>
     </html>
-<script>
-    $(document).ready(function(){
-        $('#insert').click(function(){
-            var image_name = $('#image').val();
-            if(image_name == '')
-            {
-                alert("Please Select Image");
-                return false;
-            }
-            else
-            {
-                var extension = $('#image').val().split('.').pop().toLowerCase();
-                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-                {
-                    alert('Invalid Image File');
-                    $('#image').val('');
-                    return false;
-                }
-            }
-        });
-    });
-</script>

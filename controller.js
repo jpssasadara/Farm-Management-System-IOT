@@ -934,21 +934,22 @@ app.controller("RegisterCashierController",function($scope,$http){
             {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password
         ,'password2':$scope.password2}
             ).success(function(data){
+                console.log(data);
                  if(data.error)
-                {
-                $scope.errorid = data.error.id;
-                $scope.errorfirstname = data.error.firstname;
-                $scope.errorlastname = data.error.lastname;
-                $scope.errorphonenumber = data.error.phonenumber;
-                $scope.erroremail = data.error.email;
-                $scope.erroraddress = data.error.address;
-                $scope.errorsalary = data.error.salary;
-                $scope.errorusername = data.error.username;
-                $scope.errorpassword = data.error.password;
+                    {
+                    $scope.errorid = data.error.id;
+                    $scope.errorfirstname = data.error.firstname;
+                    $scope.errorlastname = data.error.lastname;
+                    $scope.errorphonenumber = data.error.phonenumber;
+                    $scope.erroremail = data.error.email;
+                    $scope.erroraddress = data.error.address;
+                    $scope.errorsalary = data.error.salary;
+                    $scope.errorusername = data.error.username;
+                    $scope.errorpassword = data.error.password;
 
-                
+                    
 
-                $scope.successInsert = null;
+                    $scope.successInsert = null;
                 }
                 else
                 {
@@ -968,18 +969,48 @@ app.controller("RegisterCashierController",function($scope,$http){
                     && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
                     && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
                     $scope.password2!=null){
-                    if($scope.password==$scope.password2){
+                    
+                    if(data.exit){
                         swal({
-                            position: 'top-end',
-                            type: 'success',
-                            title: 'Register Success! '+$scope.username,
-                            showConfirmButton: false,
-                            timer: 5000
+                            type: 'warning',
+                            title: 'Oops...',
+                            text: 'EmpId already taken!',
+                            footer: 'please enter another!'
                         });
+                    }
+                    else if($scope.password==$scope.password2){
+                        if(data.passwordL){
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Weak Password!',
+                                footer: 'please enter password more than 5 digit!'
+                            });
+                            
                         }
+
+                        else if(data.mvalid){
+                           
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: 'Register Success! '+$scope.username,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });    
+                            
+                        }else{
+                            swal({
+                                type: 'warning',
+                                title: 'Oops...',
+                                text: 'Invalid Mobile No!',
+                                footer: 'please enter 10 digit mobile number!'
+                            });
+                        }
+                    }
                     else{
                         swal({
-                            type: 'Wrong',
+                            type: 'error',
                             title: 'Oops...',
                             text: 'Passwords not match !',
                             footer: 'please match the passwords!'
@@ -1037,12 +1068,6 @@ app.controller("RegisterCashierController",function($scope,$http){
                         
 
                         $scope.successInsert = null;
-                    //     swal({
-                    //         type: 'error',
-                    //         title: 'Oops...',
-                    //         text: 'Wrong Stuff !',
-                    //         footer: 'Please Enter Details you want to Update'
-                    //       });
                        }
                        else
                        {
@@ -1050,8 +1075,16 @@ app.controller("RegisterCashierController",function($scope,$http){
                             && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
                             && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
                             $scope.password2!=null){
-
-                            if($scope.password2==$scope.password){
+                            console.log(data);
+                            if (data.cannot){
+                                swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'You cannot change EmpId !',
+                                    footer: 'please dont change that!'
+                                });
+                            }
+                            else if($scope.password2==$scope.password){
                                 $scope.errorid = null;
                                 $scope.errorfirstname = null;
                                 $scope.errorlastname = null;
@@ -1064,23 +1097,33 @@ app.controller("RegisterCashierController",function($scope,$http){
                                 $scope.successInsert = data.message;
 
                                 $scope.displayData2();
+                                if(data.mvalid){
+                                    swal({
+                                        title: $scope.id+' Update Success! '
+                                    });
+                                    $scope.id=null;
+                                    $scope.firstname=null;
+                                    $scope.lastname=null;
+                                    $scope.phonenumber=null;
+                                    $scope.email=null;
+                                    $scope.address=null;
+                                    $scope.salary=null;
+                                    $scope.username=null;
+                                    $scope.password=null;
+                                    $scope.password2=null;
+                                    $scope.all=false;
 
-                                $scope.id=null;
-                                $scope.firstname=null;
-                                $scope.lastname=null;
-                                $scope.phonenumber=null;
-                                $scope.email=null;
-                                $scope.address=null;
-                                $scope.salary=null;
-                                $scope.username=null;
-                                $scope.password=null;
-                                $scope.password2=null;
-                                swal(
-                                    'Update Success!'
-                                );
+                                }else{
+                                    swal({
+                                        type: 'warning',
+                                        title: 'Oops...',
+                                        text: 'Invalid Mobile No!',
+                                        footer: 'please enter 10 digit mobile number!'
+                                    });
+                                }
                             }else{
                                 swal({
-                                    type: 'Wrong',
+                                    type: 'warning',
                                     title: 'Oops...',
                                     text: 'Passwords not match !',
                                     footer: 'please match the passwords!'
@@ -1100,6 +1143,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.salary=i7;
                         $scope.username=i8;
                         $scope.password=i9;
+                        $scope.all=true;
             
       };
 
@@ -1194,6 +1238,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                         $scope.errorid = null;
                         $scope.errorusername = null;
                         $scope.errorpassword = null;
+                        $scope.all=false;
 
                         swal(
                             data.message
@@ -1218,7 +1263,7 @@ app.controller("RegisterAdminController", function($scope, $http){
             $scope.id = id;  
             $scope.username = first_name;  
             $scope.password = last_name; 
-            
+            $scope.all=true;
       }
 
      $scope.deleteDataAdmin = function(idd){  
@@ -1372,12 +1417,95 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 $scope.successInsert = data.message;
                 swal({
                     type: 'success',
-                    title: $scope.un +' Shop Added Successfull!',
+                    title: $scope.First_Name +' Farmer Added Successfull!',
                     timer: 5000
                     });
                 }
             }
         )};
+
+
+
+    
+    
+        $scope.deletefarmers = function(idd){ 
+            swal({
+                title: 'Are you sure?',
+                text: "You want to delete this data?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                swal(
+                'Deleted!',
+                'Your Data has been deleted.',
+                'success'
+                )
+                $http.post("module/farmer/deletefarmer.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayfarmers();  
+                });
+            }
+            else  
+            {  
+                return false;  
+            } 
+        });  
+       }
+
+       $scope.editDetails = function(x){ 
+        $scope.details=x;
+        console.log($scope.details);
+    }
+    
+       $scope.editfarmer=function(){
+       
+        $http.post(  
+            
+            "module/farmer/editfarmer.php",  
+            {'details.Id':$scope.details.Id,'details.First_Name':$scope.details.First_Name, 
+            'details.Tele_Number':$scope.details.Tele_Number,'details.Gender'
+            :$scope.details.Gender,'details.Email':$scope.details.Email,
+            'details.Address':$scope.details.Address,'details.variety':$scope.details.variety,'details.username':$scope.details.username
+        }  
+        
+        ).success(function(data){
+
+            //console.log(data);
+            if($scope.details.Id!=null && $scope.details.First_Name!=null && $scope.details.Gender!=null
+                && $scope.details.Email!=null && $scope.details.Address!=null && $scope.details.variety!=null){
+                $scope.successInsert = data.message;
+                if(data.invalidFees){
+                    console.log(data);
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Fees!',
+                        footer: 'please enter valid Fees!'
+                    });
+                }else{
+                    swal({
+                        type: 'success',
+                        title: $scope.details.First_Name +' Farmer Updated Successfull!',
+                        timer: 5000
+                        });
+                }
+            }else{
+                swal(
+                    'Error!',
+                    'All the fields cannot be empty.',
+                    'Error'
+                );
+            }
+            }
+    )};
+        
+
         
 
 
@@ -1499,11 +1627,21 @@ app.controller("AddfarmerDetails", function($scope, $http){
            {  
                 transformRequest: angular.identity,  
                 headers: {'Content-Type': undefined,'Process-Data': false}  
-           }).success(function(response){  
-                swal(response);  
+           }).success(function(response){
+                if(response.error){
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Invalid Image!',
+                        footer: 'Please insert the image!'
+                    });
+                }else{
+                    $scope.uploadFileData();  
+                }
+
                   
            });
-           $scope.uploadFileData();  
+           
       } 
       //get all data by joinning image table and items data table <<by equaling image id>> 
       $scope.select = function(){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<====SELECT VEGETABLES 
@@ -1533,59 +1671,169 @@ app.controller("AddfarmerDetails", function($scope, $http){
            
         //add data with image id which is in image table        
            $http.post('module/Items/uploadData.php',
-           {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
-            ).success(function(response){  
-                swal(response);
-                $scope.select(); 
-                $scope.selectFruit();
-                $scope.code=null;
-                $scope.name=null;
-                $scope.price=null;
-                $scope.amount=null;
-                $scope.unit=null;
-                $scope.discount=null;
-                $scope.Type=null;  
-           });  
+           {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
+           'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
+            ).success(function(response){
+            //console.log(response); 
+            if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
+            $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
+            $scope.Type!=null){ 
+                if(response.errorCode){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'ItemCode Already Taken!',
+                        footer: 'Please enter your valid ItemCode!'
+                    });
+                }
+                else if(response.errorType){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'ItemType Error!',
+                        footer: 'ItemType should Vegetable or Fruits!'
+                    });
+                }
+    
+                else if(response.errorUnit){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Item unit Error!',
+                        footer: 'Item unit should kg ,g , mg, 1packet, l or ml!'
+                    });
+                }
+    
+                else if(response.errorPrice){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid Price!',
+                        footer: 'Please enter valid amount!'
+                    });
+                }
+                else{               
+                    $scope.select(); 
+                    $scope.selectFruit();
+                    swal({
+                        type: 'success',
+                        title: $scope.code +' item Added Successfull!',
+                        timer: 5000
+                    });
+                    $scope.code=null;
+                    $scope.name=null;
+                    $scope.price=null;
+                    $scope.amount=null;
+                    $scope.unit=null;
+                    $scope.discount=null;
+                    $scope.Type=null; 
+                }
+        }else{
+            swal({
+                type: 'warning',
+                title: 'Oops...',
+                text: 'Fill all!',
+                footer: 'Please Fill all the details!'
+            });
+        } 
+        
+        });  
       }  
 
       //Update Details
-      $scope.updateItems =function(i1,i2,i3,i4,i5,i6,i7){  
-                        $scope.code=i1;
-                        $scope.name=i2;
-                        $scope.unit=i3;
-                        $scope.amount=i4;
-                        $scope.price=i5;
-                        $scope.discount=i6;
-                        $scope.Type=i7;
-            
-      };
+        $scope.updateItems =function(i1,i2,i3,i4,i5,i6,i7){  
+            $scope.code=i1;
+            $scope.name=i2;
+            $scope.unit=i3;
+            $scope.amount=i4;
+            $scope.price=i5;
+            $scope.discount=i6;
+            $scope.Type=i7;
+            //ng-disabled="all"
+            $scope.all=true;
+                
+        };
       $scope.updateItemsData = function(){  
            $http.post(  
                 "module/Items/UpdateItems.php",  
                 {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
            ).success(function(data){
-                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        //send notification
-                                $scope.noti2 ="New "+$scope.name+" "+$scope.amount+""+$scope.unit+" is Rs: "+$scope.price+"/=";
-                               $http.post('appnotification/push_notification.php',
-                             {'msg':$scope.noti2}
-                             ).success(function(data){
-                                  alert("Now !! A Notification was sent to Mobile App... "); 
-                             });
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //send notification
+            //console.log(data);
+            if(data.errorCode){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'ItemCode Cannot Change!',
+                    footer: 'Please enter your valid ItemCode!'
+                });
+            }
+            else if(data.errorType){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'ItemType Error!',
+                    footer: 'ItemType should Vegetable or Fruits!'
+                });
+            }
 
-                        $scope.code = null;
-                        $scope.name = null;
-                        $scope.price = null;
-                        $scope.amount = null;  
-                        $scope.unit = null;
-                        $scope.discount = null;
-                        $scope.Type=null;
+            else if(data.errorUnit){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Item unit Error!',
+                    footer: 'Item unit should kg ,g , mg, 1packet, l or ml!'
+                });
+            }
 
-                        swal("Updated!");
-                        $scope.select();
-                        $scope.selectFruit();
-                      });
+            else if(data.errorPrice){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Invalid Price!',
+                    footer: 'Please enter valid amount!'
+                });
+            }
+            
+            else if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
+                $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
+                $scope.Type!=null){
+                    
+                    $scope.select();
+                    $scope.selectFruit();
+                    swal({
+                        position:'top-end',
+                        type: 'success',
+                        title: $scope.code +' Update Successfull!',
+                        timer: 5000
+                    });
+                    $scope.noti2 ="New "+$scope.name+" "+$scope.amount+""+$scope.unit+" is Rs: "+$scope.price+"/=";
+                    $http.post('appnotification/push_notification.php',
+                    {'msg':$scope.noti2}
+                    ).success(function(data){
+                        swal("Now !! A Notification was sent to Mobile App... "
+                        ); 
+                    });
+
+                    $scope.code = null;
+                    $scope.name = null;
+                    $scope.price = null;
+                    $scope.amount = null;  
+                    $scope.unit = null;
+                    $scope.discount = null;
+                    $scope.Type=null;
+                    $scope.all=false;
+
+                }else{
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Fill all!',
+                        footer: 'Please Fill all the details!'
+                    });
+                }
+            });
       }
 
        $scope.deleteItems = function(idd){  
@@ -1607,7 +1855,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
               $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
                 .success(function(data){  
                      //alert(data);  
-                     $scope.displayData2();  
+                    // $scope.displayData();  
                 });
                 $http.post("module/Items/DeleteItems.php", {'id':idd})  
                 .success(function(data){  
@@ -1643,25 +1891,36 @@ app.controller("AddfarmerDetails", function($scope, $http){
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
        
-        if ($scope.farmernic!= null && $scope.itemcode && $scope.amount!=null && $scope.total!=null) {
+        if ($scope.farmernic!= null && $scope.itemcode!=null&& $scope.amount!=null && $scope.total!=null) {
           if (($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V')|| $scope.farmernic=="LabuduwaFarm" ){
-             $http.post('module/Stores/LoadStores.php',
-           {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
-            ).success(function(response){
-                  //alert(response);
-                  $scope.farmernic="";
-                  
-                  $scope.amount="";
-                  $scope.total="";
-                  swal(
-                  'OK!',
-                  'Your Data has been Added.',
-                  'success'
-              )
-                $scope.select(); 
-                $scope.selectFruit(); //farmernic itemcode amount total
-               
-           }); 
+                               
+                      if(($scope.amount[$scope.amount.length-1]=='g'||$scope.amount[$scope.amount.length-1]=='G') && ($scope.amount[$scope.amount.length-2]=='k'||$scope.amount[$scope.amount.length-2]=='K')){
+                               $http.post('module/Stores/LoadStores.php',
+                             {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
+                              ).success(function(response){
+                                    //alert(response);
+                                    $scope.farmernic="";
+                                    
+                                    $scope.amount="";
+                                    $scope.total="";
+                                    swal(
+                                    'OK!',
+                                    'Your Data has been Added.',
+                                    'success'
+                                )
+                                  $scope.select(); 
+                                  $scope.selectFruit(); //farmernic itemcode amount total
+                                 
+                             }); 
+                        }
+                          else{
+                                   swal(
+                                    'Error!',
+                                    'Amount should be " Kg ".'
+          
+                                    )
+                            }
+
           } else {
             swal(
                   'Error!',
@@ -1718,6 +1977,49 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 //alert(data);  
            }); 
       }
+
+      //////////////////////////Loading Farm Shop\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+       $scope.setDataPopUpWindFarmShop = function(code){ 
+          $scope.itemcode=code;
+          $scope.shopname="LabuduwaFarmShop";
+      }
+
+      $scope.takeLoadToFarmShop = function(){
+        if ($scope.shopname!= null && $scope.itemcode!=null && $scope.amount!=null) {
+       
+           if(($scope.amount[$scope.amount.length-1]=='g'||$scope.amount[$scope.amount.length-1]=='G') && ($scope.amount[$scope.amount.length-2]=='k'||$scope.amount[$scope.amount.length-2]=='K')){
+                 $http.post('module/FarmShop/LoadItemsShop.php',
+               {'itemcode':$scope.itemcode,'amount':$scope.amount}  
+                ).success(function(response){
+                      alert(response);
+                     // $scope.amount="";
+                      //swal(
+                      //'OK!',
+                      //'Your Data has been Added.',
+                      //'success'
+                 // )
+                    $scope.select(); 
+                    $scope.selectFruit(); //farmernic itemcode amount total
+                   
+               }); 
+       
+           }
+           else{
+                 swal(
+                  'Error!',
+                  'Amount should be " Kg ".'
+                  
+                  )
+           }
+        } else {
+           swal(
+                  'Error!',
+                  'Check Your Inputs.'
+                  
+        )}
+      }
+
  }); 
       
 
@@ -1725,6 +2027,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
 //Controller Handeling admin part of registered Shops' orders
 app.controller("RegShopOrderController",function($scope,$location, $http,$rootScope){
+
+    //link for view shop
+    $scope.viewShop=function(){
+      $location.path('/view/shoploading');
+    }
     $scope.Orders=function(){
         $location.path('/admin/handel/orders');
     };

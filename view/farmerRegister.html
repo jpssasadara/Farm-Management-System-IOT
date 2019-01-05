@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+				<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 				<input type="text" class="form-control" id="textinput" required name="textinput" 
 				ng-model="Tele_Number" placeholder="Mobile/Tel">             
 			</p>
@@ -72,11 +72,11 @@
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
-				<span class="inEmailput-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-				<input type="email" class="form-control" id="textinput" required name="textinput" 
-				ng-model="Email" placeholder="Email">             
-			</p>
-			</div>
+					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					<input type="email" class="form-control" id="textinput" required name="textinput" 
+					ng-model="Email" placeholder="Email" required="required">             
+				</p>
+			</div> 
 		</div>
 	
 	
@@ -93,9 +93,9 @@
 			</div> 
 		</div>
 	
-		<div class="form-group row flex-v-center">
+		<div class="form-group row flexvariety-v-center">
 			<div class="col-xs-2 col-sm-4">
-				<label for="from">variety </label>
+				<label for="from">Variety </label>
 			</div>
 			<div class="col-xs-6">
 			<p class="input-group">
@@ -134,7 +134,10 @@
 			<p class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 					<input type="password" class="form-control" id="textinput" required name="textinput" 
-					ng-model="password" placeholder="password" required="required">             
+					ng-model="password" placeholder="password" required="required" >
+					
+				
+					            
 				</p>
 			</div> 
 		</div>	
@@ -143,7 +146,7 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 			<button type="submit" name="registration" class="btn btn-warning login-btn btn-block" 
-			ng-click="addfarmer()">Add Farmer 
+			ng-click="addfarmer()"" >Add Farmer 
 			<span class="glyphicon glyphicon-send"></span></button>
 			</div><div class="col-sm-4"><input type="reset" class="btn btn-danger" value="clear"></div>
 		</div>

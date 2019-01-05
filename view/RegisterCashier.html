@@ -1,156 +1,171 @@
 
 <div ng-controller="RegisterCashierController" class="container" ng-init="displayData2()">
-  
-<!--<fieldset>-->
-
-<!-- Form Name -->
-
-<!--<label class="text-success" ng-show="successInsert">{{successInsert}}</label>-->
-<!-- Text input-->
+ 
 <div ng-controller="Admincontroller"> 
 <button class="btn btn-default" ng-click="showAdmin()">Back</button>
 </div>
-<div class="main-content-agile">
-		<div class="sub-main-w3">
-      <div class="container container-fluid"><h2> <b>Register Farm Shop</b> </h2>
-<p></p>
+
+
+
+<center><h2>
+    <b>Cashier Member Registration</b></h2></center>
 <hr>
-<form class="form-horizontal" method="post">
-<div class="form-style-agile">
-    <div class="form-group">
-        <label class="control-label col-md-2">ID : </label>
-        <div class="col-sm-10">
-          <input required id="textinput" name="textinput" type="text" ng-model="id" placeholder="id" class="form-control input-lg">
-  </div></div>
-</div>
-   <!-- <span class="text-danger" ng-show="errorid">{{errorid}}</span>-->
+
+<div class="container container-fluid">
+        <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 col-lg-8"> 
 
 
-<!-- Text input-->
+<form method="POST"> 
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">EmpID :</label>
+        </div>
+        <div class="col-xs-6">
+            <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input class="form-control" ng-disabled="all"  type="text" required  
+                name="textinput" type="text" ng-model="id" placeholder="id">             
+            </p>
+        </div>
+    </div>
 
-    <div class="form-style-agile">
-      <div class="form-group">
-        <label class="control-label col-md-2">FirstName : </label>
-        <div class="col-sm-10">
-            <input id="textinput" required name="textinput" type="text" ng-model="firstname" placeholder="firstname" class="form-control input-lg">
-            </div></div> 
-  </div>
-   <!-- <span class="text-danger" ng-show="errorfirstname">{{errorfirstname}}</span>-->
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">FirstName :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  required name="textinput" type="text" ng-model="firstname" 
+            placeholder="firstname" class="form-control">
+                       
+        </p>
+        </div>
+    </div>
 
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">LastName :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  required name="textinput" type="text" ng-model="lastname"
+            placeholder="lastname" class="form-control">                
+        </p>
+        </div>
+    </div>
 
-<!-- Text input-->
-
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">LastName : </label>
-            <div class="col-sm-10">
- 
-              <input id="textinput" required name="textinput" type="text" ng-model="lastname"placeholder="lastname" class="form-control input-lg">
-              </div></div>
-  </div>
-   <!-- <span class="text-danger" ng-show="errorlastname">{{errorlastname}}</span>-->
-
-
-
-<!-- Text input-->
-
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">Phone : </label>
-            <div class="col-sm-10">
-
-  <input id="textinput" required name="textinput" type="text" ng-model="phonenumber" placeholder="phonenumber" class="form-control input-lg">
-              </div></div>
-
-  </div>
-    <!-- <span class="text-danger" ng-show="errorphonenumber">{{errorphonenumber}}</span>-->
-
-
-<!-- Text input-->
-
-<div class="form-style-agile">
-    <div class="form-group">
-        <label class="control-label col-md-2">Email : </label>
-        <div class="col-sm-10">
-<input id="textinput" required name="textinput" type="email" ng-model="email" placeholder="email" class="form-control input-lg">
-          </div></div>
-
-</div>
-   <!-- <span class="text-danger" ng-show="erroremail">{{erroremail}}</span>-->
-
-
-
-<!-- Text input-->
-
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">Salary : </label>
-            <div class="col-sm-10">
-
-  <input id="textinput" required name="textinput" type="text" ng-model="salary" placeholder="salary" class="form-control input-lg">
-  
-              </div></div>
-  </div>
-   <!-- <span class="text-danger" ng-show="errorsalary">{{errorsalary}}</span>-->
-
-
-<!-- Textarea -->
-
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">Address : </label>
-            <div class="col-sm-10">
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Phone :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+            <input  required name="textinput" type="text" ng-model="phonenumber" 
+            placeholder="phonenumber" class="form-control">
                  
-    <textarea class="form-control" placeholder="Address" required id="textarea" ng-model="address" name="textarea"></textarea>
-              </div></div>
-  </div>
-   <!-- <span class="text-danger" ng-show="erroraddress">{{erroraddress}}</span>-->
+        </p>
+        </div>
+    </div>
 
-
-<!-- Text input-->
-
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">UserName : </label>
-            <div class="col-sm-10">
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Email :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input  required name="textinput" type="email" ng-model="email" 
+            placeholder="email" class="form-control">
  
-  <input id="textinput" required name="textinput" type="text" placeholder="username" ng-model="username"class="form-control input-lg">
-              </div></div>
-  </div>
-   <!-- <span class="text-danger" ng-show="errorusername">{{errorusername}}</span>-->
+                 
+        </p>
+        </div>
+    </div>
+
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Salary :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+            <input  required name="textinput" type="text" ng-model="salary" 
+            placeholder="salary" class="form-control">
+          
+        </p>
+        </div>
+    </div>
+
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Address :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-paperclip"></i></span>
+            <textarea class="form-control" placeholder="Address" required id="textarea" 
+            ng-model="address" name="textarea"></textarea>
+  
+          
+        </p>
+        </div>
+    </div>
+    
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Username :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  required name="textinput" type="text" placeholder="username" 
+            ng-model="username"class="form-control">    
+        </p>
+        </div>
+    </div>
 
 
-<!-- Password input-->
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Password :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input  required name="passwordinput" type="password" 
+            placeholder="password" ng-model="password" class="form-control">
+   
+        </p>
+        </div>
+    </div>
 
-    <div class="form-style-agile">
-        <div class="form-group">
-            <label class="control-label col-md-2">Password : </label>
-            <div class="col-sm-10">
-
-    <input id="passwordinput" required name="passwordinput" type="password" placeholder="password" ng-model="password" class="form-control input-lg">
-    <!--<span class="help-block">At least 8 Characters</span>-->
-              </div></div>
-  </div>
-
-  <div class="form-style-agile">
-      <div class="form-group">
-          <label class="control-label col-md-2">Re-Enter : </label>
-          <div class="col-sm-10">
-
-      <input id="passwordinput" required name="passwordinput2" type="password" placeholder="re-enter password" ng-model="password2" class="form-control input-lg">
-      <!--<span class="help-block">At least 8 Characters</span>-->
-            </div></div>
-  </div>
- <!-- <span class="text-danger" ng-show="errorpassword">{{errorpassword}}</span>-->
-
-
-<!-- Button -->
+    <div class="form-group row flex-v-center">
+        <div class="col-xs-2 col-sm-4">
+            <label for="from">Re-Enter :</label>
+        </div>
+        <div class="col-xs-6">
+        <p class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input  required name="passwordinput2" type="password" 
+            placeholder="re-enter password" ng-model="password2" class="form-control">
+ 
+   
+        </p>
+        </div>
+    </div>
+    <input type="checkbox" ng-model="all">
   <button type="reset" value="clear" class="btn btn-danger">Clear</button>
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-sm-2"></div>
-  <button id="singlebutton" name="singlebutton" ng-click="Reg()" class="btn btn-primary btn-lg">Register</button>
+  <button  name="singlebutton" ng-click="Reg()" class="btn btn-primary btn-lg">
+      <i class="fa fa-leaf fa-2x"></i><br/>Register</button>
   
-  <button id="singlebutton" name="singlebutton" ng-click=updateData() class="btn btn-warning btn-lg">Update</button>
+  <button  name="singlebutton" ng-click=updateData() class="btn btn-warning btn-lg">Update</button>
 
 
 
@@ -164,37 +179,37 @@
 <div  class = "col-md-12" class = style="width:500px;">  
                 
                 
-                     
-                     <br /><br />  
-                     <table class="table table-bordered">  
-                          <tr>  
-                               <th>Emp_Id</th>
-                               <th>First Name</th>  
-                               <th>Last Name</th>
-                               <th>Phone Number</th>
-                               <th>Email</th>
-                               <th>Salary</th>
-                               <th>Address</th> 
-                               <th>Username</th>
-                               <th>Password</th>
-                               <th>Update</th>
-                               <th>Delete</th>
-                          </tr>  
-                          <tr ng-repeat="x in names">
-                               <td>{{x.Id}}</td>
-                               <td>{{x.First_Name}}</td>  
-                               <td>{{x.Last_Name}}</td> 
-                               <td>{{x.Tele_Number}}</td>
-                               <td>{{x.Email}}</td>  
-                               <td>{{x.Salary}}</td>
-                               <td>{{x.Address}}</td>
-                               <td>{{x.Username}}</td>  
-                               <td>{{x.Password}}</td>
-                          
-                               <td><button ng-click="updateDataAdmin(x.Id,x.First_Name, x.Last_Name,x.Tele_Number,x.Email,x.Address,x.Salary,x.Username,x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
-                               <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
-                          </tr>  
-                     </table>  
-                </div>  
-           </div>  
+
+<br /><br />  
+<table class="table table-bordered">  
+    <tr>  
+        <th>Emp_Id</th>
+        <th>First Name</th>  
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>Address</th> 
+        <th>Username</th>
+        <th>Password</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>  
+    <tr ng-repeat="x in names">
+        <td>{{x.Id}}</td>
+        <td>{{x.First_Name}}</td>  
+        <td>{{x.Last_Name}}</td> 
+        <td>{{x.Tele_Number}}</td>
+        <td>{{x.Email}}</td>  
+        <td>{{x.Salary}}</td>
+        <td>{{x.Address}}</td>
+        <td>{{x.Username}}</td>  
+        <td>{{x.Password}}</td>
+    
+        <td><button ng-click="updateDataAdmin(x.Id,x.First_Name, x.Last_Name,x.Tele_Number,x.Email,x.Address,x.Salary,x.Username,x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
+        <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
+    </tr>  
+</table>  
+</div>  
+</div>  
 </div>

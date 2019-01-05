@@ -321,7 +321,8 @@ session_start();
     }
     ?>
 </table>
-<p><a href="Farmer_account.php">MyAccount</a></p>
+<p><a href="Auction/AuctionHomeFarmer.php">Auction</a></p>
+<p><a href="Farmer_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

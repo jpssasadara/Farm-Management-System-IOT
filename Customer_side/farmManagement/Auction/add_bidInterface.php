@@ -44,9 +44,9 @@ mysqli_close($mysqli);
     {
         echo '  
                           <tr>  
-                               <td>  
+                               <!--td>  
                                     <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="200" width="200" class="img-thumnail" />  
-                               </td>
+                               </td-->
                                 <td>{$row[\'Item_name\']}</td>
                                 <td>{$row[\'Price\']}</td>
                                 <td>{$row[\'Date\']}</td>

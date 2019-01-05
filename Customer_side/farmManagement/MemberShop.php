@@ -347,7 +347,8 @@ session_start();
 </div>
 
 </body>
-<p><a href="Shop_account.php">MyAccount</a></p>
+<p><a href="Auction/AuctionHomeShop.php">Auction</a></p>
+<p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

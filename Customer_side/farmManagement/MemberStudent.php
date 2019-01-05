@@ -321,7 +321,7 @@ session_start();
     }
     ?>
 </table>
-<p><a href="Student_account.php">MyAccount</a></p>
+<p><a href="Student_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
