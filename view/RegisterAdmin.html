@@ -1,11 +1,15 @@
 <div ng-controller="RegisterAdminController" ng-init="displayData()" >
-<form class="form-horizontal">
-<fieldset>
+<div class="container container-fluid">
 <div ng-controller="Admincontroller"> 
 <button class="btn btn-default" ng-click="showAdmin()">Back</button>
 </div>
+<center><h2><b>Admin Registration</b></h2></center>
+<hr>
+<form class="form-horizontal">
+
+
 <!-- Form Name -->
-<legend>Admin Registration</legend>
+
 
 <!-- Text input-->
 <div class="form-group">
@@ -46,29 +50,31 @@
    
 </div>
 
-</fieldset>
+</div>
 </form>
 
 <div class="container"  style="width:500px;">  
                 
                 
                      
-                     <br /><br />  
-                     <table class="table table-bordered">  
-                          <tr>  
-                               <th>Employee Id</th>
-                               <th>Username</th>  
-                               <th>Password</th>
-                               <th>Update</th>
-                               <th>Delete</th> 
-                          </tr>  
-                          <tr ng-repeat="x in names">
-                               <td>{{x.Id}}</td>
-                               <td>{{x.User_Name}}</td>  
-                               <td>{{x.Password}}</td> 
-                               <td><button ng-click="updateDataAdmin(x.Id, x.User_Name, x.Password)" class="btn btn-warning btn-xs">Update</button></td> 
-                               <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">Delete</button></td> 
-                          </tr>  
-                     </table>  
-                </div>  
-           </div>  
+<br /><br />  
+<table class="table table-bordered">  
+  <tr>  
+        <th>Employee Id</th>
+        <th>Username</th>  
+        <th>Password</th>
+        <th>Update</th>
+        <th>Delete</th> 
+  </tr>  
+  <tr ng-repeat="x in names">
+        <td>{{x.Id}}</td>
+        <td>{{x.User_Name}}</td>  
+        <td>{{x.Password}}</td> 
+        <td><button ng-click="updateDataAdmin(x.Id, x.User_Name, x.Password)" 
+          class="btn btn-warning btn-xs">Update</button></td> 
+        <td><button ng-click="deleteDataAdmin(x.Id )" class="btn btn-danger btn-xs">
+          Delete</button></td> 
+  </tr>  
+</table>  
+</div>  
+</div>  
