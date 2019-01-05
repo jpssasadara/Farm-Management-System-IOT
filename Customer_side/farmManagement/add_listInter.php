@@ -269,61 +269,137 @@
     <br/>
     <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
 
-<form action="courseDatabase.php" method="post">
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
+    <div class="container">
+        <div class="login-form">
+
+        <form method="POST" action="add_list.php">
+            <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Create Auction</h2>
+
+                <tr>
+                    <select name="item_type" class="form-control">
+
+                        <option value="vegetables">Vegetables</option>
+                        <option value="fruits">Fruits</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td> National Id</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="id" placeholder="9574124456v" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td> Listing Title</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="name" placeholder="Item name" class="form-control"></td>
+                </tr>
+                 <tr>
+                     <td> Listing Code</td>
+                 </tr>
+                 <tr>
+                     <td> <input type="text" name="code" placeholder="Item code" class="form-control"></td>
+                 </tr>
+                <tr>
+                <td> Listing Quantity</td>
+                </tr>
+                <tr>
+                <td> <input type="text" name="quantity" placeholder="Item quatity" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Maximum Price</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="price" placeholder="500" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Expiration Date</td>
+                </tr>
+                <tr>
+                    <td> <input type="date" name="date" placeholder="select expiration date" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="location" placeholder="location" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>Auction Description</td>
+                </tr>
+                <tr>
+                    <td> <textarea  name="description" class="form-control"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><input id="insert" type="submit" name="insert" value="Submit Auction" class="btn btn-info"></td>
+                </tr>
+
+
+        </form>
+        </div>
+    </div>
+</div>
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!-- Google +-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Linkedin -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Instagram-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="pin-ic">
+                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
 
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div>
-        </div>
     </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-        </div>
-    </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input type="submit">
-        </div>
-    </div>
-</form>
-</body
-</html>
+</footer>
+</div>
+</body>
 </html>
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
@@ -181,6 +182,13 @@
 
         padding: 40px;
     }
+    .card_main_container2 {
+        text-align: left;
+        height: 30%;
+        width: 50%;
+        display: inline-block;
+    }
+
 
 </style>
 
@@ -269,61 +277,116 @@
     <br/>
     <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
 
-<form action="courseDatabase.php" method="post">
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
+
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+
+/* check connection */
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+
+$query = "SELECT * FROM auction where Item_type='Vegetables' ";
+
+if ($result = $mysqli->query($query)) {
+
+    /* fetch associative array */
+
+    while ($row = $result->fetch_array()) {
+        echo "<div class='well'>";
+       // $a=" <img src='images/$row[Course_Image]'>";
+        echo "<ul class='list-unstyled'>";
+
+        echo " 
+              <div class=\"card_main_container2\">
+
+              <div class=\"card\" style=\"width:400px\">
+
+              <div class=\"card-body\">
+             
+              <form action='add_bidInterface.php' method='get'>
+              <h4 class=\"card-title\">$row[Item_name]</h4>
+              <p class=\"card-text\">$row[Item_code]</p>
+              <p class=\"card-text\">$row[Price]</p>
+              <p class=\"card-text\">$row[Date]</p>
+              <p class=\"card-text\">$row[Location]</p>
+              <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn-primary\">ADD BIDS</a>
+              </form>
+              ";
+
+        echo("</div>");
+    }
+    "</ul>";
+    /* free result set */
+    $result->free();
+}
+
+/* close connection */
+$mysqli->close();
+
+?>
+</div>
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!-- Google +-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Linkedin -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Instagram-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="pin-ic">
+                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
 
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div>
-        </div>
     </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-        </div>
-    </div>
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Grid row -->
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input type="submit">
-        </div>
-    </div>
-</form>
-</body
+</footer>
+</div>
+</body>
 </html>
-</html>
+
 
