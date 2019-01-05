@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,7 +269,10 @@
 
     <br/>
     <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
-    <?php
+
+<table>
+<?php
+
 
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
     // Check connection

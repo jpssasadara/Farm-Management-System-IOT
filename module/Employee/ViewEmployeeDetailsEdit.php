@@ -77,20 +77,25 @@ if(count($data)>0){
 		$dataa["mvalid"]=$mvalid;
 
 		if($mvalid){
-      $query = "UPDATE farmshopemployee SET First_Name='$firstname',
-      Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',
-      Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' 
-      WHERE Id = '$id'";
+      if(strlen($password)>=5){
+        $query = "UPDATE farmshopemployee SET First_Name='$firstname',
+        Last_Name= '$lastname',Tele_Number='$phonenumber',Email = '$email',
+        Address = '$address',Salary = '$salary',Username = '$username',Password = '$password' 
+        WHERE Id = '$id'";
 
-      mysqli_query($connect,$query);
-      $q="SELECT * FROM farmshopemployee WHERE Id='$id'";
-      $a=mysqli_query($connect,$q);
+        mysqli_query($connect,$query);
+        $q="SELECT * FROM farmshopemployee WHERE Id='$id'";
+        $a=mysqli_query($connect,$q);
 
-      if(mysqli_num_rows($a)>0) {
-        $dataa["success"]="success";
+        if(mysqli_num_rows($a)>0) {
+          $dataa["success"]="success";
+        }
+        else{
+          $dataa["cannot"] ="You cannot change EmpId";
+        }
       }
       else{
-        $dataa["cannot"] ="You cannot change EmpId";
+        $dataa["passwordL"] = "Password Shold greater than 5 digit";
       }
     }
   }

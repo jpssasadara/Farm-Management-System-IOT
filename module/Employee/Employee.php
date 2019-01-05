@@ -82,7 +82,7 @@ if(count($data)>0){
 	}
 	else{
 		if($password==$password2){
-			if(count($password)>=5){
+			if(strlen($password)>=5){
 				$mvalid=preg_match('/^[0-9]{10}+$/', $phonenumber);
 				$dataa["mvalid"]=$mvalid;
 
