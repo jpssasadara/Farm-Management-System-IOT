@@ -209,9 +209,9 @@
                                 <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
                                 <div class="dropdown-content">
                                     <div ng-controller="loginbuttonctrl">
-                                        <a  href="LoginShop.html" >Registered Shop</a>
-                                        <a href="LoginFarmer.html">Registered Farmer</a>
-                                        <a href="LoginStudent.html" >Student</a>
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +296,7 @@
 
 
             </form>
-            <p class="text-center text-muted small">Don't have an account? <a href="RegisterFarmer.html">Sign up here!</a></p>
+            <p class="text-center text-muted small">Don't have an account? <a href="RegisterFa.php">Sign up here!</a></p>
         </div>
     </div>
 </div>
