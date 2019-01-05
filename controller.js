@@ -4,7 +4,7 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "view/login.html"
     })
-
+    
     .when("/adminwelcome", {
         templateUrl : "view/adminwelcome.html"
     })
@@ -20,7 +20,7 @@ app.config(function($routeProvider) {
         templateUrl : "view/invoice.php?add=1"
     })*/
 
-
+    
      .when("/admin",{
 
         resolve:{
@@ -39,13 +39,13 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
-
+                
             }
         },
         templateUrl: "view/admin.html",
-
+        
      })
       .when("/admin_register_Cashier",{
         resolve:{
@@ -62,7 +62,7 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
@@ -83,7 +83,7 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
@@ -104,14 +104,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/ViewAdminDetails.html"
 
      })
-      .when("/admin_register_Cashier/view",{
+      .when("/admin_register_Cashier/view",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -126,13 +126,13 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/ViewEmployeeDetails.html"
      })
-      .when("/admin_register/update",{
+      .when("/admin_register/update",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -147,14 +147,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/EditAdminDetails.html"
      })
 
-      .when("/admin/AddItem/details",{
+      .when("/admin/AddItem/details",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -169,14 +169,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/Items.html"
      })
 // (ISURU)
-     .when("/admin/farmerReg",{
+     .when("/admin/farmerReg",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -191,7 +191,7 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
@@ -199,7 +199,7 @@ app.config(function($routeProvider) {
      })
      //isuru
 
-     .when("/admin/ShopRegister",{
+     .when("/admin/ShopRegister",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -214,13 +214,13 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/shopRegister.html"
      })
-     .when("/admin/ShopView",{
+     .when("/admin/ShopView",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -235,7 +235,7 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
@@ -244,7 +244,7 @@ app.config(function($routeProvider) {
 
      //isuru
 
-     .when("/admin/addcources",{
+     .when("/admin/addcources",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -259,14 +259,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/addcources.html"
      })
 
-     .when("/admin/viewcources",{
+     .when("/admin/viewcources",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -281,14 +281,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/viewcources.html"
      })
 
-     .when("/admin/location",{
+     .when("/admin/location",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -303,14 +303,14 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/map.html"
      })
 
-      .when("/forPOS",{
+      .when("/forPOS",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie2')){
@@ -325,18 +325,18 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "view/farmshop.html"
      })
 
-     .when("/forPOS/reports",{
+     .when("/forPOS/reports",{                    
         templateUrl: "view/reports.html"
      })
 
-       .when("/get/tem/hum",{
+       .when("/get/tem/hum",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
                 if(!$cookies.get('cookie')){
@@ -351,13 +351,13 @@ app.config(function($routeProvider) {
                 }else if($cookies.get('cookie2name')!=null){
                     $rootScope.shopname=$cookies.get('cookie2name');
                     $rootScope.adminname=" LoginAdmin";
-
+    
                 }
             }
         },
         templateUrl: "https://sasadaramonker.000webhostapp.com/app/index.html"
      })
-       .when("/get/regfarmer/order",{
+       .when("/get/regfarmer/order",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -372,14 +372,14 @@ app.config(function($routeProvider) {
                     }else if($cookies.get('cookie2name')!=null){
                         $rootScope.shopname=$cookies.get('cookie2name');
                         $rootScope.adminname=" LoginAdmin";
-
+        
                     }
                   }
               },
               templateUrl: "view/viewRegShopOrders.html"
            })
-
-         .when("/admin/handel/orders",{
+       
+         .when("/admin/handel/orders",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -394,14 +394,14 @@ app.config(function($routeProvider) {
                         }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                 }
                   }
               },
               templateUrl: "view/viewRegShopOrders.html"
            })
-
-          .when("/admin/verified/orders",{
+         
+          .when("/admin/verified/orders",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -416,13 +416,13 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+          
                       }
                   }
               },
               templateUrl: "view/viewRegShopOrderVerify.html"
            })
-           .when("/admin/delivered/orders",{
+           .when("/admin/delivered/orders",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -437,7 +437,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -445,7 +445,7 @@ app.config(function($routeProvider) {
            })
 
            //sending email from view orders
-            .when("/admin/handel/orders/email",{
+            .when("/admin/handel/orders/email",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -460,7 +460,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -468,7 +468,7 @@ app.config(function($routeProvider) {
            })
 
 //Notification/app
-             .when("/Notification/app",{
+             .when("/Notification/app",{                    
                           resolve:{
                               "check":function($location,$cookies,$rootScope){
                                   if(!$cookies.get('cookie')){
@@ -483,7 +483,7 @@ app.config(function($routeProvider) {
                                   }else if($cookies.get('cookie2name')!=null){
                                       $rootScope.shopname=$cookies.get('cookie2name');
                                       $rootScope.adminname=" LoginAdmin";
-
+                
                                   }
                               }
                           },
@@ -492,7 +492,7 @@ app.config(function($routeProvider) {
 
 
            //**********************************developing yet*********************************************************
-           .when("/admin/AddItem/load",{
+           .when("/admin/AddItem/load",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -507,7 +507,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -516,7 +516,7 @@ app.config(function($routeProvider) {
 
            ///admin/AddItem/loadRegFarmers
            // C:\xampp\htdocs\FmsFarmSide6\Farm-Management-System-IOT\view\loadItemsToStoresFromRegfarmers.html
-           .when("/admin/AddItem/loadRegFarmers",{
+           .when("/admin/AddItem/loadRegFarmers",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -531,17 +531,17 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
               templateUrl: "view/loadItemsToStoresFromRegfarmers.html"
            })
-          //*************************************************************************************************************
+          //************************************************************************************************************* 
 
           //view stores  & specially for fruits
-          ///store/view
-          .when("/store/view",{
+          ///store/view 
+          .when("/store/view",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -556,7 +556,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -564,8 +564,8 @@ app.config(function($routeProvider) {
            })
 
            //view stores  & specially for Vegetables
-          ///store/view
-          .when("/store/view/veg",{
+          ///store/view 
+          .when("/store/view/veg",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -580,7 +580,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -589,7 +589,7 @@ app.config(function($routeProvider) {
 
           //loading farmshop
 
-          .when("/load/farmshop",{
+          .when("/load/farmshop",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -604,7 +604,7 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
@@ -612,7 +612,7 @@ app.config(function($routeProvider) {
            })
 
           //view farmshop
-          .when("/view/shoploading",{
+          .when("/view/shoploading",{                    
               resolve:{
                   "check":function($location,$cookies,$rootScope){
                       if(!$cookies.get('cookie')){
@@ -627,34 +627,11 @@ app.config(function($routeProvider) {
                       }else if($cookies.get('cookie2name')!=null){
                           $rootScope.shopname=$cookies.get('cookie2name');
                           $rootScope.adminname=" LoginAdmin";
-
+    
                       }
                   }
               },
               templateUrl: "view/viewFarmshop.html"
-           })
-
-          ///view/shoploading
-          .when("/sasadara",{
-              resolve:{
-                  "check":function($location,$cookies,$rootScope){
-                      if(!$cookies.get('cookie')){
-                          $location.path('/');
-                      }
-                      if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
-                          $rootScope.adminname=$cookies.get('cookiename');
-                          $rootScope.shopname=$cookies.get('cookie2name');
-                      } else if ($cookies.get('cookiename')!=null){
-                          $rootScope.adminname=$cookies.get('cookiename');
-                          $rootScope.shopname=" LoginShop";
-                      }else if($cookies.get('cookie2name')!=null){
-                          $rootScope.shopname=$cookies.get('cookie2name');
-                          $rootScope.adminname=" LoginAdmin";
-
-                      }
-                  }
-              },
-              templateUrl: "view/viewLoadingShopDetails.html"
            })
 
      .otherwise({
@@ -663,8 +640,8 @@ app.config(function($routeProvider) {
 
 
 
-
-
+    
+    
 });
 
 
@@ -676,8 +653,8 @@ app.controller("loginbuttonctrl",function($scope,$location){
      $scope.farmshop=function(){
         $location.path('/farmshopwelcome');
     };
-
-
+    
+         
 
 });
 
@@ -690,9 +667,9 @@ app.controller("nav",function($scope,$location,$cookies,$rootScope){
   };
 
 
-  //logout for admin
+  //logout for admin  
     $scope.logoutA=function(){
-      //check whether there is a cookie
+      //check whether there is a cookie 
       if ($cookies.get('cookie')) {
         swal({
             type: 'logout',
@@ -707,11 +684,11 @@ app.controller("nav",function($scope,$location,$cookies,$rootScope){
         $location.path('/adminwelcome');
       } else {
         $location.path('/adminwelcome');
-
+        
       }
-
+        
     };
-//logout for shop
+//logout for shop    
      $scope.logoutS=function(){
       if ($cookies.get('cookie2')) {
         swal({
@@ -725,12 +702,12 @@ app.controller("nav",function($scope,$location,$cookies,$rootScope){
         $location.path('/farmshopwelcome');
       } else {
         $location.path('/farmshopwelcome');
-
+        
       }
-
+        
     };
-
-
+    
+         
 
 });
 
@@ -748,12 +725,12 @@ app.controller("posCtrl",function($scope,$location){
 //Controller for Admin Login page
 app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$http){
     $scope.submit=function(){
-        $http.post(
-                "module/getAdminUnPw.php",
-                {'username':$scope.username}
-           ).success(function(data){
+        $http.post(  
+                "module/getAdminUnPw.php",  
+                {'username':$scope.username}  
+           ).success(function(data){ 
 
-
+                
                 if($scope.password==data.value&&data.value!=null){
                         //set login cookie
                         $cookies.put('cookie',true);
@@ -777,10 +754,10 @@ app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$h
                         text: 'Wrong Stuff !',
                         footer: 'Please Enter Valid UserName & Password'
                       });
-                     }
-           });
+                     } 
+           }); 
 
-           }
+           } 
 
     });
 
@@ -788,12 +765,12 @@ app.controller('adminloginctrl',function($scope,$cookies,$location,$rootScope,$h
 app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
     $scope.loginshop=function(){
 
-        $http.post(
-                "module/GetShopUnPw.php",
-                {'username':$scope.username}
-           ).success(function(data){
+        $http.post(  
+                "module/GetShopUnPw.php",  
+                {'username':$scope.username}  
+           ).success(function(data){ 
 
-
+                
                 if($scope.password==data.value&&data.value!=null){
                     // $rootScope.loggedIn=true;
                      $cookies.put('cookie2',true);
@@ -815,10 +792,10 @@ app.controller('shop',function($scope,$cookies,$location,$rootScope,$http){
                         text: 'Wrong Stuff !',
                         footer: 'Please Enter Valid UserName & Password'
                       });
-                     }
-           });
+                     } 
+           }); 
 
-           }
+           } 
 
     });
 
@@ -849,7 +826,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.addItems=function(){
         $location.path('/admin/AddItem/details');
     };
-    //load farm product to stores
+    //load farm product to stores 
     $scope.load=function(){
         $location.path('/admin/AddItem/load');
     };
@@ -870,7 +847,7 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/ShopView');
     };
 
-
+   
 
     $scope.viewCoursePage=function(){
         $location.path('/admin/viewcources');
@@ -880,8 +857,8 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin/addcources');
     };
 
-
-
+    
+    
     $scope.viewLocation=function(){
         $location.path('/admin/location');
     };
@@ -899,13 +876,13 @@ app.controller("Admincontroller",function($scope,$http,$location){
     }
 
     $scope.Notification=function(){
-
+        
         //$location.path('/Notification/app');
         //send notification
          $http.post('appnotification/push_notification.php',
        {'msg':$scope.noti}
        ).success(function(data){
-            alert(data);
+            alert(data); 
        });
     };
 
@@ -923,12 +900,12 @@ app.controller("Admincontroller",function($scope,$http,$location){
 
 //FamrSHop Controller
 app.controller("FarmShopController",function($scope,$http,$location){
-    $scope.displayReport = function(){
-        $http.get("module/FarmShop/farmshop.php")
-        .success(function(data){
+    $scope.displayReport = function(){  
+        $http.get("module/FarmShop/farmshop.php")  
+        .success(function(data){  
              $scope.items = data;
-            //alert($scope.total);
-        });
+            //alert($scope.total);  
+        });  
    }
 
    $scope.getDate=function(){
@@ -970,7 +947,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                     $scope.errorusername = data.error.username;
                     $scope.errorpassword = data.error.password;
 
-
+                    
 
                     $scope.successInsert = null;
                 }
@@ -987,12 +964,12 @@ app.controller("RegisterCashierController",function($scope,$http){
                 $scope.errorpassword = null;
                 $scope.errorpassword2 = null;
                 $scope.successInsert = data.message;
-
+                
                 if($scope.id!=null && $scope.firstname!=null && $scope.lastname!=null
                     && $scope.phonenumber!=null && $scope.email!=null && $scope.address!=null
                     && $scope.salary!=null && $scope.username!=null && $scope.password!=null &&
                     $scope.password2!=null){
-
+                    
                     if(data.exit){
                         swal({
                             type: 'warning',
@@ -1057,28 +1034,28 @@ app.controller("RegisterCashierController",function($scope,$http){
 
 
     }
-    $scope.displayData2 = function(){
-           $http.get("module/Employee/ViewEmployeeDetails.php")
-           .success(function(data){
+    $scope.displayData2 = function(){  
+           $http.get("module/Employee/ViewEmployeeDetails.php")  
+           .success(function(data){  
                 $scope.names = data;
-
-               //alert(data);
-           });
+                
+               //alert(data);  
+           });  
       }
 
-
+      
 
        $scope.updateData = function(){
-
-           $http.post(
-                "module/Employee/ViewEmployeeDetailsEdit.php",
+             
+           $http.post(  
+                "module/Employee/ViewEmployeeDetailsEdit.php",  
                 {'id':$scope.id,'firstname':$scope.firstname,'lastname':$scope.lastname,'phonenumber':$scope.phonenumber,'email':$scope.email,'address':$scope.address,'salary':$scope.salary,'username':$scope.username,'password':$scope.password,
-                'password2':$scope.password2}
+                'password2':$scope.password2}  
            ).success(function(data){
-
+                 
                        if(data.error)
                        {
-
+                        
                         $scope.errorid = data.error.id;
                         $scope.errorfirstname = data.error.firstname;
                         $scope.errorlastname = data.error.lastname;
@@ -1088,7 +1065,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.errorsalary = data.error.salary;
                         $scope.errorusername = data.error.username;
                         $scope.errorpassword = data.error.password;
-
+                        
 
                         $scope.successInsert = null;
                        }
@@ -1156,7 +1133,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         }
                       });
       }
-      $scope.updateDataAdmin =function(i1,i2,i3,i4,i5,i6,i7,i8,i9){
+      $scope.updateDataAdmin =function(i1,i2,i3,i4,i5,i6,i7,i8,i9){  
                         $scope.id=i1;
                         $scope.firstname=i2;
                         $scope.lastname=i3;
@@ -1167,12 +1144,12 @@ app.controller("RegisterCashierController",function($scope,$http){
                         $scope.username=i8;
                         $scope.password=i9;
                         $scope.all=true;
-
+            
       };
 
-      $scope.deleteDataAdmin = function(idd){
-
-
+      $scope.deleteDataAdmin = function(idd){  
+                      
+           
            swal({
             title: 'Are you sure?',
             text: "You want to delete this data?",
@@ -1188,19 +1165,19 @@ app.controller("RegisterCashierController",function($scope,$http){
                 'Your file has been deleted.',
                 'success'
               )
-              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})
-                .success(function(data){
-                     //alert(data);
-                     $scope.displayData2();
+              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
+                .success(function(data){  
+                     //alert(data);  
+                     $scope.displayData2();  
                 });
             }
-            else
-           {
-                return false;
-           }
+            else  
+           {  
+                return false;  
+           } 
           });
       }
- });
+ }); 
 
 
 
@@ -1208,21 +1185,21 @@ app.controller("RegisterCashierController",function($scope,$http){
 //ADMIN Details Controller <<Add>> <<Update>> <<Delete>>
 app.controller("RegisterAdminController", function($scope, $http){
 
-      $scope.insertData = function(){
-           $http.post(
-                "module/Admin/admin.php",
-                {'id':$scope.id,'username':$scope.username, 'password':$scope.password}
+      $scope.insertData = function(){  
+           $http.post(  
+                "module/Admin/admin.php",  
+                {'id':$scope.id,'username':$scope.username, 'password':$scope.password}  
            ).success(function(data){
                  if(data.error)
                        {
                         $scope.errorid = data.error.id;
                         $scope.errorusername = data.error.username;
                         $scope.errorpassword = data.error.password;
-
+                    
                         swal(
                             data.message
                           );
-
+                       
                        }
                        else
                        {
@@ -1234,17 +1211,17 @@ app.controller("RegisterAdminController", function($scope, $http){
                             data.message
                         );
                          $scope.displayData();
-                        $scope.username = null;
+                        $scope.username = null;  
                         $scope.password = null;
                         $scope.id = null;
                        }
                       });
-      }
+      } 
 
-       $scope.updateData = function(){
-           $http.post(
-                "module/Admin/ViewAdminDetailsEdit.php",
-                {'id':$scope.id,'username':$scope.username, 'password':$scope.password}
+       $scope.updateData = function(){  
+           $http.post(  
+                "module/Admin/ViewAdminDetailsEdit.php",  
+                {'id':$scope.id,'username':$scope.username, 'password':$scope.password}  
            ).success(function(data){
                  if(data.error)
                        {
@@ -1254,7 +1231,7 @@ app.controller("RegisterAdminController", function($scope, $http){
                         swal(
                             data.message
                         );
-
+                        
                        }
                        else
                        {
@@ -1267,71 +1244,71 @@ app.controller("RegisterAdminController", function($scope, $http){
                             data.message
                           );
                         $scope.displayData();
-                        $scope.username = null;
+                        $scope.username = null;  
                         $scope.password = null;
                         $scope.id = null;
                        }
                       });
-      }
+      } 
 
-       $scope.displayData = function(){
-           $http.get("module/Admin/ViewAdminDetails.php")
-           .success(function(data){
+       $scope.displayData = function(){  
+           $http.get("module/Admin/ViewAdminDetails.php")  
+           .success(function(data){  
                 $scope.names = data;
-               //alert(data);
-           });
+               //alert(data);  
+           });  
       }
 
-       $scope.updateDataAdmin =function(id, first_name, last_name){
-            $scope.id = id;
-            $scope.username = first_name;
-            $scope.password = last_name;
+       $scope.updateDataAdmin =function(id, first_name, last_name){  
+            $scope.id = id;  
+            $scope.username = first_name;  
+            $scope.password = last_name; 
             $scope.all=true;
       }
 
-     $scope.deleteDataAdmin = function(idd){
-           if(confirm("Are you sure you want to delete this data?"))
-           {
-                $http.post("module/Admin/ViewAdminDetailsDelete.php", {'id':idd})
-                .success(function(data){
-                     //alert(data);
-                     $scope.displayData();
-                });
-           }
-           else
-           {
-                return false;
-           }
+     $scope.deleteDataAdmin = function(idd){  
+           if(confirm("Are you sure you want to delete this data?"))  
+           {  
+                $http.post("module/Admin/ViewAdminDetailsDelete.php", {'id':idd})  
+                .success(function(data){  
+                     //alert(data);  
+                     $scope.displayData();  
+                });  
+           }  
+           else  
+           {  
+                return false;  
+           }  
       }
- });
+ });  
 
 
 
 //Add Edit Items details
- app.directive("fileInput", function($parse){
-      return{
-           link: function($scope, element, attrs){
-                element.on("change", function(event){
-                     var files = event.target.files;
-                     //console.log(files[0].name);
-                     $parse(attrs.fileInput).assign($scope, element[0].files);
+ app.directive("fileInput", function($parse){  
+      return{  
+           link: function($scope, element, attrs){  
+                element.on("change", function(event){  
+                     var files = event.target.files;  
+                     //console.log(files[0].name);  
+                     $parse(attrs.fileInput).assign($scope, element[0].files);  
                      $scope.$apply();
-                });
-           }
-      }
+                });  
+           }  
+      }  
  });
-
+ 
 
 // addshopdetails not define
- app.controller("AddshopDetails", function($scope, $http){
-    $scope.addshop = function(){
-        $http.post(
-             "module/FarmShop/addshop.php",
+ app.controller("AddshopDetails", function($scope, $http){  
+    $scope.addshop = function(){ 
+        $http.post(  
+             "module/FarmShop/addshop.php",  
              {'nic':$scope.nic,'fn':$scope.fn, 'ln':
              $scope.ln,'pn':$scope.pn,
              'address':$scope.address,'email':$scope.email,
-             'un':$scope.un,'pw':$scope.pw}
-
+             'un':$scope.un,'pw':$scope.pw}  
+            
         ).success(function(data){
             console.log($scope.pw);
             if($scope.nic!=null && $scope.fn!=null && $scope.ln!=null
@@ -1345,19 +1322,19 @@ app.controller("RegisterAdminController", function($scope, $http){
                 }
             }
         )};
-        $scope.displayshop = function(){
-            $http.get("module/FarmShop/viewshop.php")
-            .success(function(data){
-                //console.log(data);
+        $scope.displayshop = function(){ 
+            $http.get("module/FarmShop/viewshop.php")  
+            .success(function(data){  
+                //console.log(data); 
                 $scope.items = data;
-
-            });
-        }
-        $scope.editshop = function(x){
+                 
+            }); 
+        } 
+        $scope.editshop = function(x){ 
             $scope.details=x;
             //console.log($scope.details);
         }
-        $scope.deleteshop = function(idd){
+        $scope.deleteshop = function(idd){ 
             swal({
                 title: 'Are you sure?',
                 text: "You want to delete this data?",
@@ -1373,29 +1350,29 @@ app.controller("RegisterAdminController", function($scope, $http){
                 'Your Data has been deleted.',
                 'success'
                 )
-                $http.post("module/Farmshop/deleteshop.php", {'id':idd})
-                .success(function(data){
-                    console.log(data);
-
-                    $scope.displayshop();
+                $http.post("module/Farmshop/deleteshop.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayshop();  
                 });
             }
-            else
-            {
-                return false;
-            }
-        });
+            else  
+            {  
+                return false;  
+            } 
+        });  
        }
        $scope.editshops=function(){
-
-        $http.post(
-            "module/FarmShop/editshop.php",
-            {'details.nic':$scope.details.nic,'details.fn':$scope.details.fn,
+ 
+        $http.post(  
+            "module/FarmShop/editshop.php",  
+            {'details.nic':$scope.details.nic,'details.fn':$scope.details.fn, 
             'details.ln':$scope.details.ln,'details.pn'
             :$scope.details.pn,'details.address':$scope.details.address,
             'details.email':$scope.details.email,'details.un':$scope.details.un,
-        }
-
+        }  
+        
     ).success(function(data){
 
         //console.log(data);
@@ -1415,24 +1392,24 @@ app.controller("RegisterAdminController", function($scope, $http){
             );
         }
         }
-    )};
+    )}; 
 
 
  });
 //isuru
 
 
-app.controller("AddfarmerDetails", function($scope, $http){
-    $scope.addfarmer = function(){
+app.controller("AddfarmerDetails", function($scope, $http){  
+    $scope.addfarmer = function(){ 
         console.log($scope.username,$scope.Id,$scope.First_Name,
         $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
-        $http.post(
-             "module/farmer/addData.php",
+        $http.post(  
+             "module/farmer/addData.php",  
              {'Id':$scope.Id,'First_Name':$scope.First_Name, 'Tele_Number':
              $scope.Tele_Number,'Gender':$scope.Gender,
              'Email':$scope.Email,
-             'Address':$scope.Address,'variety':$scope.variety, 'username':$scope.username, 'password':$scope.password}
-
+             'Address':$scope.Address,'variety':$scope.variety, 'username':$scope.username, 'password':$scope.password}  
+            
         ).success(function(data){
             console.log($scope.username);
             if($scope.Id!=null && $scope.First_Name!=null && $scope.Tele_Number!=null && $scope.password!=null
@@ -1449,9 +1426,9 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
 
 
-
-
-        $scope.deletefarmers = function(idd){
+    
+    
+        $scope.deletefarmers = function(idd){ 
             swal({
                 title: 'Are you sure?',
                 text: "You want to delete this data?",
@@ -1467,36 +1444,36 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 'Your Data has been deleted.',
                 'success'
                 )
-                $http.post("module/farmer/deletefarmer.php", {'id':idd})
-                .success(function(data){
-                    console.log(data);
-
-                    $scope.displayfarmers();
+                $http.post("module/farmer/deletefarmer.php", {'id':idd})  
+                .success(function(data){  
+                    console.log(data); 
+    
+                    $scope.displayfarmers();  
                 });
             }
-            else
-            {
-                return false;
-            }
-        });
+            else  
+            {  
+                return false;  
+            } 
+        });  
        }
 
-       $scope.editDetails = function(x){
+       $scope.editDetails = function(x){ 
         $scope.details=x;
         console.log($scope.details);
     }
-
+    
        $scope.editfarmer=function(){
-
-        $http.post(
-
-            "module/farmer/editfarmer.php",
-            {'details.Id':$scope.details.Id,'details.First_Name':$scope.details.First_Name,
+       
+        $http.post(  
+            
+            "module/farmer/editfarmer.php",  
+            {'details.Id':$scope.details.Id,'details.First_Name':$scope.details.First_Name, 
             'details.Tele_Number':$scope.details.Tele_Number,'details.Gender'
             :$scope.details.Gender,'details.Email':$scope.details.Email,
             'details.Address':$scope.details.Address,'details.variety':$scope.details.variety,'details.username':$scope.details.username
-        }
-
+        }  
+        
         ).success(function(data){
 
             //console.log(data);
@@ -1527,32 +1504,32 @@ app.controller("AddfarmerDetails", function($scope, $http){
             }
             }
     )};
+        
 
-
-
+        
 
 
  });
 //isuru
+ 
 
-
- app.controller("AddCourseDetails", function($scope, $http){
-    $scope.displayCourse = function(){
-        $http.get("module/course/viewData.php")
-        .success(function(data){
-            //console.log(data);
+ app.controller("AddCourseDetails", function($scope, $http){ 
+    $scope.displayCourse = function(){ 
+        $http.get("module/course/viewData.php")  
+        .success(function(data){  
+            //console.log(data); 
             $scope.items = data;
-
-        });
+             
+        }); 
     }
 
 
-    $scope.editDetails = function(x){
+    $scope.editDetails = function(x){ 
         $scope.details=x;
         //console.log($scope.details);
     }
 
-    $scope.deleteCourse = function(idd){
+    $scope.deleteCourse = function(idd){ 
         swal({
             title: 'Are you sure?',
             text: "You want to delete this data?",
@@ -1568,30 +1545,30 @@ app.controller("AddfarmerDetails", function($scope, $http){
             'Your Data has been deleted.',
             'success'
             )
-            $http.post("module/course/deleteData.php", {'id':idd})
-            .success(function(data){
-                console.log(data);
+            $http.post("module/course/deleteData.php", {'id':idd})  
+            .success(function(data){  
+                console.log(data); 
 
-                $scope.displayCourse();
+                $scope.displayCourse();  
             });
         }
-        else
-        {
-            return false;
-        }
-    });
+        else  
+        {  
+            return false;  
+        } 
+    });  
    }
 
    $scope.editCourse=function(){
-
-        $http.post(
-            "module/course/editData.php",
-            {'details.Course_Id':$scope.details.Course_Id,'details.Course_Name':$scope.details.Course_Name,
+ 
+        $http.post(  
+            "module/course/editData.php",  
+            {'details.Course_Id':$scope.details.Course_Id,'details.Course_Name':$scope.details.Course_Name, 
             'details.Course_description':$scope.details.Course_description,'details.Course_duration'
             :$scope.details.Course_duration,'details.Course_type':$scope.details.Course_type,
             'details.Course_fees':$scope.details.Course_fees,'details.Location':$scope.details.Location
-        }
-
+        }  
+        
     ).success(function(data){
 
         //console.log(data);
@@ -1611,17 +1588,17 @@ app.controller("AddfarmerDetails", function($scope, $http){
             );
         }
         }
-    )};
+    )}; 
 
 
-    $scope.addCourse = function(){
-        $http.post(
-             "module/course/addData.php",
+    $scope.addCourse = function(){  
+        $http.post(  
+             "module/course/addData.php",  
              {'Course_Id':$scope.Course_Id,'Course_Name':$scope.Course_Name, 'Course_description':
              $scope.Course_description,'Course_duration':$scope.Course_duration,
              'Course_type':$scope.Course_type,'Course_fees':$scope.Course_fees,
-             'location':$scope.location}
-
+             'location':$scope.location}  
+            
         ).success(function(data){
             console.log(data);
             if($scope.Course_Id!=null && $scope.Course_Name!=null && $scope.Course_duration!=null
@@ -1634,27 +1611,24 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     });
                 }
             }
-        )};
-
+        )}; 
+    
  });
 
- app.controller("AddItemDetails", function($scope,$http,$location){
+ app.controller("AddItemDetails", function($scope, $http,$location){  
   //upload image in to file and add location of image and image id in to image table
-      $scope.uploadFile = function(){
-           var form_data = new FormData();
-           angular.forEach($scope.files, function(file){
+      $scope.uploadFile = function(){  
+           var form_data = new FormData();  
+           angular.forEach($scope.files, function(file){ 
                 form_data.append('file', file);
-
-           });
-           $http.post('module/Items/upload.php', form_data,
-           {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined,'Process-Data': false}
+                 
+           });  
+           $http.post('module/Items/upload.php', form_data,  
+           {  
+                transformRequest: angular.identity,  
+                headers: {'Content-Type': undefined,'Process-Data': false}  
            }).success(function(response){
-<<<<<<< HEAD
-=======
                console.log(response);
->>>>>>> 8860fb950b096ebf74d37cf91a755baceea068b3
                 if(response.error){
                     swal({
                         type: 'error',
@@ -1663,26 +1637,26 @@ app.controller("AddfarmerDetails", function($scope, $http){
                         footer: 'Please insert the image!'
                     });
                 }else{
-                    $scope.uploadFileData();
+                    $scope.uploadFileData();  
                 }
 
-
+                  
            });
-
-      }
-      //get all data by joinning image table and items data table <<by equaling image id>>
-      $scope.select = function(){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<====SELECT VEGETABLES
-           $http.get("module/Items/selectVeg.php")
-           .success(function(data){
-                $scope.images = data;
-           });
+           
+      } 
+      //get all data by joinning image table and items data table <<by equaling image id>> 
+      $scope.select = function(){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<====SELECT VEGETABLES 
+           $http.get("module/Items/selectVeg.php")  
+           .success(function(data){  
+                $scope.images = data;  
+           });  
       }
 
       $scope.selectFruit = function(){  //<<<<<<<<<<<<<<<<<<<<<<<<<<======SELECT FRUITS
-           $http.get("module/Items/selectFruit.php")
-           .success(function(data){
-                $scope.imagesFruit = data;
-           });
+           $http.get("module/Items/selectFruit.php")  
+           .success(function(data){  
+                $scope.imagesFruit = data;  
+           });  
       }
 
       //set data to the drope down list
@@ -1694,21 +1668,17 @@ app.controller("AddfarmerDetails", function($scope, $http){
           $scope.Type=x;
       }
 
-      $scope.uploadFileData = function(){
-
-        //add data with image id which is in image table
+      $scope.uploadFileData = function(){  
+           
+        //add data with image id which is in image table        
            $http.post('module/Items/uploadData.php',
            {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,
-           'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}
+           'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
             ).success(function(response){
-<<<<<<< HEAD
-                console.log(response);
-=======
             //console.log(response); 
->>>>>>> 8860fb950b096ebf74d37cf91a755baceea068b3
             if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
             $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
-            $scope.Type!=null){
+            $scope.Type!=null){ 
                 if(response.errorCode){
                     swal({
                         type: 'warning',
@@ -1725,7 +1695,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                         footer: 'ItemType should Vegetable or Fruits!'
                     });
                 }
-
+    
                 else if(response.errorUnit){
                     swal({
                         type: 'warning',
@@ -1734,7 +1704,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                         footer: 'Item unit should kg ,g , mg, 1packet, l or ml!'
                     });
                 }
-
+    
                 else if(response.errorPrice){
                     swal({
                         type: 'warning',
@@ -1743,8 +1713,8 @@ app.controller("AddfarmerDetails", function($scope, $http){
                         footer: 'Please enter valid amount!'
                     });
                 }
-                else{
-                    $scope.select();
+                else{               
+                    $scope.select(); 
                     $scope.selectFruit();
                     swal({
                         type: 'success',
@@ -1757,7 +1727,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     $scope.amount=null;
                     $scope.unit=null;
                     $scope.discount=null;
-                    $scope.Type=null;
+                    $scope.Type=null; 
                 }
         }else{
             swal({
@@ -1766,13 +1736,13 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 text: 'Fill all!',
                 footer: 'Please Fill all the details!'
             });
-        }
-
-        });
-      }
+        } 
+        
+        });  
+      }  
 
       //Update Details
-        $scope.updateItems =function(i1,i2,i3,i4,i5,i6,i7){
+        $scope.updateItems =function(i1,i2,i3,i4,i5,i6,i7){  
             $scope.code=i1;
             $scope.name=i2;
             $scope.unit=i3;
@@ -1782,12 +1752,12 @@ app.controller("AddfarmerDetails", function($scope, $http){
             $scope.Type=i7;
             //ng-disabled="all"
             $scope.all=true;
-
+                
         };
-      $scope.updateItemsData = function(){
-           $http.post(
-                "module/Items/UpdateItems.php",
-                {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}
+      $scope.updateItemsData = function(){  
+           $http.post(  
+                "module/Items/UpdateItems.php",  
+                {'code':$scope.code,'name':$scope.name,'price':$scope.price,'amount':$scope.amount,'unit':$scope.unit,'discount':$scope.discount,'Type':$scope.Type}  
            ).success(function(data){
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             //send notification
@@ -1826,11 +1796,11 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     footer: 'Please enter valid amount!'
                 });
             }
-
+            
             else if($scope.code!=null && $scope.name!=null && $scope.price!=null &&
                 $scope.amount!=null && $scope.unit!=null && $scope.discount!=null &&
                 $scope.Type!=null){
-
+                    
                     $scope.select();
                     $scope.selectFruit();
                     swal({
@@ -1844,13 +1814,13 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     {'msg':$scope.noti2}
                     ).success(function(data){
                         swal("Now !! A Notification was sent to Mobile App... "
-                        );
+                        ); 
                     });
 
                     $scope.code = null;
                     $scope.name = null;
                     $scope.price = null;
-                    $scope.amount = null;
+                    $scope.amount = null;  
                     $scope.unit = null;
                     $scope.discount = null;
                     $scope.Type=null;
@@ -1865,9 +1835,9 @@ app.controller("AddfarmerDetails", function($scope, $http){
                     });
                 }
             });
-      };
+      }
 
-       $scope.deleteItems = function(idd){
+       $scope.deleteItems = function(idd){  
            swal({
             title: 'Are you sure?',
             text: "You want to delete this data?",
@@ -1883,55 +1853,55 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 'Your Data has been deleted.',
                 'success'
               )
-              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})
-                .success(function(data){
-                     //alert(data);
-                    // $scope.displayData();
+              $http.post("module/Employee/ViewEmployeeDetailsDelete.php", {'id':idd})  
+                .success(function(data){  
+                     //alert(data);  
+                    // $scope.displayData();  
                 });
-                $http.post("module/Items/DeleteItems.php", {'id':idd})
-                .success(function(data){
-                     //alert(data);
+                $http.post("module/Items/DeleteItems.php", {'id':idd})  
+                .success(function(data){  
+                     //alert(data);  
                       $scope.select();
-                      $scope.selectFruit();
-                });
+                      $scope.selectFruit();  
+                }); 
             }
-            else
-           {
-                return false;
-           }
-          });
-      } ;
+            else  
+           {  
+                return false;  
+           } 
+          });   
+      } 
 
-      //for init
-       $scope.load = function(){
+      //for init 
+       $scope.load = function(){  
           $scope.select();
-          $scope.selectFruit();
-      };
+          $scope.selectFruit(); 
+      }
 
       //set data when pop up window for loading items form reg Farmers
-       $scope.setDataPopUpWind = function(code){
+       $scope.setDataPopUpWind = function(code){ 
           $scope.itemcode=code;
-      };
+      }
 
        //set data when pop up window for loading items form Farm
-       $scope.setDataPopUpWindFarm = function(code){
+       $scope.setDataPopUpWindFarm = function(code){ 
           $scope.itemcode=code;
           $scope.farmernic="LabuduwaFarm";
-      };
+      }
 
       //for loading registered shop's & Farm producted items to database
       $scope.takeLoad = function(){
-
+       
         if ($scope.farmernic!= null && $scope.itemcode!=null&& $scope.amount!=null && $scope.total!=null) {
           if (($scope.farmernic.length==10 && ($scope.farmernic[9]=='v') || $scope.farmernic[9]=='V')|| $scope.farmernic=="LabuduwaFarm" ){
-
+                               
                       if(($scope.amount[$scope.amount.length-1]=='g'||$scope.amount[$scope.amount.length-1]=='G') && ($scope.amount[$scope.amount.length-2]=='k'||$scope.amount[$scope.amount.length-2]=='K')){
                                $http.post('module/Stores/LoadStores.php',
-                             {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}
+                             {'farmernic':$scope.farmernic,'itemcode':$scope.itemcode,'amount':$scope.amount,'total':$scope.total}  
                               ).success(function(response){
                                     //alert(response);
                                     $scope.farmernic="";
-
+                                    
                                     $scope.amount="";
                                     $scope.total="";
                                     swal(
@@ -1939,16 +1909,16 @@ app.controller("AddfarmerDetails", function($scope, $http){
                                     'Your Data has been Added.',
                                     'success'
                                 )
-                                  $scope.select();
+                                  $scope.select(); 
                                   $scope.selectFruit(); //farmernic itemcode amount total
-
-                             });
+                                 
+                             }); 
                         }
                           else{
                                    swal(
                                     'Error!',
                                     'Amount should be " Kg ".'
-
+          
                                     )
                             }
 
@@ -1956,25 +1926,25 @@ app.controller("AddfarmerDetails", function($scope, $http){
             swal(
                   'Error!',
                   'Invalied NIC....'
-
+                  
         )
              $scope.farmernic="";
           }
-
+           
         } else {
            swal(
                   'Error!',
                   'Check Your Inputs.'
-
+                  
         )}
-
-      };
-
+        
+      }
+       
       //refreshpage()
       $scope.refreshpage = function(){
-         $scope.select();
+         $scope.select(); 
          $scope.selectFruit();
-
+      
       }
 
       ///////////////////////View Stores Details/////////////////////////////////////////
@@ -1990,38 +1960,38 @@ app.controller("AddfarmerDetails", function($scope, $http){
       }
 
       //setDataPopUpViewStoresFP
-       $scope.setDataPopUpViewStoresFP = function(code){
+       $scope.setDataPopUpViewStoresFP = function(code){ 
           $scope.itemcode=code;
-           $http.post("module/Stores/viewStoresFP.php",{'itemcode':$scope.itemcode})
-           .success(function(data){
+           $http.post("module/Stores/viewStoresFP.php",{'itemcode':$scope.itemcode})  
+           .success(function(data){  
                 $scope.items = data;
-                //alert(data);
-           });
-      };
+                //alert(data);  
+           }); 
+      }
 
       //setDataPopUpViewStoresRegFP(image.Code)
-      $scope.setDataPopUpViewStoresRegFP = function(code){
+      $scope.setDataPopUpViewStoresRegFP = function(code){ 
           $scope.itemcode=code;
-           $http.post("module/Stores/viewStoresRegFP.php",{'itemcode':$scope.itemcode})
-           .success(function(data){
+           $http.post("module/Stores/viewStoresRegFP.php",{'itemcode':$scope.itemcode})  
+           .success(function(data){  
                 $scope.items = data;
-                //alert(data);
-           });
-      };
+                //alert(data);  
+           }); 
+      }
 
       //////////////////////////Loading Farm Shop\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-       $scope.setDataPopUpWindFarmShop = function(code){
+       $scope.setDataPopUpWindFarmShop = function(code){ 
           $scope.itemcode=code;
           $scope.shopname="LabuduwaFarmShop";
-      };
+      }
 
       $scope.takeLoadToFarmShop = function(){
         if ($scope.shopname!= null && $scope.itemcode!=null && $scope.amount!=null) {
-
+       
            if(($scope.amount[$scope.amount.length-1]=='g'||$scope.amount[$scope.amount.length-1]=='G') && ($scope.amount[$scope.amount.length-2]=='k'||$scope.amount[$scope.amount.length-2]=='K')){
                  $http.post('module/FarmShop/LoadItemsShop.php',
-               {'itemcode':$scope.itemcode,'amount':$scope.amount}
+               {'itemcode':$scope.itemcode,'amount':$scope.amount}  
                 ).success(function(response){
                       alert(response);
                      // $scope.amount="";
@@ -2030,33 +2000,29 @@ app.controller("AddfarmerDetails", function($scope, $http){
                       //'Your Data has been Added.',
                       //'success'
                  // )
-                    $scope.select();
+                    $scope.select(); 
                     $scope.selectFruit(); //farmernic itemcode amount total
-
-               });
-
+                   
+               }); 
+       
            }
            else{
                  swal(
                   'Error!',
                   'Amount should be " Kg ".'
-
+                  
                   )
            }
         } else {
            swal(
                   'Error!',
                   'Check Your Inputs.'
-
+                  
         )}
-      };
-      //view farm shop loading data
-      $scope.sasadara=function(){
-          $location.path('/sasadara');
-      };
+      }
 
-
-  });
+ }); 
+      
 
 //############################################################################################
 
@@ -2076,53 +2042,53 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
     $scope.DeliveredOrders=function(){
         $location.path('/admin/delivered/orders');
     };
-
-    $scope.ViewOrdersDisplay=function(){
-           $http.get("module/FarmShopOrder/viewOrder.php")
-           .success(function(data){
+    
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/viewOrder.php")  
+           .success(function(data){  
                 $scope.namess = data;
-
-           });
+                 
+           });  
       };
    //for Searching part of ViewOrdersDisplay page
-    $scope.ViewOrdersDisplay2=function(){
-           $http.post("module/FarmShopOrder/SearchviewOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})
-           .success(function(data){
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchviewOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
                $scope.namess = data;
-
-           });
+                 
+           });  
 
             //$scope.code=$scope.date;
-      };
+      };  
       //for verifying Order that shop owner has made
-       $scope.Verify=function(shopid,ordernumber,code,name,amount,date){
-          //update database
-           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})
-           .success(function(data){
-              alert(data);
+       $scope.Verify=function(shopid,ordernumber,code,name,amount,date){ 
+          //update database 
+           $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
               $scope.ViewOrdersDisplay();
-           });
+           });  
            //send mail
            //C:\xampp\htdocs\FmsFarmSide6\Farm-Management-System-IOT\sendMail\mailpphpp\mailVerify.php
-
-             $http.post("sendMail/mailpphpp/mailVerify.php",{'shop_id':shopid,'order_number':ordernumber,'code':code,'name':name,'amount':amount,'date':date})
-           .success(function(data){
-              alert(data);
+             
+             $http.post("sendMail/mailpphpp/mailVerify.php",{'shop_id':shopid,'order_number':ordernumber,'code':code,'name':name,'amount':amount,'date':date})  
+           .success(function(data){  
+              alert(data); 
               $scope.ViewOrdersDisplay();
-           });
+           });      
       };
 
       //for Delete Order that shop owner has made
-       $scope.Delete=function(ordernumber){
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})
-           .success(function(data){
-              alert(data);
+       $scope.Delete=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
               $scope.ViewOrdersDisplay();
-           });
-      };
+           });        
+      };  
       //msg(x.Reg_Shop_Id,x.OrderNumber,x.Code,x.Name,x.Amount,x.Date)
       //sending massage  viewRegShopOrdersEmail.html
-      $scope.msg=function(shopid,ordernumber,code,name,amount,date){
+      $scope.msg=function(shopid,ordernumber,code,name,amount,date){ 
           $rootScope.order_Mail_shopid=shopid;
           $rootScope.order_Mail_ordernumber=ordernumber;
           $rootScope.order_Mail_code=code;
@@ -2130,14 +2096,14 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
           $rootScope.order_Mail_amount=amount;
           $rootScope.order_Mail_date=date;
 
-          $location.path('/admin/handel/orders/email');
-      };
+          $location.path('/admin/handel/orders/email');    
+      };  
 
 });
 
 //RegShopOrderMailController
 app.controller("RegShopOrderMailController",function($scope,$location, $http,$rootScope){
-
+  
 
 });
 
@@ -2156,44 +2122,44 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
         $location.path('/admin/delivered/orders');
     };
     //display verified orders
-    $scope.ViewOrdersDisplay=function(){
-           $http.get("module/FarmShopOrder/viewverifyOrder.php")
-           .success(function(data){
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/viewverifyOrder.php")  
+           .success(function(data){  
                 $scope.namess = data;
-
-           });
+                 
+           });  
       };
    //for Searching part of ViewOrdersDisplay page
-    $scope.ViewOrdersDisplay2=function(){
-           $http.post("module/FarmShopOrder/SearchverifyOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})
-           .success(function(data){
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchverifyOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
                $scope.namess = data;
-
-           });
+                 
+           });  
 
             //$scope.code=$scope.date;
-      };
+      };  
       //for Delivering Order that shop owner has made
-       $scope.Deliver=function(ordernumber){
-           $http.post("module/FarmShopOrder/deliverOrder.php",{'order_number':ordernumber})
-           .success(function(data){
-              //alert(data);
+       $scope.Deliver=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deliverOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              //alert(data); 
               $scope.ViewOrdersDisplay();
-           });
+           });        
       };
 
       //for Delete Order that shop owner has made
-       $scope.Delete=function(ordernumber){
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})
-           .success(function(data){
-              alert(data);
+       $scope.Delete=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
               $scope.ViewOrdersDisplay();
-           });
-      };
+           });        
+      };  
 
 });
 
- //##############################################################################################
+ //##############################################################################################    
 
 
 
@@ -2209,37 +2175,37 @@ app.controller("RegShopDeliveredOrderController",function($scope,$location, $htt
         $location.path('/admin/delivered/orders');
     };
     //display delivered orders
-    $scope.ViewOrdersDisplay=function(){
-           $http.get("module/FarmShopOrder/deliveredOrder.php")
-           .success(function(data){
+    $scope.ViewOrdersDisplay=function(){  
+           $http.get("module/FarmShopOrder/deliveredOrder.php")  
+           .success(function(data){  
                 $scope.namess = data;
-
-           });
+                 
+           });  
       };
    //for Searching part of ViewOrdersDisplay page
-    $scope.ViewOrdersDisplay2=function(){
-           $http.post("module/FarmShopOrder/SearchdeliveredOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})
-           .success(function(data){
+    $scope.ViewOrdersDisplay2=function(){  
+           $http.post("module/FarmShopOrder/SearchdeliveredOrder.php",{'shopId':$scope.shopId,'date':$scope.date,'code':$scope.code})  
+           .success(function(data){  
                $scope.namess = data;
-
-           });
+                 
+           });  
 
             //$scope.code=$scope.date;
-      };
-
+      };  
+     
 
       //for delete Order that shop owner has made
-       $scope.Delete=function(ordernumber){
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})
-           .success(function(data){
-              alert(data);
+       $scope.Delete=function(ordernumber){  
+           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+           .success(function(data){  
+              alert(data); 
               $scope.ViewOrdersDisplay();
-           });
-      };
+           });        
+      };  
 
 });
 
-//Loading items for store
+//Loading items for store 
 /*app.controller('AdminListController', function($scope,$modal ) {
     $scope.Confirm = function ( ) {
       alertModalInstance = $modal.open({
@@ -2257,42 +2223,42 @@ $scope.cancelDelete = function () {
     };
   }
     };)*/
-
-
+    
+  
 
 
 //#############################TESTING###########################################
 //################################################TESTING########################
 
-//image.code, image.name, image.unit,image.amount,image.price,image.discount
+//image.code, image.name, image.unit,image.amount,image.price,image.discount 
 
-/*app.controller("AddItemDetails", function($scope, $http){
-      $scope.uploadFile = function(){
-           var form_data = new FormData();
+/*app.controller("AddItemDetails", function($scope, $http){  
+      $scope.uploadFile = function(){  
+           var form_data = new FormData(); 
 
-           angular.forEach($scope.files, function(file){
+           angular.forEach($scope.files, function(file){ 
                 form_data.append('file', file);
-
-           });
+                 
+           }); 
                 form_data.append('code', $scope.code);
                 form_data.append('name', $scope.name);
                 form_data.append('price', $scope.price);
                 form_data.append('amount', $scope.amount);
                 form_data.append('unit', $scope.unit);
-                form_data.append('discount', $scope.discount);
-           $http.post('module/Items/upload.php', form_data,
-           {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined,'Process-Data': false}
-           }).success(function(response){
-                alert(response);
-                $scope.select();
-           });
-      }
-      $scope.select = function(){
-           $http.get("module/Items/select.php")
-           .success(function(data){
-                $scope.images = data;
-           });
-      }
+                form_data.append('discount', $scope.discount);  
+           $http.post('module/Items/upload.php', form_data,  
+           {  
+                transformRequest: angular.identity,  
+                headers: {'Content-Type': undefined,'Process-Data': false}  
+           }).success(function(response){  
+                alert(response);  
+                $scope.select();  
+           });  
+      }  
+      $scope.select = function(){  
+           $http.get("module/Items/select.php")  
+           .success(function(data){  
+                $scope.images = data;  
+           });  
+      }  
  }); */
