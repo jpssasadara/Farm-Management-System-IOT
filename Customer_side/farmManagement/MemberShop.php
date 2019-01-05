@@ -317,7 +317,6 @@ if ($mysqli->connect_errno) {
 }
 ?>
 
-
     <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
         <button class="btn btn-primary" >Verifed</button>
     </a>
@@ -331,6 +330,11 @@ if ($mysqli->connect_errno) {
 <p><a href="Auction/AuctionHomeShop.php">Auction</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
+
+
+</div>
+</div>
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
