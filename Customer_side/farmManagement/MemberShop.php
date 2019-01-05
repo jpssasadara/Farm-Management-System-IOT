@@ -307,7 +307,8 @@ session_start();
     ?>
 
 
->>>>>>> 7a25e40e1f686f1f92777379829a761b47519892
+</div>
+
 
 <?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
@@ -328,7 +329,7 @@ if ($mysqli->connect_errno) {
         <button class="btn btn-primary">Pending</button>
     </a>
 
-<p><a href="Auction/AuctionHomeShop.php">Auction</a></p>
+<p><a href="AuctionHomeShop.php">Auction</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">

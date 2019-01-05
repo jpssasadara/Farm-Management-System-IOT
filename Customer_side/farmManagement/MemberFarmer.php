@@ -298,7 +298,7 @@ session_start();
 </div>
 </div>
 
-<p><a href="Auction/AuctionHomeFarmer.php">Auction</a></p>
+<p><a href="AuctionHomeFarmer.php">Auction</a></p>
 <p><a href="Farmer_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">

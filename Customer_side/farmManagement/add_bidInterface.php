@@ -184,7 +184,7 @@
 
 </style>
 
-<body >
+<body id="body-color">
 <div class="container container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -269,61 +269,113 @@
     <br/>
     <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
 
-<form action="courseDatabase.php" method="post">
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
-            </div>
-        </div>
-    </div>
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+
+$query = "select count(1) FROM bid_history";
+$result= mysqli_query($mysqli, $query);
+$row = mysqli_fetch_array($result);
+
+$total = $row[0];
+echo "Total bids: " . $total;
+
+mysqli_close($mysqli);
+?>
 
 
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div>
-        </div>
-    </div>
+<div id="Sign-Up">
+    <fieldset style="width:30%"><legend>Bid</legend>
+        <table border="0">
+            <form method="POST" action="add_bid.php">
+                <tr>
+                    <td> Item Code</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="code" value="<?php echo $_GET['code'];?>"></td>
+                </tr>
+                <tr>
+                    <td> Enter your id</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <td> Enter your bid</td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="amount"></td>
+                </tr>
+                <tr>
+                    <td> Date</td>
+                </tr>
+                <tr>
+                    <td> <input type="date" name="date"></td>
+                </tr>
 
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-        </div>
-    </div>
+                <tr>
+                    <td><input id="button" type="submit" name="submit" value="Place Offer"></td>
+                </tr>
 
-    <!-- Grid row -->
-    <div class="form-group row">
-        <!-- Material input -->
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <div class="md-form mt-0">
-                <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-        </div>
-    </div>
+            </form>
+        </table>
+    </fieldset>
+</div>
+<table border="2">
+    <thead>
+    <tr>
+        <th>Bidder</th>
+        <th>Amount</th>
+        <th>Time</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    // Create connection
+    /* fetch associative array */
+
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+    // Check connection
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
+    }
+
+    $query = "SELECT * FROM bid_history";
+    /* fetch associative array */
+
+    if ($result = $mysqli->query($query)) {
+
+        while ($row = $result->fetch_array()) {
+            //echo $row['name'];
+            echo "<div class='well'>";
+
+            echo "<ul class='list-unstyled'>";
+
+            echo " <tr>
+                   <td>{$row['Bidder']}</td>
+                   <td>{$row['Amount']}</td>
+                   <td>{$row['Date']}</td>
+                   
+                   </tr>\n";
+
+            echo("</div>");
+        }
+        "</ul>";
+        /* free result set */
+        $result->free();
+    }
+
+    /* close connection */
+    $mysqli->close();
+    ?>
+    </tbody>
+</table>
 
 
-    <!-- Grid row -->
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input type="submit">
-        </div>
-    </div>
-</form>
-</body
+
+</body>
 </html>
-</html>
-
