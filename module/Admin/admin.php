@@ -30,10 +30,15 @@ else{
       $username = mysqli_real_escape_string($connect, $data->username);       
       $password = mysqli_real_escape_string($connect, $data->password);  
       $query = "INSERT INTO admin(Id,User_Name,Password) VALUES ('$id', '$username', '$password')";  
+      $q="SELECT * FROM admin WHERE Id='$id' or User_name='$username'";
+      $a=mysqli_query($connect,$q);
+      if(count($a)>0){
+        $dataa["errorId"]="EmpId Already taken!";
+      }
       if(mysqli_query($connect,$query))
         {
           //echo "Data Inserted...........";
-           $dataa["message"] = "Data Inserted...";
+           $dataa["message"] = $username." registered Successfull!";
         }
         else{
           //echo "Error.....";

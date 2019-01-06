@@ -74,11 +74,11 @@ if(count($data)>0){
 	$password = mysqli_real_escape_string($connect,$data->password);
 	$password2 = mysqli_real_escape_string($connect,$data->password2);
 
-	$q="SELECT * FROm farmshopemployee WHERE Id='$id'";
+	$q="SELECT * FROm farmshopemployee WHERE Id='$id' or Username='$username'";
 	$row=mysqli_query($connect,$q);
 	if(mysqli_num_rows($row)>0)
 	{
-		$dataa["exit"]="This User Id has already taken";
+		$dataa["exit"]="This User Id or Username has already taken";
 	}
 	else{
 		if($password==$password2){
@@ -109,7 +109,7 @@ if(count($data)>0){
 }
 }
 
-	echo json_encode($dataa);
+echo json_encode($dataa);
 
 
 
