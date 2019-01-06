@@ -247,7 +247,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
   <div class="navbar-header">
-    <a class="navbar-brand" href="#/home"><img src="images/logo.png" width="80" height="38"></a>
+    <a class="navbar-brand" href="#/home"></a>
   </div>
   <ul class="nav navbar-nav">
     <li><a href='/Farm-Management-System-IoT'>Home</a></li>
@@ -275,10 +275,6 @@
     box-sizing:border-box;
   }
 </style>
-  
-<link rel="stylesheet" href="css/datepicker.css">
-<script src="js/bootstrap-datepicker1.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
 <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
@@ -305,7 +301,8 @@
     
     <tr>
     
-    <td colspan="2" align="center"><h2 style="margin-top:10.5px"><span class="glyphicon glyphicon-folder-open"> Create Invoice</h2></td>
+    <td colspan="2" align="center"><h2 style="margin-top:10.5px"><span class="glyphicon glyphicon-folder-open"> 
+      <b>CreateInvoice</b></h2></td>
     </tr>
     <tr>
     <td colspan="2">
@@ -319,7 +316,8 @@
         <div class="col-md-4">
           Reverse Charge<br />
           <input type="text" name="order_no" id="order_no" class="form-control input-sm" placeholder="Enter Invoice No." />
-          <input type="text" name="order_date" id="order_date" class="form-control input-sm" readonly placeholder="Select Invoice Date" />
+          <input type="text" name="order_date" id="order_date" class="form-control input-sm" 
+          readonly placeholder="Select Invoice Date" value="<?php echo date("Y-m-d");?>"/>
         </div>
       </div>
       <br />
@@ -732,12 +730,14 @@ $(document).ready(function(){
       swal("Please Enter Invoice Number");
       return false;
     }
+    
 
-    if($.trim($('#order_date').val()).length == 0)
+    if($.trim($('#order_date').val()).length == null)
     {
       swal("Please Select Invoice Date");
       return false;
     }
+    //console.log($.trim($('#order_date').val()).length);
 
     for(var no=1; no<=count; no++)
     {
@@ -773,18 +773,19 @@ else
 
 <h3 align="center">
 <img src="img/logo.png" alter="logo" width="150" height="150" align="left">
-Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shopping-cart"></span></h3>
+<b>Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shopping-cart"></span></b></h3>
 
 <br />
 <div align="right">
-  <a href="invoice.php?add=1" class="btn btn-warning btn-s"><span class="glyphicon glyphicon-folder-open"> CreateInvoice</span></a>
+  <a href="invoice.php?add=1" class="btn btn-warning btn-s"><span class="glyphicon glyphicon-folder-open">
+  CreateInvoice</span></a>
 </div>
 <br />
 <table id="data-table" class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Invoice No.</th>
-      <th>Invoice Date/Time</th>
+      <th>Invoice Date</th>
       <th>Receiver Name</th>
       <th>Invoice Total</th>
       <th>BILL</th>
@@ -800,7 +801,7 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
       echo '
       <tr>
         <td>'.$row["order_no"].'</td>
-        <td>'.$row["order_datetime"].'</td>
+        <td>'.$row["order_date"].'</td>
         <td>'.$row["order_receiver_name"].'</td>
         <td>Rs.'.$row["order_total_amount"].'</td>
         <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'" target="_blank">PDF</a></td>
@@ -818,6 +819,8 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
 </div>
 <br>
 
+</div>
+</div>
 
 <div class="footer">
   <div class="container text-center">

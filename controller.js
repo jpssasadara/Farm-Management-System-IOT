@@ -950,19 +950,20 @@ app.controller("Admincontroller",function($scope,$http,$location){
 //FamrSHop Controller
 app.controller("FarmShopController",function($scope,$http,$location){
     $scope.displayReport = function(){  
-        $http.get("module/FarmShop/farmshop.php")  
-        .success(function(data){  
+        $scope.date="";
+        $http.get("module/FarmShop/farmshop.php"
+        ) .success(function(data){
              $scope.items = data;
             //alert($scope.total);  
         });  
    }
 
    $scope.getDate=function(){
-       $http.post('module/FarmShop/farmshop.php',
-       {'date':$scope.date}
+       $http.post('module/FarmShop/farmshop2.php',
+       {'year':$scope.year,'month':$scope.month}
        ).success(function(data){
-            $scope.displayReport();
-            console.log($scope.date);
+            $scope.items = data;
+            
        });
    }
    $scope.viewReports=function(){

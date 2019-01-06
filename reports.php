@@ -14,7 +14,8 @@ function getReport($itemName,$date){
     $sql = "SELECT tbl_order_item.item_name,sum(tbl_order_item.order_item_quantity) AS quantity,
     sum(tbl_order_item.order_item_price) AS price,sum(tbl_order_item.order_item_actual_amount) AS total
     FROM tbl_order_item  
-    LEFT JOIN tbl_order ON tbl_order_item.order_id=tbl_order.order_id WHERE tbl_order_item.item_name='$itemName' and tbl_order.order_date LIKE '%$date%'";
+    LEFT JOIN tbl_order ON tbl_order_item.order_id=tbl_order.order_id WHERE tbl_order_item.item_name='$itemName' and 
+    tbl_order.order_date LIKE '%$date%'";
 
 
     $result = mysqli_query($con,$sql);
@@ -37,16 +38,22 @@ $items=array('Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol',
 $n=sizeof($items);
 $reportList=array();
 $total=0;
-$date="2018-09";
+
+$year=$_GET['year'];
+$month=$_GET['month'];
+
+$date=$year."-".$month;
+
 for($x=0;$x<$n;$x++){
     array_push($reportList,getReport($items[$x],$date));
     $reportList[$x]['item_name']=$items[$x];
 
     $total+=$reportList[$x]['total'];
 }
-$output='<center><h2><u>Monthly Bill report<u></h2><br/><hr>';
+$output="<center><h2><u>Monthly Bill report<u></h2>
+<h3>Month :<b> $date</b> </h3><hr>";
 $output.='
-<table width="100%" border="0" class="table table-bordered table-striped"> 
+<table width="100%" border="1" cellpadding="5" cellspacing="0"> 
     <tr align="center"> 
         <th scope="col">Item Name</th>
         <th scope="col">Quantity</th>  
@@ -70,7 +77,7 @@ $output.='
             <td><b>Total</b></td>
             <td><center>Rs. <b>$total</center></td>
             
-    </tr></table><hr><hr>";
+    </tr></table><hr>";
 
 
 $pdf = new Pdf();

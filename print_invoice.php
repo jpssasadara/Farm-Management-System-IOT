@@ -35,7 +35,7 @@ if(isset($_GET["pdf"]) && isset($_GET["id"]))
         </td>
         <td width="35%">
          Invoice No. : '.$row["order_no"].'<br />
-         Invoice Date : '.$row["order_datetime"].'<br />
+         Invoice Date : '.$row["order_date"].'<br />
         </td>
        </tr>
       </table>
