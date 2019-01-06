@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -279,7 +281,7 @@
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     }
-    $query = "SELECT * FROM registeredshop where nic='956020778v'";
+    $query = "SELECT * FROM registeredshop where nic='$_SESSION[nic]'";
 
     /* fetch associative array */
 
@@ -303,11 +305,11 @@
         </tr>
         <tr>
 
-            <td>First Name</td><td><input type=\"text\" name=\"name\" class='form-control'
+            <td>First Name</td><td><input type=\"text\" name=\"fname\" class='form-control'
             required value='{$row['fn']}'/></td>
         </tr>
         <tr>
-            <td>Last Name</td><td><input type=\"text\" name=\"name\" class='form-control' 
+            <td>Last Name</td><td><input type=\"text\" name=\"lname\" class='form-control' 
             required value='{$row['ln']}'/></td>
 
         </tr>

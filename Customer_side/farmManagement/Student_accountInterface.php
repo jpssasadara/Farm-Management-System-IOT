@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,7 +284,7 @@
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT * FROM registeredstudent  where nic='986020778v' ";
+    $query = "SELECT * FROM registeredstudent  where nic='$_SESSION[nic]' ";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {
@@ -355,7 +359,6 @@
     ?>
 
 </div>
-</body>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>

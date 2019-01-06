@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -279,7 +283,7 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$query = "SELECT * FROM registeredfarmer  where Id='946220778v' ";
+$query = "SELECT * FROM registeredfarmer  where Id='$_SESSION[nic]' ";
 /* fetch associative array */
 
 if ($result = $mysqli->query($query)) {

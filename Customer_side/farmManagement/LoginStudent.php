@@ -19,8 +19,10 @@ $password = stripslashes($password);
 //$password = mysqli_real_escape_string($password);
 $sql="SELECT * FROM registeredstudent WHERE username='$username' and password='$password'";
 
-$result = mysqli_query($mysqli, $sql);
+if ($result = $mysqli->query($sql)) {
 
+    while ($row = $result->fetch_array()) {
+        $Id = $row['Id'];
 
 // Mysql_num_row is counting table row
 $count=mysqli_num_rows($result);
@@ -30,6 +32,7 @@ if($count>0){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
+    $_SESSION['nic'] = $Id;
     header("Location: MemberStudent.php");
     exit();
 }
@@ -38,6 +41,8 @@ else{
     $_SESSION['error']="Invalid Login Details";
     header('Location: LoginStudent1.php');
     exit();  
+
+}
+}
 }
 
-?>

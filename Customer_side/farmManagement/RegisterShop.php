@@ -27,12 +27,3 @@ else
 {
     echo $query;
 }
-if(isset($_POST["insert"]))
-{
-    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    $query = "INSERT INTO upload_shop(id,name) VALUES ('$_POST[nic]','$file')";
-    if(mysqli_query($mysqli, $query))
-    {
-        echo '<script>alert("Image Inserted into Database")</script>';
-    }
-}

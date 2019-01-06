@@ -277,13 +277,15 @@ session_start();
 
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic']) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">
             var a='<?php echo $_SESSION['username'];?>';
+
             swal({
                 text: 'Welcome '+a+'!',
+
             });
         </script>
         <?php
