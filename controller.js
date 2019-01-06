@@ -1421,6 +1421,7 @@ app.controller("RegisterAdminController", function($scope, $http){
             
         ).success(function(data){
             console.log($scope.pw);
+            
             if($scope.nic!=null && $scope.fn!=null && $scope.ln!=null
                 && $scope.pn!=null && $scope.address!=null && $scope.email!=null && $scope.un!=null && $scope.pw!=null){
                 $scope.successInsert = data.message;
