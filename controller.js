@@ -242,6 +242,28 @@ app.config(function($routeProvider) {
         templateUrl: "view/farmerRegister.html"
      })
      //isuru
+     .when("/admin/farmerview",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/viewfarmers.html"
+     })
+     //isuru
 
      .when("/admin/ShopRegister",{                    
         resolve:{
@@ -913,7 +935,10 @@ app.controller("Admincontroller",function($scope,$http,$location){
 
 
     $scope.getFarmerReg=function(){  //isuru
-        $location.path('/admin/farmerReg');
+        $location.path('/admin/farmerReg/');
+    };
+    $scope.getFarmerview=function(){  //isuru
+        $location.path('/admin/farmerview');
     };
     $scope.getShopReg=function(){  //isuru
         $location.path('/admin/ShopRegister');
@@ -1509,6 +1534,14 @@ app.controller("RegisterAdminController", function($scope, $http){
 
 
 app.controller("AddfarmerDetails", function($scope, $http){  
+    $scope.displayfarmers = function(){ 
+        $http.get("module/farmer/viewfarmers.php")  
+        .success(function(data){  
+            //console.log(data); 
+            $scope.items = data;
+             
+        }); 
+    }
     $scope.addfarmer = function(){ 
         console.log($scope.username,$scope.Id,$scope.First_Name,
         $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
