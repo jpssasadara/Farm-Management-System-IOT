@@ -273,7 +273,9 @@ session_start();
 
     <br/>
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
-<?php
+
+    bids <!--span class="badge">
+<!--?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
@@ -285,11 +287,11 @@ $result= mysqli_query($mysqli, $query);
 $row = mysqli_fetch_array($result);
 
 $total = $row[0];
-echo "Total bids: " . $total;
+echo  $total;
 
 mysqli_close($mysqli);
-?>
-
+?-->
+    <!--/span-->
 <table border="2">
     <thead>
     <tr>

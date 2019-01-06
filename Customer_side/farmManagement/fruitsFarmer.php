@@ -277,34 +277,40 @@
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
 
 
-<?php
-$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+    <?php
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
-/* check connection */
-if ($mysqli->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
-}
+    /* check connection */
+    if ($mysqli->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
 
-$query = "SELECT * FROM auction where Item_type='Fruits' ";
+    $query = "SELECT * FROM auction where Item_type='Fruits' ";
 
-if ($result = $mysqli->query($query)) {
+    if ($result = $mysqli->query($query)) {
 
-    /* fetch associative array */
+        /* fetch associative array */
 
-    while ($row = $result->fetch_array()) {
-        echo "<div class='well'>";
-        // $a=" <img src='images/$row[Course_Image]'>";
-        echo "<ul class='list-unstyled'>";
+        while ($row = $result->fetch_array()) {
+            $sql1 = "select count(1) FROM bid_history where Item_code='$row[Item_code]'";
+            $result1= mysqli_query($mysqli, $sql1);
+            $row1 = mysqli_fetch_array($result1);
 
-        echo " 
+            $total = $row1[0];
+            echo "<div class='well'>";
+            // $a=" <img src='images/$row[Course_Image]'>";
+            echo "<ul class='list-unstyled'>";
+
+            echo " 
               <div class=\"card_main_container2\">
 
               <div class=\"card\" style=\"width:400px\">
 
               <div class=\"card-body\">
-             
+              
               <form action='add_bidInterface.php' method='get'>
+              bids <span class=\"badge\">$total</span>
               <h4 class=\"card-title\">$row[Item_name]</h4>
               <p class=\"card-text\">$row[Item_code]</p>
               <p class=\"card-text\">$row[Price]</p>
@@ -314,17 +320,17 @@ if ($result = $mysqli->query($query)) {
               </form>
               ";
 
-        echo("</div>");
+            echo("</div>");
+        }
+        "</ul>";
+        /* free result set */
+        $result->free();
     }
-    "</ul>";
-    /* free result set */
-    $result->free();
-}
 
-/* close connection */
-$mysqli->close();
+    /* close connection */
+    $mysqli->close();
 
-?>
+    ?>
 </div>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

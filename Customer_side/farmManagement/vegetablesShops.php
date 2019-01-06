@@ -217,9 +217,9 @@
                                 <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
                                 <div class="dropdown-content">
                                     <div ng-controller="loginbuttonctrl">
-                                        <a  href="LoginShop.html" >Registered Shop</a>
-                                        <a href="LoginFarmer.html">Registered Farmer</a>
-                                        <a href="LoginStudent.html" >Student</a>
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
                                     </div>
                                 </div>
                             </div>
@@ -294,6 +294,11 @@ if ($result = $mysqli->query($query)) {
     /* fetch associative array */
 
     while ($row = $result->fetch_array()) {
+        $sql1 = "select count(1) FROM bid_history where Item_code='$row[Item_code]'";
+        $result1= mysqli_query($mysqli, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+
+        $total = $row1[0];
         echo "<div class='well'>";
        // $a=" <img src='images/$row[Course_Image]'>";
         echo "<ul class='list-unstyled'>";
@@ -304,8 +309,9 @@ if ($result = $mysqli->query($query)) {
               <div class=\"card\" style=\"width:400px\">
 
               <div class=\"card-body\">
-             
+              
               <form action='add_bidInterface.php' method='get'>
+              bids <span class=\"badge\">$total</span>
               <h4 class=\"card-title\">$row[Item_name]</h4>
               <p class=\"card-text\">$row[Item_code]</p>
               <p class=\"card-text\">$row[Price]</p>
