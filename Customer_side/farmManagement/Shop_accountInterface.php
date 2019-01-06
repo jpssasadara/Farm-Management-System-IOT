@@ -265,7 +265,7 @@ session_start();
     </div>
 
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
 
 <table>
 <?php
@@ -276,7 +276,7 @@ session_start();
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     }
-    $query = "SELECT * FROM registeredshop where nic='$_SESSION[nic]'";
+    $query = "SELECT * FROM registeredshop where nic='$_SESSION[nic2]'";
 
     /* fetch associative array */
 

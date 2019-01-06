@@ -266,7 +266,7 @@ session_start();
     </div>
 
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="MemberStudent.php"><button class="btn btn-default">Back</button></a>
 
 
     <?php
@@ -279,7 +279,7 @@ session_start();
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT * FROM registeredstudent  where nic='$_SESSION[nic]' ";
+    $query = "SELECT * FROM registeredstudent  where nic='$_SESSION[nic3]' ";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {

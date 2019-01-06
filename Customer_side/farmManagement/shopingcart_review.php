@@ -1,21 +1,17 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <title>labuduuwa Farm</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-
-</head>
+<!Doctype html>
+<html>
+<title>labuduuwa Farm</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
 <style>
     body {
         font: 400 15px Lato, sans-serif;
@@ -188,9 +184,26 @@ session_start();
         padding: 40px;
     }
 
-</style>
+    .btn-group button {
+        background-color: #4CAF50; /* Green background */
+        border: 1px solid green; /* Green border */
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 10%; /* Set a width if needed */
+        display: block; /* Make the buttons appear below each other */
+    }
 
-<body >
+    .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+<body>
 <div class="container container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -209,16 +222,23 @@ session_start();
                     <li><a href="course.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
+                    <!--ul class="nav navbar-nav navbar-right"-->
+                    <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
                     <?php
-                    if(isset($_SESSION['nic3'])) {
+                    if(isset($_SESSION['nic'])) {
 
                         echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
                     }
                     else{
 
+
+
                     }
 
                     ?>
+
+                    <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
+                </ul>
                 </ul>
             </div>
         </div>
@@ -267,35 +287,25 @@ session_start();
         </a>
     </div>
     <br/>
-    <a href="LoginSt.php"><button class="btn btn-default">Back</button></a>
+    <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
     <hr>
+    <h3>SHOPPING CART</h3>
+    <a href="verify_view.php" target="_blank">
+        <button class="btn btn-primary" >Verifed</button>
+    </a>
+    <a href="deliver_view.php" target="_blank">
+        <button class="btn btn-primary">Deliverd</button>
+    </a>
+    <a href="pending_view.php" target="_blank">
+        <button class="btn btn-primary">Pending</button>
+    </a>
 
-    <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic3']) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
-
-            swal({
-                text: 'Welcome '+a+'!',
-
-            });
-        </script>
-        <?php
-    }
-    else {
-        //header('Location: LoginSt.php');
-    }
-
-    ?>
+</div>
 
 </div>
 </div>
-</div>
-<p><a href="Student_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -354,10 +364,6 @@ session_start();
 
     </div>
 </footer>
-</div>
 </body>
 </html>
-
-
-
 

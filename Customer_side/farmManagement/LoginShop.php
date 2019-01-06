@@ -36,7 +36,7 @@ if ($result = $mysqli->query($sql)) {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            $_SESSION['nic'] = $Id;
+            $_SESSION['nic2'] = $Id;
             header("Location: MemberShop.php");
             exit();
         } else {

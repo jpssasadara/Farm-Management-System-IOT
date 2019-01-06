@@ -32,7 +32,7 @@ if($count>0){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    $_SESSION['nic'] = $Id;
+    $_SESSION['nic3'] = $Id;
     header("Location: MemberStudent.php");
     exit();
 }
