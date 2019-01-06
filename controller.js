@@ -1050,7 +1050,7 @@ app.controller("RegisterCashierController",function($scope,$http){
                         swal({
                             type: 'warning',
                             title: 'Oops...',
-                            text: 'EmpId already taken!',
+                            text: 'EmpId or Username has already taken!',
                             footer: 'please enter another!'
                         });
                     }
@@ -1276,31 +1276,50 @@ app.controller("RegisterAdminController", function($scope, $http){
                 {'id':$scope.id,'username':$scope.username, 'password':$scope.password}  
            ).success(function(data){
                  if(data.error)
-                       {
-                        $scope.errorid = data.error.id;
-                        $scope.errorusername = data.error.username;
-                        $scope.errorpassword = data.error.password;
+                    {
+                    $scope.errorid = data.error.id;
+                    $scope.errorusername = data.error.username;
+                    $scope.errorpassword = data.error.password;
+                
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: "Please fill all the details",
+                        footer: 'please correct the error!'
+                    });
                     
-                        swal(
-                            data.message
-                          );
-                       
-                       }
-                       else
-                       {
-                        $scope.errorid = null;
-                        $scope.errorusername = null;
-                        $scope.errorpassword = null;
+                    }
+                else if(data.errorId)
+                    {
+                    $scope.errorid = data.error.id;
+                    $scope.errorusername = data.error.username;
+                    $scope.errorpassword = data.error.password;
+                
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: data.errorId,
+                        footer: 'please correct the error!'
+                    });
+                    
+                    }
+                else
+                {
+                    $scope.errorid = null;
+                    $scope.errorusername = null;
+                    $scope.errorpassword = null;
 
-                        swal(
-                            data.message
-                        );
-                         $scope.displayData();
-                        $scope.username = null;  
-                        $scope.password = null;
-                        $scope.id = null;
-                       }
-                      });
+                    swal({
+                        type:'success',
+                        title:'success',
+                        text:data.message
+                    });
+                    $scope.displayData();
+                    $scope.username = null;  
+                    $scope.password = null;
+                    $scope.id = null;
+                }
+            });
       } 
 
        $scope.updateData = function(){  
@@ -1309,31 +1328,35 @@ app.controller("RegisterAdminController", function($scope, $http){
                 {'id':$scope.id,'username':$scope.username, 'password':$scope.password}  
            ).success(function(data){
                  if(data.error)
-                       {
-                        $scope.errorid = data.error.id;
-                        $scope.errorusername = data.error.username;
-                        $scope.errorpassword = data.error.password;
-                        swal(
-                            data.message
-                        );
-                        
-                       }
-                       else
-                       {
-                        $scope.errorid = null;
-                        $scope.errorusername = null;
-                        $scope.errorpassword = null;
-                        $scope.all=false;
+                    {
+                    $scope.errorid = data.error.id;
+                    $scope.errorusername = data.error.username;
+                    $scope.errorpassword = data.error.password;
+                    swal({
+                            type:'error',
+                            title:'error',
+                            text:data.message
+                        }
+                    );
+                    }
+                else
+                {
+                    $scope.errorid = null;
+                    $scope.errorusername = null;
+                    $scope.errorpassword = null;
+                    $scope.all=false;
 
-                        swal(
-                            data.message
-                          );
-                        $scope.displayData();
-                        $scope.username = null;  
-                        $scope.password = null;
-                        $scope.id = null;
-                       }
-                      });
+                    swal({
+                        type:'success',
+                        title:'success',
+                        text:data.message
+                    });
+                    $scope.displayData();
+                    $scope.username = null;  
+                    $scope.password = null;
+                    $scope.id = null;
+                }
+                });
       } 
 
        $scope.displayData = function(){  
