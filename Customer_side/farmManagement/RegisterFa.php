@@ -275,9 +275,11 @@
 
             <form method="POST"  action="RegisterFarmer.php"  >
                 <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
+
                 <tr>
                     <td>NIC</td><td><input type="text" name="nic" class="form-control" required/></td>
                 </tr>
+
                 <tr>
                     <td>Name</td><td><input type="text" name="name" class="form-control" required/></td>
                 </tr>
@@ -321,6 +323,7 @@
                     <div class="col-sm-4"></div><td><div class="col-sm-4">
                             <a class="btn" href="LoginFarmer.html">Sign-In</a></div></td>
                 </tr>
+           
             </form>
         </div>
     </div>
