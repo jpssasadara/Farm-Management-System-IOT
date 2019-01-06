@@ -198,6 +198,28 @@ app.config(function($routeProvider) {
         templateUrl: "view/analyse.html"
      })
 
+     .when("/admin/forummessage",{                    
+        resolve:{
+            "check":function($location,$cookies,$rootScope){
+                if(!$cookies.get('cookie')){
+                    $location.path('/');
+                }
+                 if ($cookies.get('cookiename')!=null && $cookies.get('cookie2name')!=null) {
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                } else if ($cookies.get('cookiename')!=null){
+                    $rootScope.adminname=$cookies.get('cookiename');
+                    $rootScope.shopname=" LoginShop";
+                }else if($cookies.get('cookie2name')!=null){
+                    $rootScope.shopname=$cookies.get('cookie2name');
+                    $rootScope.adminname=" LoginAdmin";
+    
+                }
+            }
+        },
+        templateUrl: "view/forummessage.html"
+     })
+
      .when("/admin/farmerReg",{                    
         resolve:{
             "check":function($location,$cookies,$rootScope){
@@ -861,6 +883,10 @@ app.controller("Admincontroller",function($scope,$http,$location){
         $location.path('/admin_register/view');
     };
 
+    $scope.getEmail=function(){
+        $location.path('/admin/forummessage');
+    };
+
     $scope.analyseView=function(){
         $location.path('/admin/analyse');
     };
@@ -1444,11 +1470,12 @@ app.controller("RegisterAdminController", function($scope, $http){
                 timer: 5000
                 });
         }else{
-            swal(
-                'Error!',
-                'All the fields cannot be empty.',
-                'Error'
-            );
+            swal({
+                type: 'warning',
+                title: 'Oops...',
+                text: 'Invalid data!',
+                footer: 'Please fill all the fields!'
+            });
         }
         }
     )}; 
@@ -1555,11 +1582,12 @@ app.controller("AddfarmerDetails", function($scope, $http){
                         });
                 }
             }else{
-                swal(
-                    'Error!',
-                    'All the fields cannot be empty.',
-                    'Error'
-                );
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Invalid data!',
+                    footer: 'Please fill all the fields!'
+                });
             }
             }
     )};
@@ -1569,7 +1597,89 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
 
  });
-//isuru
+ app.controller("ForumMessageDetails", function($scope, $http){ 
+    $scope.displayMessages = function(){ 
+        $http.get("module/forum/messages.php")  
+        .success(function(data){  
+            console.log(data); 
+            $scope.items = data;
+             
+        }); 
+    }
+
+
+    $scope.editDetails = function(x){ 
+        $scope.details=x;
+        //console.log($scope.details);
+    }
+
+    $scope.deleteDetails = function(idd){ 
+        swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.value) {
+            swal(
+            'Deleted!',
+            'Your Data has been deleted.',
+            'success'
+            )
+            $http.post("module/forum/deleteData.php", {'email':idd['email']})  
+            .success(function(data){  
+                $scope.displayMessages();  
+            });
+        }
+        else  
+        {  
+            return false;  
+        } 
+    });  
+   }
+
+    $scope.sendMail=function(){
+ 
+        $http.post(  
+            "module/forum/sendMail.php",  
+            {'details.name':$scope.details.name,'details.email':$scope.details.email, 
+            'details.subject':$scope.details.subject,'details.reply'
+            :$scope.details.reply
+        }  
+        
+    ).success(function(data){
+        if($scope.details.name!=null && $scope.details.email!=null && $scope.details.subject!=null
+            && $scope.details.reply!=null){
+            $scope.successInsert = data.message;
+            if(data.invalidEmail){
+                swal({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Invalid Email!',
+                    footer: 'Please enter valid email!'
+                });
+            }
+            else{
+            swal({
+                type: 'success',
+                title: 'Reply successfull!',
+                timer: 5000
+                });
+            }
+        }else{
+            swal({
+                type: 'warning',
+                title: 'Oops...',
+                text: 'Invalid data!',
+                footer: 'Please fill all the fields!'
+            });
+        }
+        }
+    )}; 
+});
  
 
  app.controller("AddCourseDetails", function($scope, $http){ 
