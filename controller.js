@@ -904,11 +904,11 @@ app.controller("Admincontroller",function($scope,$http,$location){
     $scope.adminView=function(){
         $location.path('/admin_register/view');
     };
-
+    //Hasitha
     $scope.getEmail=function(){
         $location.path('/admin/forummessage');
     };
-
+    //Hasitha
     $scope.analyseView=function(){
         $location.path('/admin/analyse');
     };
@@ -1629,7 +1629,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
         
 
 
- });
+ }); //hasitha
  app.controller("ForumMessageDetails", function($scope, $http){ 
     $scope.displayMessages = function(){ 
         $http.get("module/forum/messages.php")  
@@ -1714,7 +1714,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
     )}; 
 });
  
-
+//Isuru
  app.controller("AddCourseDetails", function($scope, $http){ 
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
