@@ -223,7 +223,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Price Comparison"
 	},
 	axisY: {
-		title: "Price(Rs.)"
+		title: "Price of a Unit(Rs.)"
 	},
 	data: [{
 		type: "column",

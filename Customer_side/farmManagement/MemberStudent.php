@@ -209,21 +209,16 @@ session_start();
                     <li><a href="course.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <ul class="nav navbar-nav navbar-right">
-                        <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
-                        <li><div class="dropdown">
-                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
-                                <div class="dropdown-content">
-                                    <div ng-controller="loginbuttonctrl">
-                                        <a  href="LoginShop.html" >Registered Shop</a>
-                                        <a href="LoginFarmer.html">Registered Farmer</a>
-                                        <a href="LoginStudent.html" >Student</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
-                    </ul>
+                    <?php
+                    if(isset($_SESSION['nic'])) {
+
+                        echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
+                    }
+                    else{
+
+                    }
+
+                    ?>
                 </ul>
             </div>
         </div>
@@ -272,24 +267,26 @@ session_start();
         </a>
     </div>
     <br/>
-    <a href="LoginStudent.html"><button class="btn btn-default">Back</button></a>
+    <a href="LoginSt.php"><button class="btn btn-default">Back</button></a>
     <hr>
 
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic']) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">
             var a='<?php echo $_SESSION['username'];?>';
+
             swal({
                 text: 'Welcome '+a+'!',
+
             });
         </script>
         <?php
     }
     else {
-        header('Location: LoginSt.php');
+        //header('Location: LoginSt.php');
     }
 
     ?>
@@ -297,7 +294,6 @@ session_start();
 </div>
 </div>
 </div>
-
 <p><a href="Student_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
 <footer class="text-center">
@@ -361,3 +357,7 @@ session_start();
 </div>
 </body>
 </html>
+
+
+
+

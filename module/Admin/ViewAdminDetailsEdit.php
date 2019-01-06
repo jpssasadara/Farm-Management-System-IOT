@@ -29,16 +29,22 @@ else{
       $id = mysqli_real_escape_string($connect, $data->id);
       $username = mysqli_real_escape_string($connect, $data->username);       
       $password = mysqli_real_escape_string($connect, $data->password);  
-      $query = "UPDATE admin SET User_Name = '$username', Password = '$password' WHERE Id = '$id'";    
-      if(mysqli_query($connect,$query))
-        {
-          //echo "Data Inserted...........";
-           $dataa["message"] = "Data Updated...";
-        }
-        else{
-          //echo "Error.....";
-          
-        }
+      $query = "UPDATE admin SET User_Name = '$username', Password = '$password' WHERE Id = '$id'";
+      $q="SELECT * FROM admin WHERE Id='$id' or User_Name='$username'";
+      $a=mysqli_query($connect,$q);
+      if(count($a)<1){
+        $dataa["errorId"]="Invalid EmpId!";
+      }
+      else{
+        if(mysqli_query($connect,$query))
+          {
+            $dataa["message"] = $id." Updated successfull...";
+          }
+          else{
+              $dataa["error"]="Something went wrong!";
+            
+          }
+      }
  }
  
 }

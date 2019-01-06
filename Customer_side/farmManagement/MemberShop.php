@@ -222,19 +222,21 @@ session_start();
                     <li><a href="course.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <ul class="nav navbar-nav navbar-right">
+                    <!--ul class="nav navbar-nav navbar-right"-->
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
-                        <li><div class="dropdown">
-                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
-                                <div class="dropdown-content">
-                                    <div ng-controller="loginbuttonctrl">
-                                        <a  href="LoginShop.html" >Registered Shop</a>
-                                        <a href="LoginFarmer.html">Registered Farmer</a>
-                                        <a href="LoginStudent.html" >Student</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        <?php
+                        if(isset($_SESSION['nic'])) {
+
+                            echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
+                        }
+                        else{
+
+
+
+                        }
+
+                        ?>
+
                         <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
                     </ul>
                 </ul>
@@ -285,7 +287,7 @@ session_start();
         </a>
     </div>
     <br/>
-    <a href="LoginStudent.html"><button class="btn btn-default">Back</button></a>
+    <a href="LoginSh.php"><button class="btn btn-default">Back</button></a>
     <hr>
     <?php
 
