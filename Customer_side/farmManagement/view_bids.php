@@ -313,7 +313,7 @@ mysqli_close($mysqli);
     }
 
     $query = "SELECT * FROM bid_history inner join auction on bid_history.Item_code=auction.Item_code
-        where Id='$_SESSION[nic]'";
+        where Id='$_SESSION[nic1]'";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {
