@@ -18,25 +18,32 @@ $password = stripslashes($password);
 //$username = mysqli_real_escape_string($username);
 //$password = mysqli_real_escape_string($password);
 $sql="SELECT * FROM registeredshop WHERE un='$username' and pw='$password'";
-echo $sql;
-$result = mysqli_query($mysqli, $sql);
+
+
+
+if ($result = $mysqli->query($sql)) {
+
+    while ($row = $result->fetch_array()) {
+        $Id = $row['nic'];
 
 
 // Mysql_num_row is counting table row
-$count=mysqli_num_rows($result);
+        $count = mysqli_num_rows($result);
 
 // If result matched $username and $password, table row must be 1 row
 
-if($count>0){
-    session_start();
-    $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $username;
-    header("Location: MemberShop.php");
-    exit();
-}
-else{
-    session_start();
-    $_SESSION['error']="Invalid Login Details";
-    header('Location: LoginShop1.php');
-    exit();  
+        if ($count > 0) {
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            $_SESSION['nic'] = $Id;
+            header("Location: MemberShop.php");
+            exit();
+        } else {
+            session_start();
+            $_SESSION['error'] = "Invalid Login Details";
+            header('Location: LoginShop1.php');
+            exit();
+        }
+    }
 }

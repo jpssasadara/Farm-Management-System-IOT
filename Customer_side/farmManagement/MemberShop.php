@@ -289,13 +289,15 @@ session_start();
     <hr>
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic']) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">
             var a='<?php echo $_SESSION['username'];?>';
+
             swal({
                 text: 'Welcome '+a+'!',
+
             });
         </script>
         <?php
@@ -303,35 +305,26 @@ session_start();
     else {
         header('Location: LoginSh.php');
     }
-
-    ?>
-
+?>
 
 </div>
 
 
-<?php
-$mysqli = new mysqli("localhost", "root", '', "fmsmy");
-if ($mysqli->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
-}
-?>
 
-    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/verify_view.php" target="_blank">
+    <a href="verify_view.php" target="_blank">
         <button class="btn btn-primary" >Verifed</button>
     </a>
-    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/deliver_view.php" target="_blank">
+    <a href="deliver_view.php" target="_blank">
         <button class="btn btn-primary">Deliverd</button>
     </a>
-    <a href="http://localhost:63342/Farm/Farm-Management-System-IOT/Customer_side/farmManagement/shopping_cart/pending_view.php" target="_blank">
+    <a href="pending_view.php" target="_blank">
         <button class="btn btn-primary">Pending</button>
     </a>
 
 <p><a href="AuctionHomeShop.php">Auction</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
-
+?>
 
 </div>
 </div>
@@ -394,5 +387,6 @@ if ($mysqli->connect_errno) {
 
     </div>
 </footer>
+</body>
 </html>
 

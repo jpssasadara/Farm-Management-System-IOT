@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -290,7 +295,7 @@
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT * FROM regshoporder  INNER JOIN items ON regshoporder.Item_Code=items.Code  where Verified=0 AND Delivered=0";
+    $query = "SELECT * FROM regshoporder  INNER JOIN items ON regshoporder.Item_Code=items.Code  where  Reg_Shop_Id='$_SESSION[nic]' AND Verified=0 AND Delivered=0";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {

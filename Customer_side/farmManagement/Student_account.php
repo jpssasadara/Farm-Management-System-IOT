@@ -13,7 +13,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
     }
 if(isset($_POST['update'])) {
 
-    $sql = $sql = "UPDATE registeredstudent SET nic='$_POST[nic]',fname='$_POST[fname]',lname='$_POST[lname]',Mobile='$_POST[mobile]',Occupation='$_POST[occupation]',Address='$_POST[address]',email='$_POST[email]',Gender='$_POST[gender]',username='$_POST[username]',password='$_POST[password]'where nic='986020778v' ";
+    $sql = $sql = "UPDATE registeredstudent SET nic='$_POST[nic]',fname='$_POST[fname]',lname='$_POST[lname]',Mobile='$_POST[mobile]',Occupation='$_POST[occupation]',Address='$_POST[address]',email='$_POST[email]',Gender='$_POST[gender]',username='$_POST[username]',password='$_POST[password]' where Id='$_SESSION[nic]' ";
     if (mysqli_query($mysqli, $sql)) {
         echo "Record updated successfully";
     } else {

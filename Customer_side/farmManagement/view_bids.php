@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -308,7 +313,7 @@ mysqli_close($mysqli);
     }
 
     $query = "SELECT * FROM bid_history inner join auction on bid_history.Item_code=auction.Item_code
-       where Item_code='956020777v'";
+        where Id='$_SESSION[nic]'";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {
