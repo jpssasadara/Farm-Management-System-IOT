@@ -23,10 +23,11 @@ function getReport($itemName,$date){
 }
 
 $data = json_decode(file_get_contents("php://input"));
-echo($data);
-//$date = mysqli_real_escape_string($connect, $data->date);
 
-$date="";
+
+$year = mysqli_real_escape_string($connect, $data->year);
+$month = mysqli_real_escape_string($connect, $data->month);
+$date =$year."-".$month;
 
 $items=array('Cabbage', 'Turnip', 'Radish', 'Carrot','leaks','dhall','brinjol',
 'Banana','Orange','Cocoa','Guava','Pineapple','Avacado','Grapes',

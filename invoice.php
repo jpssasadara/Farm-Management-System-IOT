@@ -247,7 +247,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
   <div class="navbar-header">
-    <a class="navbar-brand" href="#/home"><img src="images/logo.png" width="80" height="38"></a>
+    <a class="navbar-brand" href="#/home"></a>
   </div>
   <ul class="nav navbar-nav">
     <li><a href='/Farm-Management-System-IoT'>Home</a></li>
@@ -784,7 +784,7 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
   <thead>
     <tr>
       <th>Invoice No.</th>
-      <th>Invoice Date/Time</th>
+      <th>Invoice Date</th>
       <th>Receiver Name</th>
       <th>Invoice Total</th>
       <th>BILL</th>
@@ -800,7 +800,7 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
       echo '
       <tr>
         <td>'.$row["order_no"].'</td>
-        <td>'.$row["order_datetime"].'</td>
+        <td>'.$row["order_date"].'</td>
         <td>'.$row["order_receiver_name"].'</td>
         <td>Rs.'.$row["order_total_amount"].'</td>
         <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'" target="_blank">PDF</a></td>
@@ -818,6 +818,8 @@ Farm Management System - Point of SALE! <span class="glyphicon glyphicon-shoppin
 </div>
 <br>
 
+</div>
+</div>
 
 <div class="footer">
   <div class="container text-center">
