@@ -220,7 +220,7 @@ session_start();
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="#services">SERVICES</a></li>
                     <li><a href="course.php">COURSES</a></li>
-                    <li><a href="Order_foods.php">PRICING</a></li>
+                    <li><a href="Order_foods2.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <!--ul class="nav navbar-nav navbar-right"-->
                     <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->

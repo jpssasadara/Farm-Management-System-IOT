@@ -298,7 +298,7 @@ if ($result = $mysqli->query($query)) {
             <li><b>Discount :</b> $row[Discount]</li>
             <li><b>Type :</b> $row[Type]</li> 
             </p>
-            <a href='shoppingcart_registration.php?Iname=$row[Name]&Icode=$row[Code]'>
+            <a href='Register_here.php'>
             <button class='btn btn-success btn-sq-lg'>Add to cart here!</button></a>
             
 
