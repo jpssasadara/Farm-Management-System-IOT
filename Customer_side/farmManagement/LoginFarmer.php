@@ -32,7 +32,7 @@ if ($result = $mysqli->query($sql)) {
         $count = mysqli_num_rows($result);
 
 // If result matched $username and $password, table row must be 1 row
-        if ($count == 1) {
+        if ($count > 0) {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;

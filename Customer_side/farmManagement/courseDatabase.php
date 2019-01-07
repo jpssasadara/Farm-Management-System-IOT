@@ -15,12 +15,7 @@ if ($mysqli->connect_errno) {
     values ('$_POST[cname]', '$_POST[name]', '$_POST[email]','$_POST[password]')";
 
     if ($mysqli->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $mysqli->error;
-    }
-    if ($mysqli->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "Registered successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $mysqli->error;
     }
@@ -34,4 +29,6 @@ else if(!isset($_SESSION['loggedin']) || (isset($_SESION['loggedin']) && $_SESSI
 
     }
 ?>
+<br/>
+<a href="course2.php">Go back to Courses</a>
 

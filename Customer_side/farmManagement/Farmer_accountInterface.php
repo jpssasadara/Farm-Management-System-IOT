@@ -140,7 +140,7 @@ session_start();
         min-height: 38px;
         border-radius: 2px;
     }
-    .input-group-addon .fa {
+    .input required-group-addon .fa {
         font-size: 18px;
     }
     .login-btn {
@@ -296,54 +296,48 @@ if ($result = $mysqli->query($query)) {
         <form action='Farmer_account.php' method='post'>
         <h2 class=\"text-center\"><span class=\"glyphicon glyphicon-user\"></span> Update Account</h2>
         <tr>
-            <td>NIC</td><td><input type=\"text\" name=\"nic\" class='form-control'
+            <td>NIC</td><td><input required type=\"text\" name=\"nic\" class='form-control'
             required value='{$row['Id']}'/></td>
         </tr>
         <tr>
-            <td>Name</td><td><input type=\"text\" name=\"fname\" class='form-control'
+            <td>Name</td><td><input required type=\"text\" name=\"fname\" class='form-control'
             required value='{$row['First_Name']}'/></td>
         </tr>
         <tr>
-            <td>MobileNumber</td><td><input type=\"text\" name=\"mobile\"  class='form-control' 
+            <td>MobileNumber</td><td><input required pattern='[0-9]{10}' type=\"text\" name=\"mobile\"  class='form-control' 
             required value='{$row['Tele_Number']}'/></td>
         </tr>
         <tr>
-            <td> Email</td><td><input type=\"text\" name=\"email\"  class='form-control'
+            <td> Email</td><td><input required type=\"email\" name=\"email\"  class='form-control'
             required value='{$row['Email']}'/></td>
         </tr>
         <tr>
-            <td> Gender</td><td><input type=\"text\" name=\"gender\" class='form-control'
-            required value='{$row['Gender']}'/></td>
+            <td> Gender</td><td><input required type='text' name=\"gender\" class='form-control'
+            required value='{$row['Gender']}'/></select></td>
         </tr>
         <tr>
-            <td>Address</td><td><input type=\"text\" name=\"address\" class='form-control'
+            <td>Address</td><td><input required type=\"text\" name=\"address\" class='form-control'
             required value='{$row['Address']}'/></td>
         </tr>
         <tr>
-            
-            <td>Varieties</td>
-            <br>Vegetables
-            <td> <input type=\"radio\" name=\"q1\" value=\"Vegetables\" class='form-control'   data-toggle=\"modal\" data-target=\"#myModal\" value='{$row['variety']}'/>
-            <br>Fruits
-            <input type=\"radio\"  name=\"q1\" value=\"Fruits\" class='form-control'  data-toggle=\"modal\" data-target=\"#myModal\" value='{$row['variety']}'/>
-            <br>Animal products
-            <input type=\"radio\" name=\"q1\" value=\"Animal products\" class='form-control'  data-toggle=\"modal\" data-target=\"#myModal\" value='{$row['variety']}'/>
-            <br>Milk based products
-            <input type=\"radio\" name=\"q1\" value=\"Milk based products\" class='form-control'   data-toggle=\"modal\" data-target=\"#myModal\" value='{$row['variety']}'/>
-           <br/><hr>
-            </td>
+            <select name='q1' value='{$row['variety']}' class='form-control'>
+                <option value='Vegetable'>Vegetable</option>
+                <option value='Fruits'>Fruits</option>
+                <option value='Animal Product'>Animal Product</option>
+                <option value='Milk Based Product'>Milk Based Product</option>
+            </select>
         </tr>
         <tr>
-            <td> UserName</td><td> <input type=\"text\" class='form-control'  name=\"username\" 
+            <td> UserName</td><td> <input required type=\"text\" class='form-control'  name=\"username\" 
             required value='{$row['username']}'></td>
         </tr>
         <tr>
-            <td> Password</td><td> <input type=\"password\" class='form-control'  name=\"password\" 
+            <td> Password</td><td> <input required type=\"password\" class='form-control'  name=\"password\" 
             required value='{$row['password']}'></td>
         </tr>
             
             <tr>
-                <td><input id=\"update\" type=\"submit\" name=\"update\" value=\"Update\" class=\"btn btn-info\" ></td>
+                <td><input required id=\"update\" type=\"submit\" name=\"update\" value=\"Update\" class=\"btn btn-info\" ></td>
                    
                    </tr>
                    </form>

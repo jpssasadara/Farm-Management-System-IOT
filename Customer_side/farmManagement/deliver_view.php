@@ -208,16 +208,7 @@ session_start();
                     <li><a href="course.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <?php
-                    if(isset($_SESSION['nic'])) {
-
-                        echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
-                    }
-                    else{
-
-                    }
-
-                    ?>
+      
                 </ul>
             </div>
         </div>
@@ -267,9 +258,9 @@ session_start();
     </div>
 
     <br/>
-    <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
-
-<table border="2">
+    <a href="shopingcart_review.php"><button class="btn btn-default">Back</button></a>
+<hr>
+<table class="table">
     <thead>
     <tr>
         <th>Order Number</th>
@@ -289,7 +280,8 @@ session_start();
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    $query = "SELECT * FROM regshoporder  INNER JOIN items ON regshoporder.Item_Code=items.Code  where Reg_Shop_Id='$_SESSION[nic]' AND Delivered=1";
+    $query = "SELECT * FROM regshoporder  INNER JOIN items ON regshoporder.Item_Code=items.Code  
+    where Reg_Shop_Id='$_SESSION[nic2]' AND Delivered=1";
     /* fetch associative array */
 
     if ($result = $mysqli->query($query)) {

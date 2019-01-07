@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +195,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
+                <a class="navbar-brand" href="#">LABUDUWA FARM</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -265,58 +266,22 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="home.html"><button class="btn btn-default">Back</button></a>
+        
+    <hr>
 
-    <div class="container">
-        <div class="login-form">
+    <?php
+        echo("You must Login as Student.");
+    ?>
+    <br/>
+    <a href="LoginSt.php"><button class="btn btn-primary">
+    <i class="fa fa-user fa-3x"></i><br/>Student regitration</button></a>
 
-            <form  method="POST" action="RegisterStudent.php">
-                <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
-                <tr>
-                    <td> National ID</td><td> <input required type="text" name="nic" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>First Name</td><td> <input required type="text" name="fname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Last Name</td><td> <input required type="text" name="lname" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Occupation</td><td> <input required type="text" name="occupation" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Mobile Number</td><td> <input required type="text" name="mobile" class="form-control"></td>
-                </tr>
-
-                <tr>
-                    <td>Address</td><td> <input required type="text" name="address" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Email</td><td> <input  required type="text" name="email" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Gender</td><td> <input required type="text" name="gender" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>UserName</td><td> <input required type="text" name="username" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Password</td><td> <input required type="password" name="password" class="form-control"></td>
-                </tr>
-
-                <tr>
-                    <td><input id="submit" type="submit" name="submit" value="Sign-Up" class="btn btn-info"></td>
-
-                </tr>
-                <tr>
-                    <td><a class="btn btn-success" href="LoginFarmer.html">Sign-In</a></td>
-                </tr>
-            </form>
-        </div>
-    </div>
 </div>
+</div>
+</div>
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>

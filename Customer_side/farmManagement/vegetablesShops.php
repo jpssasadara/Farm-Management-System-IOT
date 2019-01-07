@@ -310,7 +310,7 @@ if ($result = $mysqli->query($query)) {
               <p class=\"card-text\"><b>Price : </b>Rs.$row[Price]</p>
               <p class=\"card-text\"><b>Date : </b>$row[Date]</p>
               <p class=\"card-text\"><b>Location : </b>$row[Location]</p>
-              <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn-primary\">ADD BIDS</a>
+              <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn-success\">ADD BIDS</a>
               </form></div></div>
               ";
             }

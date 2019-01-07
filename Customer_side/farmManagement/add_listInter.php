@@ -136,7 +136,7 @@
         min-height: 38px;
         border-radius: 2px;
     }
-    .input-group-addon .fa {
+    .input required-group-addon .fa {
         font-size: 18px;
     }
     .login-btn {
@@ -286,43 +286,43 @@
                     <td> National Id</td>
                 </tr>
                 <tr>
-                    <td> <input type="text" name="id" placeholder="9574124456v" class="form-control"></td>
+                    <td> <input pattern="[0-9a-z]{10}" required type="text" name="id" placeholder="ex:9574124456v" class="form-control"></td>
                 </tr>
                 <tr>
                     <td> Listing Title</td>
                 </tr>
                 <tr>
-                    <td> <input type="text" name="name" placeholder="Item name" class="form-control"></td>
+                    <td> <input required type="text" name="name" placeholder="Item name" class="form-control"></td>
                 </tr>
                  <tr>
                      <td> Listing Code</td>
                  </tr>
                  <tr>
-                     <td> <input type="text" name="code" placeholder="Item code" class="form-control"></td>
+                     <td> <input required type="text" name="code" placeholder="Item code" class="form-control"></td>
                  </tr>
                 <tr>
                 <td> Listing Quantity</td>
                 </tr>
                 <tr>
-                <td> <input type="text" name="quantity" placeholder="Item quatity" class="form-control"></td>
+                <td> <input required type="text" name="quantity" placeholder="Item quatity" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Maximum Price</td>
                 </tr>
                 <tr>
-                    <td> <input type="text" name="price" placeholder="500" class="form-control"></td>
+                    <td> <input required type="text" name="price" placeholder="500" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Expiration Date</td>
                 </tr>
                 <tr>
-                    <td> <input type="date" name="date" placeholder="select expiration date" class="form-control"></td>
+                    <td> <input required type="date" name="date" placeholder="select expiration date" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Location</td>
                 </tr>
                 <tr>
-                    <td> <input type="text" name="location" placeholder="location" class="form-control"></td>
+                    <td> <input required type="text" name="location" placeholder="location" class="form-control"></td>
                 </tr>
 
                 <tr>

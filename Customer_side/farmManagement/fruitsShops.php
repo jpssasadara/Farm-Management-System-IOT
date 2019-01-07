@@ -312,8 +312,8 @@
               <p class=\"card-text\"><b>Price : </b>$row[Price]</p>
               <p class=\"card-text\"><b>Date : </b>$row[Date]</p>
               <p class=\"card-text\"><b>Location : </b>$row[Location]</p>
-              <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn - primary\">
-              <button class='btn btn-success'>ADD BIDS</button></a>
+              <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn-success\">
+              ADD BIDS</a>
               </form>
               ";
 

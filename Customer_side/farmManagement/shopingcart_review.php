@@ -289,16 +289,27 @@ session_start();
     <br/>
     <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
     <hr>
-    <h3>SHOPPING CART</h3>
-    <a href="verify_view.php" target="_blank">
-        <button class="btn btn-primary" >Verifed</button>
-    </a>
-    <a href="deliver_view.php" target="_blank">
-        <button class="btn btn-primary">Deliverd</button>
-    </a>
-    <a href="pending_view.php" target="_blank">
-        <button class="btn btn-primary">Pending</button>
-    </a>
+    <center><h3>SHOPPING CART</h3></center>
+    
+
+    <div class="col-sm-4">
+    <a href="verify_view.php">
+        <button class="btn btn-success btn-block btn-sq-lg" >
+        <i class="fa fa-eye fa-5x"></i><br/>Verified</button>
+    </a></div>
+    <div class="col-sm-4">
+    <a href="deliver_view.php">
+        <button class="btn btn-warning btn-block btn-sq-lg">
+        <i class="fa fa-envelope fa-5x"></i><br/>Delivered</button>
+    </a></div>
+    <div class="col-sm-4">
+    <a href="pending_view.php">
+        <button class="btn btn-primary btn-block btn-sq-lg">
+        <i class="fa fa-shopping-cart fa-5x"></i><br/>Pending</button>
+    </a></div>
+    </div>
+
+
 
 
 </div>

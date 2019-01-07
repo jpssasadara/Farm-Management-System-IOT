@@ -271,31 +271,43 @@ session_start();
     <hr>
 
     <?php
-    echo ($_SESSION['nic3']);
-    if (isset($_SESSION['loggedin']) && $_SESSION['nic2'] && $_SESSION['loggedin'] == true) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
-
-            swal({
-                text: 'Welcome '+a+'!',
-
-            });
-        </script>
-        <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     }
     else {
-        //header('Location: LoginSt.php');
+        header('Location: LoginSt.php');
     }
 
     ?>
 
+
+<div class="col-sm-11"></div>
+
+<div class="col-sm-1">
+
+<div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" 
+  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-user fa-2x"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="Student_accountInterface.php">MyAccount</a><br/>
+    <a class="dropdown-item" href="logout.php">Logout</a>
+  </div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    <a href="course2.php">
+        <button class="btn btn-success btn-block btn-sq-lg" >
+        <i class="fa fa-balance-scale fa-5x"></i><br/>Course registration</button>
+    </a></div>
 </div>
 </div>
 </div>
-<p><a href="Student_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>

@@ -375,12 +375,17 @@ session_start();
 </div>
 </body>
 </html>
+
+
 <script type="text/javascript">
+
     var a='<?php echo $_SESSION['error'];?>';
-    swal({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Wrong Login details !',
-        footer: a
-    });
+    if(sizeof(a)>0){
+        swal({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Wrong Login details !',
+            footer: a
+        });
+    }
 </script>

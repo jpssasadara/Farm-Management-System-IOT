@@ -312,7 +312,7 @@ session_start();
 </div>
 </div>
 
-
+<hr>
 <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
@@ -325,7 +325,6 @@ session_start();
         <button class="btn btn-success btn-block btn-sq-lg">
         <i class="fa fa-shopping-cart fa-5x"></i><br/>Shopping cart details</button>
     </a></div>
-    </div>
 
 </div>
 </div>

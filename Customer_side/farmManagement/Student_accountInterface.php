@@ -189,6 +189,7 @@ session_start();
 </style>
 
 <body >
+
 <div class="container container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -269,83 +270,83 @@ session_start();
     <a href="MemberStudent.php"><button class="btn btn-default">Back</button></a>
 
 
-    <?php
+<?php
 
-    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
-    // Check connection
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
-    }
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+$a=$_SESSION['nic3'];
+$query = "SELECT * FROM registeredstudent  where nic='$a' ";
+/* fetch associative array */
 
-    $query = "SELECT * FROM registeredstudent  where nic='$_SESSION[nic3]' ";
-    /* fetch associative array */
+if ($result = $mysqli->query($query)) {
 
-    if ($result = $mysqli->query($query)) {
+$row = $result->fetch_array();
+//echo $row['name'];
+echo "<div class='well'>";
 
-        while ($row = $result->fetch_array()) {
-            //echo $row['name'];
-            echo "<div class='well'>";
+echo "<ul class='list-unstyled'>";
 
-            echo "<ul class='list-unstyled'>";
+echo " 
+    <div class=\"container\">
+    <div class=\"login-form\">
+    <table>
+    <form action='Student_account.php' method='post'>
+    <h2 class=\"text-center\"><span class=\"glyphicon glyphicon-user\"></span> Update Account</h2>
+<tr>
+<td>National ID</td><td><input class='form-control' type=\"text\" name=\"nic\" class='form-control' required value='{$row['nic']}'/></td>
+</tr>
+<tr>
+<td>First Name</td><td><input class='form-control' type=\"text\" name=\"fname\" class='form-control' required value='{$row['fname']}'/></td>
+</tr>
+<tr>
+<td>Last Name</td><td><input class='form-control' type=\"text\" name=\"lname\" class='form-control' required value='{$row['lname']}'/></td>
+</tr>
+<tr>
+<td>Mobile Number</td><td><input pattern='[0-9]{10}' class='form-control' type=\"text\" name=\"mobile\" class='form-control'
+ required value='{$row['Mobile']}'/></td>
+</tr>
+<tr>
+<td>Occupation</td><td><input class='form-control' type=\"text\" name=\"occupation\"  class='form-control' required value='{$row['Occupation']}'/></td>
+</tr>
+<tr>
+<td>Address</td><td><input class='form-control' type=\"text\" name=\"address\" class='form-control' required value='{$row['Address']}'/></td>
+</tr>
+<tr>
+<td> Email</td><td><input class='form-control' type=\"email\" name=\"email\"  class='form-control' required value='{$row['email']}'/></td>
+</tr>
+<tr>
+<td> Gender</td><td><input class='form-control' type=\"text\" name=\"gender\"  class='form-control' required value='{$row['Gender']}'/></td>
+</tr>
 
-            echo " 
-               <div class=\"container\">
-               <div class=\"login-form\">
-               <table>
-               <form action='Student_account.php' method='post'>
-               <h2 class=\"text-center\"><span class=\"glyphicon glyphicon-user\"></span> Update Account</h2>
-        <tr>
-            <td>National ID</td><td><input type=\"text\" name=\"nic\" class='form-control' required value='{$row['nic']}'/></td>
+
+<tr>
+<td> UserName</td><td> <input class='form-control' type=\"text\" class='form-control'  name=\"username\" required value='{$row['username']}'></td>
+</tr>
+<tr>
+<td> Password</td><td> <input class='form-control' type=\"password\" class='form-control'  name=\"password\" required value='{$row['password']}'></td>
+</tr>
+
+
+<tr>
+    <td><input id=\"update\" type=\"submit\" name=\"update\" value=\"Update\" class=\"btn btn-info\"></td>
+        
         </tr>
-        <tr>
-            <td>First Name</td><td><input type=\"text\" name=\"fname\" class='form-control' required value='{$row['fname']}'/></td>
-        </tr>
-        <tr>
-            <td>Last Name</td><td><input type=\"text\" name=\"lname\" class='form-control' required value='{$row['lname']}'/></td>
-        </tr>
-         <tr>
-            <td>Mobile Number</td><td><input type=\"text\" name=\"mobile\" class='form-control' required value='{$row['Mobile']}'/></td>
-        </tr>
-        <tr>
-            <td>Occupation</td><td><input type=\"text\" name=\"occupation\"  class='form-control' required value='{$row['Occupation']}'/></td>
-        </tr>
-        <tr>
-            <td>Address</td><td><input type=\"text\" name=\"address\" class='form-control' required value='{$row['Address']}'/></td>
-        </tr>
-        <tr>
-            <td> Email</td><td><input type=\"text\" name=\"email\"  class='form-control' required value='{$row['email']}'/></td>
-        </tr>
-        <tr>
-            <td> Gender</td><td><input type=\"text\" name=\"gender\"  class='form-control' required value='{$row['Gender']}'/></td>
-        </tr>
+        </form>
+        </table>
+        </div>
+        </div>
         
         
-        <tr>
-            <td> UserName</td><td> <input type=\"text\" class='form-control'  name=\"username\" required value='{$row['username']}'></td>
-        </tr>
-        <tr>
-            <td> Password</td><td> <input type=\"password\" class='form-control'  name=\"password\" required value='{$row['password']}'></td>
-        </tr>
-           
-          
-            <tr>
-                <td><input id=\"update\" type=\"submit\" name=\"update\" value=\"Update\" class=\"btn btn-info\"></td>
-                   
-                   </tr>
-                   </form>
-                   </table>
-                   </div>
-                   </div>
-                   
-                   
-                   \n";
+        \n";
 
-            echo("</div>");
-        }
-        "</ul>";
-        /* free result set */
-        $result->free();
-    }
+echo("</div>");
+}
+"</ul>";
+/* free result set */
+$result->free();
+    
 
     /* close connection */
     $mysqli->close();

@@ -267,16 +267,21 @@
     </div>
 
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="course2.php"><button class="btn btn-default">Back</button></a>
 
+    <hr>
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 <form action="courseDatabase.php" method="post">
     <!-- Grid row -->
     <div class="form-group row">
         <!-- Material input -->
-        <label for="cname" class="col-sm-2 col-form-label">Course Name</label>
+        <label for="cname" class="col-sm-2 col-form-label">CourseName</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="cname" placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
+                <input type="text" class="form-control" name="cname" 
+                placeholder="Course Name" value="<?php echo $_GET['cname'];?>" >
             </div>
         </div>
     </div>
@@ -285,10 +290,10 @@
     <!-- Grid row -->
     <div class="form-group row">
         <!-- Material input -->
-        <label for="name" class="col-sm-2 col-form-label">Full Name</label>
+        <label for="name" class="col-sm-2 col-form-label">FullName</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="text" class="form-control" name="name" placeholder="Full Name">
+                <input required type="text" class="form-control" name="name" placeholder="Full Name">
             </div>
         </div>
     </div>
@@ -299,7 +304,7 @@
         <label for="email" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="email" class="form-control" name="email" placeholder="Email">
+                <input required type="email" class="form-control" name="email" placeholder="Email">
             </div>
         </div>
     </div>
@@ -310,7 +315,7 @@
         <label for="password" class="col-sm-2 col-form-label">Password</label>
         <div class="col-sm-10">
             <div class="md-form mt-0">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input required type="password" class="form-control" name="password" placeholder="Password">
             </div>
         </div>
     </div>
@@ -319,11 +324,72 @@
     <!-- Grid row -->
     <div class="form-group row">
         <div class="col-sm-10">
-            <input type="submit">
+            <input type="submit" class="btn btn-primary">
         </div>
     </div>
 </form>
+</div>
+</div>
+</div>
+</div>
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!-- Google +-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Linkedin -->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <!--Instagram-->
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-md-1 mb-1">
+                        <a class="pin-ic">
+                            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+
+    </div>
+
+</footer>
 </body
-</html>
-</html>
 

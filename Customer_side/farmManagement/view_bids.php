@@ -273,27 +273,9 @@ session_start();
 
     <br/>
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
-
-    bids <!--span class="badge">
-<!--?php
-$mysqli = new mysqli("localhost", "root", '', "fmsmy");
-if ($mysqli->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
-}
-
-$query = "select count(1) FROM bid_history";
-$result= mysqli_query($mysqli, $query);
-$row = mysqli_fetch_array($result);
-
-$total = $row[0];
-echo  $total;
-
-mysqli_close($mysqli);
-?-->
-    <!--/span-->
-<table border="2">
-    <thead>
+<hr>
+<table class="table"> 
+<thread> 
     <tr>
         <th>Bidder</th>
         <th>Code</th>
@@ -307,15 +289,11 @@ mysqli_close($mysqli);
     </thead>
     <tbody>
     <?php
-    // Create connection
-    /* fetch associative array */
-
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
     // Check connection
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     }
-
     $query = "SELECT * FROM bid_history inner join auction on bid_history.Item_code=auction.Item_code
         where Id='$_SESSION[nic1]'";
     /* fetch associative array */

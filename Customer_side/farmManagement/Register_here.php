@@ -268,13 +268,15 @@
     </div>
     <br/>
     <a href="home.html"><button class="btn btn-default">Back</button></a>
-
+        
     <hr>
 
     <?php
-    echo "Please Register here!"
-
+        echo("Click Here to Login or SignUp");
     ?>
+    <br/>
+    <a href="LoginSh.php"><button class="btn btn-primary">
+    <i class="fa fa-user fa-3x"></i></button></a>
 
 
 </div>

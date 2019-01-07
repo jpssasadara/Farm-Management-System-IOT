@@ -295,9 +295,9 @@ mysqli_close($mysqli);
             <form method="POST" action="add_bid.php">
                 
                 Item Code
-        
-        
-                <input readonly class="form-control" type="text" name="code" value="<?php echo $_GET['code'];?>">
+
+                <input readonly class="form-control" type="text" name="code" 
+                value="<?php echo $_GET['code'];?>">
         
         
                 Enter your id

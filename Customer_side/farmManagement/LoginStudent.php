@@ -18,12 +18,12 @@ $password = stripslashes($password);
 //$username = mysqli_real_escape_string($username);
 //$password = mysqli_real_escape_string($password);
 $sql="SELECT * FROM registeredstudent WHERE username='$username' and password='$password'";
-$Id=null;
+
 if ($result = $mysqli->query($sql)) {
 
-    while ($row = $result->fetch_array()) {
-        $Id = $row['Id'];
-    }
+$row = $result->fetch_array();
+$Id = $row['nic'];
+
 // Mysql_num_row is counting table row
 $count=mysqli_num_rows($result);
 

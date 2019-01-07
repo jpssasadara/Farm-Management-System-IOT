@@ -13,9 +13,14 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
     }
 if(isset($_POST['update'])) {
 
-    $sql = $sql = "UPDATE registeredstudent SET nic='$_POST[nic]',fname='$_POST[fname]',lname='$_POST[lname]',Mobile='$_POST[mobile]',Occupation='$_POST[occupation]',Address='$_POST[address]',email='$_POST[email]',Gender='$_POST[gender]',username='$_POST[username]',password='$_POST[password]' where Id='$_SESSION[nic3]' ";
+    $sql = $sql = "UPDATE registeredstudent SET nic='$_POST[nic]',fname='$_POST[fname]',
+    lname='$_POST[lname]',Mobile='$_POST[mobile]',Occupation='$_POST[occupation]',
+    Address='$_POST[address]',email='$_POST[email]',Gender='$_POST[gender]',
+    username='$_POST[username]',password='$_POST[password]' where nic='$_SESSION[nic3]' ";
     if (mysqli_query($mysqli, $sql)) {
         echo "Record updated successfully";
+        header("Location:Student_accountInterface.php");
+        
     } else {
         echo "Error updating record: " . mysqli_error($mysqli);
     }
@@ -25,7 +30,7 @@ if(isset($_POST['update'])) {
 else if(!isset($_SESSION['loggedin']) || (isset($_SESION['loggedin']) && $_SESSION['loggedin'] == 0)){
     //session is not set
     echo "Register here";
-    header("Location:Login_Registration/RegisterFarmer.html");
+    header("Location:MemberStudent.html");
     exit();
 
 }

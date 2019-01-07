@@ -293,12 +293,12 @@
             echo " 
               
               <form action='courseRegistration.php' method='get'>
-              <li><h1>$row[Course_Name]</h1></li>
+              <li><h2>$row[Course_Name]</h2></li>
               <li><p>$row[Course_description]</p></li>
-              <li><h4><b>Duration :</b> $row[Course_duration]</h4></li>
-              <li><h4><b>CourseType : </b>$row[Course_type]</h4></li>
-              <li><h4><b>CourseFee : </b>$row[Course_fees]</h4></li>
-              <li><h4><b>Location : </b>$row[Location]</h4></li>><br/>
+              <li><h5><b>Duration :</b> $row[Course_duration]</h5></li>
+              <li><h5><b>CourseType : </b>$row[Course_type]</h5></li>
+              <li><h5><b>CourseFee : </b>$row[Course_fees]</h5></li>
+              <li><h5><b>Location : </b>$row[Location]</h5></li><br/>
               </form>
                <a href='courseRegistration.php?cname=$row[Course_Name]'><button class='btn btn-success'
                >Register here!</button></a>";
