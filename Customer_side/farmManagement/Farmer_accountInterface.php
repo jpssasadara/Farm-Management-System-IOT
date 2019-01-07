@@ -278,7 +278,7 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$query = "SELECT * FROM registeredfarmer  where Id='$_SESSION[nic]' ";
+$query = "SELECT * FROM registeredfarmer  where Id='$_SESSION[nic1]' ";
 /* fetch associative array */
 
 if ($result = $mysqli->query($query)) {

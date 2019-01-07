@@ -210,7 +210,7 @@ session_start();
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <?php
-                    if(isset($_SESSION['nic'])) {
+                    if(isset($_SESSION['nic1'])) {
 
                         echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
                     }
@@ -272,7 +272,7 @@ session_start();
 
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic']) {
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic1']) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">

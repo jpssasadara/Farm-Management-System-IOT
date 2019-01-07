@@ -225,7 +225,7 @@ session_start();
                     <!--ul class="nav navbar-nav navbar-right"-->
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
                         <?php
-                        if(isset($_SESSION['nic'])) {
+                        if(isset($_SESSION['nic2'])) {
 
                             echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
                         }
@@ -291,7 +291,7 @@ session_start();
     <hr>
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic']) {
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic2']) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">
@@ -310,23 +310,10 @@ session_start();
 ?>
 
 </div>
-
-
-
-    <a href="verify_view.php" target="_blank">
-        <button class="btn btn-primary" >Verifed</button>
-    </a>
-    <a href="deliver_view.php" target="_blank">
-        <button class="btn btn-primary">Deliverd</button>
-    </a>
-    <a href="pending_view.php" target="_blank">
-        <button class="btn btn-primary">Pending</button>
-    </a>
-
 <p><a href="AuctionHomeShop.php">Auction</a></p>
+<p><a href="shopingcart_review.php">Shopping cart details</a></p>
 <p><a href="Shop_accountInterface.php">MyAccount</a></p>
 <p><a href="logout.php">Logout</a></p>
-?>
 
 </div>
 </div>

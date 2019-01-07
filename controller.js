@@ -1444,7 +1444,35 @@ app.controller("RegisterAdminController", function($scope, $http){
             
         ).success(function(data){
             console.log($scope.pw);
-            
+            if(data.error)
+                    {
+                    $scope.errorid = data.error.nic;
+                    $scope.errorfirstname = data.error.fn;
+                    $scope.errorlastname = data.error.ln;
+                    $scope.errorphonenumber = data.error.pn;
+                    $scope.erroremail = data.error.email;
+                    $scope.erroraddress = data.error.address;
+                    $scope.erroremail = data.error.email;
+                    $scope.errorusername = data.error.un;
+                    $scope.errorpassword = data.error.pw;
+
+                    
+
+                    $scope.successInsert = null;
+                }
+                else
+                {
+                $scope.errorid = null;
+                $scope.errorfirstname = null;
+                $scope.errorlastname = null;
+                $scope.errorphonenumber = null;
+                $scope.erroremail = null;
+                $scope.erroraddress = null;
+                $scope.erroremail = null;
+                $scope.errorusername = null;
+                $scope.errorpassword = null;
+                
+
             if($scope.nic!=null && $scope.fn!=null && $scope.ln!=null
                 && $scope.pn!=null && $scope.address!=null && $scope.email!=null && $scope.un!=null && $scope.pw!=null){
                 $scope.successInsert = data.message;
@@ -1453,8 +1481,10 @@ app.controller("RegisterAdminController", function($scope, $http){
                     title: $scope.un +' Shop Added Successfull!',
                     timer: 5000
                     });
+
                 }
             }
+        }
         )};
         $scope.displayshop = function(){ 
             $http.get("module/FarmShop/viewshop.php")  
