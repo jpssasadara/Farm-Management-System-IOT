@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </head>
 <style>
     body {
@@ -181,13 +182,13 @@
 
         padding: 40px;
     }
+
     .card_main_container2 {
         text-align: left;
         height: 30%;
         width: 50%;
         display: inline-block;
     }
-
 
 </style>
 
@@ -275,8 +276,7 @@
 
     <br/>
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
-
-
+    <div class="row"><hr>
     <?php
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
@@ -298,31 +298,26 @@
             $row1 = mysqli_fetch_array($result1);
 
             $total = $row1[0];
-            echo "<div class='well'>";
+
             // $a=" <img src='images/$row[Course_Image]'>";
-            echo "<ul class='list-unstyled'>";
+            echo "<div class='col-sm-4'><div class='well'>";
 
             echo " 
-              <div class=\"card_main_container2\">
 
-              <div class=\"card\" style=\"width:400px\">
-
-              <div class=\"card-body\">
               
               <form action='add_bidInterface.php' method='get'>
               bids <span class=\"badge\">$total</span>
               <h4 class=\"card-title\">$row[Item_name]</h4>
-              <p class=\"card-text\">$row[Item_code]</p>
-              <p class=\"card-text\">$row[Price]</p>
-              <p class=\"card-text\">$row[Date]</p>
-              <p class=\"card-text\">$row[Location]</p>
-              
+              <p class=\"card-text\"><b>Item Code :</b>$row[Item_code]</p>
+              <p class=\"card-text\"><b>Price : </b>$row[Price]</p>
+              <p class=\"card-text\"><b>Date : </b>$row[Date]</p>
+              <p class=\"card-text\"><b>Location : </b>$row[Location]</p>
+            
               </form>
               ";
 
-            echo("</div>");
+            echo("</div></div>");
         }
-        "</ul>";
         /* free result set */
         $result->free();
     }
@@ -331,6 +326,7 @@
     $mysqli->close();
 
     ?>
+</div>
 </div>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -393,5 +389,4 @@
 </div>
 </body>
 </html>
-
 

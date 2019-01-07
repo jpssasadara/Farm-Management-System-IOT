@@ -277,7 +277,7 @@
     <br/>
     <a href="AuctionHomeShop.php"><button class="btn btn-default">Back</button></a>
 
-
+<div class="row"><hr>
 <?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
@@ -299,31 +299,21 @@ if ($result = $mysqli->query($query)) {
         $row1 = mysqli_fetch_array($result1);
 
         $total = $row1[0];
-        echo "<div class='well'>";
+
+        echo "<div class='col-sm-4'><div class='well'>";
        // $a=" <img src='images/$row[Course_Image]'>";
-        echo "<ul class='list-unstyled'>";
-
-        echo " 
-              <div class=\"card_main_container2\">
-
-              <div class=\"card\" style=\"width:400px\">
-
-              <div class=\"card-body\">
-              
+        echo "              
               <form action='add_bidInterface.php' method='get'>
               bids <span class=\"badge\">$total</span>
               <h4 class=\"card-title\">$row[Item_name]</h4>
-              <p class=\"card-text\">$row[Item_code]</p>
-              <p class=\"card-text\">$row[Price]</p>
-              <p class=\"card-text\">$row[Date]</p>
-              <p class=\"card-text\">$row[Location]</p>
+              <p class=\"card-text\"><b>Item Code :</b> $row[Item_code]</p>
+              <p class=\"card-text\"><b>Price : </b>Rs.$row[Price]</p>
+              <p class=\"card-text\"><b>Date : </b>$row[Date]</p>
+              <p class=\"card-text\"><b>Location : </b>$row[Location]</p>
               <a href='add_bidInterface.php?code=$row[Item_code]' class=\"btn btn-primary\">ADD BIDS</a>
-              </form>
+              </form></div></div>
               ";
-
-        echo("</div>");
-    }
-    "</ul>";
+            }
     /* free result set */
     $result->free();
 }
@@ -332,6 +322,7 @@ if ($result = $mysqli->query($query)) {
 $mysqli->close();
 
 ?>
+</div>
 </div>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

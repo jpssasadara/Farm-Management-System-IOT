@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +9,6 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-
 </head>
 <style>
     body {
@@ -209,16 +203,21 @@ session_start();
                     <li><a href="course.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <?php
-                    if(isset($_SESSION['nic1'])) {
-
-                        echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
-                    }
-                    else{
-
-                    }
-
-                    ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
+                        <li><div class="dropdown">
+                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
+                                <div class="dropdown-content">
+                                    <div ng-controller="loginbuttonctrl">
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
+                    </ul>
                 </ul>
             </div>
         </div>
@@ -267,49 +266,55 @@ session_start();
         </a>
     </div>
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="MemberStudent.php"><button class="btn btn-default">Back</button></a>
+
     <hr>
 
     <?php
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic1']) {
-    }
-    else {
-        //header('Location: LoginFa.php');
+    /* check connection */
+    if ($mysqli->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
     }
 
+    $query = "SELECT * FROM Course ";
+
+    if ($result = $mysqli->query($query)) {
+
+        /* fetch associative array */
+
+        while ($row = $result->fetch_array()) {
+            echo "<div class='col-sm-4'>
+            <div class='well'>";
+            echo "<ul class='list-unstyled'>";
+
+            echo " 
+              
+              <form action='courseRegistration.php' method='get'>
+              <li><h1>$row[Course_Name]</h1></li>
+              <li><p>$row[Course_description]</p></li>
+              <li><h4><b>Duration :</b> $row[Course_duration]</h4></li>
+              <li><h4><b>CourseType : </b>$row[Course_type]</h4></li>
+              <li><h4><b>CourseFee : </b>$row[Course_fees]</h4></li>
+              <li><h4><b>Location : </b>$row[Location]</h4></li>><br/>
+              </form>
+               <a href='courseRegistration.php?cname=$row[Course_Name]'><button class='btn btn-success'
+               >Register here!</button></a>";
+
+            echo("</ul></div></div>");
+        }
+        /* free result set */
+        $result->free();
+    }
+    /* close connection */
+    $mysqli->close();
     ?>
 
-<div class="col-sm-11"></div>
-
-<div class="col-sm-1">
-
-<div class="dropdown">
-  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" 
-  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <i class="fa fa-user fa-2x"></i>
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="Farmer_accountInterface.php">MyAccount</a><br/>
-    <a class="dropdown-item" href="logout.php">Logout</a>
-  </div>
-</div>
-</div>
-
-
-<div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-    <a href="AuctionHomeFarmer.php">
-        <button class="btn btn-success btn-block btn-sq-lg" >
-        <i class="fa fa-balance-scale fa-5x"></i><br/>Auctions</button>
-    </a></div>
 </div>
 </div>
 </div>
-
-
-
 
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -372,7 +377,3 @@ session_start();
 </div>
 </body>
 </html>
-
-
-
-

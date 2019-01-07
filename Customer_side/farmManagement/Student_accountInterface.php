@@ -204,7 +204,7 @@ session_start();
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="#services">SERVICES</a></li>
-                    <li><a href="course.php">COURSES</a></li>
+                    <li><a href="course2.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <?php
@@ -270,8 +270,6 @@ session_start();
 
 
     <?php
-    // Create connection
-    /* fetch associative array */
 
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
     // Check connection

@@ -206,7 +206,7 @@ session_start();
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="#services">SERVICES</a></li>
-                    <li><a href="course.php">COURSES</a></li>
+                    <li><a href="course2.php">COURSES</a></li>
                     <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <?php
@@ -271,8 +271,8 @@ session_start();
     <hr>
 
     <?php
-
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic3']) {
+    echo ($_SESSION['nic3']);
+    if (isset($_SESSION['loggedin']) && $_SESSION['nic2'] && $_SESSION['loggedin'] == true) {
         echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
         ?>
         <script type="text/javascript">

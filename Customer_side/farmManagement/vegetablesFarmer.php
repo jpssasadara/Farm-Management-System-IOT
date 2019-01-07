@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
@@ -189,7 +190,6 @@
     }
 
 
-
 </style>
 
 <body >
@@ -277,60 +277,51 @@
     <br/>
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
 
-    <?php
-    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+<div class="row"><hr>
+<?php
+$mysqli = new mysqli("localhost", "root", '', "fmsmy");
 
-    /* check connection */
-    if ($mysqli->connect_errno) {
-        printf("Connect failed: %s\n", $mysqli->connect_error);
-        exit();
-    }
+/* check connection */
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
 
-    $query = "SELECT * FROM auction where Item_type='Vegetables' ";
+$query = "SELECT * FROM auction where Item_type='Vegetables' ";
 
-    if ($result = $mysqli->query($query)) {
+if ($result = $mysqli->query($query)) {
 
-        /* fetch associative array */
+    /* fetch associative array */
 
-        while ($row = $result->fetch_array()) {
-            $sql1 = "select count(1) FROM bid_history where Item_code='$row[Item_code]'";
-            $result1= mysqli_query($mysqli, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+    while ($row = $result->fetch_array()) {
+        $sql1 = "select count(1) FROM bid_history where Item_code='$row[Item_code]'";
+        $result1= mysqli_query($mysqli, $sql1);
+        $row1 = mysqli_fetch_array($result1);
 
-            $total = $row1[0];
-            echo "<div class='well'>";
-            // $a=" <img src='images/$row[Course_Image]'>";
-            echo "<ul class='list-unstyled'>";
+        $total = $row1[0];
 
-            echo " 
-              <div class=\"card_main_container2\">
-
-              <div class=\"card\" style=\"width:400px\">
-
-              <div class=\"card-body\">
-              
+        echo "<div class='col-sm-4'><div class='well'>";
+       // $a=" <img src='images/$row[Course_Image]'>";
+        echo "              
               <form action='add_bidInterface.php' method='get'>
               bids <span class=\"badge\">$total</span>
               <h4 class=\"card-title\">$row[Item_name]</h4>
-              <p class=\"card-text\">$row[Item_code]</p>
-              <p class=\"card-text\">$row[Price]</p>
-              <p class=\"card-text\">$row[Date]</p>
-              <p class=\"card-text\">$row[Location]</p>
-              
-              </form>
+              <p class=\"card-text\"><b>Item Code :</b> $row[Item_code]</p>
+              <p class=\"card-text\"><b>Price : </b>Rs.$row[Price]</p>
+              <p class=\"card-text\"><b>Date : </b>$row[Date]</p>
+              <p class=\"card-text\"><b>Location : </b>$row[Location]</p>
+              </form></div></div>
               ";
+            }
+    /* free result set */
+    $result->free();
+}
 
-            echo("</div>");
-        }
-        "</ul>";
-        /* free result set */
-        $result->free();
-    }
+/* close connection */
+$mysqli->close();
 
-    /* close connection */
-    $mysqli->close();
-
-    ?>
+?>
+</div>
 </div>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
