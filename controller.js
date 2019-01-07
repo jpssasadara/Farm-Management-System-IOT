@@ -2277,13 +2277,14 @@ app.controller("AddfarmerDetails", function($scope, $http){
                  $http.post('module/FarmShop/LoadItemsShop.php',
                {'itemcode':$scope.itemcode,'amount':$scope.amount}  
                 ).success(function(response){
-                      alert(response);
+                     // alert(response);
                      // $scope.amount="";
-                      //swal(
-                      //'OK!',
-                      //'Your Data has been Added.',
-                      //'success'
-                 // )
+                      swal(
+                      'OK!',
+                      'Your Data has been Added.',
+                      'success'
+                         )
+                    $scope.amount='';
                     $scope.select(); 
                     $scope.selectFruit(); //farmernic itemcode amount total
                    
@@ -2361,7 +2362,10 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
           //update database 
            $http.post("module/FarmShopOrder/verifyOrder.php",{'order_number':ordernumber})  
            .success(function(data){  
-              alert(data); 
+              //alert(data); 
+              swal(
+                  'Verified !'
+                  )
               $scope.ViewOrdersDisplay();
            });  
            //send mail
@@ -2369,18 +2373,37 @@ app.controller("RegShopOrderController",function($scope,$location, $http,$rootSc
              
              $http.post("sendMail/mailpphpp/mailVerify.php",{'shop_id':shopid,'order_number':ordernumber,'code':code,'name':name,'amount':amount,'date':date})  
            .success(function(data){  
-              alert(data); 
+              //alert(data); 
+              swal(
+                  'Success..!',
+                  'Email was sent ..'
+                  )
               $scope.ViewOrdersDisplay();
            });      
       };
 
       //for Delete Order that shop owner has made
-       $scope.Delete=function(ordernumber){  
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
-           .success(function(data){  
-              alert(data); 
-              $scope.ViewOrdersDisplay();
-           });        
+       $scope.Delete=function(ordernumber){ 
+           swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => { 
+              if (result.value) {
+                 $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+                     .success(function(data){  
+                        //alert(data); 
+                        $scope.ViewOrdersDisplay();
+                     });
+                   }
+                else{
+                  return false;
+                } 
+             });       
       };  
       //msg(x.Reg_Shop_Id,x.OrderNumber,x.Code,x.Name,x.Amount,x.Date)
       //sending massage  viewRegShopOrdersEmail.html
@@ -2445,12 +2468,28 @@ app.controller("RegShopVeriedOrderController",function($scope,$location, $http){
       };
 
       //for Delete Order that shop owner has made
-       $scope.Delete=function(ordernumber){  
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
-           .success(function(data){  
-              alert(data); 
-              $scope.ViewOrdersDisplay();
-           });        
+       $scope.Delete=function(ordernumber){ 
+
+         swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => { 
+          if (result.value) { 
+               $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+               .success(function(data){  
+                  //alert(data); 
+                  $scope.ViewOrdersDisplay();
+               }); 
+            }
+            else{
+              return false;
+            }
+        });       
       };  
 
 });
@@ -2492,11 +2531,26 @@ app.controller("RegShopDeliveredOrderController",function($scope,$location, $htt
 
       //for delete Order that shop owner has made
        $scope.Delete=function(ordernumber){  
-           $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
-           .success(function(data){  
-              alert(data); 
-              $scope.ViewOrdersDisplay();
-           });        
+           swal({
+            title: 'Are you sure?',
+            text: "You want to delete this data?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => { 
+                if (result.value) {
+                 $http.post("module/FarmShopOrder/deleteOrder.php",{'order_number':ordernumber})  
+                 .success(function(data){  
+                    //alert(data);
+                    $scope.ViewOrdersDisplay();
+                 });
+              }
+                 else{
+                  return false;
+                 }
+          });        
       };  
 
 });
