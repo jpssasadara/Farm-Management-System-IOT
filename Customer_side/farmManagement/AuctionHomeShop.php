@@ -290,6 +290,7 @@ session_start();
     <br/>
     <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
     <hr>
+
     <center>
     <h2>QUICK BIDS</h2>
     </center>
@@ -304,7 +305,9 @@ session_start();
         <button class="btn btn-warning btn-block btn-sq-lg">
         <i class="fa fa-apple fa-5x"></i><br/>FRUITS</button>
     </a></div>
-    
+        <a href="confirm_rejection.php" target="_blank">
+            <button class="btn btn-primary">VIEW CONFIRMATIONS AND REJECTIONS</button>
+>>>>>>> 4b82f46e4d8f34a20aa036bc925334712abb6714
 
 </div>
 

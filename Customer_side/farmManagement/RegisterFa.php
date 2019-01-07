@@ -272,8 +272,7 @@
     <div class="container">
         <div class="login-form">
 
-
-            <form method="POST"  action="RegisterFarmer.php"  >
+            <form name="register"  method="POST"  action="RegisterFarmer.php"  onsubmit="return validate();" >
                 <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
 
                 <tr>
@@ -317,7 +316,7 @@
                 </tr>
 
                 <tr>
-                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
+                    <td><input id="submit" type="submit" name="submit" value="Sign-Up" class="btn btn-info"></td>
                 </tr>
                 <tr>
                     <div class="col-sm-4"></div><td><div class="col-sm-4">
@@ -327,8 +326,68 @@
             </form>
         </div>
     </div>
+    <script>
+        function validate()
+        {
+            var nic =ducument.register.nic.value;
+            var name = document.register.name.value;
+            var mobile = document.register.mobile.value;
+            var email = document.register.email.value;
+            var gender = document.register.gender.value;
+            var address = document.register.address.value;
+            var q1 = document.register.q1.value;
+            var username = document.register.username.value;
+            var password = document.register.password.value;
 
+            if (nic==null || nic=="")
+            {
+                alert("Nic can't be blank");
+                return false;
+            }
+            else if (name==null || name=="")
+            {
+                alert("Email can't be blank");
+                return false;
+            }
+            else if (mobile==null || mobile=="")
+            {
+                alert("Mobile can't be blank");
+                return false;
+            }
+            else if (email==null || email=="")
+            {
+                alert("Email can't be blank");
+                return false;
+            }
+            else if (gender==null || gender=="")
+            {
+                alert("gender can't be blank");
+                return false;
+            }
+            else if (address==null || address=="")
+            {
+                alert("address can't be blank");
+                return false;
+            }
+            else if (q1==null || q1=="")
+            {
+                alert("variety can't be blank");
+                return false;
+            }
 
+            else if (username==null || username=="")
+            {
+                alert("Username can't be blank");
+                return false;
+            }
+            else if(password.length&amp;lt;6)
+            {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+        }
+    </script>
 
 </div>
 <footer class="text-center">

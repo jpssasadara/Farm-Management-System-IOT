@@ -296,6 +296,8 @@ mysqli_close($mysqli);
     <thead>
     <tr>
         <th>Bidder</th>
+        <th>Code</th>
+        <th>Name</th>
         <th>Amount</th>
         <th>Time</th>
         <th>Confirm</th>
@@ -328,10 +330,12 @@ mysqli_close($mysqli);
 
             echo " <tr>
                    <td>{$row['Bidder']}</td>
+                   <td>{$row['Item_code']}</td>
+                   <td>{$row['Item_name']}</td>
                    <td>{$row['Amount']}</td>
                    <td>{$row['Date']}</td>
-                   <td><a>Confirm</a></td>
-                   <td><a>Reject</a></td>
+                   <td><a href='confirmbids.php?id={$row['Bidder']}&code={$row['Item_code']}'>Confirm</a></td>
+                   <td><a href='rejectbids.php?id={$row['Bidder']}&code={$row['Item_code']}'>Reject</a></td>
                    </tr>\n";
 
             echo("</div>");
