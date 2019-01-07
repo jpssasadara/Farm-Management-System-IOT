@@ -28,11 +28,11 @@ $connect = mysqli_connect("localhost", "root", "", "fmsmy");
           $result = mysqli_query($connect,$sql);
           $row=mysqli_fetch_array($result);
           $value = $row[0];
-          $Oldvalue = (int)$value;
+          $Oldvalue = (float)$value;
           //After removing kg
 
           $TrueValue = substr($amount,0,-2); 
-          $Addedvalue = (int)$TrueValue;
+          $Addedvalue = (float)$TrueValue;
           $updatedNewvalue = $Oldvalue+$Addedvalue; 
 
           $updateQueryNet = "UPDATE stores SET NetAmount='$updatedNewvalue' WHERE Code ='$itemcode'";

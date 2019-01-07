@@ -28,14 +28,14 @@
           $value_Amount = $row[0];
           //After removing kg
           $TrueValue_Amount = substr($value_Amount,0,-2); 
-          $Removedvalue = (int)$TrueValue_Amount;
+          $Removedvalue = (float)$TrueValue_Amount;
 
 
            $sql = "SELECT NetAmount FROM stores WHERE Code ='$itemcode' limit 1";
           $result = mysqli_query($connect,$sql);
           $row=mysqli_fetch_array($result);
           $value = $row[0];
-          $Oldvalue = (int)$value;
+          $Oldvalue = (float)$value;
           //After removing kg
 
 
