@@ -194,7 +194,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
+            <a class="navbar-brand" href="#">LABUDUWA FARM</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -268,96 +268,46 @@
 <br/>
 <a href="home.html"><button class="btn btn-default">Back</button></a>
 
-<div class="row">
+<hr>
 
-<?php 
-
-$mysqli = new mysqli("localhost", "root", '', "fmsmy");
-// Check connection
-if ($mysqli->connect_error) {
-die("Connection failed: " . $mysqli->connect_error);
-}
-
-$query = "SELECT * FROM items INNER JOIN tbl_images ON items.Image=tbl_images.id";
-
-if ($result = $mysqli->query($query)) {
-    
-    while($row = $result->fetch_array()){
-    echo "
-    <div class='col-md-4'>
-        <div class='alert alert-success'>
-        <div class='thumbnail'>
-            <img src='../../module/Items/upload/$row[name]' style='width:100%'>
-            <div class='caption'>
-            <p>
-            <li><b>Code :</b> $row[Code]</li>
-            <li><b>Name :</b> $row[Name]</li>
-            <li><b>Price :</b> $row[Price]</li>
-            <li><b>Quantity :</b> $row[Amount]</li>
-            <li><b>Unit :</b> $row[Unit]</li>
-            <li><b>Discount :</b> $row[Discount]</li>
-            <li><b>Type :</b> $row[Type]</li> 
-            </p>
-            <a href='Register_here.php'>
-            <button class='btn btn-success btn-sq-lg'>Add to cart here!</button></a>
-            
-
-            </div>
-        </a>
-        </div>
-        </div>
-    </div>";
-    
-    }
-
-}
-?>
-</div>
-
-
-
-
-    
 <?php
-// Create connection
-
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
-// Check connection
-if ($mysqli->connect_error) {
-die("Connection failed: " . $mysqli->connect_error);
+
+/* check connection */
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
 }
 
-$query = "SELECT * FROM items INNER JOIN tbl_images ON items.Image=tbl_images.id";
+$query = "SELECT * FROM Course ";
 
 if ($result = $mysqli->query($query)) {
 
     /* fetch associative array */
 
-    // while ($row = $result->fetch_array()) {
-    //     //echo $row['name'];
-    //     echo "<div class='well'>";
-    //     $a="<img src='../../module/Items/upload/$row[name]'/>";
-    //     echo "<ul class='list-unstyled'>";
+    while ($row = $result->fetch_array()) {
+        echo "<div class='well'>";
+        $a=" <img src='images/$row[Course_Image]'>";
+        echo "<ul class='list-unstyled'>";
 
-    //     echo " 
+        echo " 
               
-    //           <div class='row'><div class='col-sm-4'>$a</div>
-    //           <div class='col-sm-8'>
-    //           <form action='shoppingcart_registration.php.php' method='get'>
-    //           <li>$row[Code]</li>
-    //           <li>$row[Name]</li>
-    //           <li>$row[Price]</li>
-    //           <li>$row[Amount]</li>
-    //           <li>$row[Unit]</li>
-    //           <li>$row[Discount]</li>
-    //           <li>$row[Type]</li>
-    //           <br/>
-    //           </form>
-    //            <a href='shoppingcart_registration.php?Iname=$row[Name]&Icode=$row[Code]'>Add to cart here!</a></div>";
+              <div class='row'><div class='col-sm-4'>
+              $a</div><div class='col-sm-8'>
+              <form action='courseRegistration.php' method='get'>
+              <li><h1>$row[Course_Name]</h1></li>
+              </div>
+              <li><p>$row[Course_description]</p></li>
+              <li><h4>$row[Course_duration]</h4></li>
+              <li><h4>$row[Course_type]</h4></li>
+              <li><h4>$row[Course_fees]</h4></li>
+              <li><h4>$row[Location]</h4</li>><br/>
+              </form>
+               <a href='Register_here.php'>Register here!</a></div>";
 
-    //     echo("</div>");
-    // }
-    // "</ul>";
+        echo("</div>");
+    }
+    "</ul>";
     /* free result set */
     $result->free();
 }
@@ -365,10 +315,12 @@ if ($result = $mysqli->query($query)) {
 /* close connection */
 $mysqli->close();
 ?>
-</div>
+
+
 
 </div>
-
+</div>
+</div>
 
 <footer class="text-center">
 <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

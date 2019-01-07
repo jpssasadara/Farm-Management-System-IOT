@@ -1,17 +1,15 @@
-<?php
-session_start();
-?>
-<!Doctype html>
-<html>
-<title>labuduuwa Farm</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.28/sweetalert2.all.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>labuduuwa Farm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <style>
     body {
         font: 400 15px Lato, sans-serif;
@@ -184,26 +182,9 @@ session_start();
         padding: 40px;
     }
 
-    .btn-group button {
-        background-color: #4CAF50; /* Green background */
-        border: 1px solid green; /* Green border */
-        color: white; /* White text */
-        padding: 10px 24px; /* Some padding */
-        cursor: pointer; /* Pointer/hand icon */
-        width: 10%; /* Set a width if needed */
-        display: block; /* Make the buttons appear below each other */
-    }
-
-    .btn-group button:not(:last-child) {
-        border-bottom: none; /* Prevent double borders */
-    }
-
-    /* Add a background color on hover */
-    .btn-group button:hover {
-        background-color: #3e8e41;
-    }
 </style>
-<body>
+
+<body >
 <div class="container container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -213,28 +194,28 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">LABUDUWA FARM</a>
+                <a class="navbar-brand" href="Home.html">LABUDUWA FARM</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="#services">SERVICES</a></li>
                     <li><a href="course.php">COURSES</a></li>
-                    <li><a href="Order_foods2.php">PRICING</a></li>
+                    <li><a href="Order_foods.php">PRICING</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <!--ul class="nav navbar-nav navbar-right"-->
+                    <ul class="nav navbar-nav navbar-right">
                         <!--li><a href="Registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
-                        <?php
-                        if(isset($_SESSION['nic2'])) {
-
-                            echo "<li> <a>" . $_SESSION['username'] . "</a></li>";
-                        }
-                        else{
-
-                        }
-
-                        ?>
-
+                        <li><div class="dropdown">
+                                <a><button class="dropbtn"><span class="glyphicon glyphicon-log-in"></span> Sign in | Sign up</button></a>
+                                <div class="dropdown-content">
+                                    <div ng-controller="loginbuttonctrl">
+                                        <a  href="LoginSh.php" >Registered Shop</a>
+                                        <a href="LoginFa.php">Registered Farmer</a>
+                                        <a href="LoginSt.php" >Student</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <!--li><a href="FarmShopLoginForm.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
                     </ul>
                 </ul>
@@ -285,36 +266,109 @@ session_start();
         </a>
     </div>
     <br/>
-    <a href="LoginSh.php"><button class="btn btn-default">Back</button></a>
-    <hr>
-    <?php
+    <a href="home.html"><button class="btn btn-default">Back</button></a>
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic2']) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
+    <div class="row">
 
-            swal({
-                text: 'Welcome '+a+'!',
-
-            });
-        </script>
         <?php
+
+        $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+        // Check connection
+        if ($mysqli->connect_error) {
+            die("Connection failed: " . $mysqli->connect_error);
+        }
+
+        $query = "SELECT * FROM items INNER JOIN tbl_images ON items.Image=tbl_images.id";
+
+        if ($result = $mysqli->query($query)) {
+
+            while($row = $result->fetch_array()){
+                echo "
+    <div class='col-md-4'>
+        <div class='alert alert-success'>
+        <div class='thumbnail'>
+            <img src='../../module/Items/upload/$row[name]' style='width:100%'>
+            <div class='caption'>
+            <p>
+            <li><b>Code :</b> $row[Code]</li>
+            <li><b>Name :</b> $row[Name]</li>
+            <li><b>Price :</b> $row[Price]</li>
+            <li><b>Quantity :</b> $row[Amount]</li>
+            <li><b>Unit :</b> $row[Unit]</li>
+            <li><b>Discount :</b> $row[Discount]</li>
+            <li><b>Type :</b> $row[Type]</li> 
+            </p>
+            <a href='shoppingcart_registration.php?Iname=$row[Name]&Icode=$row[Code]'>
+            <button class='btn btn-success btn-sq-lg'>Add to cart here!</button></a>
+            
+
+            </div>
+        </a>
+        </div>
+        </div>
+    </div>";
+
+            }
+
+        }
+        ?>
+    </div>
+
+
+
+
+
+    <?php
+    // Create connection
+
+    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
+    // Check connection
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
     }
-    else {
-        header('Location: LoginSh.php');
+
+    $query = "SELECT * FROM items INNER JOIN tbl_images ON items.Image=tbl_images.id";
+
+    if ($result = $mysqli->query($query)) {
+
+        /* fetch associative array */
+
+        // while ($row = $result->fetch_array()) {
+        //     //echo $row['name'];
+        //     echo "<div class='well'>";
+        //     $a="<img src='../../module/Items/upload/$row[name]'/>";
+        //     echo "<ul class='list-unstyled'>";
+
+        //     echo "
+
+        //           <div class='row'><div class='col-sm-4'>$a</div>
+        //           <div class='col-sm-8'>
+        //           <form action='shoppingcart_registration.php.php' method='get'>
+        //           <li>$row[Code]</li>
+        //           <li>$row[Name]</li>
+        //           <li>$row[Price]</li>
+        //           <li>$row[Amount]</li>
+        //           <li>$row[Unit]</li>
+        //           <li>$row[Discount]</li>
+        //           <li>$row[Type]</li>
+        //           <br/>
+        //           </form>
+        //            <a href='shoppingcart_registration.php?Iname=$row[Name]&Icode=$row[Code]'>Add to cart here!</a></div>";
+
+        //     echo("</div>");
+        // }
+        // "</ul>";
+        /* free result set */
+        $result->free();
     }
-?>
+
+    /* close connection */
+    $mysqli->close();
+    ?>
+</div>
 
 </div>
-<p><a href="AuctionHomeShop.php">Auction</a></p>
-<p><a href="shopingcart_review.php">Shopping cart details</a></p>
-<p><a href="Shop_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
 
-</div>
-</div>
 
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -374,6 +428,6 @@ session_start();
 
     </div>
 </footer>
+</div>
 </body>
 </html>
-
