@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,7 +270,7 @@
     </div>
 
     <br/>
-    <a href="LoginFa.php"><button class="btn btn-default">Back</button></a>
+    <a href="AuctionHomeShop.php"><button class="btn btn-default">Back</button></a>
 
 <?php
 $mysqli = new mysqli("localhost", "root", '', "fmsmy");
@@ -281,101 +284,49 @@ $result= mysqli_query($mysqli, $query);
 $row = mysqli_fetch_array($result);
 
 $total = $row[0];
-echo "Total bids: " . $total;
+// echo "Total bids: " . $total;
 
 mysqli_close($mysqli);
 ?>
 
-
+<center>
 <div id="Sign-Up">
-    <fieldset style="width:30%"><legend>Bid</legend>
-        <table border="0">
+    <fieldset style="width:50%"><h2><b>Bids</b></h2>
             <form method="POST" action="add_bid.php">
-                <tr>
-                    <td> Item Code</td>
-                </tr>
-                <tr>
-                    <td> <input type="text" name="code" value="<?php echo $_GET['code'];?>"></td>
-                </tr>
-                <tr>
-                    <td> Enter your id</td>
-                </tr>
-                <tr>
-                    <td> <input type="text" name="id"></td>
-                </tr>
-                <tr>
-                    <td> Enter your bid</td>
-                </tr>
-                <tr>
-                    <td> <input type="text" name="amount"></td>
-                </tr>
-                <tr>
-                    <td> Date</td>
-                </tr>
-                <tr>
-                    <td> <input type="date" name="date"></td>
-                </tr>
+                
+                Item Code
+        
+        
+                <input readonly class="form-control" type="text" name="code" value="<?php echo $_GET['code'];?>">
+        
+        
+                Enter your id
+        
+        
+                <input readonly class="form-control" value="<?php echo $_SESSION['nic2'];?>" type="text" name="id">
+        
+        
+                Enter Amount
+        
+        
+                <input required pattern="[0-9]{0,6}" class="form-control" type="text" name="amount">
+        
+        
+                Date
+        
+        
+                <input required class="form-control" type="date" name="date">
+        
+            <br/><br/>
+            <input class="btn btn-success btn-sq-lg" id="button" type="submit" name="submit" value="Place Offer">
 
-                <tr>
-                    <td><input id="button" type="submit" name="submit" value="Place Offer"></td>
-                </tr>
 
             </form>
-        </table>
+
     </fieldset>
 </div>
-<table border="2">
-    <thead>
-    <tr>
-        <th>Bidder</th>
-        <th>Amount</th>
-        <th>Time</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    // Create connection
-    /* fetch associative array */
-
-    $mysqli = new mysqli("localhost", "root", '', "fmsmy");
-    // Check connection
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
-    }
-
-    $query = "SELECT * FROM bid_history";
-    /* fetch associative array */
-
-    if ($result = $mysqli->query($query)) {
-
-        while ($row = $result->fetch_array()) {
-            //echo $row['name'];
-            echo "<div class='well'>";
-
-            echo "<ul class='list-unstyled'>";
-
-            echo " <tr>
-                   <td>{$row['Bidder']}</td>
-                   <td>{$row['Amount']}</td>
-                   <td>{$row['Date']}</td>
-                   
-                   </tr>\n";
-
-            echo("</div>");
-        }
-        "</ul>";
-        /* free result set */
-        $result->free();
-    }
-
-    /* close connection */
-    $mysqli->close();
-    ?>
-    </tbody>
-</table>
-
-
+</center>
 
 </body>
 </html>

@@ -266,7 +266,7 @@
         </a>
     </div>
     <br/>
-    <a href="home.html"><button class="btn btn-default">Back</button></a>
+    <a href="MemberStudent.php"><button class="btn btn-default">Back</button></a>
 
     <hr>
 
@@ -286,37 +286,29 @@
         /* fetch associative array */
 
         while ($row = $result->fetch_array()) {
-            echo "<div class='well'>";
-            $a=" <img src='images/$row[Course_Image]'>";
+            echo "<div class='col-sm-4'>
+            <div class='well'>";
             echo "<ul class='list-unstyled'>";
 
             echo " 
               
-              <div class='row'><div class='col-sm-4'>
-              $a</div><div class='col-sm-8'>
               <form action='courseRegistration.php' method='get'>
               <li><h1>$row[Course_Name]</h1></li>
-              </div>
               <li><p>$row[Course_description]</p></li>
-              <li><h4>$row[Course_duration]</h4></li>
-              <li><h4>$row[Course_type]</h4></li>
-              <li><h4>$row[Course_fees]</h4></li>
-              <li><h4>$row[Location]</h4</li>><br/>
-              </form>
-               <a href='Register_here.php'>Register here!</a></div>";
+              <li><h4><b>Duration :</b> $row[Course_duration]</h4></li>
+              <li><h4><b>CourseType : </b>$row[Course_type]</h4></li>
+              <li><h4><b>CourseFee : </b>$row[Course_fees]</h4></li>
+              <li><h4><b>Location : </b>$row[Location]</h4></li>><br/>
+              </form>";
 
-            echo("</div>");
+            echo("</ul></div></div>");
         }
-        "</ul>";
         /* free result set */
         $result->free();
     }
-
     /* close connection */
     $mysqli->close();
     ?>
-
-
 
 </div>
 </div>

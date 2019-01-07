@@ -284,35 +284,50 @@ session_start();
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-    <br/>
-    <a href="LoginSh.php"><button class="btn btn-default">Back</button></a>
-    <hr>
+<br/>
+<a href="LoginSh.php"><button class="btn btn-default">Back</button></a>
+<hr>
     <?php
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic2']) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
-
-            swal({
-                text: 'Welcome '+a+'!',
-
-            });
-        </script>
-        <?php
     }
     else {
         header('Location: LoginSh.php');
     }
 ?>
 
-</div>
-<p><a href="AuctionHomeShop.php">Auction</a></p>
-<p><a href="shopingcart_review.php">Shopping cart details</a></p>
-<p><a href="Shop_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
+<div class="col-sm-11"></div>
 
+<div class="col-sm-1">
+
+<div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" 
+  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-user fa-2x"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="Shop_accountInterface.php">MyAccount</a><br/>
+    <a class="dropdown-item" href="logout.php">Logout</a>
+  </div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+    <a href="AuctionHomeShop.php">
+        <button class="btn btn-primary btn-block btn-sq-lg" >
+        <i class="fa fa-balance-scale fa-5x"></i><br/>Auctions</button>
+    </a></div>
+    <div class="col-sm-4">
+    <a href="shopingcart_review.php">
+        <button class="btn btn-success btn-block btn-sq-lg">
+        <i class="fa fa-shopping-cart fa-5x"></i><br/>Shopping cart details</button>
+    </a></div>
+    </div>
+
+</div>
 </div>
 </div>
 

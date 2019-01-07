@@ -270,8 +270,6 @@ session_start();
 
 
     <?php
-    // Create connection
-    /* fetch associative array */
 
     $mysqli = new mysqli("localhost", "root", '', "fmsmy");
     // Check connection

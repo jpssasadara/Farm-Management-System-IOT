@@ -1582,14 +1582,14 @@ app.controller("AddfarmerDetails", function($scope, $http){
     $scope.displayfarmers = function(){ 
         $http.get("module/farmer/viewfarmers.php")  
         .success(function(data){  
-            console.log(data); 
+            //console.log(data); 
             $scope.items = data;
              
         }); 
     }
     $scope.addfarmer = function(){ 
-        console.log($scope.username,$scope.Id,$scope.First_Name,
-        $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
+        // console.log($scope.username,$scope.Id,$scope.First_Name,
+        // $scope.Tele_Number,$scope.Gender,$scope.Email,$scope.Address,$scope.variety,$scope.password);
         $http.post(  
              "module/farmer/addData.php",  
              {'Id':$scope.Id,'First_Name':$scope.First_Name, 'Tele_Number':
@@ -1659,7 +1659,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
                 )
                 $http.post("module/farmer/deletefarmer.php", {'id':idd})  
                 .success(function(data){  
-                    console.log(data); 
+                    //console.log(data); 
     
                     $scope.displayfarmers();  
                 });
@@ -1673,7 +1673,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
 
        $scope.editDetails = function(x){ 
         $scope.details=x;
-        console.log($scope.details);
+        //console.log($scope.details);
     }
     
        $scope.editfarmer=function(){
@@ -1729,7 +1729,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
     $scope.displayMessages = function(){ 
         $http.get("module/forum/messages.php")  
         .success(function(data){  
-            console.log(data); 
+            //console.log(data); 
             $scope.items = data;
              
         }); 
@@ -1905,7 +1905,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
              'location':$scope.location}  
             
         ).success(function(data){
-            console.log(data);
+            //console.log(data);
             if($scope.Course_Id!=null && $scope.Course_Name!=null && $scope.Course_duration!=null
                 && $scope.Course_type!=null && $scope.Course_fees!=null && $scope.location!=null){
                 $scope.successInsert = data.message;
