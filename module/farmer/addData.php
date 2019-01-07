@@ -20,15 +20,23 @@ if($Id!=null && $First_Name!=null && $Tele_Number!=null
           $query = "INSERT INTO  registeredfarmer(Id,First_Name,Tele_Number,Gender,
           Email,Address,variety,username,password) 
           VALUES ('$Id','$First_Name','$Tele_Number','$Gender','$Email',
-          '$Address','$variety','$username','$password')";  
-
-          if(mysqli_query($connect, $query))  
-          {  
-               $dataa["message"] = "success";
-          }  
-          else  
-          {  
-               $dataa["message"] = "Course Added Fail!"; 
+          '$Address','$variety','$username','$password')"; 
+          if(strlen($password)>=5){
+               $mvalid=preg_match('/^[0-9]{10}+$/', $Tele_Number);
+               if($mvalid){
+                    if(mysqli_query($connect, $query))  
+                    {  
+                         $dataa["message"] = "success";
+                    }  
+                    else  
+                    {  
+                         $dataa["error"] = "Course Added Fail!"; 
+                    }
+               }else{
+                    $dataa["mvalid"] = "Invalid Mobile No";
+               }
+          }else{
+               $dataa["InvalidPass"]="Invalid Password";
           }
 }
 echo json_encode($dataa);

@@ -12,7 +12,7 @@ while($row = mysqli_fetch_array($result))
     array_push($response,array("Id"=>$row[0],
     "First_Name"=>$row[1],"Tele_Number"=>$row[4],
     "Gender"=>$row[3],"Email"=>$row[5],
-    "Address"=>$row[6],"variety"=>$row[7], "username"=>$row[8]));
+    "Address"=>$row[6],"variety"=>$row[7], "username"=>$row[9]));
 }
 //echo json_encode(array("server_response"=>$response));
 

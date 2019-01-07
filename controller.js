@@ -977,13 +977,27 @@ app.controller("Admincontroller",function($scope,$http,$location){
 
     $scope.Notification=function(){
         
+        if($scope.noti!=null){
         //$location.path('/Notification/app');
         //send notification
-         $http.post('appnotification/push_notification.php',
-       {'msg':$scope.noti}
-       ).success(function(data){
-            alert(data); 
-       });
+            $http.post('appnotification/push_notification.php',
+        {'msg':$scope.noti}
+        ).success(function(data){
+            swal({
+                type:"success",
+                title:"success",
+                text:"Send notification Success!",
+                footer:"Successfully notified!"
+            });
+            });
+        }else{
+            swal({
+                type:"warning",
+                title:"warning",
+                text:"Please enter message!",
+                footer:"fill the message!"
+            });
+        }
     };
 
     //loading items to farm Shop
@@ -1568,7 +1582,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
     $scope.displayfarmers = function(){ 
         $http.get("module/farmer/viewfarmers.php")  
         .success(function(data){  
-            //console.log(data); 
+            console.log(data); 
             $scope.items = data;
              
         }); 
@@ -1584,15 +1598,41 @@ app.controller("AddfarmerDetails", function($scope, $http){
              'Address':$scope.Address,'variety':$scope.variety, 'username':$scope.username, 'password':$scope.password}  
             
         ).success(function(data){
-            console.log($scope.username);
+            console.log(data);
             if($scope.Id!=null && $scope.First_Name!=null && $scope.Tele_Number!=null && $scope.password!=null
                 && $scope.Gender!=null && $scope.Email!=null && $scope.Address!=null && $scope.username!=null){
                 $scope.successInsert = data.message;
-                swal({
-                    type: 'success',
-                    title: $scope.First_Name +' Farmer Added Successfull!',
-                    timer: 5000
+                if(data.InvalidPass){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Weak Password !',
+                        footer: 'password must be at least 5 digits!'
                     });
+                }
+                else if(data.mvalid){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid mobileNo !',
+                        footer: 'Please enter valid mobile Number!'
+                    });
+                }
+                else if(data.error){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Something went wrong !',
+                        footer: 'Please enter valid details!'
+                    });
+                }
+                else{
+                    swal({
+                        type: 'success',
+                        title: $scope.First_Name +' Farmer Added Successfull!',
+                        timer: 5000
+                        });
+                    }
                 }
             }
         )};
@@ -1649,33 +1689,34 @@ app.controller("AddfarmerDetails", function($scope, $http){
         
         ).success(function(data){
 
-            //console.log(data);
+            console.log(data);
             if($scope.details.Id!=null && $scope.details.First_Name!=null && $scope.details.Gender!=null
                 && $scope.details.Email!=null && $scope.details.Address!=null && $scope.details.variety!=null){
                 $scope.successInsert = data.message;
-                if(data.invalidFees){
-                    console.log(data);
+                if(data.mvalid){
                     swal({
                         type: 'warning',
                         title: 'Oops...',
-                        text: 'Invalid Fees!',
-                        footer: 'please enter valid Fees!'
+                        text: 'Invalid mobileNo !',
+                        footer: 'Please enter valid mobile Number!'
                     });
-                }else{
+                }
+                else if(data.error){
+                    swal({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Something went wrong !',
+                        footer: 'Please enter valid details!'
+                    });
+                }
+                else{
                     swal({
                         type: 'success',
-                        title: $scope.details.First_Name +' Farmer Updated Successfull!',
+                        title: $scope.details.First_Name +' Update Successfull!',
                         timer: 5000
                         });
+                    }
                 }
-            }else{
-                swal({
-                    type: 'error',
-                    title: 'Oops...',
-                    text: 'Invalid data!',
-                    footer: 'Please fill all the fields!'
-                });
-            }
             }
     )};
         
@@ -1768,7 +1809,6 @@ app.controller("AddfarmerDetails", function($scope, $http){
     )}; 
 });
  
-//Isuru
  app.controller("AddCourseDetails", function($scope, $http){ 
     $scope.displayCourse = function(){ 
         $http.get("module/course/viewData.php")  
@@ -1803,8 +1843,7 @@ app.controller("AddfarmerDetails", function($scope, $http){
             )
             $http.post("module/course/deleteData.php", {'id':idd})  
             .success(function(data){  
-                console.log(data); 
-
+                //console.log(data); 
                 $scope.displayCourse();  
             });
         }
