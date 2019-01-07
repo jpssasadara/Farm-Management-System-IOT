@@ -272,7 +272,7 @@
     <div class="container">
         <div class="login-form">
 
-            <form method="POST" action="RegisterShop.php" >
+            <form name="register" method="POST" action="RegisterShop.php"  onsubmit="return validate();">
                 <h2 class="text-center"><span class="glyphicon glyphicon-user"></span> Farmer Registration</h2>
                 <tr>
                     <td> National ID</td><td> <input type="text" name="nic" class="form-control"></td>
@@ -305,7 +305,7 @@
                 </tr>
 
                 <tr>
-                    <td><input id="insert" type="submit" name="insert" value="Sign-Up" class="btn btn-info"></td>
+                    <td><input id="submit" type="submit" name="submit" value="Sign-Up" class="btn btn-info"></td>
                     <td><!--input id="button" type="submit" name="submit" value="Sign-Up"--></td>
                 </tr>
                 <tr>
@@ -314,6 +314,63 @@
             </form>
         </div>
     </div>
+    <script>
+        function validate()
+        {
+            var nic =ducument.register.nic.value;
+            var fname = document.register.fname.value;
+            var lname = document.register.lname.value;
+            var mobile = document.register.mobile.value;
+            var address = document.register.address.value;
+            var email = document.register.email.value;
+            var username = document.register.username.value;
+            var password = document.register.password.value;
+
+            if (nic==null || nic=="")
+            {
+                alert("Nic can't be blank");
+                return false;
+            }
+            else if (fname==null || name=="")
+            {
+                alert("First can't be blank");
+                return false;
+            }
+            else if (lname==null || name=="")
+            {
+                alert("Last can't be blank");
+                return false;
+            }
+            else if (mobile==null || mobile=="")
+            {
+                alert("Mobile can't be blank");
+                return false;
+            }
+            else if (email==null || email=="")
+            {
+                alert("Email can't be blank");
+                return false;
+            }
+
+            else if (address==null || address=="")
+            {
+                alert("address can't be blank");
+                return false;
+            }
+
+            else if (username==null || username=="")
+            {
+                alert("Username can't be blank");
+                return false;
+            }
+            else if(password.length&amp;lt;6)
+            {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+        }
+    </script>
 </div>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">

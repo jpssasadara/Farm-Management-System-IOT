@@ -296,6 +296,8 @@ session_start();
     <a href="fruitsShops.php" target="_blank">
         <button class="btn btn-primary">FRUITS</button>
 
+        <a href="confirm_rejection.php" target="_blank">
+            <button class="btn btn-primary">VIEW CONFIRMATIONS AND REJECTIONS</button>
 
 </div>
 
