@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!Doctype html>
 <html>
 <title>labuduuwa Farm</title>
@@ -289,15 +290,24 @@ session_start();
     <br/>
     <a href="MemberShop.php"><button class="btn btn-default">Back</button></a>
     <hr>
-    <h3>QUICK BIDS</h3>
-    <a href="vegetablesShops.php" target="_blank">
-        <button class="btn btn-primary" >VEGETABLES</button>
-    </a>
-    <a href="fruitsShops.php" target="_blank">
-        <button class="btn btn-primary">FRUITS</button>
 
+    <center>
+    <h2>QUICK BIDS</h2>
+    </center>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+    <a href="vegetablesShops.php">
+        <button class="btn btn-success btn-block btn-sq-lg" >
+        <i class="fa fa-balance-scale fa-5x"></i><br/>VEGETABLES</button>
+    </a></div>
+    <div class="col-sm-4">
+    <a href="fruitsShops.php">
+        <button class="btn btn-warning btn-block btn-sq-lg">
+        <i class="fa fa-apple fa-5x"></i><br/>FRUITS</button>
+    </a></div>
         <a href="confirm_rejection.php" target="_blank">
             <button class="btn btn-primary">VIEW CONFIRMATIONS AND REJECTIONS</button>
+>>>>>>> 4b82f46e4d8f34a20aa036bc925334712abb6714
 
 </div>
 

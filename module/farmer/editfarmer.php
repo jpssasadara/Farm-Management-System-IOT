@@ -20,15 +20,20 @@ if($Id!=null && $First_Name!=null && $Tele_Number!=null && $Email!=null && $user
           First_Name='$First_Name', Tele_Number='$Tele_Number', Gender='$Gender', Email='$Email',
            Address='$Address', variety='$variety', username='$username'
           WHERE Id='$Id'";
-
-          if(mysqli_query($connect, $query))  
-          {  
-               $dataa["message"] = "success";
-          }  
-          else  
-          {  
-               $dataa["message"] = "Farmer Added Fail!"; 
+          $mvalid=preg_match('/^[0-9]{10}+$/', $Tele_Number);
+          if($mvalid){
+               if(mysqli_query($connect, $query))  
+               {  
+                    $dataa["message"] = "success";
+               }  
+               else  
+               {  
+                    $dataa["message"] = "Farmer Added Fail!"; 
+               }
+          }else{
+               $dataa["mvalid"] = "Invalid Mobile No";
           }
+
 }
 echo json_encode($dataa);
 

@@ -35,7 +35,6 @@
 	$conn = mysqli_connect("localhost","root","","fmsmy");
 
 	$sql = " Select Token From users";
-
 	$result = mysqli_query($conn,$sql);
 	$tokens = array();
 
