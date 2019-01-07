@@ -20,13 +20,14 @@ $password = stripslashes($password);
 //$password = mysqli_real_escape_string($password);
 $sql="SELECT * FROM registeredfarmer WHERE username='$username' and password='$password' ";
 
+$Id=null;
 //$result = mysqli_query($mysqli, $sql);
 if ($result = $mysqli->query($sql)) {
 
     while ($row = $result->fetch_array()) {
         $Id = $row['Id'];
 
-
+    }
 // Mysql_num_row is counting table row
         $count = mysqli_num_rows($result);
 
@@ -45,5 +46,5 @@ if ($result = $mysqli->query($sql)) {
             exit();
 
         }
-    }
+    
 }

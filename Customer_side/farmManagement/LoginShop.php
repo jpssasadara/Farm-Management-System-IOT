@@ -19,7 +19,7 @@ $password = stripslashes($password);
 //$password = mysqli_real_escape_string($password);
 $sql="SELECT * FROM registeredshop WHERE un='$username' and pw='$password'";
 
-
+$Id=null;
 
 if ($result = $mysqli->query($sql)) {
 
@@ -29,7 +29,7 @@ if ($result = $mysqli->query($sql)) {
 
 // Mysql_num_row is counting table row
         $count = mysqli_num_rows($result);
-
+    }
 // If result matched $username and $password, table row must be 1 row
 
         if ($count > 0) {
@@ -45,5 +45,5 @@ if ($result = $mysqli->query($sql)) {
             header('Location: LoginShop1.php');
             exit();
         }
-    }
+    
 }

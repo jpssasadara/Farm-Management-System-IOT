@@ -273,17 +273,6 @@ session_start();
     <?php
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['nic1']) {
-        echo "<div class='alert alert-success'>Welcome to the member's area, <b>" . $_SESSION['username'] . "</b>!</div>";
-        ?>
-        <script type="text/javascript">
-            var a='<?php echo $_SESSION['username'];?>';
-
-            swal({
-                text: 'Welcome '+a+'!',
-
-            });
-        </script>
-        <?php
     }
     else {
         //header('Location: LoginFa.php');
@@ -291,13 +280,37 @@ session_start();
 
     ?>
 
+<div class="col-sm-11"></div>
+
+<div class="col-sm-1">
+
+<div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" 
+  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-user fa-2x"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="Farmer_accountInterface.php">MyAccount</a><br/>
+    <a class="dropdown-item" href="logout.php">Logout</a>
+  </div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    <a href="AuctionHomeFarmer.php">
+        <button class="btn btn-success btn-block btn-sq-lg" >
+        <i class="fa fa-balance-scale fa-5x"></i><br/>Auctions</button>
+    </a></div>
 </div>
 </div>
 </div>
 
-<p><a href="AuctionHomeFarmer.php">Auction</a></p>
-<p><a href="Farmer_accountInterface.php">MyAccount</a></p>
-<p><a href="logout.php">Logout</a></p>
+
+
+
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>

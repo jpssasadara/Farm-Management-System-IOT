@@ -289,25 +289,41 @@ session_start();
     <br/>
     <a href="MemberFarmer.php"><button class="btn btn-default">Back</button></a>
     <hr>
-    <h3>QUICK BIDS</h3>
-    <a href="vegetablesFarmer.php" target="_blank">
-        <button class="btn btn-primary" >VEGETABLES</button>
-    </a>
-    <a href="fruitsFarmer.php" target="_blank">
-        <button class="btn btn-primary">FRUITS</button>
-    </a>
-    <a href="add_listInter.php" target="_blank">
-        <button class="btn btn-primary">ADD LISTING</button>
-    </a>
-    <a href="view_bids.php" target="_blank">
-        <button class="btn btn-primary">VIEW COMMING BIDS</button>
-    </a>
+<center>
+<h2>QUICK BIDS</h2>
+</center>
 
+<div class="row">
+
+<div class="col-sm-3">
+<a href="vegetablesFarmer.php">
+    <button class="btn btn-success btn-block btn-sq-lg" >
+    <i class="fa fa-balance-scale fa-5x"></i><br/>VEGETABLES</button>
+</a></div>
+<div class="col-sm-3">
+<a href="fruitsFarmer.php">
+    <button class="btn btn-primary btn-block btn-sq-lg">
+    <i class="fa fa-apple fa-5x"></i><br/>FRUITS</button>
+</a></div>
+
+<div class="col-sm-3">
+<a href="add_listInter.php">
+    <button class="btn btn-success btn-block btn-sq-lg">
+    <i class="fa fa-list fa-5x"></i><br/>ADD LISTING</button>
+</a>
+</div>
+<div class="col-sm-3">
+<a href="view_bids.php">
+    <button class="btn btn-primary btn-block btn-sq-lg">
+    <i class="fa fa-balance-scale fa-5x"></i><br/>VIEW COMMING BIDS</button>
+</a></div><div class="col-sm-2"></div>
 </div>
 
 </div>
 </div>
+</div>
 
+<center>
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
