@@ -314,8 +314,9 @@
             <textarea name="order_receiver_address" id="order_receiver_address" class="form-control" placeholder="Enter Billing Address"></textarea>
         </div>
         <div class="col-md-4">
-          Reverse Charge<br />
-          <input type="text" name="order_no" id="order_no" class="form-control input-sm" placeholder="Enter Invoice No." />
+          Invoice No : <br />
+          <input type="text" name="order_no" id="order_no" class="form-control input-sm" 
+          value='<?php echo(rand(0,100000));?>' readonly placeholder="Enter Invoice No." />
           <input type="text" name="order_date" id="order_date" class="form-control input-sm" 
           readonly placeholder="Select Invoice Date" value="<?php echo date("Y-m-d");?>"/>
         </div>

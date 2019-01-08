@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,6 +270,7 @@
     </div>
 
     <br/>
+    
     <a href="AuctionHomeFarmer.php"><button class="btn btn-default">Back</button></a>
 
     <div class="container">
@@ -286,7 +290,8 @@
                     <td> National Id</td>
                 </tr>
                 <tr>
-                    <td> <input pattern="[0-9a-z]{10}" required type="text" name="id" placeholder="ex:9574124456v" class="form-control"></td>
+                    <td> <input pattern="[0-9a-z]{10}" required type="text" name="id" placeholder="ex:9574124456v" 
+                    value='<?php  echo $_SESSION['nic1'];?>' class="form-control"></td>
                 </tr>
                 <tr>
                     <td> Listing Title</td>
